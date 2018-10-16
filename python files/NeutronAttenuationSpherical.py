@@ -43,6 +43,8 @@ print("fitting parameters: {}".format(fit))
 print("chi^2: {}".format(chi2))
 print("reduced chi^2: {}".format(red_chi2))
 
+print("half value layer: {} mm".format(-np.log(2)/fit[0]))
+print("tenth value layer: {} mm".format(-np.log(10)/fit[0]))
 # plot data
 # plt.plot(depth, np.log(y))
 

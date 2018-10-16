@@ -12,5 +12,3 @@ for detnum in arange(10,300,10):
                 line = line.replace("$outerRadius$",str(sphere_radius + detnum))
                 line = line.replace("$innerRadius$",str(sphere_radius))
                 print(line, file=f, end='')
-
-exit()
