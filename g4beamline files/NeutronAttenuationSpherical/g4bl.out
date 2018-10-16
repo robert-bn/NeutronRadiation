@@ -1,5 +1,5 @@
 G4BL_DIR=C:\Program Files (x86)\MuonsInc\G4beamline
-G4beamline Process ID 10804
+G4beamline Process ID 17712
 
 *************************************************************
  g4beamline version: 3.04                        (Mar  2 2017)
@@ -29,23 +29,41 @@ isotropicsource            particle=neutron nEvents=1000000 firstEvent=-1 x=0
                            y=0 z=0 weight=1 secondaryTrackID=1001 meanP=43.35
                            P=43.35 sigmaP=0 meanT=0 t=0 sigmaT=0
 particlecolor              gamma=1,0,0 neutron=1,1,1 proton=0,1,0
-box          Target        height=3000 width=3000 length=100 maxStep=100
-                           material=CONCRETE color=0.7,0.7,0.3,0.5 kill=0
-box          BeamVis       height=700 width=700 length=1 maxStep=100
-                           material=Vacuum color=1,0,0 kill=0
-virtualdetector Det0       radius=0 innerRadius=0 height=250 width=250
-                           length=2 maxStep=100 material=Vacuum
-                           color=1,1,1,0.9 noSingles=0 format=bltrackfile
+sphere       Target        innerRadius=1000 outerRadius=1100 initialPhi=0
+                           finalPhi=360 initialTheta=0 finalTheta=360
+                           maxStep=100 material=CONCRETE color=0.7,0.7,0.3,0.5
+                           kill=0
+sphere       BeamVis       innerRadius=0 outerRadius=10 initialPhi=0
+                           finalPhi=360 initialTheta=0 finalTheta=360
+                           maxStep=100 material=Vacuum color=1,0,0 kill=0
+virtualdetector Wallz      radius=0 innerRadius=0 height=550 width=650
+                           length=50 maxStep=100 material=Vacuum
+                           color=1,1,1,0.1 noSingles=0 format=bltrackfile
                            filename= file= require= referenceParticle=0
                            coordinates=Centerline kill=0
-place   BeamVis copies=1 x=0.0 y=0.0 z=-200.0 
-place   Target  copies=1 x=0.0 y=0.0 z=350.0 
-place   Det0    copies=1 x=0.0 y=0.0 z=401.0 
+virtualdetector Wallx      radius=0 innerRadius=0 height=550 width=50
+                           length=550 maxStep=100 material=Vacuum
+                           color=1,1,1,0.1 noSingles=0 format=bltrackfile
+                           filename= file= require= referenceParticle=0
+                           coordinates=Centerline kill=0
+virtualdetector Base       radius=0 innerRadius=0 height=50 width=650
+                           length=650 maxStep=100 material=Vacuum
+                           color=1,1,1,0.1 noSingles=0 format=bltrackfile
+                           filename= file= require= referenceParticle=0
+                           coordinates=Centerline kill=0
+place   BeamVis copies=1 x=0.0 y=0.0 z=0.0 
+place   Target  copies=1 x=0.0 y=0.0 z=0.0 
+place   Base    copies=1 x=0.0 y=300.0 z=0.0 
+place   Base    copies=1 x=0.0 y=-300.0 z=0.0 
+place   Wallz   copies=1 x=0.0 y=0.0 z=-300.0 
+place   Wallz   copies=1 x=0.0 y=0.0 z=300.0 
+place   Wallx   copies=1 x=-300.0 y=0.0 z=0.0 
+place   Wallx   copies=1 x=300.0 y=0.0 z=0.0 
 
-World size (before incrementing by 201.357 mm): 3000.0 H  3000.0 W  804.0 L
+World size (before incrementing by 201.357 mm): 2200.0 H  2200.0 W  2200.0 L
 
 PARAMETERS:
-            Zcl=402
+            Zcl=275
      deltaChord=3.0
 deltaIntersection=0.1
    deltaOneStep=0.01
@@ -64,13 +82,41 @@ steppingVerbose=0
   worldMaterial=Vacuum
      zTolerance=2.0
 Checking overlaps for volume BeamVis ... OK! 
-BLCMDbox::Construct BeamVis parent= relZ=-200.0 globZ=-200.0
-	zmin=-200.5 zmax=-199.5
+BLCMDsphere::Construct BeamVis parent= relZ=0.0 globZ=0.0
+	zmin=-10.0 zmax=10.0 kill=0
 Checking overlaps for volume Target ... OK! 
-BLCMDbox::Construct Target parent= relZ=350.0 globZ=350.0
-	zmin=300.0 zmax=400.0
-Checking overlaps for volume Det0 ... OK! 
-BLCMDvirtualdetector::Construct Det0 parent= relZ=401.0 globZ=401.0
+BLCMDsphere::Construct Target parent= relZ=0.0 globZ=0.0
+	zmin=-1100.0 zmax=1100.0 kill=0
+Checking overlaps for volume Base ... OK! 
+BLCMDvirtualdetector::Construct Base parent= relZ=0.0 globZ=0.0
+Checking overlaps for volume Base ... OK! 
+**************************************************************************
+*** G4Exception: Duplicate NTuple
+***    severity: Warning
+***   issued by: BLNTuple
+*** description: VirtualDetector/Base
+**************************************************************************
+BLCMDvirtualdetector::Construct Base parent= relZ=0.0 globZ=0.0
+Checking overlaps for volume Wallz ... OK! 
+BLCMDvirtualdetector::Construct Wallz parent= relZ=-300.0 globZ=-300.0
+Checking overlaps for volume Wallz ... OK! 
+**************************************************************************
+*** G4Exception: Duplicate NTuple
+***    severity: Warning
+***   issued by: BLNTuple
+*** description: VirtualDetector/Wallz
+**************************************************************************
+BLCMDvirtualdetector::Construct Wallz parent= relZ=300.0 globZ=300.0
+Checking overlaps for volume Wallx ... OK! 
+BLCMDvirtualdetector::Construct Wallx parent= relZ=0.0 globZ=0.0
+Checking overlaps for volume Wallx ... OK! 
+**************************************************************************
+*** G4Exception: Duplicate NTuple
+***    severity: Warning
+***   issued by: BLNTuple
+*** description: VirtualDetector/Wallx
+**************************************************************************
+BLCMDvirtualdetector::Construct Wallx parent= relZ=0.0 globZ=0.0
 =======================================================================
 ======       Pre-compound/De-excitation Physics Parameters     ========
 =======================================================================
@@ -176,6 +222,8 @@ WARNING: No extent set for user vis action "SetUserAction".
 WARNING: User Vis Action extent is null.
 WARNING: For some reason, possibly mentioned above, it has not been
   possible to add to the scene.
+WARNING: Viewpoint direction is very close to the up vector direction.
+  Consider setting the up vector to obtain definable behaviour.
 WARNING: 100 events have been kept for refreshing and/or reviewing.
 
   "/vis/reviewKeptEvents" to review them one by one.
@@ -184,7 +232,8 @@ WARNING: 100 events have been kept for refreshing and/or reviewing.
 Graphics systems deleted.
 Visualization Manager deleting...
 
-Exceptions: 0 Fatal, 0 Events Aborted, 0 Stuck Tracks (stopped), 0 Warnings
+Exceptions: 0 Fatal, 0 Events Aborted, 0 Stuck Tracks (stopped), 3 Warnings
+      3 times: Duplicate NTuple
 g4beamline: simulation complete
 Error: cannot open file "iostream"  (tmpfile)(2)
 *** Interpreter error recovered ***
