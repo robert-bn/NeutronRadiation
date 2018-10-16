@@ -1,26 +1,26 @@
 physics QGSP_BERT
 
 # beam properties
-isotropicsource meanP=43.349 sigmaP=0 particle=neutron nEvents=1000000
+isotropicsource meanP=43.349 sigmaP=0 particle=neutron nEvents=100000
 
 # particle colours
 particlecolor neutron=1,1,1 gamma=1,0,0 proton=0,1,0
 
 # object definitions
-sphere Target innerRadius=500 outerRadius=190 material=CONCRETE color=0.7,0.7,0.3,0.5
+sphere Target innerRadius=500 outerRadius=690 material=CONCRETE color=0.7,0.7,0.3,0.5
 sphere BeamVis outerRadius=10 material=Vacuum color=1,0,0
 
 #detector definitions
-virtualdetector Wallz width=13000 height=11000 length=0.2  material=Vacuum color=1,1,1,0.1 format=ascii
-virtualdetector Wallx width=0.2 height=11000 length=11000  material=Vacuum color=1,1,1,0.1 format=ascii
-virtualdetector Base width=13000 height=0.2 length=13000.  material=Vacuum color=1,1,1,0.1 format=ascii
+virtualdetector Wallz190 width=13000 height=11000 length=0.2  material=Vacuum color=1,1,1,0.1 format=ascii
+virtualdetector Wallx190 width=0.2 height=11000 length=11000  material=Vacuum color=1,1,1,0.1 format=ascii
+virtualdetector Base190 width=13000 height=0.2 length=13000.  material=Vacuum color=1,1,1,0.1 format=ascii
 
 # object locations
 place BeamVis z=0
 place Target z=0
-place Base z=0 y=6000
-place Base z=0 y=-6000
-place Wallz z=-6000
-place Wallz z=+6000
-place Wallx z=0 x=-6000
-place Wallx z=0 x=+6000
+place Base190 z=0 y=6000
+place Base190 z=0 y=-6000
+place Wallz190 z=-6000
+place Wallz190 z=+6000
+place Wallx190 z=0 x=-6000
+place Wallx190 z=0 x=+6000
