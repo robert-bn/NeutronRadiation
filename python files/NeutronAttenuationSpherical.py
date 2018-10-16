@@ -2,38 +2,64 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-import os
 
 NEUTRON_PDGid = 2112
 
 n_in = 100000
 
-directory = "../g4beamline files/NeutronAttenuationSpherical/"
+directory = "../data/NeutronAttenuationSpherical/"
 f_header = ["x", "y", "z", "Px", "Py", "Pz", "t", "PDGid", "EventID", "TrackID", "ParentID", "Weight"]
 
-depth = np.array(10,300,10)
-detector_dfs = []
-n_out = []
+depth = np.arange(0,300,10)
+n_out = [n_in,]
+n_out_neutrons = [n_in,]
 
-for filename in sorted(os.listdir(directory)):
-    if filename.endswith(".txt"):
-        detector_dfs.append(pd.read_csv(directory + filename, sep=' ', comment='#', header=None, names=f_header))
-        detector_dfs[-1] = detector_dfs[-1].loc[detector_dfs[-1]['PDGid'] == NEUTRON_PDGid] # throw away non-neutrons
-        n_out.append(len(detector_dfs[-1]))
+
+for d in depth:
+    # print(directory + "Base{}.txt".format(d))
+    if d>0:
+        dfb = pd.read_csv(directory + "Base{}.txt".format(d), sep=' ', comment='#', header=None, names=f_header)
+        dfx = pd.read_csv(directory + "Wallx{}.txt".format(d), sep=' ', comment='#', header=None, names=f_header)
+        dfy = pd.read_csv(directory + "Wallz{}.txt".format(d), sep=' ', comment='#', header=None, names=f_header)
+        df = pd.concat([dfb, dfx, dfy])
+        n_out.append(len(df))
+        n_out_neutrons.append(np.sum(df['PDGid']==NEUTRON_PDGid))
 
 n_out = np.array(n_out)
+n_out_neutrons = np.array(n_out_neutrons)
+y_n = n_out_neutrons/n_in
+y = n_out/n_in
+y_log = np.log(n_out/n_in)
+y_log_error = 1/np.sqrt(n_out)
 
+f_idx = 10 # first index to calculate regression from
 
-plt.plot(depth, np.log(n_out/n_in))
-plt.errorbar(depth, np.log(n_out/n_in), 1/np.sqrt(n_out), marker='o', color='k', linestyle='')
+fit = np.polyfit(depth[f_idx:],y_log[f_idx:],1,w=1/y_log_error[f_idx:]**2)  # don't include first 6 points in regression
+fit_fn = np.poly1d(fit)
+
+chi2 = np.sum( (y_log[f_idx:] - fit_fn(depth[f_idx:])) ** 2 / y_log_error[f_idx:]**2)
+red_chi2 = chi2/(len(depth) - f_idx - 2)
+print("fitting parameters: {}".format(fit))
+print("chi^2: {}".format(chi2))
+print("reduced chi^2: {}".format(red_chi2))
+
+# plot data
+# plt.plot(depth, np.log(y))
+plt.errorbar(depth, y_log, y_log_error, marker='o', color='k', linestyle='', markersize=4)
+
+# uncomment to plot neutron intensity only
+# plt.errorbar(depth, np.log(y_n), 1/np.sqrt(n_out), marker='o', color='r', linestyle='', markersize=4)
+# plt.plot(depth, np.log(y_n))
+
+plt.plot(depth[10:], fit_fn(depth[10:]))
 plt.xlabel("Thickness (mm)")
 plt.ylabel("Neutron Survival Fraction (Log)")
 plt.title("Neutron Attenuation in concrete")
 plt.show()
 
 
-plt.plot(depth, n_out/n_in)
-plt.errorbar(depth, n_out/n_in, np.sqrt(n_out)/n_in, marker='o', color='k', linestyle='')
+plt.plot(depth, y)
+plt.errorbar(depth, y, np.sqrt(n_out)/n_in, marker='o', color='k', linestyle='')
 plt.xlabel("Thickness (mm)")
 plt.ylabel("Neutron Survival Fraction")
 plt.title("Neutron Attenuation in concrete")
