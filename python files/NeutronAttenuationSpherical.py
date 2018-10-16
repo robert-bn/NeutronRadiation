@@ -6,7 +6,7 @@ import os
 
 NEUTRON_PDGid = 2112
 
-n_in = 1000000
+n_in = 100000
 
 directory = "../g4beamline files/NeutronAttenuationSpherical/"
 f_header = ["x", "y", "z", "Px", "Py", "Pz", "t", "PDGid", "EventID", "TrackID", "ParentID", "Weight"]
