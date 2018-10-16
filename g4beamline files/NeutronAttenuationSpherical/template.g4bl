@@ -7,7 +7,7 @@ isotropicsource meanP=43.349 sigmaP=0 particle=neutron nEvents=1000000
 particlecolor neutron=1,1,1 gamma=1,0,0 proton=0,1,0
 
 # object definitions
-sphere Target innerRadius=500 outerRadius=600 material=CONCRETE color=0.7,0.7,0.3,0.5
+sphere Target innerRadius=500 outerRadius= material=CONCRETE color=0.7,0.7,0.3,0.5
 sphere BeamVis outerRadius=10 material=Vacuum color=1,0,0
 
 #detector definitions
