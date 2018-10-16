@@ -10,13 +10,16 @@ particlecolor neutron=1,1,1 gamma=1,0,0 proton=0,1,0
 sphere Target innerRadius=1000 outerRadius=1100 material=CONCRETE color=0.7,0.7,0.3,0.5
 sphere BeamVis outerRadius=10 material=Vacuum color=1,0,0
 
-virtualdetector Wallz width=650 height=550 length=50.  material=Vacuum color=1,1,1,0.1 format=ascii
-virtualdetector Wallx width=50 height=550 length=550  material=Vacuum color=1,1,1,0.1 format=ascii
-virtualdetector Base width=650 height=50 length=650.  material=Vacuum color=1,1,1,0.1 format=ascii
+virtualdetector Wallz width=1300 height=1100 length=100.  material=Vacuum color=1,1,1,0.1 format=ascii
+virtualdetector Wallx width=100 height=1300 length=1200  material=Vacuum color=1,1,1,0.1 format=ascii
+virtualdetector Base width=1300 height=100 length=1300.  material=Vacuum color=1,1,1,0.1 format=ascii
 
 # object locations
 place BeamVis z=0
 place Target z=0
+<<<<<<< HEAD
+=======
+>>>>>>> 97b38264b91a843d11ee1d7e5ff8f6b3743b63c2
 place Base z=0 y=300
 place Base z=0 y=-300
 place Wallz z=-300
