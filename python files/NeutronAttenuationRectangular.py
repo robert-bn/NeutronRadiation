@@ -8,18 +8,19 @@ NEUTRON_PDGid = 2112
 
 n_in = 1000000
 
-directory = "../g4beamline files/NeutronAttenuationRectangular/"
+directory = "../g4beamline files/NeutronAttenuationSpherical/"
 f_header = ["x", "y", "z", "Px", "Py", "Pz", "t", "PDGid", "EventID", "TrackID", "ParentID", "Weight"]
 
 depth = [100,120,140,160,180,200,220,240,260,280]
 detector_dfs = []
 n_out = []
 
-for filename in sorted(os.listdir(directory)):
-    if filename.endswith(".txt") and filename.startswith("Det"):
-        detector_dfs.append(pd.read_csv(directory + filename, sep=' ', comment='#', header=None, names=f_header))
-        detector_dfs[-1] = detector_dfs[-1].loc[detector_dfs[-1]['PDGid'] == NEUTRON_PDGid] # throw away non-neutrons
-        n_out.append(len(detector_dfs[-1]))
+for i in np.arange(10,300,10):
+        for filename in sorted(os.listdir(directory + "/Det{}/".format(i))):
+                if filename.endswith(".txt"):
+                        detector_dfs.append(pd.read_csv(directory + filename, sep=' ', comment='#', header=None, names=f_header))
+                        detector_dfs[-1] = detector_dfs[-1].loc[detector_dfs[-1]['PDGid'] == NEUTRON_PDGid] # throw away non-neutrons
+                        n_out.append(len(detector_dfs[-1]))
 
 n_out = np.array(n_out)
 
