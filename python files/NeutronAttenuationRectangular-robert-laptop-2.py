@@ -15,6 +15,8 @@ depth = [100,120,140,160,180,200,220,240,260,280]
 detector_dfs = []
 n_out = []
 
+# comment
+
 for filename in sorted(os.listdir(directory)):
     if filename.endswith(".txt") and filename.startswith("Det"):
         detector_dfs.append(pd.read_csv(directory + filename, sep=' ', comment='#', header=None, names=f_header))
