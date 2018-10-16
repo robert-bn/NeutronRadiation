@@ -32,7 +32,7 @@ y = n_out/n_in
 y_log = np.log(n_out/n_in)
 y_log_error = 1/np.sqrt(n_out)
 
-f_idx = 15 # first index to calculate regression from
+f_idx = 11 # first index to calculate regression from
 
 fit = np.polyfit(depth[f_idx:],y_log[f_idx:],1,w=1/y_log_error[f_idx:]**2)  # don't include first 6 points in regression
 fit_fn = np.poly1d(fit)
