@@ -32,7 +32,7 @@ y = n_out/n_in
 y_log = np.log(n_out/n_in)
 y_log_error = 1/np.sqrt(n_out)
 
-f_idx = 10 # first index to calculate regression from
+f_idx = 15 # first index to calculate regression from
 
 fit = np.polyfit(depth[f_idx:],y_log[f_idx:],1,w=1/y_log_error[f_idx:]**2)  # don't include first 6 points in regression
 fit_fn = np.poly1d(fit)
@@ -45,13 +45,14 @@ print("reduced chi^2: {}".format(red_chi2))
 
 # plot data
 # plt.plot(depth, np.log(y))
+
 plt.errorbar(depth, y_log, y_log_error, marker='o', color='k', linestyle='', markersize=4)
 
 # uncomment to plot neutron intensity only
 # plt.errorbar(depth, np.log(y_n), 1/np.sqrt(n_out), marker='o', color='r', linestyle='', markersize=4)
 # plt.plot(depth, np.log(y_n))
 
-plt.plot(depth[10:], fit_fn(depth[10:]))
+plt.plot(depth[f_idx:], fit_fn(depth[f_idx:]))
 plt.xlabel("Thickness (mm)")
 plt.ylabel("Neutron Survival Fraction (Log)")
 plt.title("Neutron Attenuation in concrete")
