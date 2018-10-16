@@ -1,0 +1,23 @@
+#add physics
+physics QGSP_BERT
+
+#define detectors
+virtualdetector DetTub radius=1000 innerRadius=990 length=3000 material=Vacuum color=1,1,1,0.1 format=ascii
+virtualdetector DetDonut radius=1000 innerRadius=20 length=2 material=Vacuum color=1,1,1,0.1 format=ascii
+virtualdetector DetCircle radius=1000 length=2 material=Vacuum color=1,1,1,0.1 format=ascii
+#detector DetPlast length=1 width=150 height=150 material=Scintillator color=0,1,1 format=ascii
+
+#define lead target
+tubs Target length=250 radius=150 material=Pb color=0.7,0.7,0.3,0.7
+#define beam
+beam gaussian beamZ=-2800 sigmaX=0.517 sigmaY=0.517 sigmaXp=0 sigmaYp=0 \ 
+    meanMomentum=639 sigmaP=0 particle=proton nEvents=100000
+cylinder BeamVis radius=50 length=1 material=Vacuum color=1,0,0,0.3
+
+#place objects in world
+place Target z=0
+place DetTub z=0
+place DetCircle z=1501
+place DetDonut z=-1501
+#place DetPlast z=-695.5
+place BeamVis z=-2800

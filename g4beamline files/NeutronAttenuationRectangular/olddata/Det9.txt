@@ -1,0 +1,3 @@
+#BLTrackFile VirtualDetector/Det9
+#x y z Px Py Pz t PDGid EventID TrackID ParentID Weight
+#mm mm mm MeV/c MeV/c MeV/c ns - - - - -

@@ -1,0 +1,310 @@
+G4BL_DIR=C:\Program Files (x86)\MuonsInc\G4beamline
+G4beamline Process ID 12900
+
+*************************************************************
+ g4beamline version: 3.04                        (Mar  2 2017)
+                      Copyright : Tom Roberts, Muons, Inc.
+                        License : Gnu Public License
+                            WWW : http://g4beamline.muonsinc.com
+*************************************************************
+ Geant4 version Name: geant4-10-03    (9-December-2016)
+                      Copyright : Geant4 Collaboration
+                      Reference : NIM A 506 (2003), 250-303
+                            WWW : http://cern.ch/geant4
+*************************************************************
+
+param        viewer        best,1
+geometry                   nPoints=100 printGeometry=0 visual=0
+                           tolerance=0.002
+G4PhysListFactory::GetReferencePhysList <QGSP_BERT>  EMoption= 0
+<<< Geant4 Physics List simulation engine: QGSP_BERT 4.0
+
+<<< Reference Physics List QGSP_BERT is built
+
+physics      QGSP_BERT     disable= inactivate= deactivate= doStochastics=1
+                           fluct=1 minRangeCut=1 list=0 gammaToMuPair=0
+                           spinTracking=0 synchrotronRadiation=0
+                           synchrotronRadiationMuon=0 maxTime=1e+06
+beam    RECTANGULAR particle=neutron nEvents=1000000 firstEvent=-1 lastEvent=2147483647 beamX=0.0 beamY=0.0 beamZ=-200.0 maxR=1000000.0 
+		meanMomentum=43.3 weight=1.000000 
+		beamHeight=1400.0 beamWidth=1400.0 sigmaXp=0.00000 sigmaYp=0.00000 
+		sigmaP=0.0 sigmaT=0.000 meanXp=0.00000 meanYp=0.00000 meanT=0.000 
+particlecolor              gamma=1,0,0 neutron=1,1,1 proton=0,1,0
+box          Target        height=3000 width=3000 length=216 maxStep=100
+                           material=CONCRETE color=0.7,0.7,0.3,0.5 kill=0
+box          BeamVis       height=1400 width=1400 length=1 maxStep=100
+                           material=Vacuum color=1,0,0 kill=0
+virtualdetector Det        radius=0 innerRadius=0 height=250 width=250
+                           length=6 maxStep=100 material=Vacuum
+                           color=1,1,1,0.9 noSingles=0 format=bltrackfile
+                           filename= file= require= referenceParticle=0
+                           coordinates=Centerline kill=0
+place   BeamVis copies=1 x=0.0 y=0.0 z=-200.0 
+place   Target  copies=1 x=0.0 y=0.0 z=350.0 
+place   Det     copies=100 x=0.0 y=0.0 z=461.0 rename='Det#'
+
+World size (before incrementing by 201.357 mm): 3000.0 H  3000.0 W  2116.0 L
+
+PARAMETERS:
+            Zcl=1058
+     deltaChord=3.0
+deltaIntersection=0.1
+   deltaOneStep=0.01
+         epsMax=0.05
+         epsMin=2.5e-7
+ eventTimeLimit=30
+    fieldVoxels=200,200,200
+      histoFile=g4beamline
+    histoUpdate=0
+        maxStep=100.0
+        minStep=0.01
+ steppingFormat=N GLOBAL CL KE STEP VOL PROCESS
+steppingVerbose=0
+         viewer=best,1
+ wallClockLimit=-1
+  worldMaterial=Vacuum
+     zTolerance=2.0
+Checking overlaps for volume BeamVis ... OK! 
+BLCMDbox::Construct BeamVis parent= relZ=-200.0 globZ=-200.0
+	zmin=-200.5 zmax=-199.5
+Checking overlaps for volume Target ... OK! 
+BLCMDbox::Construct Target parent= relZ=350.0 globZ=350.0
+	zmin=242.0 zmax=458.0
+Checking overlaps for volume Det1 ... OK! 
+BLCMDvirtualdetector::Construct Det1 parent= relZ=461.0 globZ=461.0
+Checking overlaps for volume Det2 ... OK! 
+BLCMDvirtualdetector::Construct Det2 parent= relZ=467.0 globZ=467.0
+Checking overlaps for volume Det3 ... OK! 
+BLCMDvirtualdetector::Construct Det3 parent= relZ=473.0 globZ=473.0
+Checking overlaps for volume Det4 ... OK! 
+BLCMDvirtualdetector::Construct Det4 parent= relZ=479.0 globZ=479.0
+Checking overlaps for volume Det5 ... OK! 
+BLCMDvirtualdetector::Construct Det5 parent= relZ=485.0 globZ=485.0
+Checking overlaps for volume Det6 ... OK! 
+BLCMDvirtualdetector::Construct Det6 parent= relZ=491.0 globZ=491.0
+Checking overlaps for volume Det7 ... OK! 
+BLCMDvirtualdetector::Construct Det7 parent= relZ=497.0 globZ=497.0
+Checking overlaps for volume Det8 ... OK! 
+BLCMDvirtualdetector::Construct Det8 parent= relZ=503.0 globZ=503.0
+Checking overlaps for volume Det9 ... OK! 
+BLCMDvirtualdetector::Construct Det9 parent= relZ=509.0 globZ=509.0
+Checking overlaps for volume Det10 ... OK! 
+BLCMDvirtualdetector::Construct Det10 parent= relZ=515.0 globZ=515.0
+Checking overlaps for volume Det11 ... OK! 
+BLCMDvirtualdetector::Construct Det11 parent= relZ=521.0 globZ=521.0
+Checking overlaps for volume Det12 ... OK! 
+BLCMDvirtualdetector::Construct Det12 parent= relZ=527.0 globZ=527.0
+Checking overlaps for volume Det13 ... OK! 
+BLCMDvirtualdetector::Construct Det13 parent= relZ=533.0 globZ=533.0
+Checking overlaps for volume Det14 ... OK! 
+BLCMDvirtualdetector::Construct Det14 parent= relZ=539.0 globZ=539.0
+Checking overlaps for volume Det15 ... OK! 
+BLCMDvirtualdetector::Construct Det15 parent= relZ=545.0 globZ=545.0
+Checking overlaps for volume Det16 ... OK! 
+BLCMDvirtualdetector::Construct Det16 parent= relZ=551.0 globZ=551.0
+Checking overlaps for volume Det17 ... OK! 
+BLCMDvirtualdetector::Construct Det17 parent= relZ=557.0 globZ=557.0
+Checking overlaps for volume Det18 ... OK! 
+BLCMDvirtualdetector::Construct Det18 parent= relZ=563.0 globZ=563.0
+Checking overlaps for volume Det19 ... OK! 
+BLCMDvirtualdetector::Construct Det19 parent= relZ=569.0 globZ=569.0
+Checking overlaps for volume Det20 ... OK! 
+BLCMDvirtualdetector::Construct Det20 parent= relZ=575.0 globZ=575.0
+Checking overlaps for volume Det21 ... OK! 
+BLCMDvirtualdetector::Construct Det21 parent= relZ=581.0 globZ=581.0
+Checking overlaps for volume Det22 ... OK! 
+BLCMDvirtualdetector::Construct Det22 parent= relZ=587.0 globZ=587.0
+Checking overlaps for volume Det23 ... OK! 
+BLCMDvirtualdetector::Construct Det23 parent= relZ=593.0 globZ=593.0
+Checking overlaps for volume Det24 ... OK! 
+BLCMDvirtualdetector::Construct Det24 parent= relZ=599.0 globZ=599.0
+Checking overlaps for volume Det25 ... OK! 
+BLCMDvirtualdetector::Construct Det25 parent= relZ=605.0 globZ=605.0
+Checking overlaps for volume Det26 ... OK! 
+BLCMDvirtualdetector::Construct Det26 parent= relZ=611.0 globZ=611.0
+Checking overlaps for volume Det27 ... OK! 
+BLCMDvirtualdetector::Construct Det27 parent= relZ=617.0 globZ=617.0
+Checking overlaps for volume Det28 ... OK! 
+BLCMDvirtualdetector::Construct Det28 parent= relZ=623.0 globZ=623.0
+Checking overlaps for volume Det29 ... OK! 
+BLCMDvirtualdetector::Construct Det29 parent= relZ=629.0 globZ=629.0
+Checking overlaps for volume Det30 ... OK! 
+BLCMDvirtualdetector::Construct Det30 parent= relZ=635.0 globZ=635.0
+Checking overlaps for volume Det31 ... OK! 
+BLCMDvirtualdetector::Construct Det31 parent= relZ=641.0 globZ=641.0
+Checking overlaps for volume Det32 ... OK! 
+BLCMDvirtualdetector::Construct Det32 parent= relZ=647.0 globZ=647.0
+Checking overlaps for volume Det33 ... OK! 
+BLCMDvirtualdetector::Construct Det33 parent= relZ=653.0 globZ=653.0
+Checking overlaps for volume Det34 ... OK! 
+BLCMDvirtualdetector::Construct Det34 parent= relZ=659.0 globZ=659.0
+Checking overlaps for volume Det35 ... OK! 
+BLCMDvirtualdetector::Construct Det35 parent= relZ=665.0 globZ=665.0
+Checking overlaps for volume Det36 ... OK! 
+BLCMDvirtualdetector::Construct Det36 parent= relZ=671.0 globZ=671.0
+Checking overlaps for volume Det37 ... OK! 
+BLCMDvirtualdetector::Construct Det37 parent= relZ=677.0 globZ=677.0
+Checking overlaps for volume Det38 ... OK! 
+BLCMDvirtualdetector::Construct Det38 parent= relZ=683.0 globZ=683.0
+Checking overlaps for volume Det39 ... OK! 
+BLCMDvirtualdetector::Construct Det39 parent= relZ=689.0 globZ=689.0
+Checking overlaps for volume Det40 ... OK! 
+BLCMDvirtualdetector::Construct Det40 parent= relZ=695.0 globZ=695.0
+Checking overlaps for volume Det41 ... OK! 
+BLCMDvirtualdetector::Construct Det41 parent= relZ=701.0 globZ=701.0
+Checking overlaps for volume Det42 ... OK! 
+BLCMDvirtualdetector::Construct Det42 parent= relZ=707.0 globZ=707.0
+Checking overlaps for volume Det43 ... OK! 
+BLCMDvirtualdetector::Construct Det43 parent= relZ=713.0 globZ=713.0
+Checking overlaps for volume Det44 ... OK! 
+BLCMDvirtualdetector::Construct Det44 parent= relZ=719.0 globZ=719.0
+Checking overlaps for volume Det45 ... OK! 
+BLCMDvirtualdetector::Construct Det45 parent= relZ=725.0 globZ=725.0
+Checking overlaps for volume Det46 ... OK! 
+BLCMDvirtualdetector::Construct Det46 parent= relZ=731.0 globZ=731.0
+Checking overlaps for volume Det47 ... OK! 
+BLCMDvirtualdetector::Construct Det47 parent= relZ=737.0 globZ=737.0
+Checking overlaps for volume Det48 ... OK! 
+BLCMDvirtualdetector::Construct Det48 parent= relZ=743.0 globZ=743.0
+Checking overlaps for volume Det49 ... OK! 
+BLCMDvirtualdetector::Construct Det49 parent= relZ=749.0 globZ=749.0
+Checking overlaps for volume Det50 ... OK! 
+BLCMDvirtualdetector::Construct Det50 parent= relZ=755.0 globZ=755.0
+Checking overlaps for volume Det51 ... OK! 
+BLCMDvirtualdetector::Construct Det51 parent= relZ=761.0 globZ=761.0
+Checking overlaps for volume Det52 ... OK! 
+BLCMDvirtualdetector::Construct Det52 parent= relZ=767.0 globZ=767.0
+Checking overlaps for volume Det53 ... OK! 
+BLCMDvirtualdetector::Construct Det53 parent= relZ=773.0 globZ=773.0
+Checking overlaps for volume Det54 ... OK! 
+BLCMDvirtualdetector::Construct Det54 parent= relZ=779.0 globZ=779.0
+Checking overlaps for volume Det55 ... OK! 
+BLCMDvirtualdetector::Construct Det55 parent= relZ=785.0 globZ=785.0
+Checking overlaps for volume Det56 ... OK! 
+BLCMDvirtualdetector::Construct Det56 parent= relZ=791.0 globZ=791.0
+Checking overlaps for volume Det57 ... OK! 
+BLCMDvirtualdetector::Construct Det57 parent= relZ=797.0 globZ=797.0
+Checking overlaps for volume Det58 ... OK! 
+BLCMDvirtualdetector::Construct Det58 parent= relZ=803.0 globZ=803.0
+Checking overlaps for volume Det59 ... OK! 
+BLCMDvirtualdetector::Construct Det59 parent= relZ=809.0 globZ=809.0
+Checking overlaps for volume Det60 ... OK! 
+BLCMDvirtualdetector::Construct Det60 parent= relZ=815.0 globZ=815.0
+Checking overlaps for volume Det61 ... OK! 
+BLCMDvirtualdetector::Construct Det61 parent= relZ=821.0 globZ=821.0
+Checking overlaps for volume Det62 ... OK! 
+BLCMDvirtualdetector::Construct Det62 parent= relZ=827.0 globZ=827.0
+Checking overlaps for volume Det63 ... OK! 
+BLCMDvirtualdetector::Construct Det63 parent= relZ=833.0 globZ=833.0
+Checking overlaps for volume Det64 ... OK! 
+BLCMDvirtualdetector::Construct Det64 parent= relZ=839.0 globZ=839.0
+Checking overlaps for volume Det65 ... OK! 
+BLCMDvirtualdetector::Construct Det65 parent= relZ=845.0 globZ=845.0
+Checking overlaps for volume Det66 ... OK! 
+BLCMDvirtualdetector::Construct Det66 parent= relZ=851.0 globZ=851.0
+Checking overlaps for volume Det67 ... OK! 
+BLCMDvirtualdetector::Construct Det67 parent= relZ=857.0 globZ=857.0
+Checking overlaps for volume Det68 ... OK! 
+BLCMDvirtualdetector::Construct Det68 parent= relZ=863.0 globZ=863.0
+Checking overlaps for volume Det69 ... OK! 
+BLCMDvirtualdetector::Construct Det69 parent= relZ=869.0 globZ=869.0
+Checking overlaps for volume Det70 ... OK! 
+BLCMDvirtualdetector::Construct Det70 parent= relZ=875.0 globZ=875.0
+Checking overlaps for volume Det71 ... OK! 
+BLCMDvirtualdetector::Construct Det71 parent= relZ=881.0 globZ=881.0
+Checking overlaps for volume Det72 ... OK! 
+BLCMDvirtualdetector::Construct Det72 parent= relZ=887.0 globZ=887.0
+Checking overlaps for volume Det73 ... OK! 
+BLCMDvirtualdetector::Construct Det73 parent= relZ=893.0 globZ=893.0
+Checking overlaps for volume Det74 ... OK! 
+BLCMDvirtualdetector::Construct Det74 parent= relZ=899.0 globZ=899.0
+Checking overlaps for volume Det75 ... OK! 
+BLCMDvirtualdetector::Construct Det75 parent= relZ=905.0 globZ=905.0
+Checking overlaps for volume Det76 ... OK! 
+BLCMDvirtualdetector::Construct Det76 parent= relZ=911.0 globZ=911.0
+Checking overlaps for volume Det77 ... OK! 
+BLCMDvirtualdetector::Construct Det77 parent= relZ=917.0 globZ=917.0
+Checking overlaps for volume Det78 ... OK! 
+BLCMDvirtualdetector::Construct Det78 parent= relZ=923.0 globZ=923.0
+Checking overlaps for volume Det79 ... OK! 
+BLCMDvirtualdetector::Construct Det79 parent= relZ=929.0 globZ=929.0
+Checking overlaps for volume Det80 ... OK! 
+BLCMDvirtualdetector::Construct Det80 parent= relZ=935.0 globZ=935.0
+Checking overlaps for volume Det81 ... OK! 
+BLCMDvirtualdetector::Construct Det81 parent= relZ=941.0 globZ=941.0
+Checking overlaps for volume Det82 ... OK! 
+BLCMDvirtualdetector::Construct Det82 parent= relZ=947.0 globZ=947.0
+Checking overlaps for volume Det83 ... OK! 
+BLCMDvirtualdetector::Construct Det83 parent= relZ=953.0 globZ=953.0
+Checking overlaps for volume Det84 ... OK! 
+BLCMDvirtualdetector::Construct Det84 parent= relZ=959.0 globZ=959.0
+Checking overlaps for volume Det85 ... OK! 
+BLCMDvirtualdetector::Construct Det85 parent= relZ=965.0 globZ=965.0
+Checking overlaps for volume Det86 ... OK! 
+BLCMDvirtualdetector::Construct Det86 parent= relZ=971.0 globZ=971.0
+Checking overlaps for volume Det87 ... OK! 
+BLCMDvirtualdetector::Construct Det87 parent= relZ=977.0 globZ=977.0
+Checking overlaps for volume Det88 ... OK! 
+BLCMDvirtualdetector::Construct Det88 parent= relZ=983.0 globZ=983.0
+Checking overlaps for volume Det89 ... OK! 
+BLCMDvirtualdetector::Construct Det89 parent= relZ=989.0 globZ=989.0
+Checking overlaps for volume Det90 ... OK! 
+BLCMDvirtualdetector::Construct Det90 parent= relZ=995.0 globZ=995.0
+Checking overlaps for volume Det91 ... OK! 
+BLCMDvirtualdetector::Construct Det91 parent= relZ=1001.0 globZ=1001.0
+Checking overlaps for volume Det92 ... OK! 
+BLCMDvirtualdetector::Construct Det92 parent= relZ=1007.0 globZ=1007.0
+Checking overlaps for volume Det93 ... OK! 
+BLCMDvirtualdetector::Construct Det93 parent= relZ=1013.0 globZ=1013.0
+Checking overlaps for volume Det94 ... OK! 
+BLCMDvirtualdetector::Construct Det94 parent= relZ=1019.0 globZ=1019.0
+Checking overlaps for volume Det95 ... OK! 
+BLCMDvirtualdetector::Construct Det95 parent= relZ=1025.0 globZ=1025.0
+Checking overlaps for volume Det96 ... OK! 
+BLCMDvirtualdetector::Construct Det96 parent= relZ=1031.0 globZ=1031.0
+Checking overlaps for volume Det97 ... OK! 
+BLCMDvirtualdetector::Construct Det97 parent= relZ=1037.0 globZ=1037.0
+Checking overlaps for volume Det98 ... OK! 
+BLCMDvirtualdetector::Construct Det98 parent= relZ=1043.0 globZ=1043.0
+Checking overlaps for volume Det99 ... OK! 
+BLCMDvirtualdetector::Construct Det99 parent= relZ=1049.0 globZ=1049.0
+Checking overlaps for volume Det100 ... OK! 
+BLCMDvirtualdetector::Construct Det100 parent= relZ=1055.0 globZ=1055.0
+=======================================================================
+======       Pre-compound/De-excitation Physics Parameters     ========
+=======================================================================
+Type of pre-compound inverse x-section              3
+Type of de-excitation inverse x-section             3
+Min excitation energy (keV)                         0.1
+Level density (1/MeV)                               0.1
+Time limit for long lived isomeres (ns)             1e+07
+Correlated gamma emission flag                      0
+=======================================================================
+### Adding tracking cuts for neutron  TimeCut(ns)= 10000  KinEnergyCut(MeV)= 0
+
+Geometry test nPoints=100 tolerance=0.002 mm:
+Testing geometry for children of group 'World':
+Total geometry errors = 0  0 seconds
+
+================== Prepare Visualization ==================
+Stochastic processes are enabled.
+Available UI session types: [ Qt, Win32, GAG, csh ]
+Visualization Manager instantiating with verbosity "warnings (3)"...
+Visualization Manager initialising...
+Registering graphics systems...
+
+You have successfully registered the following graphics systems.
+Current available graphics systems are:
+ASCIITree (ATree)
+DAWNFILE (DAWNFILE)
+G4HepRep (HepRepXML)
+G4HepRepFile (HepRepFile)
+RayTracer (RayTracer)
+VRML1FILE (VRML1FILE)
+VRML2FILE (VRML2FILE)
+gMocrenFile (gMocrenFile)
+OpenGLImmediateQt (OGLIQt, OGLI)
+OpenGLStoredQt (OGLSQt, OGL, OGLS)
+OpenGLImmediateWin32 (OGLIWin32, OGLIQt_FALLBACK)
+OpenGLStoredWin32 (OGLSWin32, OGLSQt_FALLBACK)
+

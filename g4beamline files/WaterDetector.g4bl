@@ -1,0 +1,89 @@
+physics QGSP_BERT
+box Target width=100 height=100 length=14.0  material=WATER color=0,0,1,0.5
+beam gaussian beamZ=-200 sigmaX=0 sigmaY=0 sigmaXp=0 sigmaYp=0 \ 
+    meanMomentum=685 sigmaP=0 particle=proton nEvents=10000
+box BeamVis width=10.0 height=10.0 length=1.0 material=Vacuum color=1,0,0
+place BeamVis z=-200
+particlecolor neutron=1,1,1 gamma=1,0,0.5 proton=0,1,0
+virtualdetector Det width=100 height=100 length=1.0  material=WATER color=1,1,1,0.7
+virtualdetector Det1 width=100 height=100 length=1.0  material=WATER color=1,1,1,0.7
+place Target z=415.0
+place Det1 z=422.5
+place Target z=430.0
+place Det z=437.5
+place Target z=445.0
+place Det z=452.5
+place Target z=460.0
+place Det z=467.5
+place Target z=475.0
+place Det z=482.5
+place Target z=490.0
+place Det z=497.5
+place Target z=505.0
+place Det z=512.5
+place Target z=520.0
+place Det z=527.5
+place Target z=535.0
+place Det z=542.5
+place Target z=550.0
+place Det z=557.5
+place Target z=565.0
+place Det z=572.5
+place Target z=580.0
+place Det z=587.5
+place Target z=595.0
+place Det z=602.5
+place Target z=610.0
+place Det z=617.5
+place Target z=625.0
+place Det z=632.5
+place Target z=640.0
+place Det z=647.5
+place Target z=655.0
+place Det z=662.5
+place Target z=670.0
+place Det z=677.5
+place Target z=685.0
+place Det z=692.5
+place Target z=700.0
+place Det z=707.5
+place Target z=715.0
+place Det z=722.5
+place Target z=730.0
+place Det z=737.5
+place Target z=745.0
+place Det z=752.5
+place Target z=760.0
+place Det z=767.5
+place Target z=775.0
+place Det z=782.5
+place Target z=790.0
+place Det z=797.5
+place Target z=805.0
+place Det z=812.5
+place Target z=820.0
+place Det z=827.5
+place Target z=835.0
+place Det z=842.5
+place Target z=850.0
+place Det z=857.5
+place Target z=865.0
+place Det z=872.5
+place Target z=880.0
+place Det z=887.5
+place Target z=895.0
+place Det z=902.5
+place Target z=910.0
+place Det z=917.5
+place Target z=925.0
+place Det z=932.5
+place Target z=940.0
+place Det z=947.5
+place Target z=955.0
+place Det z=962.5
+place Target z=970.0
+place Det z=977.5
+place Target z=985.0
+place Det z=992.5
+place Target z=1000.0
+place Det z=1007.5

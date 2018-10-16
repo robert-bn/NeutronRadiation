@@ -1,0 +1,13 @@
+physics QGSP_BERT
+box Target width=10000 height=10000 length=280  material=CONCRETE color=0.7,0.7,0.3,0.5
+beam gaussian beamZ=-800 sigmaX=0 sigmaY=0 sigmaXp=0 sigmaYp=0 \ 
+    meanMomentum=43.349 sigmaP=0 particle=neutron nEvents=100000
+box BeamVis width=10.0 height=10.0 length=1.0 material=Vacuum color=1,0,0
+place BeamVis z=-200
+particlecolor neutron=1,1,1 gamma=1,0,0 proton=0,1,0
+virtualdetector Det9 width=10000 height=10000 length=10.0 material=Vacuum color=1,1,1,0.7 format=ascii
+virtualdetector InputDet9 width=10 height=10 length=10.0 material=Vacuum color=1,1,1,0.7 format=ascii
+
+place Target z=350
+place Det9 z=1000
+place InputDet9 z=-150

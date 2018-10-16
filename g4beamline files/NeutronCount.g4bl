@@ -1,0 +1,32 @@
+physics QGSP_BERT
+box Target1 width=20 height=20 length=100  material=WATER color=0,0,1,0.5
+box Target2 width=30 height=30 length=100  material=WATER color=0,0,1,0.5
+box Target3 width=55 height=55 length=100  material=WATER color=0,0,1,0.5
+box Target4 width=75 height=75 length=50  material=WATER color=0,0,1,0.5
+
+# Particle colours
+# neutrons white
+# protons green
+# gamma rays pink
+particlecolor neutron=1,1,1 gamma=1,0,0.5 proton=0,1,0
+
+beam gaussian beamZ=-270 sigmaX=0 sigmaY=0 sigmaXp=0 sigmaYp=0 \
+    meanMomentum=685 sigmaP=0 particle=proton nEvents=100000
+box BeamVis width=10.0 height=10.0 length=1.0 material=Vacuum color=1,0,0
+place BeamVis z=-270
+
+
+virtualdetector Wallz width=650 height=550 length=50.  material=Vacuum color=1,1,1,0.1 format=ascii
+virtualdetector Wallx width=50 height=550 length=550  material=Vacuum color=1,1,1,0.1 format=ascii
+virtualdetector Base width=650 height=50 length=650.  material=Vacuum color=1,1,1,0.1 format=ascii
+
+place Target1 z=-150
+place Target2 z=-50
+place Target3 z=50
+place Target4 z=125
+place Base z=0 y=300
+place Base z=0 y=-300
+place Wallz z=-300
+place Wallz z=+300
+place Wallx z=0 x=-300
+place Wallx z=0 x=+300

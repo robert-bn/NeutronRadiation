@@ -1,0 +1,235 @@
+G4BL_DIR=C:\Program Files (x86)\MuonsInc\G4beamline
+G4beamline Process ID 4784
+
+*************************************************************
+ g4beamline version: 3.04                        (Mar  2 2017)
+                      Copyright : Tom Roberts, Muons, Inc.
+                        License : Gnu Public License
+                            WWW : http://g4beamline.muonsinc.com
+*************************************************************
+ Geant4 version Name: geant4-10-03    (9-December-2016)
+                      Copyright : Geant4 Collaboration
+                      Reference : NIM A 506 (2003), 250-303
+                            WWW : http://cern.ch/geant4
+*************************************************************
+
+geometry                   nPoints=100 printGeometry=0 visual=0
+                           tolerance=0.002
+G4PhysListFactory::GetReferencePhysList <QGSP_BERT>  EMoption= 0
+<<< Geant4 Physics List simulation engine: QGSP_BERT 4.0
+
+<<< Reference Physics List QGSP_BERT is built
+
+physics      QGSP_BERT     disable= inactivate= deactivate= doStochastics=1
+                           fluct=1 minRangeCut=1 list=0 gammaToMuPair=0
+                           spinTracking=0 synchrotronRadiation=0
+                           synchrotronRadiationMuon=0 maxTime=1e+06
+box          Target        height=1e+04 width=1e+04 length=280 maxStep=100
+                           material=CONCRETE color=0.7,0.7,0.3,0.5 kill=0
+beam    GAUSSIAN particle=neutron nEvents=100000 firstEvent=-1 lastEvent=2147483647 beamX=0.0 beamY=0.0 beamZ=-800.0 maxR=1000000.0 
+		meanMomentum=43.3 weight=1.000000 
+		sigmaX=0.0 sigmaY=0.0 sigmaZ=0.0 sigmaXp=0.00000 sigmaYp=0.00000 
+		sigmaP=0.0 sigmaT=0.000 meanXp=0.00000 meanYp=0.00000 meanT=0.000 
+box          BeamVis       height=10 width=10 length=1 maxStep=100
+                           material=Vacuum color=1,0,0 kill=0
+place   BeamVis copies=1 x=0.0 y=0.0 z=-200.0 
+particlecolor              gamma=1,0,0 neutron=1,1,1 proton=0,1,0
+virtualdetector Det9       radius=0 innerRadius=0 height=1e+04 width=1e+04
+                           length=10 maxStep=100 material=Vacuum
+                           color=1,1,1,0.7 noSingles=0 format=bltrackfile
+                           filename= file= require= referenceParticle=0
+                           coordinates=Centerline kill=0
+virtualdetector InputDet9  radius=0 innerRadius=0 height=10 width=10 length=10
+                           maxStep=100 material=Vacuum color=1,1,1,0.7
+                           noSingles=0 format=bltrackfile filename= file=
+                           require= referenceParticle=0 coordinates=Centerline
+                           kill=0
+place   Target  copies=1 x=0.0 y=0.0 z=350.0 
+place   Det9    copies=1 x=0.0 y=0.0 z=1000.0 
+place   InputDet9 copies=1 x=0.0 y=0.0 z=-150.0 
+
+World size (before incrementing by 201.357 mm): 10000.0 H  10000.0 W  3200.0 L
+
+PARAMETERS:
+            Zcl=-145
+     deltaChord=3.0
+deltaIntersection=0.1
+   deltaOneStep=0.01
+         epsMax=0.05
+         epsMin=2.5e-7
+ eventTimeLimit=30
+    fieldVoxels=200,200,200
+      histoFile=g4beamline
+    histoUpdate=0
+        maxStep=100.0
+        minStep=0.01
+ steppingFormat=N GLOBAL CL KE STEP VOL PROCESS
+steppingVerbose=0
+         viewer=none
+ wallClockLimit=-1
+  worldMaterial=Vacuum
+     zTolerance=2.0
+Checking overlaps for volume BeamVis ... OK! 
+BLCMDbox::Construct BeamVis parent= relZ=-200.0 globZ=-200.0
+	zmin=-200.5 zmax=-199.5
+Checking overlaps for volume Target ... OK! 
+BLCMDbox::Construct Target parent= relZ=350.0 globZ=350.0
+	zmin=210.0 zmax=490.0
+Checking overlaps for volume Det9 ... OK! 
+BLCMDvirtualdetector::Construct Det9 parent= relZ=1000.0 globZ=1000.0
+Checking overlaps for volume InputDet9 ... OK! 
+BLCMDvirtualdetector::Construct InputDet9 parent= relZ=-150.0 globZ=-150.0
+=======================================================================
+======       Pre-compound/De-excitation Physics Parameters     ========
+=======================================================================
+Type of pre-compound inverse x-section              3
+Type of de-excitation inverse x-section             3
+Min excitation energy (keV)                         0.1
+Level density (1/MeV)                               0.1
+Time limit for long lived isomeres (ns)             1e+07
+Correlated gamma emission flag                      0
+=======================================================================
+### Adding tracking cuts for neutron  TimeCut(ns)= 10000  KinEnergyCut(MeV)= 0
+
+Geometry test nPoints=100 tolerance=0.002 mm:
+Testing geometry for children of group 'World':
+Total geometry errors = 0  0 seconds
+
+================== Prepare Tracking Beam ==================
+Stochastic processes are enabled.
+================== Begin Tracking Beam ===============
+Event 1 Completed  1 events  realTime=1 sec  1.0 ev/sec
+Event 2 Completed  2 events  realTime=1 sec  2.0 ev/sec
+Event 3 Completed  3 events  realTime=1 sec  3.0 ev/sec
+Event 4 Completed  4 events  realTime=1 sec  4.0 ev/sec
+Event 5 Completed  5 events  realTime=1 sec  5.0 ev/sec
+Event 6 Completed  6 events  realTime=1 sec  6.0 ev/sec
+Event 7 Completed  7 events  realTime=1 sec  7.0 ev/sec
+Event 8 Completed  8 events  realTime=1 sec  8.0 ev/sec
+Event 9 Completed  9 events  realTime=1 sec  9.0 ev/sec
+Event 10 Completed  10 events  realTime=1 sec  10.0 ev/sec
+Event 20 Completed  20 events  realTime=1 sec  20.0 ev/sec
+Event 30 Completed  30 events  realTime=1 sec  30.0 ev/sec
+Event 40 Completed  40 events  realTime=1 sec  40.0 ev/sec
+Event 50 Completed  50 events  realTime=1 sec  50.0 ev/sec
+Event 60 Completed  60 events  realTime=1 sec  60.0 ev/sec
+Event 70 Completed  70 events  realTime=1 sec  70.0 ev/sec
+Event 80 Completed  80 events  realTime=1 sec  80.0 ev/sec
+Event 90 Completed  90 events  realTime=1 sec  90.0 ev/sec
+Event 100 Completed  100 events  realTime=1 sec  100.0 ev/sec
+Event 200 Completed  200 events  realTime=1 sec  200.0 ev/sec
+Event 300 Completed  300 events  realTime=1 sec  300.0 ev/sec
+Event 400 Completed  400 events  realTime=1 sec  400.0 ev/sec
+Event 500 Completed  500 events  realTime=1 sec  500.0 ev/sec
+Event 600 Completed  600 events  realTime=1 sec  600.0 ev/sec
+Event 700 Completed  700 events  realTime=1 sec  700.0 ev/sec
+Event 800 Completed  800 events  realTime=1 sec  800.0 ev/sec
+Event 900 Completed  900 events  realTime=1 sec  900.0 ev/sec
+Event 1000 Completed  1000 events  realTime=1 sec  1000.0 ev/sec
+Event 2000 Completed  2000 events  realTime=1 sec  2000.0 ev/sec
+Event 3000 Completed  3000 events  realTime=1 sec  3000.0 ev/sec
+Event 4000 Completed  4000 events  realTime=2 sec  2000.0 ev/sec
+Event 5000 Completed  5000 events  realTime=2 sec  2500.0 ev/sec
+Event 6000 Completed  6000 events  realTime=3 sec  2000.0 ev/sec
+Event 7000 Completed  7000 events  realTime=3 sec  2333.3 ev/sec
+Event 8000 Completed  8000 events  realTime=3 sec  2666.7 ev/sec
+Event 9000 Completed  9000 events  realTime=4 sec  2250.0 ev/sec
+Event 10000 Completed  10000 events  realTime=4 sec  2500.0 ev/sec
+Event 11000 Completed  11000 events  realTime=4 sec  2750.0 ev/sec
+Event 12000 Completed  12000 events  realTime=5 sec  2400.0 ev/sec
+Event 13000 Completed  13000 events  realTime=5 sec  2600.0 ev/sec
+Event 14000 Completed  14000 events  realTime=5 sec  2800.0 ev/sec
+Event 15000 Completed  15000 events  realTime=5 sec  3000.0 ev/sec
+Event 16000 Completed  16000 events  realTime=6 sec  2666.7 ev/sec
+Event 17000 Completed  17000 events  realTime=7 sec  2428.6 ev/sec
+Event 18000 Completed  18000 events  realTime=7 sec  2571.4 ev/sec
+Event 19000 Completed  19000 events  realTime=7 sec  2714.3 ev/sec
+Event 20000 Completed  20000 events  realTime=8 sec  2500.0 ev/sec
+Event 21000 Completed  21000 events  realTime=8 sec  2625.0 ev/sec
+Event 22000 Completed  22000 events  realTime=8 sec  2750.0 ev/sec
+Event 23000 Completed  23000 events  realTime=9 sec  2555.6 ev/sec
+Event 24000 Completed  24000 events  realTime=9 sec  2666.7 ev/sec
+Event 25000 Completed  25000 events  realTime=9 sec  2777.8 ev/sec
+Event 26000 Completed  26000 events  realTime=10 sec  2600.0 ev/sec
+Event 27000 Completed  27000 events  realTime=10 sec  2700.0 ev/sec
+Event 28000 Completed  28000 events  realTime=10 sec  2800.0 ev/sec
+Event 29000 Completed  29000 events  realTime=10 sec  2900.0 ev/sec
+Event 30000 Completed  30000 events  realTime=11 sec  2727.3 ev/sec
+Event 31000 Completed  31000 events  realTime=11 sec  2818.2 ev/sec
+Event 32000 Completed  32000 events  realTime=11 sec  2909.1 ev/sec
+Event 33000 Completed  33000 events  realTime=12 sec  2750.0 ev/sec
+Event 34000 Completed  34000 events  realTime=12 sec  2833.3 ev/sec
+Event 35000 Completed  35000 events  realTime=12 sec  2916.7 ev/sec
+Event 36000 Completed  36000 events  realTime=13 sec  2769.2 ev/sec
+Event 37000 Completed  37000 events  realTime=13 sec  2846.2 ev/sec
+Event 38000 Completed  38000 events  realTime=13 sec  2923.1 ev/sec
+Event 39000 Completed  39000 events  realTime=13 sec  3000.0 ev/sec
+Event 40000 Completed  40000 events  realTime=14 sec  2857.1 ev/sec
+Event 41000 Completed  41000 events  realTime=14 sec  2928.6 ev/sec
+Event 42000 Completed  42000 events  realTime=14 sec  3000.0 ev/sec
+Event 43000 Completed  43000 events  realTime=15 sec  2866.7 ev/sec
+Event 44000 Completed  44000 events  realTime=15 sec  2933.3 ev/sec
+Event 45000 Completed  45000 events  realTime=15 sec  3000.0 ev/sec
+Event 46000 Completed  46000 events  realTime=16 sec  2875.0 ev/sec
+Event 47000 Completed  47000 events  realTime=16 sec  2937.5 ev/sec
+Event 48000 Completed  48000 events  realTime=16 sec  3000.0 ev/sec
+Event 49000 Completed  49000 events  realTime=16 sec  3062.5 ev/sec
+Event 50000 Completed  50000 events  realTime=17 sec  2941.2 ev/sec
+Event 51000 Completed  51000 events  realTime=17 sec  3000.0 ev/sec
+Event 52000 Completed  52000 events  realTime=17 sec  3058.8 ev/sec
+Event 53000 Completed  53000 events  realTime=18 sec  2944.4 ev/sec
+Event 54000 Completed  54000 events  realTime=18 sec  3000.0 ev/sec
+Event 55000 Completed  55000 events  realTime=18 sec  3055.6 ev/sec
+Event 56000 Completed  56000 events  realTime=19 sec  2947.4 ev/sec
+Event 57000 Completed  57000 events  realTime=19 sec  3000.0 ev/sec
+Event 58000 Completed  58000 events  realTime=19 sec  3052.6 ev/sec
+Event 59000 Completed  59000 events  realTime=20 sec  2950.0 ev/sec
+Event 60000 Completed  60000 events  realTime=20 sec  3000.0 ev/sec
+Event 61000 Completed  61000 events  realTime=20 sec  3050.0 ev/sec
+Event 62000 Completed  62000 events  realTime=21 sec  2952.4 ev/sec
+Event 63000 Completed  63000 events  realTime=21 sec  3000.0 ev/sec
+Event 64000 Completed  64000 events  realTime=22 sec  2909.1 ev/sec
+Event 65000 Completed  65000 events  realTime=22 sec  2954.5 ev/sec
+Event 66000 Completed  66000 events  realTime=23 sec  2869.6 ev/sec
+Event 67000 Completed  67000 events  realTime=23 sec  2913.0 ev/sec
+Event 68000 Completed  68000 events  realTime=23 sec  2956.5 ev/sec
+Event 69000 Completed  69000 events  realTime=23 sec  3000.0 ev/sec
+Event 70000 Completed  70000 events  realTime=24 sec  2916.7 ev/sec
+Event 71000 Completed  71000 events  realTime=24 sec  2958.3 ev/sec
+Event 72000 Completed  72000 events  realTime=24 sec  3000.0 ev/sec
+Event 73000 Completed  73000 events  realTime=25 sec  2920.0 ev/sec
+Event 74000 Completed  74000 events  realTime=25 sec  2960.0 ev/sec
+Event 75000 Completed  75000 events  realTime=26 sec  2884.6 ev/sec
+Event 76000 Completed  76000 events  realTime=26 sec  2923.1 ev/sec
+Event 77000 Completed  77000 events  realTime=26 sec  2961.5 ev/sec
+Event 78000 Completed  78000 events  realTime=27 sec  2888.9 ev/sec
+Event 79000 Completed  79000 events  realTime=27 sec  2925.9 ev/sec
+Event 80000 Completed  80000 events  realTime=27 sec  2963.0 ev/sec
+Event 81000 Completed  81000 events  realTime=28 sec  2892.9 ev/sec
+Event 82000 Completed  82000 events  realTime=28 sec  2928.6 ev/sec
+Event 83000 Completed  83000 events  realTime=28 sec  2964.3 ev/sec
+Event 84000 Completed  84000 events  realTime=29 sec  2896.6 ev/sec
+Event 85000 Completed  85000 events  realTime=29 sec  2931.0 ev/sec
+Event 86000 Completed  86000 events  realTime=29 sec  2965.5 ev/sec
+Event 87000 Completed  87000 events  realTime=30 sec  2900.0 ev/sec
+Event 88000 Completed  88000 events  realTime=30 sec  2933.3 ev/sec
+Event 89000 Completed  89000 events  realTime=30 sec  2966.7 ev/sec
+Event 90000 Completed  90000 events  realTime=31 sec  2903.2 ev/sec
+Event 91000 Completed  91000 events  realTime=31 sec  2935.5 ev/sec
+Event 92000 Completed  92000 events  realTime=31 sec  2967.7 ev/sec
+Event 93000 Completed  93000 events  realTime=32 sec  2906.3 ev/sec
+Event 94000 Completed  94000 events  realTime=32 sec  2937.5 ev/sec
+Event 95000 Completed  95000 events  realTime=32 sec  2968.8 ev/sec
+Event 96000 Completed  96000 events  realTime=33 sec  2909.1 ev/sec
+Event 97000 Completed  97000 events  realTime=33 sec  2939.4 ev/sec
+Event 98000 Completed  98000 events  realTime=33 sec  2969.7 ev/sec
+Event 99000 Completed  99000 events  realTime=34 sec  2911.8 ev/sec
+Event 100000 Completed  100000 events  realTime=34 sec  2941.2 ev/sec
+Run complete  100000 Events  34 seconds
+NTuple Det9                3166 entries
+NTuple InputDet9         100015 entries
+
+Exceptions: 0 Fatal, 0 Events Aborted, 0 Stuck Tracks (stopped), 0 Warnings
+g4beamline: simulation complete
+Error: cannot open file "iostream"  (tmpfile)(2)
+*** Interpreter error recovered ***
