@@ -1,21 +1,18 @@
 # A waste of time
 
+import matplotlib.pyplot as plt
 import numpy as np
 from scipy.integrate import dblquad
 
 mu = 0.01376169  # neutron attenuation cooefficient (/mm)
 lamda = 1/mu     # neutron mean free path
 d = 100          # thickness of shell (mm)
-R = 100          # outer radius of sphere, i.e. inner radius + d (mm)
+R = 200          # outer radius of sphere, i.e. inner radius + d (mm)
 theta0 = np.arcsin(np.sqrt(lamda/d))
 # calculated from MC simulation for
 
 def f(x, th):
-    # return np.exp(th**2 / (2 * np.arcsin(lamda /( x * np.cos(th) ))))
-    if th < theta0:
-        return 1.
-    else:
-        return 0.
+    return np.exp(-th**2 / (2 * np.arctan2( np.sqrt(lamda)**2, np.sqrt(x*np.abs(np.cos(x))) ) **2 ) )
 
 def integrand_u(x, th):
     return np.sin(th) * np.exp(-mu*x) * f(th, x)
@@ -36,3 +33,7 @@ print(intu)
 print(intd)
 
 print(intu[0]/intd[0])
+
+th = np.linspace(-2*np.pi, 2*np.pi)
+plt.plot(th, f(2, th))
+plt.show()
