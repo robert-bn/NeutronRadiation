@@ -18,9 +18,9 @@ virtualdetector Base width=11000 height=0.2 length=11000.  material=Vacuum color
 # object locations
 place BeamVis z=0
 place Target z=0
-place Base z=0 y=5500.5
-place Base z=0 y=-5500.5
-place Wallz z=-5500.5
-place Wallz z=+5500.5
-place Wallx z=0 x=-5500.5
-place Wallx z=0 x=+5500.5
+place Base z=0 y=5500.1
+place Base z=0 y=-5500.1
+place Wallz z=-5500.1
+place Wallz z=+5500.1
+place Wallx z=0 x=-5500.1
+place Wallx z=0 x=+5500.1
