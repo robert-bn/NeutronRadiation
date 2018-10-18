@@ -2,18 +2,22 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
 NEUTRON_PDGid = 2112
 NeutronsOnly=True
 
 n_in = 100000
 
-directory = "../data/NeutronAttenuationSpherical/"
+if os.name == "posix":
+    directory = "../data/NeutronAttenuationSpherical/"
+else:
+    directory = "./data/NeutronAttenuationSpherical/"
+
 f_header = ["x", "y", "z", "Px", "Py", "Pz", "t", "PDGid", "EventID", "TrackID", "ParentID", "Weight"]
 
 depth = np.arange(0,300,10)
 n_out = [n_in,]
-n_out_neutrons = [n_in,]
 
 
 for d in depth:
@@ -25,6 +29,8 @@ for d in depth:
         df = pd.concat([dfb, dfx, dfy])
         if NeutronsOnly==True:
             n_out.append(np.count_nonzero(df['PDGid']==NEUTRON_PDGid))
+        else:
+            n_out.append(df.size)
 
 n_out = np.array(n_out)
 y = n_out/n_in

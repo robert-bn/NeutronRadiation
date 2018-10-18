@@ -13,8 +13,6 @@ f_header = ["x", "y", "z", "Px", "Py", "Pz", "t", "PDGid", "EventID", "TrackID",
 
 depth = np.arange(0,300,10)
 n_out = [n_in,]
-n_out_neutrons = [n_in,]
-
 
 for d in depth:
     # print(directory + "Base{}.txt".format(d))
@@ -25,6 +23,8 @@ for d in depth:
         df = pd.concat([dfb, dfx, dfy])
         if NeutronsOnly==True:
             n_out.append(np.count_nonzero(df['PDGid']==NEUTRON_PDGid))
+        else:
+            n_out.append(df.size)
 
 n_out = np.array(n_out)
 y = n_out/n_in
