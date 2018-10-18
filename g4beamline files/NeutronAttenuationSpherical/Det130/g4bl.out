@@ -1,8 +1,8 @@
-G4BL_DIR=C:\Program Files (x86)\MuonsInc\G4beamline
-G4beamline Process ID 14372
+G4BL_DIR=/home/robert/G4beamline-3.04
+G4beamline Process ID 10936
 
 *************************************************************
- g4beamline version: 3.04                        (Mar  2 2017)
+ g4beamline version: 3.04                        (Oct  6 2018)
                       Copyright : Tom Roberts, Muons, Inc.
                         License : Gnu Public License
                             WWW : http://g4beamline.muonsinc.com
@@ -29,38 +29,38 @@ isotropicsource            particle=neutron nEvents=100000 firstEvent=-1 x=0
                            y=0 z=0 weight=1 secondaryTrackID=1001 meanP=43.35
                            P=43.35 sigmaP=0 meanT=0 t=0 sigmaT=0
 particlecolor              gamma=1,0,0 neutron=1,1,1 proton=0,1,0
-sphere       Target        innerRadius=500 outerRadius=520 initialPhi=0
+sphere       Target        innerRadius=5000 outerRadius=5130 initialPhi=0
                            finalPhi=360 initialTheta=0 finalTheta=360
                            maxStep=100 material=CONCRETE color=0.7,0.7,0.3,0.5
                            kill=0
 sphere       BeamVis       innerRadius=0 outerRadius=10 initialPhi=0
                            finalPhi=360 initialTheta=0 finalTheta=360
                            maxStep=100 material=Vacuum color=1,0,0 kill=0
-virtualdetector Wallz20    radius=0 innerRadius=0 height=1.1e+04 width=1.3e+04
+virtualdetector Wallz130   radius=0 innerRadius=0 height=1.1e+04 width=1.1e+04
                            length=0.2 maxStep=100 material=Vacuum
                            color=1,1,1,0.1 noSingles=0 format=bltrackfile
                            filename= file= require= referenceParticle=0
                            coordinates=Centerline kill=0
-virtualdetector Wallx20    radius=0 innerRadius=0 height=1.1e+04 width=0.2
+virtualdetector Wallx130   radius=0 innerRadius=0 height=1.1e+04 width=0.2
                            length=1.1e+04 maxStep=100 material=Vacuum
                            color=1,1,1,0.1 noSingles=0 format=bltrackfile
                            filename= file= require= referenceParticle=0
                            coordinates=Centerline kill=0
-virtualdetector Base20     radius=0 innerRadius=0 height=0.2 width=1.3e+04
-                           length=1.3e+04 maxStep=100 material=Vacuum
+virtualdetector Base130    radius=0 innerRadius=0 height=0.2 width=1.1e+04
+                           length=1.1e+04 maxStep=100 material=Vacuum
                            color=1,1,1,0.1 noSingles=0 format=bltrackfile
                            filename= file= require= referenceParticle=0
                            coordinates=Centerline kill=0
 place   BeamVis copies=1 x=0.0 y=0.0 z=0.0 
 place   Target  copies=1 x=0.0 y=0.0 z=0.0 
-place   Base20  copies=1 x=0.0 y=6000.0 z=0.0 
-place   Base20  copies=1 x=0.0 y=-6000.0 z=0.0 
-place   Wallz20 copies=1 x=0.0 y=0.0 z=-6000.0 
-place   Wallz20 copies=1 x=0.0 y=0.0 z=6000.0 
-place   Wallx20 copies=1 x=-6000.0 y=0.0 z=0.0 
-place   Wallx20 copies=1 x=6000.0 y=0.0 z=0.0 
+place   Base130 copies=1 x=0.0 y=5500.1 z=0.0 
+place   Base130 copies=1 x=0.0 y=-5500.1 z=0.0 
+place   Wallz130 copies=1 x=0.0 y=0.0 z=-5500.1 
+place   Wallz130 copies=1 x=0.0 y=0.0 z=5500.1 
+place   Wallx130 copies=1 x=-5500.1 y=0.0 z=0.0 
+place   Wallx130 copies=1 x=5500.1 y=0.0 z=0.0 
 
-World size (before incrementing by 201.357 mm): 12000.2 H  13000.0 W  13000.0 L
+World size (before incrementing by 201.357 mm): 11000.4 H  11000.4 W  11000.4 L
 
 PARAMETERS:
             Zcl=5500
@@ -86,37 +86,37 @@ BLCMDsphere::Construct BeamVis parent= relZ=0.0 globZ=0.0
 	zmin=-10.0 zmax=10.0 kill=0
 Checking overlaps for volume Target ... OK! 
 BLCMDsphere::Construct Target parent= relZ=0.0 globZ=0.0
-	zmin=-520.0 zmax=520.0 kill=0
-Checking overlaps for volume Base20 ... OK! 
-BLCMDvirtualdetector::Construct Base20 parent= relZ=0.0 globZ=0.0
-Checking overlaps for volume Base20 ... OK! 
+	zmin=-5130.0 zmax=5130.0 kill=0
+Checking overlaps for volume Base130 ... OK! 
+BLCMDvirtualdetector::Construct Base130 parent= relZ=0.0 globZ=0.0
+Checking overlaps for volume Base130 ... OK! 
 **************************************************************************
 *** G4Exception: Duplicate NTuple
 ***    severity: Warning
 ***   issued by: BLNTuple
-*** description: VirtualDetector/Base20
+*** description: VirtualDetector/Base130
 **************************************************************************
-BLCMDvirtualdetector::Construct Base20 parent= relZ=0.0 globZ=0.0
-Checking overlaps for volume Wallz20 ... OK! 
-BLCMDvirtualdetector::Construct Wallz20 parent= relZ=-6000.0 globZ=-6000.0
-Checking overlaps for volume Wallz20 ... OK! 
-**************************************************************************
-*** G4Exception: Duplicate NTuple
-***    severity: Warning
-***   issued by: BLNTuple
-*** description: VirtualDetector/Wallz20
-**************************************************************************
-BLCMDvirtualdetector::Construct Wallz20 parent= relZ=6000.0 globZ=6000.0
-Checking overlaps for volume Wallx20 ... OK! 
-BLCMDvirtualdetector::Construct Wallx20 parent= relZ=0.0 globZ=0.0
-Checking overlaps for volume Wallx20 ... OK! 
+BLCMDvirtualdetector::Construct Base130 parent= relZ=0.0 globZ=0.0
+Checking overlaps for volume Wallz130 ... OK! 
+BLCMDvirtualdetector::Construct Wallz130 parent= relZ=-5500.1 globZ=-5500.1
+Checking overlaps for volume Wallz130 ... OK! 
 **************************************************************************
 *** G4Exception: Duplicate NTuple
 ***    severity: Warning
 ***   issued by: BLNTuple
-*** description: VirtualDetector/Wallx20
+*** description: VirtualDetector/Wallz130
 **************************************************************************
-BLCMDvirtualdetector::Construct Wallx20 parent= relZ=0.0 globZ=0.0
+BLCMDvirtualdetector::Construct Wallz130 parent= relZ=5500.1 globZ=5500.1
+Checking overlaps for volume Wallx130 ... OK! 
+BLCMDvirtualdetector::Construct Wallx130 parent= relZ=0.0 globZ=0.0
+Checking overlaps for volume Wallx130 ... OK! 
+**************************************************************************
+*** G4Exception: Duplicate NTuple
+***    severity: Warning
+***   issued by: BLNTuple
+*** description: VirtualDetector/Wallx130
+**************************************************************************
+BLCMDvirtualdetector::Construct Wallx130 parent= relZ=0.0 globZ=0.0
 =======================================================================
 ======       Pre-compound/De-excitation Physics Parameters     ========
 =======================================================================
@@ -135,7 +135,7 @@ Total geometry errors = 0  0 seconds
 
 ================== Prepare Visualization ==================
 Stochastic processes are enabled.
-Available UI session types: [ Qt, Win32, GAG, csh ]
+Available UI session types: [ Qt, GAG, tcsh, csh ]
 Visualization Manager instantiating with verbosity "warnings (3)"...
 Visualization Manager initialising...
 Registering graphics systems...
@@ -152,8 +152,9 @@ VRML2FILE (VRML2FILE)
 gMocrenFile (gMocrenFile)
 OpenGLImmediateQt (OGLIQt, OGLI)
 OpenGLStoredQt (OGLSQt, OGL, OGLS)
-OpenGLImmediateWin32 (OGLIWin32, OGLIQt_FALLBACK)
-OpenGLStoredWin32 (OGLSWin32, OGLSQt_FALLBACK)
+OpenGLImmediateX (OGLIX, OGLIQt_FALLBACK)
+OpenGLStoredX (OGLSX, OGLSQt_FALLBACK)
+RayTracerX (RayTracerX)
 
 Registering model factories...
 
@@ -222,5 +223,10 @@ WARNING: No extent set for user vis action "SetUserAction".
 WARNING: User Vis Action extent is null.
 WARNING: For some reason, possibly mentioned above, it has not been
   possible to add to the scene.
-WARNING: Viewpoint direction is very close to the up vector direction.
-  Consider setting the up vector to obtain definable behaviour.
+
+Graphics systems deleted.
+Visualization Manager deleting...
+
+Exceptions: 0 Fatal, 0 Events Aborted, 0 Stuck Tracks (stopped), 3 Warnings
+      3 times: Duplicate NTuple
+g4beamline: simulation complete

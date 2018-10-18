@@ -1,7 +1,7 @@
 from numpy import arange
 import os
 
-sphere_radius = 500
+sphere_radius = 5000
 
 for detnum in arange(10,300,10):
     with open("template.txt", 'r') as templatef:

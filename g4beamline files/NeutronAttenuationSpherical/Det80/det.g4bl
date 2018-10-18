@@ -7,20 +7,20 @@ isotropicsource meanP=43.349 sigmaP=0 particle=neutron nEvents=100000
 particlecolor neutron=1,1,1 gamma=1,0,0 proton=0,1,0
 
 # object definitions
-sphere Target innerRadius=500 outerRadius=580 material=CONCRETE color=0.7,0.7,0.3,0.5
+sphere Target innerRadius=5000 outerRadius=5080 material=CONCRETE color=0.7,0.7,0.3,0.5
 sphere BeamVis outerRadius=10 material=Vacuum color=1,0,0
 
 #detector definitions
-virtualdetector Wallz80 width=13000 height=11000 length=0.2  material=Vacuum color=1,1,1,0.1 format=ascii
+virtualdetector Wallz80 width=11000 height=11000 length=0.2  material=Vacuum color=1,1,1,0.1 format=ascii
 virtualdetector Wallx80 width=0.2 height=11000 length=11000  material=Vacuum color=1,1,1,0.1 format=ascii
-virtualdetector Base80 width=13000 height=0.2 length=13000.  material=Vacuum color=1,1,1,0.1 format=ascii
+virtualdetector Base80 width=11000 height=0.2 length=11000.  material=Vacuum color=1,1,1,0.1 format=ascii
 
 # object locations
 place BeamVis z=0
 place Target z=0
-place Base80 z=0 y=6000
-place Base80 z=0 y=-6000
-place Wallz80 z=-6000
-place Wallz80 z=+6000
-place Wallx80 z=0 x=-6000
-place Wallx80 z=0 x=+6000
+place Base80 z=0 y=5500.1
+place Base80 z=0 y=-5500.1
+place Wallz80 z=-5500.1
+place Wallz80 z=+5500.1
+place Wallx80 z=0 x=-5500.1
+place Wallx80 z=0 x=+5500.1
