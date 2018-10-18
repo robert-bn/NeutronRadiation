@@ -1,5 +1,5 @@
 G4BL_DIR=C:\Program Files (x86)\MuonsInc\G4beamline
-G4beamline Process ID 9644
+G4beamline Process ID 14196
 
 *************************************************************
  g4beamline version: 3.04                        (Mar  2 2017)
@@ -177,23 +177,5 @@ WARNING: No extent set for user vis action "SetUserAction".
 WARNING: User Vis Action extent is null.
 WARNING: For some reason, possibly mentioned above, it has not been
   possible to add to the scene.
-WARNING: 300 events have been kept for refreshing and/or reviewing.
-
-  "/vis/reviewKeptEvents" to review them one by one.
-  "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
-WARNING: 1000 events have been kept for refreshing and/or reviewing.
-
-  "/vis/reviewKeptEvents" to review them one by one.
-  "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
-WARNING: 10000 events have been kept for refreshing and/or reviewing.
-
-  "/vis/reviewKeptEvents" to review them one by one.
-  "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
-
-Graphics systems deleted.
-Visualization Manager deleting...
-
-Exceptions: 0 Fatal, 0 Events Aborted, 0 Stuck Tracks (stopped), 0 Warnings
-g4beamline: simulation complete
-Error: cannot open file "iostream"  (tmpfile)(2)
-*** Interpreter error recovered ***
+WARNING: Viewpoint direction is very close to the up vector direction.
+  Consider setting the up vector to obtain definable behaviour.
