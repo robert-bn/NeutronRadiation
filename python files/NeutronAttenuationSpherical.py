@@ -10,9 +10,11 @@ NeutronsOnly=True
 n_in = 100000
 
 if os.name == "posix":
-    directory = "../data/NeutronAttenuationSpherical/"
-else:
-    directory = "./data/NeutronAttenuationSpherical/"
+    # linux
+    directory = "../data/NeutronAttenuation/"
+elif os.name == "nt":
+    # windows
+    directory = "./data/NeutronAttenuation/"
 
 f_header = ["x", "y", "z", "Px", "Py", "Pz", "t", "PDGid", "EventID", "TrackID", "ParentID", "Weight"]
 

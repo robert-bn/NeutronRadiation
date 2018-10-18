@@ -8,7 +8,13 @@ NeutronsOnly=False
 
 n_in = 100000
 
-directory = "../data/NeutronAttenuationSpherical/"
+if os.name == "posix":
+    # linux
+    directory = "../data/NeutronAttenuation/"
+elif os.name == "nt":
+    # windows
+    directory = "./data/NeutronAttenuation/"
+
 f_header = ["x", "y", "z", "Px", "Py", "Pz", "t", "PDGid", "EventID", "TrackID", "ParentID", "Weight"]
 
 depth = np.arange(0,300,10)
@@ -55,7 +61,7 @@ print("tenth value layer: {} mm".format(-np.log(10)/fit[0]))
 # plt.plot(depth, np.log(y))
 
 plt.errorbar(depth, y_log, y_log_error, marker='o', color='k', linestyle='', markersize=4)
-True
+
 # uncomment to plot neutron intensity only
 # plt.errorbar(depth, np.log(y_n), 1/np.sqrt(n_out), marker='o', color='r', linestyle='', markersize=4)
 # plt.plot(depth, np.log(y_n))
