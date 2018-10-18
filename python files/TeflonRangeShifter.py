@@ -11,10 +11,10 @@ n_in = 100000
 
 if os.name == "posix":
     # linux
-    directory = "../data/NeutronAttenuation/"
+    directory = "../data/TeflonRangeShifter/"
 elif os.name == "nt":
     # windows
-    directory = "./data/NeutronAttenuation/"
+    directory = "./data/TeflonRangeShifter/"
 
 f_header = ["x", "y", "z", "Px", "Py", "Pz", "t", "PDGid", "EventID", "TrackID", "ParentID", "Weight"]
 
