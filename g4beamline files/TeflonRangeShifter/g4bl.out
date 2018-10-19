@@ -1,0 +1,225 @@
+G4BL_DIR=C:\Program Files (x86)\MuonsInc\G4beamline
+G4beamline Process ID 1432
+
+*************************************************************
+ g4beamline version: 3.04                        (Mar  2 2017)
+                      Copyright : Tom Roberts, Muons, Inc.
+                        License : Gnu Public License
+                            WWW : http://g4beamline.muonsinc.com
+*************************************************************
+ Geant4 version Name: geant4-10-03    (9-December-2016)
+                      Copyright : Geant4 Collaboration
+                      Reference : NIM A 506 (2003), 250-303
+                            WWW : http://cern.ch/geant4
+*************************************************************
+
+param        viewer        best,1
+geometry                   nPoints=100 printGeometry=0 visual=0
+                           tolerance=0.002
+G4PhysListFactory::GetReferencePhysList <QGSP_BERT>  EMoption= 0
+<<< Geant4 Physics List simulation engine: QGSP_BERT 4.0
+
+<<< Reference Physics List QGSP_BERT is built
+
+physics      QGSP_BERT     disable= inactivate= deactivate= doStochastics=1
+                           fluct=1 minRangeCut=1 list=0 gammaToMuPair=0
+                           spinTracking=0 synchrotronRadiation=0
+                           synchrotronRadiationMuon=0 maxTime=1e+06
+isotropicsource            particle=proton nEvents=100000 firstEvent=-1 x=0
+                           y=0 z=0 weight=1 secondaryTrackID=1001 meanP=729
+                           P=729 sigmaP=0 meanT=0 t=0 sigmaT=0
+particlecolor              gamma=1,0,0 neutron=1,1,1 proton=0,1,0
+sphere       Target        innerRadius=5000 outerRadius=5010 initialPhi=0
+                           finalPhi=360 initialTheta=0 finalTheta=360
+                           maxStep=100 material=TEFLON color=1,1,1,0.8 kill=0
+sphere       BeamVis       innerRadius=0 outerRadius=10 initialPhi=0
+                           finalPhi=360 initialTheta=0 finalTheta=360
+                           maxStep=100 material=Vacuum color=1,0,0 kill=0
+virtualdetector Wallz270   radius=0 innerRadius=0 height=1.1e+04 width=1.1e+04
+                           length=0.2 maxStep=100 material=Vacuum
+                           color=1,1,1,0.02 noSingles=0 format=bltrackfile
+                           filename= file= require= referenceParticle=0
+                           coordinates=Centerline kill=0
+virtualdetector Wallx270   radius=0 innerRadius=0 height=1.1e+04 width=0.2
+                           length=1.1e+04 maxStep=100 material=Vacuum
+                           color=1,1,1,0.02 noSingles=0 format=bltrackfile
+                           filename= file= require= referenceParticle=0
+                           coordinates=Centerline kill=0
+virtualdetector Base270    radius=0 innerRadius=0 height=0.2 width=1.1e+04
+                           length=1.1e+04 maxStep=100 material=Vacuum
+                           color=1,1,1,0.02 noSingles=0 format=bltrackfile
+                           filename= file= require= referenceParticle=0
+                           coordinates=Centerline kill=0
+place   BeamVis copies=1 x=0.0 y=0.0 z=0.0 
+place   Target  copies=1 x=0.0 y=0.0 z=0.0 
+place   Base270 copies=1 x=0.0 y=5500.1 z=0.0 
+place   Base270 copies=1 x=0.0 y=-5500.1 z=0.0 
+place   Wallz270 copies=1 x=0.0 y=0.0 z=-5500.1 
+place   Wallz270 copies=1 x=0.0 y=0.0 z=5500.1 
+place   Wallx270 copies=1 x=-5500.1 y=0.0 z=0.0 
+place   Wallx270 copies=1 x=5500.1 y=0.0 z=0.0 
+
+World size (before incrementing by 201.357 mm): 11000.4 H  11000.4 W  11000.4 L
+
+PARAMETERS:
+            Zcl=5500
+     deltaChord=3.0
+deltaIntersection=0.1
+   deltaOneStep=0.01
+         epsMax=0.05
+         epsMin=2.5e-7
+ eventTimeLimit=30
+    fieldVoxels=200,200,200
+      histoFile=g4beamline
+    histoUpdate=0
+        maxStep=100.0
+        minStep=0.01
+ steppingFormat=N GLOBAL CL KE STEP VOL PROCESS
+steppingVerbose=0
+         viewer=best,1
+ wallClockLimit=-1
+  worldMaterial=Vacuum
+     zTolerance=2.0
+Checking overlaps for volume BeamVis ... OK! 
+BLCMDsphere::Construct BeamVis parent= relZ=0.0 globZ=0.0
+	zmin=-10.0 zmax=10.0 kill=0
+Checking overlaps for volume Target ... OK! 
+BLCMDsphere::Construct Target parent= relZ=0.0 globZ=0.0
+	zmin=-5010.0 zmax=5010.0 kill=0
+Checking overlaps for volume Base270 ... OK! 
+BLCMDvirtualdetector::Construct Base270 parent= relZ=0.0 globZ=0.0
+Checking overlaps for volume Base270 ... OK! 
+**************************************************************************
+*** G4Exception: Duplicate NTuple
+***    severity: Warning
+***   issued by: BLNTuple
+*** description: VirtualDetector/Base270
+**************************************************************************
+BLCMDvirtualdetector::Construct Base270 parent= relZ=0.0 globZ=0.0
+Checking overlaps for volume Wallz270 ... OK! 
+BLCMDvirtualdetector::Construct Wallz270 parent= relZ=-5500.1 globZ=-5500.1
+Checking overlaps for volume Wallz270 ... OK! 
+**************************************************************************
+*** G4Exception: Duplicate NTuple
+***    severity: Warning
+***   issued by: BLNTuple
+*** description: VirtualDetector/Wallz270
+**************************************************************************
+BLCMDvirtualdetector::Construct Wallz270 parent= relZ=5500.1 globZ=5500.1
+Checking overlaps for volume Wallx270 ... OK! 
+BLCMDvirtualdetector::Construct Wallx270 parent= relZ=0.0 globZ=0.0
+Checking overlaps for volume Wallx270 ... OK! 
+**************************************************************************
+*** G4Exception: Duplicate NTuple
+***    severity: Warning
+***   issued by: BLNTuple
+*** description: VirtualDetector/Wallx270
+**************************************************************************
+BLCMDvirtualdetector::Construct Wallx270 parent= relZ=0.0 globZ=0.0
+=======================================================================
+======       Pre-compound/De-excitation Physics Parameters     ========
+=======================================================================
+Type of pre-compound inverse x-section              3
+Type of de-excitation inverse x-section             3
+Min excitation energy (keV)                         0.1
+Level density (1/MeV)                               0.1
+Time limit for long lived isomeres (ns)             1e+07
+Correlated gamma emission flag                      0
+=======================================================================
+### Adding tracking cuts for neutron  TimeCut(ns)= 10000  KinEnergyCut(MeV)= 0
+
+Geometry test nPoints=100 tolerance=0.002 mm:
+Testing geometry for children of group 'World':
+Total geometry errors = 0  0 seconds
+
+================== Prepare Visualization ==================
+Stochastic processes are enabled.
+Available UI session types: [ Qt, Win32, GAG, csh ]
+Visualization Manager instantiating with verbosity "warnings (3)"...
+Visualization Manager initialising...
+Registering graphics systems...
+
+You have successfully registered the following graphics systems.
+Current available graphics systems are:
+ASCIITree (ATree)
+DAWNFILE (DAWNFILE)
+G4HepRep (HepRepXML)
+G4HepRepFile (HepRepFile)
+RayTracer (RayTracer)
+VRML1FILE (VRML1FILE)
+VRML2FILE (VRML2FILE)
+gMocrenFile (gMocrenFile)
+OpenGLImmediateQt (OGLIQt, OGLI)
+OpenGLStoredQt (OGLSQt, OGL, OGLS)
+OpenGLImmediateWin32 (OGLIWin32, OGLIQt_FALLBACK)
+OpenGLStoredWin32 (OGLSWin32, OGLSQt_FALLBACK)
+
+Registering model factories...
+
+You have successfully registered the following model factories.
+Registered model factories:
+  generic
+  drawByAttribute
+  drawByCharge
+  drawByOriginVolume
+  drawByParticleID
+  drawByEncounteredVolume
+
+Registered filter factories:
+  attributeFilter
+  chargeFilter
+  originVolumeFilter
+  particleFilter
+  encounteredVolumeFilter
+
+You have successfully registered the following user vis actions.
+Run Duration User Vis Actions: none
+End of Event User Vis Actions: none
+End of Run User Vis Actions: none
+
+Some /vis commands (optionally) take a string to specify colour.
+Available colours:
+  black, blue, brown, cyan, gray, green, grey, magenta, red, white, yellow
+
+
+Selected visualization viewer: Qt
+BLVisManager init: /vis/open OGLSQt
+BLVisManager init: /vis/viewer/set/auxiliaryEdge true
+BLVisManager init: /vis/viewer/set/style surface
+BLVisManager init: /vis/viewer/set/viewpointThetaPhi 0 0 deg
+BLVisManager init: /vis/drawVolume
+BLVisManager init: /tracking/storeTrajectory 1
+BLVisManager init: /vis/scene/add/trajectories
+/tracking/storeTrajectory 1
+Attributes available for modeling and filtering with
+  "/vis/modeling/trajectories/create/drawByAttribute" and
+  "/vis/filtering/trajectories/create/attributeFilter" commands:
+G4TrajectoriesModel:
+  Event ID (EventID): G4int
+  Run ID (RunID): G4int
+G4Trajectory:
+  Charge (Ch): unit: e+ (G4double)
+  Track ID (ID): G4int
+  Initial kinetic energy (IKE): G4BestUnit (G4double)
+  Initial momentum magnitude (IMag): G4BestUnit (G4double)
+  Initial momentum (IMom): G4BestUnit (G4ThreeVector)
+  No. of points (NTP): G4int
+  PDG Encoding (PDG): G4int
+  Parent ID (PID): G4int
+  Particle Name (PN): G4String
+G4TrajectoryPoint:
+  Position (Pos): G4BestUnit (G4ThreeVector)
+WARNING: Trajectory storing has been requested.  This action may be
+  reversed with "/tracking/storeTrajectory 0".
+BLVisManager init: /vis/scene/endOfEventAction accumulate -1
+WARNING: The vis manager will keep an unlimited number of events.
+  This may use a lot of memory.
+  It may be changed with, e.g., "/vis/scene/endOfEventAction accumulate 10".
+BLVisManager init: /vis/viewer/set/hiddenMarker true
+
+WARNING: No extent set for user vis action "SetUserAction".
+WARNING: User Vis Action extent is null.
+WARNING: For some reason, possibly mentioned above, it has not been
+  possible to add to the scene.
+WARNING: Viewpoint direction is very close to the up vector direction.
+  Consider setting the up vector to obtain definable behaviour.
