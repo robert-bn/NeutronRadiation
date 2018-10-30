@@ -1,6 +1,5 @@
 # reads in a g4beamline output TEXT file, and plots the number of protons at each z vs distance
 import pandas as pd
-from numpy import sqrt
 import os
 
 NEURTRON_PDGid = 2112

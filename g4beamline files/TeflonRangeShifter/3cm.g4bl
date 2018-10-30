@@ -1,0 +1,26 @@
+physics QGSP_BERT
+
+# beam properties
+isotropicsource meanP=729 sigmaP=0 particle=proton nEvents=1000000
+
+# particle colours
+particlecolor neutron=1,1,1 gamma=1,0,0 proton=0,1,0
+
+# object definitions
+sphere Target innerRadius=5000 outerRadius=5030 material=TEFLON color=1,1,1,0.8
+sphere BeamVis outerRadius=10 material=Vacuum color=1,0,0
+
+#detector definitions
+virtualdetector Wallz3 width=11000 height=11000 length=0.2  material=Vacuum color=1,1,1,0.02 format=ascii
+virtualdetector Wallx3 width=0.2 height=11000 length=11000  material=Vacuum color=1,1,1,0.02 format=ascii
+virtualdetector Base3 width=11000 height=0.2 length=11000.  material=Vacuum color=1,1,1,0.02 format=ascii
+
+# object locations
+place BeamVis z=0
+place Target z=0
+place Base3 z=0 y=5500.1
+place Base3 z=0 y=-5500.1
+place Wallz3 z=-5500.1
+place Wallz3 z=+5500.1
+place Wallx3 z=0 x=-5500.1
+place Wallx3 z=0 x=+5500.1
