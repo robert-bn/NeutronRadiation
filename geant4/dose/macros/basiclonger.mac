@@ -1,0 +1,7 @@
+# This macro runs 10000 particles
+# Better not to try it with the visualization on.
+#
+# Run it using "./task macros/basiclong.mac"
+/run/initialize
+/run/beamOn 10000
+
