@@ -45,10 +45,10 @@ fTotalEnergyDeposited("EnergyDeposited",0)
     accumulableManager->RegisterAccumulable(fTotalEnergyDeposited);
 
     // Task 4c.3: Uncomment the following 4 lines to enable analysis.
-    G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
-    analysisManager->SetVerboseLevel(1);
-    analysisManager->SetFirstNtupleId(1);
-    analysisManager->SetFirstHistoId(1);
+    // G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
+    // analysisManager->SetVerboseLevel(1);
+    // analysisManager->SetFirstNtupleId(1);
+    // analysisManager->SetFirstHistoId(1);
 
     // definitions for greys
     //
@@ -67,14 +67,14 @@ fTotalEnergyDeposited("EnergyDeposited",0)
     // (i.e. each bin will correspond to one layer of the calorimeter)
     // NOTICE: the unit of measurement should go in the FillH1(), not in the
     //  CreateH1()
-    analysisManager->CreateH1("eDep", "Energy Deposited",  20, 50, 60);
+    // analysisManager->CreateH1("eDep", "Energy Deposited",  20, 50, 60);
 
 
     // Task 4d.3: Create ntuple containing 5 double fields:
     //   EnergyDeposit, Time, X, Y & Z
 
     // Task 4c.3: Open file task (extension will be added automatically)
-    analysisManager->OpenFile("task4");
+    // analysisManager->OpenFile("task4");
 }
 
 
@@ -181,8 +181,8 @@ RunAction::~RunAction()
 {
     // Task 4c.3: Write the analysis objects by uncommmenting the
     // following lines.
-    G4AnalysisManager* man = G4AnalysisManager::Instance();
-    man->Write();
+    // G4AnalysisManager* man = G4AnalysisManager::Instance();
+    // man->Write();
 }
 
 void RunAction::AddSecondary(const G4ParticleDefinition* particle,

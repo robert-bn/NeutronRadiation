@@ -81,7 +81,7 @@ int main(int argc, char** argv)
     #endif
 
     // Use QGSP_BIC_HP : QGSP Binary Cascade High Precision
-    // Best for nuclear interations with protons & neutrons 
+    // Best for nuclear interations with protons & neutrons
     runManager->SetUserInitialization(new QGSP_BIC_HP());
 
     // Task 1: See that we instantiate the detector construction here
@@ -126,8 +126,8 @@ int main(int argc, char** argv)
 
     // Task 4c.3: Close the analysis output by uncommmenting the
     //  following lines
-    G4AnalysisManager* man = G4AnalysisManager::Instance();
-    man->CloseFile();
+    // G4AnalysisManager* man = G4AnalysisManager::Instance();
+    // man->CloseFile();
 
     std::cout << "Application successfully ended.\nBye :-)" << std::endl;
 
