@@ -25,40 +25,40 @@ using namespace std;
 
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {
+    // world dimensions
     G4NistManager* nist = G4NistManager::Instance();
     G4double worldSizeX = 2 * m;
     G4double worldSizeY = 1 * m;
     G4double worldSizeZ = 1 * m;
 
-    // We have created the world volume for you
-    // As with all volumes, it requires three steps:
-
-    // 1) Solid
+    // World Solid
     G4VSolid* worldBox = new G4Box("world", worldSizeX / 2, worldSizeY / 2, worldSizeZ / 2);
 
-    // 2) Logical volume
+    // World logical volume
     G4LogicalVolume* worldLog = new G4LogicalVolume(worldBox, nist->FindOrBuildMaterial("G4_Galactic"), "world");
     G4VisAttributes* visAttr = new G4VisAttributes();
+
+    // make World invisible
     visAttr->SetVisibility(false);
     worldLog->SetVisAttributes(visAttr);
 
-    // 3) Physical volume
+    // World physical volume
     G4VPhysicalVolume* worldPhys = new G4PVPlacement(nullptr, {}, worldLog, "world", nullptr, false, 0);
 
-    // box dimensions
+    // target dimensions
     G4double thickness = 10*cm;
     G4double width     = 10*cm;
     G4double height    = 10*cm;
 
     G4VSolid* targetBox = new G4Box("target", thickness / 2, width / 2, height / 2);
 
-    // Task 1b.2: Create a logical volume for the target
+    // Create a logical volume for the target
     G4LogicalVolume* targetLog =
       new G4LogicalVolume(targetBox,                             // its shape
                           nist->FindOrBuildMaterial("G4_WATER"), // its material
                           "target");                             // its name
 
-    // Task 1b.2: Colorize the target using proper vis. attributes
+    // visual properties of target
     // TODO: Try removing the G4Colour::Blue(), I don't think its nessesary
     G4VisAttributes* blue = new G4VisAttributes(G4Colour::Blue());
     blue->SetColour(0., 0., 1., 0.4);
@@ -68,7 +68,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
     // place that bad boy
     // G4VPhysicalVolume* worldPhys = new G4PVPlacement(nullptr, {}, worldLog, "world", nullptr, false, 0);
-
+    //
     new G4PVPlacement(0,                              // no rotation
                       G4ThreeVector(6*cm, 0., 0.),    // at (0,6cm,0)
                       targetLog,                      // its logical volume
@@ -78,13 +78,13 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
                       0,                              // copy number
                       true);                          // overlaps checking
 
-    // uncomment to show the material table
-    // G4cout << *(G4Material::GetMaterialTable()) << G4endl;
-
-    // The Construct() method has to return the final (physical) world volume:
+    // uncomment to print the material table
+    G4cout << *(G4Material::GetMaterialTable()) << G4endl;
 
     // sets logical volume for scoring (dose calculation)
     fScoringVolume = targetLog;
+
+    // The Construct() method has to return the final (physical) world volume:
     return worldPhys;
 }
 
@@ -110,9 +110,4 @@ void DetectorConstruction::ConstructSDandField()
 
     // add these detectors to the sensitive detector manager
     sdManager->AddNewDetector(targetDetector);
-
-    // Task 4d.1: Comment out the attachment of previous sensitive detectors
-    // Task 4d.1: Create and assign the custom sensitive detector. Do not forget to register them
-    //  to the SDmanager
-    // EnergyTimeSD* absorberET = ...
 }

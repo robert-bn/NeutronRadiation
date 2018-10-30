@@ -12,7 +12,7 @@ G4ClassificationOfNewTrack StackingAction::ClassifyNewTrack (const G4Track*
     aTrack)
     {
         // Register only secondaries, i.e. tracks having ParentID > 0
-        if (aTrack->GetParentID() && aTrack->GetParticleDefinition() == G4Electron::Definition())
+        if (aTrack->GetParentID() > 0)
         {
             fRunAction->AddSecondary(aTrack->GetParticleDefinition(),
             aTrack->GetKineticEnergy());

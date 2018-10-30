@@ -3,4 +3,4 @@
 #
 # Run it using "./task macros/basiclong.mac"
 /run/initialize
-/run/beamOn 100
+/run/beamOn 10000
