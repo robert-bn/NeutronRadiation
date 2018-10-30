@@ -167,8 +167,9 @@ void RunAction::EndOfRunAction(const G4Run* run)
         G4cout << "\n * proton: " << fNProton.GetValue();
         G4cout << "\n * electron: " << fNElectrons.GetValue();
         G4cout << "\n * alpha: " << fNAlpha.GetValue();
-        G4cout << "\n\nOther secondaries produced:\n";
+
         if(fOtherSecondaries.size() != 0){
+            G4cout << "\n\nOther secondaries produced:\n";
             for(G4int i{0}; i < (G4int) fOtherSecondaries.size(); i++){
                 G4cout << fOtherSecondaries[i] << G4endl;
             }
