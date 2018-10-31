@@ -35,7 +35,11 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
     G4VSolid* worldBox = new G4Box("world", worldSizeX / 2, worldSizeY / 2, worldSizeZ / 2);
 
     // World logical volume
-    G4LogicalVolume* worldLog = new G4LogicalVolume(worldBox, nist->FindOrBuildMaterial("G4_Galactic"), "world");
+    G4LogicalVolume* worldLog =
+      new G4LogicalVolume(worldBox,                                  // solid
+                          nist->FindOrBuildMaterial("G4_Galactic"),  // material
+                          "world");                                  // name
+
     G4VisAttributes* visAttr = new G4VisAttributes();
 
     // make World invisible
@@ -50,6 +54,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
     G4double width     = 10*cm;
     G4double height    = 10*cm;
 
+    // target solid
     G4VSolid* targetBox = new G4Box("target", thickness / 2, width / 2, height / 2);
 
     // Create a logical volume for the target
@@ -60,7 +65,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
     // visual properties of target
     // TODO: Try removing the G4Colour::Blue(), I don't think its nessesary
-    G4VisAttributes* blue = new G4VisAttributes(G4Colour::Blue());
+    G4VisAttributes* blue = new G4VisAttributes();
     blue->SetColour(0., 0., 1., 0.4);
     blue->SetVisibility(true);
     blue->SetForceSolid(true);
@@ -79,7 +84,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
                       true);                          // overlaps checking
 
     // uncomment to print the material table
-    G4cout << *(G4Material::GetMaterialTable()) << G4endl;
+    // G4cout << *(G4Material::GetMaterialTable()) << G4endl;
 
     // sets logical volume for scoring (dose calculation)
     fScoringVolume = targetLog;

@@ -43,8 +43,6 @@ G4UserRunAction()
 
     // Uncomment to write ROOT file
     // analysisManager->CreateH1("eDep", "Energy Deposited",  20, 50, 60);
-
-    // uncomment for writing ROOT file
     // analysisManager->OpenFile("task4");
 }
 
@@ -107,6 +105,7 @@ void RunAction::EndOfRunAction(const G4Run* run)
 
         G4cout << "\n--------------------Secondaries Tally-----------------------";
 
+        // loop over every ParticleDefinition Number pair & print names & numbers
         for(auto pair : fSecondaryNumbers)
         {
             G4cout << "\n * " << (pair.first)->GetParticleName() << ": " << pair.second;
@@ -118,8 +117,7 @@ void RunAction::EndOfRunAction(const G4Run* run)
 
 RunAction::~RunAction()
 {
-    // Task 4c.3: Write the analysis objects by uncommmenting the
-    // following lines.
+    // Uncomment to write ROOT file
     // G4AnalysisManager* man = G4AnalysisManager::Instance();
     // man->Write();
 }
@@ -127,11 +125,8 @@ RunAction::~RunAction()
 void RunAction::AddSecondary(const G4ParticleDefinition* particle,
     G4double energy)
 {
-    // iterate through fSecondaryNumbers, add to map if not already in
-    // otherwise just increment the value
-    // the key does not exist in the map
-    // add it to the map
-    // note that [] operator instantiates at zero if element not already in map
+    // adds particle to map if not already in (and starts at 1)
+    // otherwise just increments secondary number
     fSecondaryNumbers[particle] += 1;
 
     if (particle == G4Gamma::Definition())
@@ -148,7 +143,6 @@ void RunAction::AddSecondary(const G4ParticleDefinition* particle,
 void RunAction::AddTrackLength(G4double trackLength)
 {
     fTotalTrackLength += trackLength;
-    // Task 4a.2: Add the track length to the appropriate parameter
 }
 
 void RunAction::AddEnergyDeposited(G4double energyDeposited)

@@ -1,3 +1,6 @@
+// Used for event analysis, such as adding data to ROOT histograms
+// Not (at least currently) used.
+
 #include "EventAction.hh"
 #include "Analysis.hh"
 

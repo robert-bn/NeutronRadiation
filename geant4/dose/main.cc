@@ -52,6 +52,7 @@ int main(int argc, char** argv)
     // Parse command line arguments
     if  (argc == 1)
     {
+        // No arguments supplied. Launch interactive (GUI) interface
         interactive = true;
     }
     else
@@ -84,7 +85,7 @@ int main(int argc, char** argv)
     // Best for nuclear interations with protons & neutrons
     runManager->SetUserInitialization(new QGSP_BIC_HP());
 
-    // Task 1: See that we instantiate the detector construction here
+    // Instantiate DetectorConstruction & ActionInitialization
     runManager->SetUserInitialization(new DetectorConstruction());
     runManager->SetUserInitialization(new ActionInitialization());
 
@@ -98,8 +99,7 @@ int main(int argc, char** argv)
 
     G4UImanager* UImanager = G4UImanager::GetUIpointer();
 
-    // Task 4b.1: You need to access the scoring manager here (or above)
-
+    // loop over macros from optional argument and execute
     for (auto macro : macros)
     {
         G4String command = "/control/execute ";
@@ -111,6 +111,7 @@ int main(int argc, char** argv)
         {
             if (ui->IsGUI())
             {
+                // execute UI macro
                 UImanager->ApplyCommand("/control/execute macros/ui.mac");
             }
             else
@@ -124,12 +125,11 @@ int main(int argc, char** argv)
 
     delete runManager;
 
-    // Task 4c.3: Close the analysis output by uncommmenting the
-    //  following lines
+    // Uncomment to write ROOT file
     // G4AnalysisManager* man = G4AnalysisManager::Instance();
     // man->CloseFile();
 
-    std::cout << "Application successfully ended.\nBye :-)" << std::endl;
+    std::cout << "Application successfully ended.\nBye :^)" << std::endl;
 
     return 0;
 }

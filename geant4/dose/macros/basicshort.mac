@@ -1,5 +1,4 @@
-# This macro just runs one single particle
-# to prove that the application works
+# This macro runs 100 particles
 #
 # Run it using "./task macros/basic.mac"
 /run/initialize
