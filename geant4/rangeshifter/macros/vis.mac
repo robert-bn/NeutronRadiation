@@ -1,0 +1,17 @@
+# This macro shows the volume and a couple of particle tracks
+#
+# Execut in the GUI using "/control/execute macros/vis.mac"
+/run/initialize
+/vis/open OGLSQt
+/vis/drawVolume world
+
+/vis/scene/add/trajectories smooth
+/vis/scene/endOfEventAction accumulate
+/vis/viewer/set/viewpointThetaPhi 69.0427  131.836  deg
+/vis/viewer/set/targetPoint 13 13 8 cm
+/vis/viewer/zoom 20
+/vis/scene/add/text 0 0 0 mm 12 5 5 Origin of particles
+
+# /gun/particle proton
+# /gun/energy 300 MeV
+/run/beamOn 10
