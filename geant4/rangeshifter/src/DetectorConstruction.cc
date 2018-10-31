@@ -27,9 +27,9 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 {
     // world dimensions
     G4NistManager* nist = G4NistManager::Instance();
-    G4double worldSizeX = 15 * cm;
-    G4double worldSizeY = 40 * cm;
-    G4double worldSizeZ = 50 * cm;
+    G4double worldSizeX = 40 * cm;
+    G4double worldSizeY = 50 * cm;
+    G4double worldSizeZ = 14 * cm;
 
     // World Solid
     G4VSolid* worldBox = new G4Box("world", worldSizeX / 2, worldSizeY / 2, worldSizeZ / 2);
@@ -41,10 +41,10 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
                           "world");                                  // name
 
     G4VisAttributes* visAttr = new G4VisAttributes();
-    visAttr->SetColour(1., 0., 0., 0.2);
-    visAttr->SetForceSolid(true);
+    visAttr->SetForceSolid(false);
 
     // make World invisible
+    // set to true to see wireframe world (useful for geometry debugging)
     visAttr->SetVisibility(true);
     worldLog->SetVisAttributes(visAttr);
 
@@ -59,12 +59,12 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
         0);
 
     // target dimensions
-    G4double thickness = 1*cm;
     G4double width     = 30*cm;
     G4double height    = 40*cm;
+    G4double thickness = 3*cm;
 
     // target solid
-    G4VSolid* targetBox = new G4Box("target", thickness / 2, width / 2, height / 2);
+    G4VSolid* targetBox = new G4Box("target", width / 2, height / 2, thickness / 2);
 
     // Create material for Range Shifter
     // PTFE as defined in PNNL -15870 Re. 1
@@ -98,7 +98,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
     // place that bad boy
     //
     new G4PVPlacement(0,                              // no rotation
-                      G4ThreeVector(4*cm, 0., 0.),    // at (0,6cm,0)
+                      G4ThreeVector(0., 0., 3*cm),    // at (0,6cm,0)
                       targetLog,                      // its logical volume
                       "target",                       // its name
                       worldLog,                       // its mother  volume
@@ -122,7 +122,7 @@ void DetectorConstruction::ConstructSDandField()
     G4SDManager* sdManager = G4SDManager::GetSDMpointer();
     sdManager->SetVerboseLevel(2);  // Useful for 4c
 
-    // Create an instance of G4MultiFunctionalDetector (for absorber and scintillator)
+    // Create an instance of G4MultiFunctionalDetector for dose & activation
     G4MultiFunctionalDetector* targetDetector = new G4MultiFunctionalDetector("target");
 
     // Create 2 primitive scorers for the dose and assign them to respective detectors

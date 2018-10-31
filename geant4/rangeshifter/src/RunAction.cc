@@ -52,7 +52,7 @@ void RunAction::BeginOfRunAction(const G4Run*)
     // Reset all accumulables to their initial values
     G4AccumulableManager* accumulableManager = G4AccumulableManager::Instance();
     accumulableManager->Reset();  // reset accumables
-    fSecondaryNumbers.clear();    // clear secondaries taly
+    fSecondaryNumbers.clear();    // clear secondaries tally
 }
 
 void RunAction::EndOfRunAction(const G4Run* run)

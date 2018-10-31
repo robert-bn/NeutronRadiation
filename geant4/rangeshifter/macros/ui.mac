@@ -4,7 +4,7 @@
 /vis/ogl/set/eventsDrawInterval 999999       # To be updated with Geant4 10.3 (probably)
 
 /gui/addMenu vis Visualization
-/gui/addButton vis "Draw Axes" "/vis/scene/add/axes 0 0 0 1 m"
+/gui/addButton vis "Draw Axes" "/vis/scene/add/axes 0 0 0 10 cm"
 
 /gui/addMenu run Run
 /gui/addButton run "Beam On (1)" "/run/beamOn 1"
@@ -19,3 +19,13 @@
 /vis/scene/endOfEventAction accumulate
 
 /vis/viewer/flush
+
+/gps/pos/type Beam
+/gps/pos/sigma_r 5 mm
+
+/gps/ene/type Gauss
+
+# initialize for 250 MeV run
+/run/initialize
+/gps/ene/mono 250 MeV
+/gps/ene/sigma 1 MeV

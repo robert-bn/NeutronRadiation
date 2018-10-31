@@ -13,26 +13,17 @@ using namespace std;
 
 PrimaryGeneratorAction::PrimaryGeneratorAction()
 {
-    // Task 2b.1: Comment out the particle gun creation and instatiate a GPS instead
-    // fGun = new G4ParticleGun();
-
     fGPS = new G4GeneralParticleSource();
 
-    // Task 2a.1: Set the basic properties for the particles to be produced
-    G4ParticleDefinition* neutron = G4ParticleTable::GetParticleTable()->FindParticle("neutron");
-    // Alternative: electron = G4Electron::ElectronDefinition();
+    // GPS is generally designed for control via macros
+    // I will use GPS as it will be both easier and quicker to control via
+    // macros rather than writing a custom generator using G4ParticleGun.
 
-    /* fGun->SetParticleDefinition(electron);
-    fGun->SetParticleEnergy(100. * MeV);
-    fGun->SetParticleMomentumDirection(G4ThreeVector(1., 0., 0.));  // along y
-    */
-
-    // Task 2b.1: Set the same properties for the GPS (removing previous lines)
-    fGPS->SetParticleDefinition(neutron);
-    fGPS->GetCurrentSource()->GetEneDist()->SetMonoEnergy(1 * MeV);
-    fGPS->GetCurrentSource()->GetAngDist()->SetParticleMomentumDirection(G4ThreeVector(1., 0., 0.));
-
-    // Task 2b.2: You can remove or keep the previous lines in the later stages
+    // set default particle to Proton
+    G4ParticleDefinition* proton = G4ParticleTable::GetParticleTable()->FindParticle("proton");
+    fGPS->SetParticleDefinition(proton);
+    // beam direction
+    fGPS->GetCurrentSource()->GetAngDist()->SetParticleMomentumDirection(G4ThreeVector(0., 0., 1.));
 }
 
 PrimaryGeneratorAction::~PrimaryGeneratorAction()
