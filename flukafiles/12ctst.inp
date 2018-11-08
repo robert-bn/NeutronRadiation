@@ -1,0 +1,82 @@
+GLOBAL                                   4.0
+TITLE
+ Test of 12-C transport in Rock
+DEFAULTS                                                              PRECISIO
+*23456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789
+BEAM      -10.                                                        HEAVYION
+HI-PROPE   6.0      12.0
+BEAMPOS    0.0       0.0       -50.0
+SOURCE
+*EVENTYPE                         2.0
+EVENTYPE                         2.0                                  DPMJET
+DPMJET     0.0       0.0       0.0                 0.0       0.0      my card
+GEOBEGIN             0.01                                             COMBINAT
+                         standard rock slab
+  SPH    1       0.0       0.0       0.0+5000000.0
+  RPP    2-1000000.0+1000000.0-1000000.0+1000000.0    -100.0+1001000.0
+  XYP    3       0.0
+  XYP    4 1000000.0
+  END
+* black hole
+    1    5      1     -2
+* vacuum at the beginning
+    2    5      2      3    
+* rock
+    3    5      2      4     -3
+* vacuum at the end
+    8    5      2     -4
+  END
+GEOEND
+*23456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 
+MATERIAL  1.0       1.0079    .0000899  3.0                   1.0     HYDROGEN
+MATERIAL  6.0       12.01     2.25      6.0                           CARBON
+MATERIAL  8.0       15.999    0.001429  8.0                           OXYGEN
+MATERIAL  12.0      24.305    1.738     9.0                           MAGNESIU
+MATERIAL  13.0      26.982    2.70      10.0                          ALUMINUM
+MATERIAL  19.0      39.102    0.031165  11.0                          POTASSIU
+MATERIAL  20.0      40.08     1.54      12.0                          CALCIUM
+MATERIAL  14.0      28.086    0.5825    13.0                          SILICON
+*
+*23456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 
+MATERIAL                      1.9       14.0                          DETRIT
+COMPOUND  -0.09800    10.0    -0.016000  11.0     -0.11600    13.0    DETRIT
+COMPOUND  -0.50500   8.0      -0.005000  3.0      -0.06000    6.0     DETRIT
+COMPOUND  -0.00300   9.0      -0.196000  12.0                         DETRIT
+*
+MATERIAL                      2.675     15.0                          KARST
+COMPOUND  -0.40000    12.0    -0.12000    6.0     -0.47900    8.0     KARST
+*
+MATERIAL                      2.625     16.0                          LIMSTON
+COMPOUND  -0.35000    12.0    -0.036000   9.0     -0.12300    6.0     LIMSTON
+COMPOUND  -0.49000    8.0                                             LIMSTON
+*
+MATERIAL                      2.825     17.0                          DOLOMIT
+COMPOUND  -0.20000    12.0    -0.14400    9.0     -0.13100    6.0     DOLOMIT
+COMPOUND  -0.52400    8.0                                             DOLOMIT
+*
+*23456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 
+MATERIAL                      2.675     18.0                          MARL
+COMPOUND  -0.40000    10.0    -0.08400    13.0    -0.00600    11.0    MARL
+COMPOUND  -0.49300    8.0     -0.08600    6.0     -0.28800    12.0    MARL
+COMPOUND  -0.00200    3.0                                             MARL
+*
+LOW-NEUT                                  0.0
+*
+ASSIGNMAT 18.0      3.0       
+*  External Black Hole
+ASSIGNMAT 1.0       1.0
+*  Vacuum
+ASSIGNMAT 2.0       2.0       
+ASSIGNMAT 2.0       4.0       
+*23456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 
+STEPSIZE            2000.0    1.0       4.0
+SCORE     208.0     211.0     
+* **** Scoring ****
+*
+*---o---- ----o---- ----o---- ----o---- ----o---- ----o---- ----o---- ----o---- 
+EMF                                                                   EMF-OFF
+*
+RANDOMIZE  1.
+*---o---- ----o---- ----o---- ----o---- ----o---- ----o---- ----o---- ----o---- 
+START      150.0    99999999.           0.0        1.0
+STOP
