@@ -1,6 +1,8 @@
 #include "RunAction.hh"
 #include "Analysis.hh"
 #include "DetectorConstruction.hh"
+
+#include <G4SDManager.hh>
 #include <G4RunManager.hh>
 #include <G4Gamma.hh>
 #include <G4Electron.hh>
@@ -17,19 +19,14 @@ G4UserRunAction()
 {
     // Register created accumulables
     G4AccumulableManager* accumulableManager = G4AccumulableManager::Instance();
+    accumulableManager->RegisterAccumulable(fSecondaryNumbers);
     accumulableManager->RegisterAccumulable(fAverageGammaEnergy);
     accumulableManager->RegisterAccumulable(fAverageElectronEnergy);
     accumulableManager->RegisterAccumulable(fTotalTrackLength);
     accumulableManager->RegisterAccumulable(fTotalEnergyDeposited);
-
-    // Uncomment the following 4 lines to enable analysis.
-    // G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
-    // analysisManager->SetVerboseLevel(1);
-    // analysisManager->SetFirstNtupleId(1);
-    // analysisManager->SetFirstHistoId(1);
+    accumulableManager->RegisterAccumulable(fDownstreamHits);
 
     // definition for SI prefixed greys
-    //
     const G4double milligray = 1.e-3*gray;
     const G4double microgray = 1.e-6*gray;
     const G4double nanogray  = 1.e-9*gray;
@@ -41,23 +38,26 @@ G4UserRunAction()
     new G4UnitDefinition("picogray", "pGy", "Dose", picogray);
     new G4UnitDefinition("cm-2", "cm-2", "Fluence", 1/cm2);
 
-    // Uncomment to write ROOT file
-    // analysisManager->CreateH1("eDep", "Energy Deposited",  20, 50, 60);
-    // analysisManager->OpenFile("task4");
+    // Uncomment the following lines to write ROOT file
+    G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
+    analysisManager->SetVerboseLevel(1);
+    analysisManager->SetFirstNtupleId(1);
+    analysisManager->SetFirstHistoId(1);
+    analysisManager->CreateH1("eDep", "Energy Deposited",  20, 50, 60);
+    analysisManager->OpenFile("task4");
 }
 
 
 void RunAction::BeginOfRunAction(const G4Run*)
 {
-    // Reset all accumulables to their initial values
+    // resets everything to its original value
     G4AccumulableManager* accumulableManager = G4AccumulableManager::Instance();
-    accumulableManager->Reset();  // reset accumables
-    fSecondaryNumbers.clear();    // clear secondaries tally
+    accumulableManager->Reset();     // reset accumables
 }
 
 void RunAction::EndOfRunAction(const G4Run* run)
 {
-    // Retrieve the number of events produced in the run
+    // Retrieve the number of events in the run
     G4int nofEvents = run->GetNumberOfEvent();
 
     // Do nothing if no events were processed
@@ -65,6 +65,7 @@ void RunAction::EndOfRunAction(const G4Run* run)
 
     // Merge accumulables
     // Not 100% sure what this actually does.
+    // Possibly only used in Multithreaded mode?
     G4AccumulableManager* accumulableManager = G4AccumulableManager::Instance();
     accumulableManager->Merge();
 
@@ -81,6 +82,11 @@ void RunAction::EndOfRunAction(const G4Run* run)
     G4double dose = fTotalEnergyDeposited.GetValue() / mass;
     G4double fluence = fTotalTrackLength.GetValue() / volume;
 
+    // Get sensitive detector
+    G4SDManager* sdm = G4SDManager::GetSDMpointer();
+    G4VSensitiveDetector* det = sdm->FindSensitiveDetector("detector");
+
+
     if (IsMaster())
     {
         G4cout << "\n--------------------End of Global Run-----------------------";
@@ -89,7 +95,7 @@ void RunAction::EndOfRunAction(const G4Run* run)
             G4cout << " * Total energy deposited was: ";
             G4cout << G4BestUnit(fTotalEnergyDeposited.GetValue(), "Energy");
             G4cout << "\n * Total Dose was: " << G4BestUnit(dose,"Dose");
-            G4cout << "\n * Dose per neutron was: " << G4BestUnit(dose / nofEvents,"Dose");
+            G4cout << "\n * Dose per event was: " << G4BestUnit(dose / nofEvents,"Dose");
             G4cout << "(" << 1e4 * dose * gram / nofEvents << "E-4 MeV / gram) \n";
         }
         else
@@ -107,20 +113,22 @@ void RunAction::EndOfRunAction(const G4Run* run)
         G4cout << "\n--------------------Secondaries Tally-----------------------";
 
         // loop over every ParticleDefinition Number pair & print names & numbers
-        for(auto pair : fSecondaryNumbers)
+        for(auto pair : fSecondaryNumbers.GetValue())
         {
             G4cout << "\n * " << (pair.first)->GetParticleName() << ": " << pair.second;
         }
         G4cout << "\n------------------------------------------------------------";
         G4cout << G4endl;
+
+        G4cout << "There were " << fDownstreamHits.GetValue() << " collections in the downstream detector.\n";
     }
 }
 
 RunAction::~RunAction()
 {
     // Uncomment to write ROOT file
-    // G4AnalysisManager* man = G4AnalysisManager::Instance();
-    // man->Write();
+    G4AnalysisManager* man = G4AnalysisManager::Instance();
+    man->Write();
 }
 
 void RunAction::AddSecondary(const G4ParticleDefinition* particle,
@@ -128,7 +136,17 @@ void RunAction::AddSecondary(const G4ParticleDefinition* particle,
 {
     // adds particle to map if not already in (and starts at 1)
     // otherwise just increments secondary number
-    fSecondaryNumbers[particle] += 1;
+
+    // unfortunately G4Accumulable has no [] operator, and
+    // G4Accumulable::GetValue() returns a copy, not a reference
+    // Possible solution: create a class derived from G4Accumulable
+    // and define a [] operator.
+
+    // (temporary?) hackish solution, but works:
+    ParticleTable tempPT;
+    tempPT[particle] += 1;
+
+    fSecondaryNumbers += tempPT;
 
     if (particle == G4Gamma::Definition())
     {

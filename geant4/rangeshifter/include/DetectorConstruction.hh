@@ -26,6 +26,7 @@ private:
     void ConstructDemo(G4LogicalVolume* worldLog);
 protected:
     G4LogicalVolume*  fScoringVolume;
+    G4LogicalVolume*  fDownstreamScoringVolume;
 };
 
 #endif

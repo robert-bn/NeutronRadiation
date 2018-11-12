@@ -33,6 +33,7 @@ void SteppingAction::UserSteppingAction(const G4Step* aStep)
         {
             fRunAction->AddTrackLength(aStep->GetStepLength());
             fRunAction->AddEnergyDeposited(aStep->GetTotalEnergyDeposit());
+            aStep->GetTrack()->GetKineticEnergy();
         }
     }
 

@@ -74,7 +74,7 @@ int main(int argc, char** argv)
 
     // Create the run manager (MT or non-MT) and make it a bit verbose.
     auto runManager = new RunManager();
-    runManager->SetVerboseLevel(1);
+    // runManager->SetVerboseLevel(1);
 
     #ifdef G4VIS_USE
         G4VisManager* visManager = new G4VisExecutive();
@@ -126,8 +126,8 @@ int main(int argc, char** argv)
     delete runManager;
 
     // Uncomment to write ROOT file
-    // G4AnalysisManager* man = G4AnalysisManager::Instance();
-    // man->CloseFile();
+    G4AnalysisManager* man = G4AnalysisManager::Instance();
+    man->CloseFile();
 
     std::cout << "Application successfully ended.\nBye :^)" << std::endl;
 

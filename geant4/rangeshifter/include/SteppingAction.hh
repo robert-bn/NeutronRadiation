@@ -17,6 +17,7 @@ public:
 private:
     RunAction* fRunAction;
     G4LogicalVolume* fScoringVolume;
+    G4LogicalVolume* fDownstreamScoringVolume;
 };
 
 #endif

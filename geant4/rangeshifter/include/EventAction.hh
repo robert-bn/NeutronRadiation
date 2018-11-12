@@ -11,7 +11,7 @@ public:
 
 private:
     // Numerical IDs for hit collections (-1 means unknown yet)
-    G4int fTargetId { -1 };
+    G4int fDetectorId { -1 };
 };
 
 #endif

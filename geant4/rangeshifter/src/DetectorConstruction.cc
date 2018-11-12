@@ -8,16 +8,10 @@
 #include <G4Box.hh>
 #include <G4Orb.hh>
 #include <G4SDManager.hh>
-
-// Task 4c.1: Include the proper header for the multi-functional detector
-
-// Task 4c.1: Include the proper header for energy deposit primitive scorer
 #include <G4MultiFunctionalDetector.hh>
 #include <G4VPrimitiveScorer.hh>
 #include <G4PSEnergyDeposit.hh>
-
-// Task 1c.1: Include the proper header for the magnetic field messenger.
-#include <G4GlobalMagFieldMessenger.hh>
+#include <G4SDParticleFilter.hh>
 
 #include <sstream>
 
@@ -25,6 +19,8 @@ using namespace std;
 
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {
+    // ========================== WORLD ============================ //
+
     // world dimensions
     G4NistManager* nist = G4NistManager::Instance();
     G4double worldSizeX = 40 * cm;
@@ -58,47 +54,58 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
         false,
         0);
 
+    // ========================= TARGET ============================ //
+
     // target dimensions
-    G4double width     = 30*cm;
-    G4double height    = 40*cm;
-    G4double thickness = 3*cm;
+    G4double targetWidth     = 30*cm;
+    G4double targetHeight    = 40*cm;
+    G4double targetThickness = 5*cm;
 
-    // target solid
-    G4VSolid* targetBox = new G4Box("target", width / 2, height / 2, thickness / 2);
+    // target position
+    G4ThreeVector targetPos = G4ThreeVector(0., 0., 3*cm);
 
-    // Create material for Range Shifter
-    // PTFE as defined in PNNL -15870 Re. 1
-    // possibly identical to NIST definition, since
-    // PNNL report cites the NIST database
+    // target shape
+    G4VSolid* targetBox = new G4Box(
+      "target",
+      targetWidth / 2,
+      targetHeight / 2,
+      targetThickness / 2);
+
+    // target material
     //
+    // PTFE as defined in PNNL -15870 Re. 1
     // Used "Atomic weights of the elements 2013 (IUPAC Technical Report)"
-    // for atomic weights
 
+    G4Element* elH = new G4Element("Hydroen", "H", 1., 1.007 * g/mole);
     G4Element* elC = new G4Element("Carbon", "C", 6., 12.01109 * g/mole);
-    G4Element* elF = new G4Element("Fluorine", "F", 9., 18.998403163 * g/mole);
+    G4Element* elO = new G4Element("Oxygen", "O", 8., 15.999 * g/mole);
 
-    G4Material* PTFE = new G4Material("Polytetrafluoroethylene (PTFE)", 2.25 * g/cm3, 2);
-    PTFE->AddElement(elC, 1);
-    PTFE->AddElement(elF, 2);
+    G4Material* lexan =
+      new G4Material("Lexan",                          // its name
+                     1.20 * g/cm3,                     // its density
+                     3);                               // its number of consituents
 
-    // Create a logical volume for the target
+
+    lexan->AddElement(elH, 0.055491);
+    lexan->AddElement(elC, 0.755751);
+    lexan->AddElement(elO, 0.188758);
+
+    // target logical volume
     G4LogicalVolume* targetLog =
       new G4LogicalVolume(targetBox,                  // its shape
-                          PTFE,                       // its material
+                          lexan,                      // its material
                           "target");                  // its name
 
-    // visual properties of target
-    // TODO: Try removing the G4Colour::Blue(), I don't think its nessesary
+    // target visual properties
     G4VisAttributes* targetColour = new G4VisAttributes();
     targetColour->SetColour(1., 1., 1., 0.4);
     targetColour->SetVisibility(true);
     targetColour->SetForceSolid(true);
     targetLog->SetVisAttributes(targetColour);
 
-    // place that bad boy
-    //
+    // target placement
     new G4PVPlacement(0,                              // no rotation
-                      G4ThreeVector(0., 0., 3*cm),    // at (0,6cm,0)
+                      targetPos,                      // its position
                       targetLog,                      // its logical volume
                       "target",                       // its name
                       worldLog,                       // its mother  volume
@@ -106,11 +113,48 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
                       0,                              // copy number
                       true);                          // overlaps checking
 
-    // uncomment to print the material table
-    G4cout << *(G4Material::GetMaterialTable()) << G4endl;
+   // ========================= DETECTOR ============================ //
 
-    // sets logical volume for scoring (dose calculation)
-    fScoringVolume = targetLog;
+    // logical volume for the downstream detector
+    G4double detThickness = 1*mm;
+    G4VSolid* detBox =
+      new G4Box("detector", targetWidth/2, targetHeight/2, detThickness/2);
+
+    G4LogicalVolume* detLog =
+      new G4LogicalVolume(detBox,                                     // its shape
+                          nist->FindOrBuildMaterial("G4_Galactic"),   // its material
+                          "detector");                                // its name
+
+    // detector visual properties
+    G4VisAttributes* detColour = new G4VisAttributes();
+    detColour->SetColour(0., 1., 0., 0.7);
+    detColour->SetVisibility(true);
+    detColour->SetForceSolid(true);
+    detLog->SetVisAttributes(detColour);
+
+    // detector placement
+    G4ThreeVector detPos = targetPos + G4ThreeVector(0.,0.,(targetThickness+detThickness)/2);
+    new G4PVPlacement(0,                              // no rotation
+                      detPos,                         // its position
+                      detLog,                         // its logical volume
+                      "target",                       // its name
+                      worldLog,                       // its mother  volume
+                      false,                          // no boolean operation(?)
+                      0,                              // copy number
+                      true);                          // overlaps checking
+
+
+    // ============================================================= //
+
+    // uncomment to print the material table
+    // G4cout << *(G4Material::GetMaterialTable()) << G4endl;
+    G4cout << "Rangeshifter Thickness: "<< targetThickness / cm << " cm" << G4endl;
+
+    // sets logical volumes for scoring
+    fScoringVolume = targetLog;            // dose calculation, activation
+
+    fDownstreamScoringVolume = detLog;     // energy distribution and survival
+                                           // fraction of output protons
 
     // The Construct() method has to return the final (physical) world volume:
     return worldPhys;
@@ -122,11 +166,12 @@ void DetectorConstruction::ConstructSDandField()
     G4SDManager* sdManager = G4SDManager::GetSDMpointer();
     sdManager->SetVerboseLevel(2);  // Useful for 4c
 
-    // Create an instance of G4MultiFunctionalDetector for dose & activation
-    G4MultiFunctionalDetector* targetDetector = new G4MultiFunctionalDetector("target");
+    // Create an instance of G4MultiFunctionalDetector for energy distribution
+    // of range shifted protons
+    G4MultiFunctionalDetector* targetDetector = new G4MultiFunctionalDetector("detector");
 
-    // Create 2 primitive scorers for the dose and assign them to respective detectors
-    G4VPrimitiveScorer* targetScorer = new G4PSEnergyDeposit("target");
+    // Create a primitive scorers for the energy and assign to detector
+    G4VPrimitiveScorer* targetScorer = new G4PSEnergyDeposit("detector");
     targetDetector->RegisterPrimitive(targetScorer);
 
     // this looks weird, but remember this is a member function of
@@ -134,7 +179,14 @@ void DetectorConstruction::ConstructSDandField()
     // actually is member function of G4VUserDetectorConstruction:
     // void G4VUserDetectorConstruction::SetSensitiveDetector
     //
-    SetSensitiveDetector("target", targetDetector);
+    SetSensitiveDetector("detector", targetDetector);
+
+    // include proton G4SDParticleFilter
+    G4SDParticleFilter* particleFilter = new G4SDParticleFilter("proton filter");
+    particleFilter->add("proton");
+
+    // Attach the filter to primitive scorer.
+    targetScorer->SetFilter(particleFilter);
 
     // add these detectors to the sensitive detector manager
     sdManager->AddNewDetector(targetDetector);

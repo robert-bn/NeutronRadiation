@@ -126,8 +126,8 @@ int main(int argc, char** argv)
     delete runManager;
 
     // Uncomment to write ROOT file
-    // G4AnalysisManager* man = G4AnalysisManager::Instance();
-    // man->CloseFile();
+    G4AnalysisManager* man = G4AnalysisManager::Instance();
+    man->CloseFile();
 
     std::cout << "Application successfully ended.\nBye :^)" << std::endl;
 

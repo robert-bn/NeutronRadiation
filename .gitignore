@@ -1,4 +1,2 @@
-geant4/dose-build/
-geant4/rangeshifter-build/
-geant4/dose-old/
+geant4/*-build/
 data/

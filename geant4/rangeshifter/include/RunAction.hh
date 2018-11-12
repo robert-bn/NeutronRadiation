@@ -5,7 +5,7 @@
 #include <G4Run.hh>
 #include <G4ParticleDefinition.hh>
 #include <G4Accumulable.hh>
-#include <map>
+#include "ParticleTable.hh"
 
 class RunAction : public G4UserRunAction
 {
@@ -26,11 +26,13 @@ public:
   void AddEnergyDeposited(G4double energyDeposited);
 
 private:
-  std::map<const G4ParticleDefinition*, G4int> fSecondaryNumbers;
+  // std::map<const G4ParticleDefinition*, G4int> fSecondaryNumbers;
+  G4Accumulable<ParticleTable> fSecondaryNumbers = G4Accumulable<ParticleTable>("Secondaries", ParticleTable());
   G4Accumulable<G4double> fAverageGammaEnergy    = G4Accumulable<G4double>("AvgGammaEnergy",0);
   G4Accumulable<G4double> fAverageElectronEnergy = G4Accumulable<G4double>("AvgElectronEnergy",0);
   G4Accumulable<G4double> fTotalTrackLength      = G4Accumulable<G4double>("TotalTrackLength",0);
   G4Accumulable<G4double> fTotalEnergyDeposited  = G4Accumulable<G4double>("EnergyDeposited",0);
+  G4Accumulable<G4int> fDownstreamHits  = G4Accumulable<G4int>("DownstreamHits",0);
 };
 
 #endif

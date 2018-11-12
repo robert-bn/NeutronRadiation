@@ -16,10 +16,15 @@ using namespace std;
 
 void EventAction::EndOfEventAction(const G4Event* event)
 {
+    // DEBUG
+    // G4cout << "END OF EVENT\n";
+    //
     G4SDManager* sdm = G4SDManager::GetSDMpointer();
     G4AnalysisManager* analysis = G4AnalysisManager::Instance();
 
-    // Task 4c.2: Get the hit collections
+    G4VSensitiveDetector* det = sdm->FindSensitiveDetector("detector");
+
+    // Get the hit collections
     G4HCofThisEvent* hcofEvent = event->GetHCofThisEvent();
 
     // If there is no hit collection, there is nothing to be done
@@ -30,36 +35,29 @@ void EventAction::EndOfEventAction(const G4Event* event)
     // fTargetId gets a non-negative value and this block is skipped for all subsequent
     // events.
 
-    if (fTargetId < 0)
+    if (fDetectorId < 0)
     {
-      // Task 4c.2: Retrieve fTargetId from sdm: the name of the hit collection to retrieve is
-      //  "absorber/energy"
-      fTargetId = sdm->GetCollectionID("target");
-      // Task 4d.2: ...and comment the block out (if you don't want to see a long error list)
-      // fTargetId = sdm->....
-      G4cout << "EventAction: target energy scorer ID: " << fTargetId << G4endl;
+      // Retrieve fTargetId from sdm
+      fDetectorId = sdm->GetCollectionID("detector");
+      G4cout << "EventAction: detector scorer ID: " << fDetectorId << G4endl;
     }
-
-    G4int histogramId = 1;     // Note: We know this but in principle, we should ask
-
-    if (fTargetId >= 0)
+    /*
+    if (fDetectorId >= 0)
     {
-        /// Task 4c.2: Get and cast hit collection with energy in absorber
+        // Get and cast hit collection with energy in absorber
         // this is weird...
-        G4THitsMap<G4double>* hitMapA = dynamic_cast<G4THitsMap<G4double>*>(hcofEvent->GetHC(fTargetId));
-        if (hitMapA)
+        G4THitsMap<G4double>* hitMap = dynamic_cast<G4THitsMap<G4double>*>(hcofEvent->GetHC(fDetectorId));
+        // G4cout << "Number of hits in downstream detector: " << hitMap->GetMap()->size() << G4endl;
+        if (hitMap)
         {
-            for (auto pair : *(hitMapA->GetMap()))
+            for (auto pair : *(hitMap->GetMap()))
             {
-                G4double energy = *(pair.second);
-                //The position of the center of the i-th absorber is given by
-                //  50 * cm + thickness / 2 + i*2 * thickness,
-                //with thickness=0.5*cm. See lines 87 and 93 of DetectorConstruction.cc
-                //In short:
-                G4double x = 50.25 + (pair.first * 1.0);   // already in cm
-                // Task 4c.3. Store the position to the histogram
-                analysis->FillH1(histogramId, x, energy / keV);
+                G4cout << det->GetNumberOfCollections() << '\t' << hitMap->GetMap()->size();
+                G4cout << "\t" << pair.first << '\t' << *(pair.second) << G4endl;
+                analysis->FillH1(1, pair.first, *(pair.second));
             }
         }
     }
+    */
+
 }
