@@ -1,0 +1,50 @@
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+TITLE
+Charged pion fluence inside and around a proton-irradiated Be target
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+BEAM           -0.07    -0.544             -1.1775   -1.1755          PROTON
+BEAMPOS          0.0       0.0      -50.
+*
+GEOBEGIN                                                              COMBNAME
+    0    0                  A simple Teflon source inside the vacuum
+RPP body1      -500. 500. -500. 500. -500. 500.
+RPP body2      -100. 100. -100. 100. -100. 100.
+RPP body3      -15. 15. -5. 5. 0.0 1.
+XYP cutplane   25.
+END
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+* black hole
+regBH1       5 +body1 -body2
+* vacuum around
+regVA2       5 +body2 -body3 +cutplane
+regVA3       5 +body2 -cutplane
+* Be target 1st half
+regLE4       5 +body3
+END
+GEOEND
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+MATERIAL          1.             0.00008                           0.0HYDROGEN
+MATERIAL          6.                  2.                           0.0CARBON
+MATERIAL          8.             0.00134                           0.0OXYGEN
+MATERIAL                             1.2                              LEXAN
+COMPOUND     -5.5491  HYDROGEN  -75.5751    CARBON  -18.8758    OXYGENLEXAN
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+*  Be target, 1st and 2nd half
+ASSIGNMA       LEXAN    regLE4
+*  External Black Hole
+ASSIGNMA    BLCKHOLE    regBH1
+*  Vacuum
+ASSIGNMA      VACUUM    regVA2    regVA3
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+* e+e- and gamma production threshold set at 10 MeV
+EMFCUT        -0.010     0.010        1.                              PROD-CUT
+* score in each region energy deposition and stars produced by primaries
+SCORE         ENERGY  BEAMPART
+* Boundary crossing fluence in the middle of the target (log intervals, one-way)
+USRBDX          101.   PROTON               regVA3    regVA2      100.piFluenUD
+USRBDX                              10.0                 0.0       10. &
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+RANDOMIZ          1.
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+START        100000.
+STOP
