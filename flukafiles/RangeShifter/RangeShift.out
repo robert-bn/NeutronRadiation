@@ -1,0 +1,18 @@
+Dir: /home/thoma/github/NeutronRadiation/flukafiles/RangeShifter
+Cmd: /usr/bin/nohup /home/thoma/fluka/flutil/rfluka -M 1 RangeShift
+$TARGET_MACHINE = Linux
+$FLUPRO = /home/thoma/fluka
+
+Initial seed already existing
+Running fluka in /home/thoma/github/NeutronRadiation/flukafiles/RangeShifter/fluka_12015
+================================ Running FLUKA for cycle # 1 =============================================
+Removing links
+Removing temporary files
+Saving output and random number seed
+Saving additional files generated     Moving fort.26 to /home/thoma/github/NeutronRadiation/flukafiles/RangeShifter/RangeShift001_fort.26
+     Moving fort.27 to /home/thoma/github/NeutronRadiation/flukafiles/RangeShifter/RangeShift001_fort.27
+     Moving fort.28 to /home/thoma/github/NeutronRadiation/flukafiles/RangeShifter/RangeShift001_fort.28
+     Moving fort.29 to /home/thoma/github/NeutronRadiation/flukafiles/RangeShifter/RangeShift001_fort.29
+     Moving fort.30 to /home/thoma/github/NeutronRadiation/flukafiles/RangeShifter/RangeShift001_fort.30
+
+End of FLUKA run
