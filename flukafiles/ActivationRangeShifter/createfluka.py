@@ -7,11 +7,11 @@ thickness = [1.,2.,3.,5.]   # cm
 for i, e in enumerate(energies):
     for t in thickness:
         with open("template.txt", 'r') as templatef:
-            directory = "/{rThickness}-{bEnergy}/".format(rThickness=t, bEnergy=e)
+            directory = "/{rThickness}-{bEnergy:03}/".format(rThickness=round(t), bEnergy=round(1000*e))
             os.makedirs(os.getcwd() + directory)
             with open(os.getcwd() + directory + "in.inp", 'w+') as f:
                 for line in templatef:
                     line = line.replace("$rThickness$",str(t))
-                    line = line.replace("$bEnergy$",str(e))
-                    line = line.replace("$bEnergySpread$",str(spread[i]))
+                    line = line.replace("$bEnergy$","{:.6f}".format(e))
+                    line = line.replace("$bEnergySpread$","{:.6f}".format(spread[i]))
                     print(line, file=f, end='')
