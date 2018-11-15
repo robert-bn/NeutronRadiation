@@ -7,7 +7,7 @@ thickness = [1.,2.,3.,5.]   # cm
 for i, e in enumerate(energies):
     for t in thickness:
         with open("template.txt", 'r') as templatef:
-            directory = "/t{rThickness}e{bEnergy}/".format(rThickness=t, bEnergy=e)
+            directory = "/{rThickness}-{bEnergy}/".format(rThickness=t, bEnergy=e)
             os.makedirs(os.getcwd() + directory)
             with open(os.getcwd() + directory + "in.inp", 'w+') as f:
                 for line in templatef:
