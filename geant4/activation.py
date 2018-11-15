@@ -31,6 +31,7 @@ for ist in half_life.keys():
     saturation[ist] = saturation[ist] * (1 - np.exp(-λ(ist)*beam_time))
 
 print(saturation)
+saturation.to_csv("saturation.csv")
 
 # find one hour values
 one_hour_value = saturation.copy()
@@ -38,3 +39,4 @@ for ist in half_life.keys():
     one_hour_value[ist] = one_hour_value[ist] * np.exp(-λ(ist)*1*hour)
 
 print(one_hour_value)
+one_hour_value.to_csv("one hour value.csv")
