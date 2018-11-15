@@ -23,11 +23,14 @@ data = data[['thickness (cm)', 'energy'] + imp_ist].sort_index()
 
 # normalise data to beam
 data[imp_ist] = data[imp_ist] * actual_protons / input_protons
+data.to_csv("normalized.csv")
 
 
 # find saturation values
 saturation = data.copy()
 for ist in half_life.keys():
+    print(ist, end=' ')
+    print(λ(ist))
     saturation[ist] = saturation[ist] * (1 - np.exp(-λ(ist)*beam_time))
 
 print(saturation)
