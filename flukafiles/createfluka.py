@@ -1,14 +1,16 @@
 from numpy import arange
 import os
 
-sphere_radius = 5000
+energies = [0.250,0.230,0.200,0.150,0.100,0.70]  # MeV
+thickness = [1.,2.,3.,5.]   # cm
 
-for detnum in arange(10,300,10):
-    with open("template.txt", 'r') as templatef:
-        os.makedirs(os.getcwd() + "/Det{num}/".format(num=detnum))
-        with open(os.getcwd() + "/Det{num}/det.g4bl".format(num=detnum), 'w+') as f:
-            for line in templatef:
-                line = line.replace("$detNum$",str(detnum))
-                line = line.replace("$outerRadius$",str(sphere_radius + detnum))
-                line = line.replace("$innerRadius$",str(sphere_radius))
-                print(line, file=f, end='')
+for e in energies:
+    for t in thickness
+        with open("template.txt", 'r') as templatef:
+            directory = /t{rThickness}e{bEnergy}/".format(rThickness=t, bEnergy=e)
+            os.makedirs(os.getcwd() + directory)
+            with open(os.getcwd() + directory, 'w+') as f:
+                for line in templatef:
+                    line = line.replace("$rThickness$",str(t))
+                    line = line.replace("$bEnergy$",str(e))
+                    print(line, file=f, end='')
