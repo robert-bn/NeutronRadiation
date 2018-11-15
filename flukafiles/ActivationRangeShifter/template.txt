@@ -72,5 +72,5 @@ RESNUCLEi        3.0       26.       10.       16.    regLE4          Ian
 RANDOMIZ          1.
 * ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
 * Start and Stop with given number of events
-START        10000000.
+START       10000000.
 STOP
