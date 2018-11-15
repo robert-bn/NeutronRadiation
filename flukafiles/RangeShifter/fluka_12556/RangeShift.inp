@@ -4,7 +4,7 @@ TITLE
 Protons in Lexan (70MeV, 1cm)
 * ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
 * Define things about the beam and position
-BEAM      -0.070000 -0.054000            -1.1775   -1.1755            PROTON
+BEAM           -0.07   -0.0544             -1.1775   -1.1755          PROTON
 BEAMPOS          0.0       0.0      -50.
 *
 *Begin Describing the geometry
@@ -13,10 +13,10 @@ GEOBEGIN                                                              COMBNAME
 *RPP Parallelepipeds
 RPP body1      -500. 500. -500. 500. -500. 500.
 RPP body2      -100. 100. -100. 100. -100. 100.
-RPP body3      -15. 15. -5. 5. 0.0 5.0
+RPP body3      -15. 15. -5. 5. 0.0 1.
 *Cutplanes surround lexan
 XYP cutplan1    0.
-XYP cutplan2    5.0
+XYP cutplan2    1.
 END
 * ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
 * Define regions bounded by the geometry
