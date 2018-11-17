@@ -9,7 +9,6 @@
 void ActionInitialization::Build() const
 {
     SetUserAction(new PrimaryGeneratorAction());
-    /* These two classes are used only in task3-4.*/
     RunAction* theRunAction = new RunAction();
     SetUserAction(theRunAction);
     SetUserAction(new StackingAction(theRunAction));
