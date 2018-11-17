@@ -4,6 +4,10 @@
 #include <G4UserSteppingAction.hh>
 #include <G4LogicalVolume.hh>
 
+/*
+ *  Class instanciated every step
+ */
+
 class RunAction;
 
 class SteppingAction : public G4UserSteppingAction

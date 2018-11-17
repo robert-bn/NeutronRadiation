@@ -6,113 +6,146 @@
 #include <G4SystemOfUnits.hh>
 #include <G4VisAttributes.hh>
 #include <G4Box.hh>
-#include <G4Orb.hh>
 #include <G4SDManager.hh>
-
-// Task 4c.1: Include the proper header for the multi-functional detector
-
-// Task 4c.1: Include the proper header for energy deposit primitive scorer
-#include <G4MultiFunctionalDetector.hh>
-#include <G4VPrimitiveScorer.hh>
-#include <G4PSEnergyDeposit.hh>
-
-// Task 1c.1: Include the proper header for the magnetic field messenger.
-#include <G4GlobalMagFieldMessenger.hh>
-
-#include <sstream>
+// #include <G4MultiFunctionalDetector.hh>
+// #include <G4VPrimitiveScorer.hh>
 
 using namespace std;
 
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {
-    // world dimensions
-    G4NistManager* nist = G4NistManager::Instance();
-    G4double worldSizeX = 2 * m;
-    G4double worldSizeY = 1 * m;
-    G4double worldSizeZ = 1 * m;
+  // WORLD WORLD WORLD WORLD WORLD WORLD WORLD WORLD WORLD WORLD WORLD WORLD WOR
 
-    // World Solid
-    G4VSolid* worldBox = new G4Box("world", worldSizeX / 2, worldSizeY / 2, worldSizeZ / 2);
+  // world dimensions
+  G4NistManager* nist = G4NistManager::Instance();
+  G4double worldSizeX = 40 * cm;
+  G4double worldSizeY = 40 * cm;
+  G4double worldSizeZ = 40 * cm;
 
-    // World logical volume
-    G4LogicalVolume* worldLog =
-      new G4LogicalVolume(worldBox,                                  // solid
-                          nist->FindOrBuildMaterial("G4_Galactic"),  // material
-                          "world");                                  // name
+  // World Solid
+  G4VSolid* worldBox = new G4Box("world", worldSizeX / 2, worldSizeY / 2, worldSizeZ / 2);
 
-    G4VisAttributes* visAttr = new G4VisAttributes();
+  // World logical volume
+  G4LogicalVolume* worldLog =
+  new G4LogicalVolume(worldBox,                                  // solid
+    nist->FindOrBuildMaterial("G4_Galactic"),  // material
+    "world");                                  // name
 
-    // make World invisible
-    visAttr->SetVisibility(false);
-    worldLog->SetVisAttributes(visAttr);
+  G4VisAttributes* visAttr = new G4VisAttributes();
 
-    // World physical volume
-    G4VPhysicalVolume* worldPhys = new G4PVPlacement(nullptr, {}, worldLog, "world", nullptr, false, 0);
+  // make World invisible
+  visAttr->SetVisibility(true);
+  worldLog->SetVisAttributes(visAttr);
 
-    // target dimensions
-    G4double thickness = 10*cm;
-    G4double width     = 10*cm;
-    G4double height    = 10*cm;
+  // World physical volume
+  G4VPhysicalVolume* worldPhys = new G4PVPlacement(
+    nullptr,                            // World - no mother volume
+    {},                                 // World - no position
+    worldLog,                           // Its logical volume
+    "world",                            // Its name
+    nullptr,                            // ?
+    false,                              // No boolean operation
+    0);                                 // copy number
 
-    // target solid
-    G4VSolid* targetBox = new G4Box("target", thickness / 2, width / 2, height / 2);
 
-    // Create a logical volume for the target
-    G4LogicalVolume* targetLog =
-      new G4LogicalVolume(targetBox,                             // its shape
-                          nist->FindOrBuildMaterial("G4_WATER"), // its material
-                          "target");                             // its name
+  // ENVELOPE ENVELOPE ENVELOPE ENVELOPE ENVELOPE ENVELOPE ENVELOPE ENVELOPE ENV
 
-    // visual properties of target
-    // TODO: Try removing the G4Colour::Blue(), I don't think its nessesary
-    G4VisAttributes* blue = new G4VisAttributes();
-    blue->SetColour(0., 0., 1., 0.4);
-    blue->SetVisibility(true);
-    blue->SetForceSolid(true);
-    targetLog->SetVisAttributes(blue);
+  // Envelope dimensions
+  G4double envSizeX = 30*cm;
+  G4double envSizeY = 30*cm;
+  G4double envSizeZ = 30*cm;
 
-    // place that bad boy
-    // G4VPhysicalVolume* worldPhys = new G4PVPlacement(nullptr, {}, worldLog, "world", nullptr, false, 0);
-    //
-    new G4PVPlacement(0,                              // no rotation
-                      G4ThreeVector(6*cm, 0., 0.),    // at (0,6cm,0)
-                      targetLog,                      // its logical volume
-                      "target",                       // its name
-                      worldLog,                       // its mother  volume
-                      false,                          // no boolean operation(?)
-                      0,                              // copy number
-                      true);                          // overlaps checking
+  // Envelope Solid
+  G4VSolid* envBox = new G4Box("envelope", envSizeX/2, envSizeY/2, envSizeZ/2);
 
-    // uncomment to print the material table
-    // G4cout << *(G4Material::GetMaterialTable()) << G4endl;
+  // Envelope logical volume
+  G4LogicalVolume* envLog =
+  new G4LogicalVolume(envBox,                   // solid
+    nist->FindOrBuildMaterial("G4_WATER"),      // material
+    "world");                                   // name
 
-    // sets logical volume for scoring (dose calculation)
-    fScoringVolume = targetLog;
+  // Visual properties
+  G4VisAttributes* envVis = new G4VisAttributes();
+  envVis->SetColour(0., 0., 1., 0.2);
+  envVis->SetVisibility(true);
+  envVis->SetForceSolid(true);
+  envLog->SetVisAttributes(envVis);
 
-    // The Construct() method has to return the final (physical) world volume:
-    return worldPhys;
+  // Placement
+  new G4PVPlacement(0,              // no rotation
+    G4ThreeVector(0., 0., 0.),      // at (0,0,0)
+    envLog,                         // its logical volume
+    "envelope",                     // its name
+    worldLog,                       // its mother  volume
+    false,                          // no boolean operation(?)
+    0,                              // copy number
+    true);                          // overlaps checking
+
+  // TARGET TARGET TARGET TARGET TARGET TARGET TARGET TARGET TARGET TARGET TARGE
+
+  // target dimensions
+  G4double targetX = 10*cm;
+  G4double targetY = 10*cm;
+  G4double targetZ = 10*cm;
+
+  // target solid
+  G4VSolid* targetBox = new G4Box("target", targetX/2, targetY/2, targetZ/2);
+
+  // target logical volume
+  G4LogicalVolume* targetLog =
+  new G4LogicalVolume(targetBox,                             // its shape
+    nist->FindOrBuildMaterial("G4_WATER"), // its material
+    "target");                             // its name
+
+  // Target visual properties
+  G4VisAttributes* blue = new G4VisAttributes();
+  blue->SetColour(0., 0., 1., 0.4);
+  blue->SetVisibility(true);
+  blue->SetForceSolid(true);
+  targetLog->SetVisAttributes(blue);
+
+  // Target placement
+  new G4PVPlacement(0,              // no rotation
+    G4ThreeVector(0., 0., 0.),      // at (0,6cm,0)
+    targetLog,                      // its logical volume
+    "target",                       // its name
+    envLog,                         // its mother  volume
+    false,                          // no boolean operation(?)
+    0,                              // copy number
+    true);                          // overlaps checking
+
+  // uncomment to print the material table
+  // G4cout << *(G4Material::GetMaterialTable()) << G4endl;
+
+  // sets logical volume for scoring (dose calculation)
+  fScoringVolume = targetLog;
+
+  // The Construct() method has to return the final (physical) world volume:
+  return worldPhys;
 }
 
 
 void DetectorConstruction::ConstructSDandField()
 {
-    G4SDManager* sdManager = G4SDManager::GetSDMpointer();
-    sdManager->SetVerboseLevel(2);  // Useful for 4c
+  /*
+  G4SDManager* sdManager = G4SDManager::GetSDMpointer();
+  sdManager->SetVerboseLevel(2);  // Useful for 4c
 
-    // Create an instance of G4MultiFunctionalDetector (for absorber and scintillator)
-    G4MultiFunctionalDetector* targetDetector = new G4MultiFunctionalDetector("target");
+  // Create an instance of G4MultiFunctionalDetector (for absorber and scintillator)
+  G4MultiFunctionalDetector* targetDetector = new G4MultiFunctionalDetector("target");
 
-    // Create 2 primitive scorers for the dose and assign them to respective detectors
-    G4VPrimitiveScorer* targetScorer = new G4PSEnergyDeposit("target");
-    targetDetector->RegisterPrimitive(targetScorer);
+  // Create 2 primitive scorers for the dose and assign them to respective detectors
+  G4VPrimitiveScorer* targetScorer = new G4PSEnergyDeposit("target");
+  targetDetector->RegisterPrimitive(targetScorer);
 
-    // this looks weird, but remember this is a member function of
-    // DetectorConstruction, that inherits from G4VUserDetectorConstruction
-    // actually is member function of G4VUserDetectorConstruction:
-    // void G4VUserDetectorConstruction::SetSensitiveDetector
-    //
-    SetSensitiveDetector("target", targetDetector);
+  // this looks weird, but remember this is a member function of
+  // DetectorConstruction, that inherits from G4VUserDetectorConstruction
+  // actually is member function of G4VUserDetectorConstruction:
+  // void G4VUserDetectorConstruction::SetSensitiveDetector
+  //
+  SetSensitiveDetector("target", targetDetector);
 
-    // add these detectors to the sensitive detector manager
-    sdManager->AddNewDetector(targetDetector);
+  // add these detectors to the sensitive detector manager
+  sdManager->AddNewDetector(targetDetector);
+  */
 }
