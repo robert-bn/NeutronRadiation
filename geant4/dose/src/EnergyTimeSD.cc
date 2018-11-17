@@ -11,12 +11,16 @@ EnergyTimeSD::EnergyTimeSD(G4String name) :
 
 G4bool EnergyTimeSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
 {
-    // Task 4d.1: Get total energy deposit, global time and position from the step
-
+    // Get total energy deposit, global time and position from the step
     EnergyTimeHit* hit = new EnergyTimeHit();
-    // Task 4d.1: Fill in the hit properties
-    
-    // Task 4d.1: Add the hit to the collection
+
+    // Fill in the hit properties
+    hit->SetDeltaEnergy(aStep->GetTotalEnergyDeposit());
+    hit->SetTime(aStep->GetPostStepPoint()->GetGlobalTime());
+    hit->SetPosition(aStep->GetPostStepPoint()->GetPosition());
+
+    // Add the hit to the collection
+    fHitsCollection->insert(hit);
     return true;
 }
 

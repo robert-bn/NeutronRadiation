@@ -15,9 +15,12 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
   G4ParticleDefinition* particle = G4ParticleTable::GetParticleTable()->FindParticle("proton");
 
   // Energy & Momentum Paramters
+  // Note that these can be (and are) modified in a macro, these are just defaults
   fGPS->SetParticleDefinition(particle);
   fGPS->GetCurrentSource()->GetEneDist()->SetMonoEnergy(250 * MeV);
   fGPS->GetCurrentSource()->GetAngDist()->SetParticleMomentumDirection(G4ThreeVector(1., 0., 0.));
+
+  // Position of Beam
   fGPS->GetCurrentSource()->GetPosDist()->SetCentreCoords(G4ThreeVector(-19*cm,0.,0.));
 }
 

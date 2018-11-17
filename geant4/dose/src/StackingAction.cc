@@ -1,7 +1,6 @@
 #include "StackingAction.hh"
 #include "RunAction.hh"
 
-#include <G4Electron.hh>
 #include <G4SystemOfUnits.hh>
 
 StackingAction::StackingAction(RunAction* aRunAction) :

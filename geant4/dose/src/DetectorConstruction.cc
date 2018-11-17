@@ -66,7 +66,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   // Visual properties
   G4VisAttributes* envVis = new G4VisAttributes();
-  envVis->SetColour(0., 0., 1., 0.2);
+  envVis->SetColour(0., 0., 1., 0.1);
   envVis->SetVisibility(true);
   envVis->SetForceSolid(true);
   envLog->SetVisAttributes(envVis);

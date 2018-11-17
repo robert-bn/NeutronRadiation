@@ -1,7 +1,7 @@
 #include <vector>
 
-// Task 4e.1: Look how different managers are aliased as RunManager.
-//            (single- or multi-threaded depending on the condition)
+// Different run managers used depending on if compiled with G4MULTITHREADED
+// flag or not.
 #ifdef G4MULTITHREADED
     #include <G4MTRunManager.hh>
     using RunManager = G4MTRunManager;
@@ -20,19 +20,10 @@
 
 #include <G4String.hh>
 #include <G4UImanager.hh>
+#include <QGSP_BIC_HP.hh>      // QGSP Binary Cascade physics list
 
 #include "ActionInitialization.hh"
-
-// Task 1: See that we need to include the proper header
 #include "DetectorConstruction.hh"
-// #include "PhysicsList.hh"
-
-// Task 3b.4: Include (temporarily if you want) header for QGSP
-#include <QGSP_BIC_HP.hh>
-
-// Task 4b.1: Include the proper header to enable scoring manager
-
-// Task 4c.3: Include the proper header to enable analysis tools
 #include "Analysis.hh"
 
 
@@ -42,6 +33,7 @@ using namespace std;
  * - run any number of macros (put them as command-line arguments)
  * - start interactive UI mode (no arguments or "-i")
  */
+
 int main(int argc, char** argv)
 {
     std::cout << "Application starting..." << std::endl;
@@ -125,11 +117,11 @@ int main(int argc, char** argv)
 
     delete runManager;
 
-    // Uncomment to write ROOT file
+    // Write analysis to root (or csv) file
     G4AnalysisManager* man = G4AnalysisManager::Instance();
     man->CloseFile();
 
     std::cout << "Application successfully ended.\nBye :^)" << std::endl;
 
-    return 0;
+    return EXIT_SUCCESS;
 }
