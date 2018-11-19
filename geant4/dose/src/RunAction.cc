@@ -1,5 +1,4 @@
 #include "RunAction.hh"
-#include "Analysis.hh"
 #include "DetectorConstruction.hh"
 // #include "PrimaryGeneratorAction.hh"
 #include <G4GeneralParticleSource.hh>
@@ -86,17 +85,17 @@ void RunAction::EndOfRunAction(const G4Run* run)
 
   if (IsMaster())
   {
-    G4cout << "\n--------------------End of Global Run-----------------------";
-    G4cout << " \n The run was " << nofEvents << " " << particle << "s with ";
-    G4cout << G4BestUnit(energy, "Energy") <<  "\n";
+    G4cout << "\n--------------------End of Global Run-----------------------\n";
+    G4cout << " * The run was " << nofEvents << " " << particle << "s with ";
+    G4cout << G4BestUnit(energy, "Energy") << "\n";
     if (fTotalEnergyDeposited.GetValue()){
       G4cout << " * Total energy deposited was: ";
       G4cout << G4BestUnit(fTotalEnergyDeposited.GetValue(), "Energy");
       G4cout << "\n * Total Dose was: " << G4BestUnit(dose,"Dose");
-      G4cout << "\n * Dose per event was: " << G4BestUnit(dose / nofEvents,"Dose");
+      G4cout << "\n * Dose per " << particle << " was: " << G4BestUnit(dose / nofEvents,"Dose");
       G4cout << "(" << 1e4 * dose * gram / nofEvents << "E-4 MeV / gram) \n";
 
-      // write energy & event number & dose to file
+      // write particle type & energy & event number & dose to file
       std::ofstream energyFile;
       energyFile.open ("dose.csv", std::ofstream::out | std::ofstream::app);
       energyFile << particle << ','<< nofEvents << "," << energy / keV << ',' << dose / gray << "\n";
@@ -105,8 +104,7 @@ void RunAction::EndOfRunAction(const G4Run* run)
     }
     else
     {
-      G4cout << "No energy deposited!";
-      G4cout << "This strongly suggests a problem with the simulation.\n";
+      G4cout << "\nNo energy deposited! This may indicate a problem with the simulation.\n";
     }
     if (fTotalTrackLength.GetValue())
     {
@@ -115,15 +113,23 @@ void RunAction::EndOfRunAction(const G4Run* run)
       G4cout << " * Mean fluence in target: " << G4BestUnit(fluence, "Fluence");
     }
 
-    G4cout << "\n--------------------Secondaries Tally-----------------------";
 
-    // loop over every ParticleDefinition Number pair & print names & numbers
-    for(auto pair : fSecondaryNumbers)
+    G4cout << "\n--------------------Secondaries Tally-----------------------\n";
+    if (fSecondaryNumbers.size() > 0)
     {
-      G4cout << "\n * " << (pair.first)->GetParticleName() << ": " << pair.second;
+      // loop over every ParticleDefinition Number pair & print names & numbers
+      for(auto pair : fSecondaryNumbers)
+      {
+        G4cout << " * " << (pair.first)->GetParticleName() << ": " << pair.second << "\n";
+      }
     }
-    G4cout << "\n------------------------------------------------------------";
+    else
+    {
+      G4cout << "No Secondaries found!\n";
+    }
+    G4cout << "------------------------------------------------------------";
     G4cout << G4endl;
+
   }
 }
 

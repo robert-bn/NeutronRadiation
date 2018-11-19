@@ -20,6 +20,7 @@ public:
 
 private:
   RunAction* fRunAction;
+  G4LogicalVolume* fScoringVolume;
 };
 
 #endif

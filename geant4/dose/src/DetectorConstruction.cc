@@ -14,11 +14,15 @@ using namespace std;
 
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {
-  // WORLD WORLD WORLD WORLD WORLD WORLD WORLD WORLD WORLD WORLD WORLD WORLD WOR
+  /*
+   * ===========================================================================
+   * ================================= World ===================================
+   * ===========================================================================
+   */
 
-  // world dimensions
+  // World dimensions
   G4NistManager* nist = G4NistManager::Instance();
-  G4double worldSizeX = 40 * cm;
+  G4double worldSizeX = 2 * m;
   G4double worldSizeY = 40 * cm;
   G4double worldSizeZ = 40 * cm;
 
@@ -27,7 +31,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   // World logical volume
   G4LogicalVolume* worldLog =
-  new G4LogicalVolume(worldBox,                                  // solid
+  new G4LogicalVolume(worldBox,                // solid
     nist->FindOrBuildMaterial("G4_Galactic"),  // material
     "world");                                  // name
 
@@ -47,8 +51,11 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
     false,                              // No boolean operation
     0);                                 // copy number
 
-
-  // ENVELOPE ENVELOPE ENVELOPE ENVELOPE ENVELOPE ENVELOPE ENVELOPE ENVELOPE ENV
+  /*
+   * ===========================================================================
+   * ================================ Envelope =================================
+   * ===========================================================================
+   */
 
   // Envelope dimensions
   G4double envSizeX = 30*cm;
@@ -71,9 +78,12 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   envVis->SetForceSolid(true);
   envLog->SetVisAttributes(envVis);
 
+  // Envelope Position (To the right)
+  G4ThreeVector envPos = G4ThreeVector(80*cm,0.,0.);
+
   // Placement
   new G4PVPlacement(0,              // no rotation
-    G4ThreeVector(0., 0., 0.),      // at (0,0,0)
+    envPos,                         // at position
     envLog,                         // its logical volume
     "envelope",                     // its name
     worldLog,                       // its mother  volume
@@ -81,7 +91,74 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
     0,                              // copy number
     true);                          // overlaps checking
 
-  // TARGET TARGET TARGET TARGET TARGET TARGET TARGET TARGET TARGET TARGET TARGE
+  /*
+   * ===========================================================================
+   * ============================= Range Shifter ===============================
+   * ===========================================================================
+   */
+
+  // Range shifter dimensions
+  G4double rangeShifterX = 5*cm;
+  G4double rangeShifterY = 40*cm;
+  G4double rangeShifterZ = 30*cm;
+
+  // Range shifter position
+  G4ThreeVector rangeShifterPos = G4ThreeVector(-95*cm, 0., 0.);
+
+  // Range shifter shape
+  G4VSolid* rangeShifterBox = new G4Box(
+    "target",
+    rangeShifterX / 2,
+    rangeShifterY / 2,
+    rangeShifterZ / 2);
+
+  // Ranges hifter material
+  //
+  // Lexan/Polycarbonate as defined in PNNL -15870 Re. 1
+  // Used "Atomic weights of the elements 2013 (IUPAC Technical Report)"
+
+  G4Element* elH = new G4Element("Hydroen", "H", 1., 1.007 * g/mole);
+  G4Element* elC = new G4Element("Carbon", "C", 6., 12.01109 * g/mole);
+  G4Element* elO = new G4Element("Oxygen", "O", 8., 15.999 * g/mole);
+
+  G4Material* lexan =
+    new G4Material("Lexan",                         // its name
+                   1.20 * g/cm3,                    // its density
+                   3);                              // its number of consituents
+
+  lexan->AddElement(elH, 0.055491);
+  lexan->AddElement(elC, 0.755751);
+  lexan->AddElement(elO, 0.188758);
+
+  // Rangeshifter logical volume
+  G4LogicalVolume* rangeShifterLog =
+    new G4LogicalVolume(rangeShifterBox,            // its shape
+                        lexan,                      // its material
+                        "target");                  // its name
+
+  // Rangeshifter visual properties
+  G4VisAttributes* rangeShifterColour = new G4VisAttributes();
+  rangeShifterColour->SetColour(1., 1., 1., 0.4);
+  rangeShifterColour->SetVisibility(true);
+  rangeShifterColour->SetForceSolid(true);
+  rangeShifterLog->SetVisAttributes(rangeShifterColour);
+
+  // Rangeshifter placement
+  new G4PVPlacement(0,                              // no rotation
+                    rangeShifterPos,                // its position
+                    rangeShifterLog,                // its logical volume
+                    "target",                       // its name
+                    worldLog,                       // its mother  volume
+                    false,                          // no boolean operation(?)
+                    0,                              // copy number
+                    true);                          // overlaps checking
+
+
+  /*
+   * ===========================================================================
+   * ================================ Target ===================================
+   * ===========================================================================
+   */
 
   // target dimensions
   G4double targetX = 10*cm;
@@ -93,9 +170,9 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   // target logical volume
   G4LogicalVolume* targetLog =
-  new G4LogicalVolume(targetBox,                             // its shape
-    nist->FindOrBuildMaterial("G4_WATER"), // its material
-    "target");                             // its name
+  new G4LogicalVolume(targetBox,            // its shape
+    nist->FindOrBuildMaterial("G4_WATER"),  // its material
+    "target");                              // its name
 
   // Target visual properties
   G4VisAttributes* blue = new G4VisAttributes();
@@ -106,7 +183,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   // Target placement
   new G4PVPlacement(0,              // no rotation
-    G4ThreeVector(0., 0., 0.),      // at (0,6cm,0)
+    G4ThreeVector(0.,0.,0.),        // in centre of envelope
     targetLog,                      // its logical volume
     "target",                       // its name
     envLog,                         // its mother  volume

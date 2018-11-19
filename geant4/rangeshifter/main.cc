@@ -131,5 +131,5 @@ int main(int argc, char** argv)
 
     std::cout << "Application successfully ended.\nBye :^)" << std::endl;
 
-    return 0;
+    // return 0;
 }

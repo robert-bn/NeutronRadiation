@@ -21,7 +21,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
   fGPS->GetCurrentSource()->GetAngDist()->SetParticleMomentumDirection(G4ThreeVector(1., 0., 0.));
 
   // Position of Beam
-  fGPS->GetCurrentSource()->GetPosDist()->SetCentreCoords(G4ThreeVector(-19*cm,0.,0.));
+  fGPS->GetCurrentSource()->GetPosDist()->SetCentreCoords(G4ThreeVector(-99*cm,0.,0.));
 }
 
 PrimaryGeneratorAction::~PrimaryGeneratorAction()
