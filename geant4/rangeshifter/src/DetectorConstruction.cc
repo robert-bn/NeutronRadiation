@@ -19,9 +19,13 @@ using namespace std;
 
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {
-    // ========================== WORLD ============================ //
+    /*
+     * =========================================================================
+     * ================================= World =================================
+     * =========================================================================
+     */
 
-    // world dimensions
+    // World dimensions
     G4NistManager* nist = G4NistManager::Instance();
     G4double worldSizeX = 40 * cm;
     G4double worldSizeY = 50 * cm;
@@ -54,7 +58,11 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
         false,
         0);
 
-    // ========================= TARGET ============================ //
+    /*
+     * =========================================================================
+     * ============================ Range Shifter ==============================
+     * =========================================================================
+     */
 
     // target dimensions
     G4double targetWidth     = 30*cm;
@@ -73,7 +81,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
     // target material
     //
-    // PTFE as defined in PNNL -15870 Re. 1
+    // Lexan/Polycarbonate as defined in PNNL -15870 Re. 1
     // Used "Atomic weights of the elements 2013 (IUPAC Technical Report)"
 
     G4Element* elH = new G4Element("Hydroen", "H", 1., 1.007 * g/mole);
@@ -113,7 +121,11 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
                       0,                              // copy number
                       true);                          // overlaps checking
 
-   // ========================= DETECTOR ============================ //
+  /*
+   * ===========================================================================
+   * ================================ Detector =================================
+   * ===========================================================================
+   */
 
     // logical volume for the downstream detector
     G4double detThickness = 1*mm;
@@ -144,7 +156,10 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
                       true);                          // overlaps checking
 
 
-    // ============================================================= //
+    /*
+     * =========================================================================
+     * =========================================================================
+     */
 
     // uncomment to print the material table
     // G4cout << *(G4Material::GetMaterialTable()) << G4endl;
