@@ -112,22 +112,6 @@ void RunAction::EndOfRunAction(const G4Run* run)
       G4cout << G4BestUnit(fTotalTrackLength.GetValue(), "Length") << "\n";
       G4cout << " * Mean fluence in target: " << G4BestUnit(fluence, "Fluence");
     }
-
-
-    G4cout << "\n--------------------Secondaries Tally-----------------------\n";
-    if (fSecondaryNumbers.size() > 0)
-    {
-      // loop over every ParticleDefinition Number pair & print names & numbers
-      for(auto pair : fSecondaryNumbers)
-      {
-        G4cout << " * " << (pair.first)->GetParticleName() << ": " << pair.second << "\n";
-      }
-    }
-    else
-    {
-      G4cout << "No Secondaries found!\n";
-    }
-    G4cout << "------------------------------------------------------------";
     G4cout << G4endl;
 
   }

@@ -134,7 +134,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4LogicalVolume* rangeShifterLog =
     new G4LogicalVolume(rangeShifterBox,            // its shape
                         lexan,                      // its material
-                        "target");                  // its name
+                        "rangeshifter");            // its name
 
   // Rangeshifter visual properties
   G4VisAttributes* rangeShifterColour = new G4VisAttributes();

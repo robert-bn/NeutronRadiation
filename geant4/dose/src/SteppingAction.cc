@@ -8,7 +8,8 @@
 
 SteppingAction::SteppingAction(RunAction* runAction)
 : fRunAction(runAction), fScoringVolume(nullptr)
-{ }
+{
+}
 
 void SteppingAction::UserSteppingAction(const G4Step* aStep)
 {
@@ -17,7 +18,6 @@ void SteppingAction::UserSteppingAction(const G4Step* aStep)
       = aStep->GetPreStepPoint()->GetTouchableHandle()
         ->GetVolume()->GetLogicalVolume();
 
-    // get the scoring volume if SteppingAction class doesn't have a pointer to it
     if (!fScoringVolume) {
       const DetectorConstruction* detectorConstruction
         = static_cast<const DetectorConstruction*>
@@ -27,15 +27,20 @@ void SteppingAction::UserSteppingAction(const G4Step* aStep)
 
     if(volume != nullptr)
     {
-        // check that its not a nullptr
-        // also check that it is in the scoring volume
-        if (volume == fScoringVolume)
-        {
-            fRunAction->AddTrackLength(aStep->GetStepLength());
-            fRunAction->AddEnergyDeposited(aStep->GetTotalEnergyDeposit());
-            aStep->GetTrack()->GetKineticEnergy();
-        }
+      // check that its not a nullptr (or else GetName() would cause a crash)
+      // also check that it is in absorber0 & that it is an electron.
+      if (volume == fScoringVolume)
+      {
+        fRunAction->AddTrackLength(aStep->GetStepLength());
+        fRunAction->AddEnergyDeposited(aStep->GetTotalEnergyDeposit());
+        aStep->GetTrack()->GetKineticEnergy();
+      }
     }
 
+    //   Take care, because this volume might not be available: be sure that the pointer
+    //   "volume" is non-NULL, otherwise any volume->Get... would cause a crash.
 
+    // Task 4a.2: If the volume exists and has a proper name (absorber0), use the appropriate
+    //   run action method to accumulate the track length. Apply this
+    //   only for electrons.
 }

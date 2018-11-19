@@ -118,10 +118,10 @@ int main(int argc, char** argv)
     delete runManager;
 
     // Write analysis to root (or csv) file
-    G4AnalysisManager* man = G4AnalysisManager::Instance();
-    man->CloseFile();
+    // G4AnalysisManager* man = G4AnalysisManager::Instance();
+    // man->CloseFile();
 
     std::cout << "Application successfully ended.\nBye :^)" << std::endl;
 
-    return EXIT_SUCCESS;
+    return 0;
 }

@@ -1,6 +1,7 @@
 #ifndef STACKINGACTION_HH
 #define STACKINGACTION_HH
 
+#include <G4LogicalVolume.hh>
 #include <G4UserStackingAction.hh>
 #include <G4Track.hh>
 
