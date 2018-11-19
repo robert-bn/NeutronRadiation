@@ -1,0 +1,29 @@
+# This macro is used to properly set up the interactive session (GUI)
+
+/vis/open OGLSQt
+/vis/ogl/set/eventsDrawInterval 999999       # To be updated with Geant4 10.3 (probably)
+
+/gui/addMenu vis Visualization
+/gui/addButton vis "Draw Axes" "/vis/scene/add/axes -15 -15 -15 30 cm"
+
+/gui/addMenu run Run
+/gui/addButton run "Beam On (1)" "/run/beamOn 1"
+/gui/addButton run "Beam On (10)" "/run/beamOn 10"
+/gui/addButton run "Beam On (100)" "/run/beamOn 100"
+/gui/addButton run "Beam On (1000)" "/run/beamOn 1000"
+/gui/addButton run "Beam On (10000)" "/run/beamOn 10000"
+
+/gui/addMenu ene Energy
+/gui/addButton ene "70 MeV"  "/gps/energy 70 MeV"
+/gui/addButton ene "100 MeV" "/gps/energy 100 MeV"
+/gui/addButton ene "150 MeV" "/gps/energy 150 MeV"
+/gui/addButton ene "200 MeV" "/gps/energy 200 MeV"
+/gui/addButton ene "230 MeV" "/gps/energy 230 MeV"
+/gui/addButton ene "250 MeV" "/gps/energy 250 MeV"
+
+/run/initialize
+/vis/drawVolume
+/vis/scene/add/trajectories smooth
+/vis/scene/endOfEventAction accumulate
+
+/vis/viewer/flush
