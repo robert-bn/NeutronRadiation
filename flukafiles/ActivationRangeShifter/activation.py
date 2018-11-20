@@ -30,7 +30,7 @@ for i, e in enumerate(energies):
                 for i in range(len(data)):
                     data[i] = data[i].split()
 
-                data = np.array(data)
+                data = np.transpose(np.array(data))
                 dict = {'energy':e, 'thickness':t}
 
                 for iso in isotopes:
@@ -39,4 +39,4 @@ for i, e in enumerate(energies):
                 rows.append(dict)
 
 df = pd.DataFrame(rows)
-# df.write_csv("activation (FLUKA).csv")
+df.to_csv("activation (FLUKA).csv")
