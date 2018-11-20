@@ -163,6 +163,8 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
     // uncomment to print the material table
     // G4cout << *(G4Material::GetMaterialTable()) << G4endl;
+
+    // print out range shifter thickness
     G4cout << "Rangeshifter Thickness: "<< targetThickness / cm << " cm" << G4endl;
 
     // sets logical volumes for scoring

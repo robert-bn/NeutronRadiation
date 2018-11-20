@@ -33,7 +33,6 @@
 // Task 4b.1: Include the proper header to enable scoring manager
 
 // Task 4c.3: Include the proper header to enable analysis tools
-#include "Analysis.hh"
 
 
 using namespace std;
@@ -125,9 +124,6 @@ int main(int argc, char** argv)
 
     delete runManager;
 
-    // Uncomment to write ROOT file
-    G4AnalysisManager* man = G4AnalysisManager::Instance();
-    man->CloseFile();
 
     std::cout << "Application successfully ended.\nBye :^)" << std::endl;
 
