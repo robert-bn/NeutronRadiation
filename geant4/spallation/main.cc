@@ -77,6 +77,7 @@ int main(int argc, char** argv)
     // Use QGSP_BIC_HP : QGSP Binary Cascade High Precision
     // Best for nuclear interations with protons & neutrons
     runManager->SetUserInitialization(new QGSP_BERT_HP());
+    // runManager->SetUserInitialization(new QGSP_BIC_HP());
 
     // Instantiate DetectorConstruction & ActionInitialization
     runManager->SetUserInitialization(new DetectorConstruction());
