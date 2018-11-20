@@ -1,0 +1,24 @@
+
+ *****  Protons in Lexan (70MeV, 1cm)                                                     *****
+
+           DATE: 11/18/18,  TIME:  9:22:39
+
+          Total number of particles followed       10000000, for a total weight of  1.0000E+07
+
+1
+
+   Bdrx n.   2  "ofluence  " , generalized particle n.    1, from region n.     5 to region n.     4
+      detector area:  1.0000E+02 cm**2
+      this is a one way only estimator
+      this is a fluence like estimator
+      linear energy binning from   0.0000E+00 to  1.4000E-01 GeV,    70 bins ( 2.0000E-03 GeV wide)
+      linear angular binning from  0.0000E+00 to  6.2832E+00 sr ,     1 bins ( 6.2832E+00 sr wide )
+      Data follow in a matrix A(ie,ia), format (1(5x,1p,10(1x,e11.4)))
+
+       5.5237E-05  1.1281E-04  1.5352E-04  1.7650E-04  2.2536E-04  2.3416E-04  2.6160E-04  2.8329E-04  3.0961E-04  3.0521E-04
+       3.4709E-04  3.5496E-04  3.6780E-04  3.7010E-04  3.9819E-04  3.9784E-04  3.9705E-04  4.2050E-04  4.1295E-04  4.2302E-04
+       4.2751E-04  4.2569E-04  4.3573E-04  4.5267E-04  4.4892E-04  4.5860E-04  4.5050E-04  4.5104E-04  4.5919E-04  4.6405E-04
+       4.5614E-04  4.6110E-04  4.5562E-04  4.5755E-04  4.5395E-04  4.6548E-04  4.5955E-04  4.6361E-04  4.5877E-04  4.6497E-04
+       4.5637E-04  4.5461E-04  4.6236E-04  4.5588E-04  4.4503E-04  4.6807E-04  4.5579E-04  4.5685E-04  4.5660E-04  4.6556E-04
+       4.7024E-04  4.8912E-04  4.8760E-04  5.0956E-04  5.2721E-04  5.4916E-04  5.9376E-04  6.4397E-04  7.2611E-04  8.1476E-04
+       9.2561E-04  1.0538E-03  1.2439E-03  1.4527E-03  1.7308E-03  2.0850E-03  2.4532E-03  2.9128E-03  3.4525E-03  4.0714E-03

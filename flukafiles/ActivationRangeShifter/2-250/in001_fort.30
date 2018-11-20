@@ -1,0 +1,24 @@
+
+ *****  Protons in Lexan (70MeV, 1cm)                                                     *****
+
+           DATE: 11/18/18,  TIME: 14:35:52
+
+          Total number of particles followed       10000000, for a total weight of  1.0000E+07
+
+1
+
+   Bdrx n.   4  "ocurrent  " , generalized particle n.    1, from region n.     5 to region n.     4
+      detector area:  1.0000E+02 cm**2
+      this is a one way only estimator
+      this is a current like estimator
+      linear energy binning from   0.0000E+00 to  1.4000E-01 GeV,    70 bins ( 2.0000E-03 GeV wide)
+      linear angular binning from  0.0000E+00 to  6.2832E+00 sr ,     1 bins ( 6.2832E+00 sr wide )
+      Data follow in a matrix A(ie,ia), format (1(5x,1p,10(1x,e11.4)))
+
+       2.1884E-05  4.3051E-05  6.0001E-05  7.5917E-05  8.2363E-05  8.9923E-05  1.0568E-04  1.1658E-04  1.1770E-04  1.2096E-04
+       1.3592E-04  1.3003E-04  1.4555E-04  1.4722E-04  1.4746E-04  1.5701E-04  1.5931E-04  1.5422E-04  1.6099E-04  1.6170E-04
+       1.7523E-04  1.7420E-04  1.7873E-04  1.7515E-04  1.7706E-04  1.7571E-04  1.8422E-04  1.8024E-04  1.7961E-04  1.8104E-04
+       1.8963E-04  1.8860E-04  1.9473E-04  1.9138E-04  1.9703E-04  1.9321E-04  1.9473E-04  1.9353E-04  1.9520E-04  1.9115E-04
+       2.0205E-04  1.9266E-04  1.9934E-04  1.9417E-04  1.8709E-04  2.0420E-04  2.0300E-04  1.9425E-04  2.0085E-04  1.9107E-04
+       1.9823E-04  2.0404E-04  2.0690E-04  2.0539E-04  1.9847E-04  2.0101E-04  1.9799E-04  1.9632E-04  2.0356E-04  2.0611E-04
+       2.0133E-04  2.0412E-04  2.0077E-04  1.9711E-04  2.0698E-04  2.0189E-04  1.9942E-04  2.0014E-04  2.1088E-04  2.0985E-04

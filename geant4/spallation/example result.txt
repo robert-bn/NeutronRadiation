@@ -1,0 +1,13 @@
+# Binary Cascade HP
+
+There was 13510 direct daughter neutrons. This is a neutron multiplicity of 1.351
+There was 14078 direct daughter neutrons. This is a neutron multiplicity of 1.4078
+There was 13906 direct daughter neutrons. This is a neutron multiplicity of 1.3906
+There was 14001 direct daughter neutrons. This is a neutron multiplicity of 1.4001
+
+# Bertini Cascade HP
+
+There was 14483 direct daughter neutrons. This is a neutron multiplicity of 1.4483
+There was 14666 direct daughter neutrons. This is a neutron multiplicity of 1.4666
+There was 14352 direct daughter neutrons. This is a neutron multiplicity of 1.4352
+There was 15028 direct daughter neutrons. This is a neutron multiplicity of 1.5028

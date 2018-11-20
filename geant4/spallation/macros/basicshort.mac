@@ -1,0 +1,5 @@
+# This macro runs 100 particles
+#
+# Run it using "./task macros/basic.mac"
+/run/initialize
+/run/beamOn 1
