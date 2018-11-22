@@ -20,9 +20,11 @@ public:
 
     // method that returns scoring volume
     G4LogicalVolume* GetScoringVolume() const { return fScoringVolume; }
+    G4double GetRangeShifterThickness() const { return fRangeShifterThickness; }
 
 protected:
     G4LogicalVolume*  fScoringVolume;
+    G4double fRangeShifterThickness = -1.0;
 };
 
 #endif

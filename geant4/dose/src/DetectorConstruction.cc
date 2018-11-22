@@ -7,13 +7,54 @@
 #include <G4VisAttributes.hh>
 #include <G4Box.hh>
 #include <G4SDManager.hh>
+#include <G4String.hh>
 // #include <G4MultiFunctionalDetector.hh>
 // #include <G4VPrimitiveScorer.hh>
+
+#include <fstream>
+#include <iostream>
+#include <string>
 
 using namespace std;
 
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {
+  /*
+   * ===========================================================================
+   * =========================== Read in config file ===========================
+   * ===========================================================================
+   */
+
+  ifstream input("geometry.conf");
+  string line;
+  string rsThickness;
+
+  if (input.is_open()){
+    while (getline(input, line, ' '))
+    {
+      if(line == "rangeshifter-thickness")
+      {
+        getline(input, line, ' ');  // skip to value
+        rsThickness = line;
+      }
+    }
+    input.close();
+
+    fRangeShifterThickness = stod(rsThickness) * cm;
+
+    if(fRangeShifterThickness){
+      G4cout << "============================ Geometry Config =============================\n";
+      G4cout << " * Rangeshifter thickness = " << fRangeShifterThickness / cm << "\n";
+      G4cout << "==========================================================================\n";
+    }
+  } else {
+    G4cerr << "Error reading config file! Make sure geometry.conf is in root directory.\n";
+  }
+
+  if( fRangeShifterThickness < 0)
+  {
+    G4cerr << "Error: Range shifter thickness must be a positive number.\n";
+  }
   /*
    * ===========================================================================
    * ================================= World ===================================
@@ -98,7 +139,6 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
    */
 
   // Range shifter dimensions
-  G4double rangeShifterX = 5*cm;
   G4double rangeShifterY = 40*cm;
   G4double rangeShifterZ = 30*cm;
 
@@ -108,7 +148,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   // Range shifter shape
   G4VSolid* rangeShifterBox = new G4Box(
     "target",
-    rangeShifterX / 2,
+    fRangeShifterThickness / 2,
     rangeShifterY / 2,
     rangeShifterZ / 2);
 

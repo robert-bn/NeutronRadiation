@@ -72,6 +72,8 @@ void RunAction::EndOfRunAction(const G4Run* run)
   // Get mass and volume of target
   G4double mass = detectorConstruction->GetScoringVolume()->GetMass();
   G4double volume = detectorConstruction->GetScoringVolume()->GetSolid()->GetCubicVolume();
+  G4double thickness = detectorConstruction->GetRangeShifterThickness();
+  G4cout << " *** " << thickness << " ";
 
   // Calculate dose & fluence
   G4double dose = fTotalEnergyDeposited.GetValue() / mass;
@@ -88,6 +90,7 @@ void RunAction::EndOfRunAction(const G4Run* run)
     G4cout << "\n--------------------End of Global Run-----------------------\n";
     G4cout << " * The run was " << nofEvents << " " << particle << "s with ";
     G4cout << G4BestUnit(energy, "Energy") << "\n";
+    G4cout << " * Rangeshifter thickness was " << G4BestUnit(thickness, "Length") << "\n"; 
     if (fTotalEnergyDeposited.GetValue()){
       G4cout << " * Total energy deposited was: ";
       G4cout << G4BestUnit(fTotalEnergyDeposited.GetValue(), "Energy");
@@ -98,9 +101,15 @@ void RunAction::EndOfRunAction(const G4Run* run)
       // write particle type & energy & event number & dose to file
       std::ofstream energyFile;
       energyFile.open ("dose.csv", std::ofstream::out | std::ofstream::app);
-      energyFile << particle << ','<< nofEvents << "," << energy / keV << ',' << dose / gray << "\n";
-      energyFile.close();
-
+      if (energyFile.is_open())
+      {
+        energyFile << particle << ','<< nofEvents << "," << thickness / cm << ',' << energy / MeV << ',' << dose / gray << "\n";
+        energyFile.close();
+      }
+      else
+      {
+        G4cerr << "Error writing dose.csv! Check it is not being used by another program.\n";
+      }
     }
     else
     {

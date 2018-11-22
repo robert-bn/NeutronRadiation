@@ -17,6 +17,9 @@ file(GLOB_RECURSE sources ${PROJECT_SOURCE_DIR}/src/*.cc)
 file(GLOB_RECURSE headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 file(GLOB_RECURSE macros RELATIVE ${PROJECT_SOURCE_DIR} macros/*.mac)
 
+file(GLOB_RECURSE config ${PROJECT_SOURCE_DIR}/*.csv)
+file(GLOB_RECURSE csv ${PROJECT_SOURCE_DIR}/*.conf)
+
 # Enable macros for out-of-source build
 foreach(_file ${macros})
   configure_file(
@@ -25,6 +28,17 @@ foreach(_file ${macros})
     COPYONLY
     )
 endforeach()
+
+# Copy config files
+foreach(_file ${csv})
+  configure_file(
+    ${_file}
+    ${PROJECT_BINARY_DIR}/${_file}
+    COPYONLY
+    )
+endforeach()
+
+# Copy csv files
 
 add_executable(task main.cc ${sources} ${headers})
 target_link_libraries(task ${Geant4_LIBRARIES})
