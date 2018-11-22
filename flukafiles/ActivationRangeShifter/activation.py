@@ -2,6 +2,14 @@ import os
 import numpy as np
 import pandas as pd
 
+half_life = {'Be7':4590000, 'C10':19.29, 'C11':1220.00, 'O14':70.60, 'O15':122.24, 'F17':64.49}
+hour = 3600
+
+
+def λ(key):
+    return np.log(2)/half_life[key]
+
+
 def ij(ZA, k):
     Z = ZA[0]
     A = ZA[1]
@@ -13,8 +21,13 @@ energies = [0.250,0.230,0.200,0.150,0.100,0.07]  # MeV
 spread   = [0.1020,0.0979,0.0913,0.0790,0.0645,0.0540]
 thickness = [1.,2.,3.,5.]   # cm
 
+input_protons  = 1e7
+actual_protons = 1e11
+beam_time = 60  # 1 min beam time
+
 isotope_ZA = {"Be7":(4,7), "C10":(6,10), "C11":(6,11), "O14":(8,14), "O15":(8, 15), "F17":(9, 17)}
 isotopes = list(isotope_ZA.keys())
+
 
 rows = []
 
@@ -34,9 +47,34 @@ for i, e in enumerate(energies):
                 dict = {'energy':e, 'thickness':t}
 
                 for iso in isotopes:
-                    dict[iso] = data[ij(isotope_ZA[iso], k)]
+                    dict[iso] = float(data[ij(isotope_ZA[iso], k)])
+                    dict[iso + " error"] = np.sqrt(float(data[ij(isotope_ZA[iso], k)]) / input_protons) * actual_protons
 
                 rows.append(dict)
 
+
 df = pd.DataFrame(rows)
 df.to_csv("activation (FLUKA).csv")
+
+
+# normalise data to beam
+df[isotopes] = actual_protons * df[isotopes]
+df.to_csv("normalized N (FLUKA).csv")
+
+# find saturation values
+saturation = df.copy()
+for ist in half_life.keys():
+    print(ist, end=' ')
+    print(λ(ist))
+    saturation[ist] = saturation[ist] * (1 - np.exp(-λ(ist)*beam_time))
+
+print(saturation)
+saturation.to_csv("saturation (FLUKA).csv")
+
+# find one hour values
+one_hour_value = saturation.copy()
+for ist in half_life.keys():
+    one_hour_value[ist] = one_hour_value[ist] * np.exp(-λ(ist)*1*hour)
+
+print(one_hour_value)
+one_hour_value.to_csv("one hour value (FLUKA).csv")
