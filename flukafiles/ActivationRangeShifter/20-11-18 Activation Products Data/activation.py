@@ -74,8 +74,8 @@ saturation.to_csv("saturation (FLUKA).csv")
 # find one hour values
 one_hour_value = saturation.copy()
 for ist in isotopes:
-    one_hour_value[ist] = one_hour_value[ist] * np.exp(-λ(ist)*1*hour) / beam_time
-    one_hour_value[ist + " error"] = one_hour_value[ist + " error"] * np.exp(-λ(ist)*1*hour) / beam_time
+    one_hour_value[ist] = one_hour_value[ist] * np.exp(-λ(ist)*1*hour)
+    one_hour_value[ist + " error"] = one_hour_value[ist + " error"] * np.exp(-λ(ist)*1*hour)
 
 
 print(one_hour_value)
