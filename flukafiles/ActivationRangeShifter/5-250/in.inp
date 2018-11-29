@@ -4,7 +4,7 @@ TITLE
 Protons in Lexan (0.25GeV, 5.0cm)
 * ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
 * Define things about the beam and position
-BEAM      -0.250000 -0.018081            -1.1775   -1.1755            PROTON
+BEAM      -0.250000 -0.003805            -1.1775   -1.1755            PROTON
 BEAMPOS          0.0       0.0      -50.
 *
 *Begin Describing the geometry
