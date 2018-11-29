@@ -1,92 +1,90 @@
 {
-  "isotopes": [
-    {
-      "name": "Be7",
-      "fullName": "Beryllium",
-      "Z": 4,
-      "A": 7,
-      "halfLife": 4.598E6,
-      "gamma": [
-        {
-          "branchingRatio": 0.1044,
-          "multiplicity": 1,
-          "energy" : 478
-        }
-      ]
-    },
+  "Be7": {
+    "name": "Be7",
+    "fullName": "Beryllium",
+    "Z": 4,
+    "A": 7,
+    "halfLife": 4.598E6,
+    "gamma": [
+      {
+        "branchingRatio": 0.1044,
+        "multiplicity": 1,
+        "energy" : 478
+      }
+    ]
+  },
 
-    {
-      "name": "C11",
-      "fullName": "Carbon",
-      "Z": 6,
-      "A": 11,
-      "halfLife": 1220,
-      "gamma": [
-        {
-          "branchingRatio": 1.0,
-          "multiplicity": 2,
-          "energy": 511
-        }
-      ]
-    },
+  "C11": {
+    "name": "C11",
+    "fullName": "Carbon",
+    "Z": 6,
+    "A": 11,
+    "halfLife": 1220,
+    "gamma": [
+      {
+        "branchingRatio": 1.0,
+        "multiplicity": 2,
+        "energy": 511
+      }
+    ]
+  },
 
-    {
-      "name": "O14",
-      "fullName": "Oxygen",
-      "Z": 8,
-      "A": 14,
-      "halfLife": 70.6,
-      "gamma": [
-        {
-          "branchingRatio": 0.99249,
-          "multiplicity": 1,
-          "energy": 2313
-        },
-        {
-          "branchingRatio": 100,
-          "multiplicity": 2,
-          "energy": 511
-        }
-      ]
-    },
+  "O14": {
+    "name": "O14",
+    "fullName": "Oxygen",
+    "Z": 8,
+    "A": 14,
+    "halfLife": 70.6,
+    "gamma": [
+      {
+        "branchingRatio": 0.99249,
+        "multiplicity": 1,
+        "energy": 2313
+      },
+      {
+        "branchingRatio": 100,
+        "multiplicity": 2,
+        "energy": 511
+      }
+    ]
+  },
 
-    {
-      "name": "O15",
-      "fullName": "Oxygen",
-      "Z": 8,
-      "A": 15,
-      "halfLife": 122.2,
-      "gamma": [
-        {
-          "branchingRatio": 0.999,
-          "multiplicity": 2,
-          "energy": 511
-        }
-      ]
-    },
-    {
-      "name": "C10",
-      "fullName": "Carbon",
-      "Z": 6,
-      "A": 10,
-      "halfLife": 19.29,
-      "gamma": [
-        {
-          "branchingRatio": 1.0,
-          "multiplicity": 1,
-          "energy": 718
-        },
-        {
-          "branchingRatio": 0.0146,
-          "multiplicity": 1,
-          "energy": 1022
-        },
-        {
-          "branchingRatio": 1.0,
-          "multiplicity": 2,
-          "energy": 511
-        }
-      ]
-    }
-  ]
+  "O15": {
+    "name": "O15",
+    "fullName": "Oxygen",
+    "Z": 8,
+    "A": 15,
+    "halfLife": 122.2,
+    "gamma": [
+      {
+        "branchingRatio": 0.999,
+        "multiplicity": 2,
+        "energy": 511
+      }
+    ]
+  },
+  "C10": {
+    "name": "C10",
+    "fullName": "Carbon",
+    "Z": 6,
+    "A": 10,
+    "halfLife": 19.29,
+    "gamma": [
+      {
+        "branchingRatio": 1.0,
+        "multiplicity": 1,
+        "energy": 718
+      },
+      {
+        "branchingRatio": 0.0146,
+        "multiplicity": 1,
+        "energy": 1022
+      },
+      {
+        "branchingRatio": 1.0,
+        "multiplicity": 2,
+        "energy": 511
+      }
+    ]
+  }
 }
