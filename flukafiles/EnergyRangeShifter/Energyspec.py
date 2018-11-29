@@ -89,7 +89,6 @@ for i, e in enumerate(energies):
 
                     """
 
-
 """
 df = pd.DataFrame(mergedata)
 
