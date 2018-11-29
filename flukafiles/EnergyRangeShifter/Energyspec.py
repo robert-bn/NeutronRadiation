@@ -69,19 +69,16 @@ for i, e in enumerate(energies):
         plt.ylabel("Ratio of number of protons leaving to number of protons entering")
         plt.title("E= {:.3f} MeV, x= {:.3f} cm".format(e, t))
 
-        print("E= {:.3f} MeV, x= {:.3f} cm".format(e, t))
-
-        print("Area = {}".format(rectangular(mergedata, dx=binwidth)))
-
-        # Calculate
-        totalp = []
-
+        # Calculate mean & varience of data
         meanE = np.sum([mergedata[i]*length[i] for i in range(len(mergedata))])/np.sum(mergedata)
 
-        print(meanE)
-
         varE = np.sum([mergedata[i]*np.square(length[i]-meanE) for i in range(len(mergedata))])/(np.sum(mergedata))
-        shepcor = varE - np.square(binwidth)/12
+        shepcor = varE - np.square(binwidth)/12#
+
+        # Print some useful information
+        print("E= {:.3f} MeV, x= {:.3f} cm".format(e, t))
+        print("Area = {}".format(rectangular(mergedata, dx=binwidth)))
+        print("Mean energy = {}".format(meanE))
         print(np.sqrt(shepcor))
 
         # Plot the reconstructed gaussian for the uprange proton energy distribution
@@ -89,6 +86,7 @@ for i, e in enumerate(energies):
         plt.plot(length, y)
         plt.show()
         """
+        totalp = []
         for i in range(len(mergedata)):
             totalp.append((mergedata[i])*(length[i]))
         print(sum(totalp)/(sum(mergedata)) - binwidth/2)
