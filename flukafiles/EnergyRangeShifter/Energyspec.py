@@ -58,7 +58,8 @@ for i, e in enumerate(energies):
                 print(sum(mergedata2)/sum(mergedata))
                 print(len(mergedata))
                 """
-                length = np.linspace(0,(139*binwidth),num=140) + binwidth/2
+
+        length = np.linspace(0,(139*binwidth),num=140) + binwidth/2
 
         # ==== Plot the results ====
         plt.bar(x=length,height=mergedata, width=binwidth, color=(0.4,0.4,1))       # Uprange
@@ -71,9 +72,6 @@ for i, e in enumerate(energies):
         # plt.show()
 
         print("E= {:.3f} MeV, x= {:.3f} cm".format(e, t))
-
-
-        #totalp = []
 
         # Calculate
         totalp = []
