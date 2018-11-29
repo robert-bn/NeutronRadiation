@@ -11,7 +11,7 @@ with open("saturation.json") as f:
 
 
 # Function definitions
-def plot_activity(activity, tmin=0, tmax=3600, n=1000, ax=None, title=None, labels=True, legend=True):
+def plot_activity(activity, tmin=0, tmax=3600, n=1000, ax=None, title=None, xlabel=True, ylabel=True, legend=True, grid=True):
     # Plot activity vs time
     if ax is None:
         fig, ax = plt.subplots()
@@ -26,14 +26,21 @@ def plot_activity(activity, tmin=0, tmax=3600, n=1000, ax=None, title=None, labe
         )
 
     ax.set_xlim(tmin,tmax)
+    ax.set_ylim(bottom=0)
+
+    ax.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+
+    if grid:
+        ax.grid(True)
 
     if title is None:
         ax.set_title("Activity vs time since beam turned off")
     elif type(title) is str:
         ax.set_title(title)
 
-    if labels:
+    if xlabel:
         ax.set_xlabel("Time (seconds)")
+    if ylabel:
         ax.set_ylabel("Activity (Bq)")
 
     if legend:
@@ -43,7 +50,7 @@ def plot_activity(activity, tmin=0, tmax=3600, n=1000, ax=None, title=None, labe
         plt.show()
 
 
-def plot_gamma(activity, tmin=0, tmax=3600, n=1000, ax=None, title=None, labels=True, legend=True):
+def plot_gamma(activity, tmin=0, tmax=3600, n=1000, ax=None, title=None, xlabel=True, ylabel=True, legend=True, grid=True):
     # Plot gamma rate vs time
     if ax is None:
         fig, ax = plt.subplots()
@@ -52,9 +59,6 @@ def plot_gamma(activity, tmin=0, tmax=3600, n=1000, ax=None, title=None, labels=
 
     for ist in data.keys():
         for gamma in data[ist]["gamma"]:
-            print(gamma["branchingRatio"])
-            print(gamma["multiplicity"])
-            print(activity[ist])
             np.exp(-np.log(2)/data[ist]['halfLife']*t),
             ax.plot(
                 t,
@@ -67,14 +71,21 @@ def plot_gamma(activity, tmin=0, tmax=3600, n=1000, ax=None, title=None, labels=
             )
 
     ax.set_xlim(tmin,tmax)
+    ax.set_ylim(bottom=0)
+
+    ax.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+
+    if grid:
+        ax.grid(True)
 
     if title is None:
         ax.set_title("Gamma ray emission vs time since beam turned off")
     elif type(title) is str:
         ax.set_title(title)
 
-    if labels:
+    if xlabel:
         ax.set_xlabel("Time (seconds)")
+    if ylabel:
         ax.set_ylabel("Activity (Bq)")
 
     if legend:
@@ -84,7 +95,7 @@ def plot_gamma(activity, tmin=0, tmax=3600, n=1000, ax=None, title=None, labels=
         plt.show()
 
 
-def plot_beta(activity, tmin=0, tmax=3600, n=1000, ax=None, title=None, labels=True, legend=True):
+def plot_beta(activity, tmin=0, tmax=3600, n=1000, ax=None, title=None, xlabel=True, ylabel=True, legend=True, grid=True):
     # Plot activity vs time
     if ax is None:
         fig, ax = plt.subplots()
@@ -104,14 +115,21 @@ def plot_beta(activity, tmin=0, tmax=3600, n=1000, ax=None, title=None, labels=T
                     )
                 )
 
-    ax.stackplot(t, y, labels=label)
+    if grid:
+        ax.grid(True, zorder=0)
+
+    ax.stackplot(t, y, labels=label, zorder=3)
     ax.set_xlim(tmin,tmax)
+    ax.set_ylim(bottom=0)
+
+    ax.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
 
     if legend:
         ax.legend()
 
-    if labels:
+    if xlabel:
         ax.set_xlabel("Time (seconds)")
+    if ylabel:
         ax.set_ylabel("Activity (Bq)")
 
     if title is None:
@@ -125,14 +143,23 @@ def plot_beta(activity, tmin=0, tmax=3600, n=1000, ax=None, title=None, labels=T
 
 # Main
 
-# Plot each graph for 200 MeV, 230 MeV for 2cm thickness
-fig, axes = plt.subplots(nrows=2, ncols=3, sharex=True)
+# pad title
+plt.rcParams['axes.titlepad'] = 20 
 
-plot_activity(act_data[0]["activation"], ax=axes[0,0], labels=False)
-plot_gamma(   act_data[0]["activation"], ax=axes[0,1], labels=False)
-plot_beta(    act_data[0]["activation"], ax=axes[0,2], labels=False)
+# Plot each graph for 200 MeV, 230 MeV for 2cm thickness
+fig, axes = plt.subplots(nrows=2, ncols=3, sharex=True, figsize=(18,10))
+
+plot_activity(act_data[0]["activation"], ax=axes[0,0], xlabel=False)
+plot_gamma(   act_data[0]["activation"], ax=axes[0,1], xlabel=False)
+plot_beta(    act_data[0]["activation"], ax=axes[0,2], xlabel=False)
 plot_activity(act_data[1]["activation"], ax=axes[1,0], title=False)
 plot_gamma(   act_data[1]["activation"], ax=axes[1,1], title=False)
 plot_beta(    act_data[1]["activation"], ax=axes[1,2], title=False)
 
-plt.show()
+# remove verticle space between subplots
+plt.subplots_adjust(hspace=.0)
+plt.subplots_adjust(wspace=.2)
+
+# plt.show()
+# save plot
+plt.savefig("test.svg", papertype='a3', dpi=100)
