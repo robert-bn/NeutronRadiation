@@ -17,65 +17,64 @@ rows = []
 
 for i, e in enumerate(energies):
     for t in thickness:
-        with open("template.txt", 'r') as templatef:
-            directory = "/{rThickness}-{bEnergy:03}/".format(rThickness=round(t), bEnergy=round(1000*e))
-            with open(os.getcwd() + directory + "in001_fort.27", 'r') as f:
-                with open(os.getcwd() + directory + "in001_fort.28", 'r') as g:
+        directory = "/{rThickness}-{bEnergy:03}/".format(rThickness=round(t), bEnergy=round(1000*e))
+        with open(os.getcwd() + directory + "in001_fort.27", 'r') as f:
+            with open(os.getcwd() + directory + "in001_fort.28", 'r') as g:
 
-                    binwidth = 2*e*1000/140 #Gev
-                    lines = f.readlines()
-                    mergedata = []
-                    data = []
-                    data = lines[17:31]
-                    for i in range(len(data)):
-                        data[i] = data[i].split()
-                    for i in range(len(data)):
-                        mergedata = mergedata + data[i]
-                    for i in range(len(mergedata)):
-                        mergedata[i]=float(mergedata[i])*2*(np.pi)*100*binwidth/1000
-                        #print(mergedata[i])
-                    #print(sum(mergedata))
+                binwidth = 2*e*1000/140 #Gev
+                lines = f.readlines()
+                mergedata = []
+                data = []
+                data = lines[17:31]
+                for i in range(len(data)):
+                    data[i] = data[i].split()
+                for i in range(len(data)):
+                    mergedata = mergedata + data[i]
+                for i in range(len(mergedata)):
+                    mergedata[i]=float(mergedata[i])*2*(np.pi)*100*binwidth/1000
+                    #print(mergedata[i])
+                #print(sum(mergedata))
 
 
-                    #print(len(mergedata))
-                    length = np.linspace(0,(139*binwidth),num=140) + binwidth/2
-                    plt.bar(x=length,height=mergedata, width=binwidth, color=(0.4,0.4,1))
-                    #plt.xlabel("Energy (GeV)")
-                    #plt.ylabel("Ratio of number of protons leaving to number of protons entering")
-                    #plt.title("E= %.3f MeV, x= %.3f cm" % (e, t))
-                    #plt.show()
-                    #print("E= %.3f MeV, x= %.3f cm" % (e, t))
+                #print(len(mergedata))
+                length = np.linspace(0,(139*binwidth),num=140) + binwidth/2
+                plt.bar(x=length,height=mergedata, width=binwidth, color=(0.4,0.4,1))
+                #plt.xlabel("Energy (GeV)")
+                #plt.ylabel("Ratio of number of protons leaving to number of protons entering")
+                #plt.title("E= %.3f MeV, x= %.3f cm" % (e, t))
+                #plt.show()
+                #print("E= %.3f MeV, x= %.3f cm" % (e, t))
 
-                    lines2 = g.readlines()
-                    mergedata2 = []
-                    data2 = []
-                    data2 = lines2[17:31]
-                    for i in range(len(data2)):
-                        data2[i] = data2[i].split()
-                    for i in range(len(data2)):
-                        mergedata2 = mergedata2 + data2[i]
-                    for i in range(len(mergedata2)):
-                        mergedata2[i]=float(mergedata2[i])*2*(np.pi)*100*binwidth/1000
-                        #print(mergedata2[i])
-                    #print(sum(mergedata2)/sum(mergedata))
+                lines2 = g.readlines()
+                mergedata2 = []
+                data2 = []
+                data2 = lines2[17:31]
+                for i in range(len(data2)):
+                    data2[i] = data2[i].split()
+                for i in range(len(data2)):
+                    mergedata2 = mergedata2 + data2[i]
+                for i in range(len(mergedata2)):
+                    mergedata2[i]=float(mergedata2[i])*2*(np.pi)*100*binwidth/1000
+                    #print(mergedata2[i])
+                #print(sum(mergedata2)/sum(mergedata))
 
-                    length2 = np.linspace(0,(139*binwidth),num=140) + binwidth/2
-                    plt.bar(x=length2,height=mergedata2, width=binwidth, color=(1,0.1,0.1,0.6))
-                    plt.xlabel("Energy (GeV)")
-                    plt.ylabel("Ratio of number of protons leaving to number of protons entering")
-                    plt.title("E= %.3f MeV, x= %.3f cm" % (e, t))
-                    #plt.show()
+                length2 = np.linspace(0,(139*binwidth),num=140) + binwidth/2
+                plt.bar(x=length2,height=mergedata2, width=binwidth, color=(1,0.1,0.1,0.6))
+                plt.xlabel("Energy (GeV)")
+                plt.ylabel("Ratio of number of protons leaving to number of protons entering")
+                plt.title("E= %.3f MeV, x= %.3f cm" % (e, t))
+                #plt.show()
 
-                    #totalp = []
+                #totalp = []
 
-                    mean = np.sum([mergedata[i]*length[i] for i in range(len(mergedata))])/np.sum(mergedata)
-                    print(mean)
+                mean = np.sum([mergedata[i]*length[i] for i in range(len(mergedata))])/np.sum(mergedata)
+                print(mean)
 
-                    """
-                    for i in range(len(mergedata)):
-                        totalp.append((mergedata[i])*(length[i]))
-                    print(sum(totalp)/(sum(mergedata)) - binwidth/2)
-                    """
+                """
+                for i in range(len(mergedata)):
+                    totalp.append((mergedata[i])*(length[i]))
+                print(sum(totalp)/(sum(mergedata)) - binwidth/2)
+                """
 
 """
 df = pd.DataFrame(mergedata)
