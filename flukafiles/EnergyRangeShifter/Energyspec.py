@@ -15,65 +15,74 @@ beam_time = 60  # 1 min beam time
 
 rows = []
 
+# Loop over every energy & thickness
 for i, e in enumerate(energies):
     for t in thickness:
         directory = "/{rThickness}-{bEnergy:03}/".format(rThickness=round(t), bEnergy=round(1000*e))
+
+        # Read uprange data
         with open(os.getcwd() + directory + "in001_fort.27", 'r') as f:
-            with open(os.getcwd() + directory + "in001_fort.28", 'r') as g:
-                binwidth = 2*e*1000/140 #Gev
-                lines = f.readlines()
-                mergedata = []
-                data = []
-                data = lines[17:31]
-                for i in range(len(data)):
-                    data[i] = data[i].split()
-                for i in range(len(data)):
-                    mergedata = mergedata + data[i]
-                for i in range(len(mergedata)):
-                    mergedata[i]=float(mergedata[i])*2*(np.pi)*100*binwidth/1000
-                    #print(mergedata[i])
-                #print(sum(mergedata))
+            binwidth = 2*e*1000/140  # Gev
+            lines = f.readlines()
+            mergedata = []
+            data = []
+            data = lines[17:31]
+            for i in range(len(data)):
+                data[i] = data[i].split()
+            for i in range(len(data)):
+                mergedata = mergedata + data[i]
+            for i in range(len(mergedata)):
+                mergedata[i]=float(mergedata[i])*2*(np.pi)*100*binwidth/1000
+                """
+                print(mergedata2[i])
+                print(sum(mergedata2)/sum(mergedata))
+                print(len(mergedata))
+                """
 
+        # Open downrange data
+        with open(os.getcwd() + directory + "in001_fort.28", 'r') as g:
+            lines2 = g.readlines()
+            mergedata2 = []
+            data2 = []
+            data2 = lines2[17:31]
+            for i in range(len(data2)):
+                data2[i] = data2[i].split()
+            for i in range(len(data2)):
+                mergedata2 = mergedata2 + data2[i]
+            for i in range(len(mergedata2)):
+                mergedata2[i]=float(mergedata2[i])*2*(np.pi)*100*binwidth/1000
 
-                #print(len(mergedata))
+                """
+                print(mergedata2[i])
+                print(sum(mergedata2)/sum(mergedata))
+                print(len(mergedata))
+                """
                 length = np.linspace(0,(139*binwidth),num=140) + binwidth/2
-                plt.bar(x=length,height=mergedata, width=binwidth, color=(0.4,0.4,1))
-                #plt.xlabel("Energy (GeV)")
-                #plt.ylabel("Ratio of number of protons leaving to number of protons entering")
-                #plt.title("E= %.3f MeV, x= %.3f cm" % (e, t))
-                #plt.show()
-                #print("E= %.3f MeV, x= %.3f cm" % (e, t))
 
-                lines2 = g.readlines()
-                mergedata2 = []
-                data2 = []
-                data2 = lines2[17:31]
-                for i in range(len(data2)):
-                    data2[i] = data2[i].split()
-                for i in range(len(data2)):
-                    mergedata2 = mergedata2 + data2[i]
-                for i in range(len(mergedata2)):
-                    mergedata2[i]=float(mergedata2[i])*2*(np.pi)*100*binwidth/1000
-                    #print(mergedata2[i])
-                #print(sum(mergedata2)/sum(mergedata))
+        # ==== Plot the results ====
+        plt.bar(x=length,height=mergedata, width=binwidth, color=(0.4,0.4,1))       # Uprange
+        plt.bar(x=length,height=mergedata2, width=binwidth, color=(1,0.1,0.1,0.6))  # Downrange
 
-                length2 = np.linspace(0,(139*binwidth),num=140) + binwidth/2
-                plt.bar(x=length2,height=mergedata2, width=binwidth, color=(1,0.1,0.1,0.6))
-                plt.xlabel("Energy (GeV)")
-                plt.ylabel("Ratio of number of protons leaving to number of protons entering")
-                plt.title("E= {:.3f} MeV, x= {:.3f} cm".format(e, t))
-                plt.show()
+        # Annotations
+        plt.xlabel("Energy (GeV)")
+        plt.ylabel("Ratio of number of protons leaving to number of protons entering")
+        plt.title("E= {:.3f} MeV, x= {:.3f} cm".format(e, t))
+        plt.show()
 
-                #totalp = []
+        print("E= %.3f MeV, x= %.3f cm" % (e, t))
 
-                mean = np.sum([mergedata[i]*length[i] for i in range(len(mergedata))])/np.sum(mergedata)
-                print(mean)
 
-                """
-                for i in range(len(mergedata)):
-                    totalp.append((mergedata[i])*(length[i]))
-                print(sum(totalp)/(sum(mergedata)) - binwidth/2)
-                """
+        #totalp = []
+
+        # Calculate
+        mean = np.sum([mergedata[i]*length[i] for i in range(len(mergedata))])/np.sum(mergedata)
+        print(mean)
+
+        """
+        for i in range(len(mergedata)):
+            totalp.append((mergedata[i])*(length[i]))
+        print(sum(totalp)/(sum(mergedata)) - binwidth/2)
+        """
 
 """
 df = pd.DataFrame(mergedata)
@@ -85,5 +94,5 @@ plt.ylabel("Differential Fluence per Energy (cm^-2 sr^-1 GeV^-1)")
 plt.title("E=70MeV, x=1cm")
 plt.show()
 
-df.to_csv("Test.csv")
+df.to_csv("Test.csv)
 """
