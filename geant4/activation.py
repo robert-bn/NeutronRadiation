@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+from decimal import Decimal
+
 
 hour = 3600
 half_life = {'Be7':4590000, 'C10':19.29, 'C11':1220.00, 'O14':70.60, 'O15':122.24, 'F17':64.49}
@@ -23,7 +25,7 @@ data = data[['thickness (cm)', 'energy'] + imp_ist].sort_index()
 
 # errors
 for ist in half_life.keys():
-    data[ist + " error"] = np.sqrt(data[ist]) / input_protons
+    data[ist + " error"] = np.sqrt(data[ist]) * actual_protons / input_protons
 
 # normalise data to beam
 data[imp_ist] = data[imp_ist] * actual_protons / input_protons
@@ -63,42 +65,67 @@ def superscript(x):
     return super
 
 
-def formatnum(x, unit, SIprefix=False):
+def formatnum(x, unit='', SIprefix=False, err=None):
     if x < 1e-9:
         return 0
     exponent = int(np.floor(np.log10(x)))
     if SIprefix:
         prefix_exponent = int(3*np.floor(exponent / 3))
         y = x / np.power(10, prefix_exponent)
-        return "{:.2f} ".format(y) + prefix[prefix_exponent] + unit
+        if err is not None:
+            erry = err / np.power(10, prefix_exponent)
+            return "({:.2f}±{}) ".format(y, round(erry,2)) + prefix[prefix_exponent] + unit
+        else:
+            return "{:.2f} ".format(y) + prefix[prefix_exponent] + unit
     else:
         y = x / np.power(10, exponent)
-        return "{:.2f}×10{} ".format(y, superscript(exponent)) + unit
-
+        if err is not None:
+            erry = err / np.power(10, exponent)
+            print(round(erry,2))
+            return "({:.2f}±{})×10{} ".format(y, round(erry,2), superscript(exponent)) + unit
+        else:
+            return "{:.2f}×10{} ".format(y, superscript(exponent)) + unit
 
 def errformat(x, err, unit):
     exponent = int(np.floor(np.log10(x)))
     y = x / np.power(10, exponent)
     return "({:.2f}±{:.2f})×10{} ".format(y, superscript(exponent)) + unit
 
+def print_tables():
+    with open("pretty_tables1.csv", 'w') as f:
+        f.write(" , Half Life (s), Number of particles produced, ,Activity\n")
+        f.write(" , , 230 MeV, 200 MeV, 230 MeV, 200 MeV\n")
+        n230 = data[(data['thickness (cm)'] == 2) & (data['energy'] == 230)]
+        n200 = data[(data['thickness (cm)'] == 2) & (data['energy'] == 200)]
+        a230 = saturation[(data['thickness (cm)'] == 2) & (data['energy'] == 230)]
+        a200 = saturation[(data['thickness (cm)'] == 2) & (data['energy'] == 200)]
 
-with open("pretty_tables.csv", 'w') as f:
-    f.write(" , Half Life (s), Number of particles produced, Activity\n")
-    f.write(" , , 230 MeV, 200 MeV, 230 MeV, 200 MeV\n")
-    n230 = data[(data['thickness (cm)'] == 2) & (data['energy'] == 230)]
-    n200 = data[(data['thickness (cm)'] == 2) & (data['energy'] == 200)]
-    a230 = saturation[(data['thickness (cm)'] == 2) & (data['energy'] == 230)]
-    a200 = saturation[(data['thickness (cm)'] == 2) & (data['energy'] == 200)]
+        for ist in half_life.keys():
+            print(ist)
+            f.write(superscript(ist_num[ist]))
+            f.write(ist_name[ist])
+            f.write(",{halflife},{num230},{num200},{act230},{act200}".format(
+                halflife=formatnum(half_life[ist], ''),
+                num230 = formatnum(n230[ist].iloc[0], err=n230[ist + " error"].iloc[0]),
+                num200 = formatnum(n200[ist].iloc[0], err=n200[ist + " error"].iloc[0]),
+                act230 = formatnum(a230[ist].iloc[0], unit='Bq', SIprefix=True, err=a230[ist + " error"].iloc[0]),
+                act200 = formatnum(a200[ist].iloc[0], unit='Bq', SIprefix=True, err=a230[ist + " error"].iloc[0])
+            ))
+            f.write("\n")
 
-    for ist in half_life.keys():
-        print(ist)
-        f.write(superscript(ist_num[ist]))
-        f.write(ist_name[ist])
-        f.write(",{halflife},{num230},{num200},{act230},{act200}".format(
-            halflife=formatnum(half_life[ist], ''),
-            num230 = formatnum(n230[ist].iloc[0], ''),
-            num200 = formatnum(n200[ist].iloc[0], ''),
-            act230 = formatnum(a230[ist].iloc[0], 'Bq', SIprefix=True),
-            act200 = formatnum(a200[ist].iloc[0], 'Bq', SIprefix=True)
-        ))
-        f.write("\n")
+    with open("pretty_tables2.csv", 'w') as f:
+        f.write(" ,Activity, \n")
+        f.write(" , 230 MeV, 200 MeV\n")
+        s230 = one_hour_value[(data['thickness (cm)'] == 2) & (data['energy'] == 230)]
+        s200 = one_hour_value[(data['thickness (cm)'] == 2) & (data['energy'] == 200)]
+
+        for ist in ['Be7', 'C11']:
+            print(ist)
+            f.write(superscript(ist_num[ist]))
+            f.write(ist_name[ist])
+            f.write(",{act230},{act200}".format(
+                halflife=formatnum(half_life[ist], ''),
+                act230 = formatnum(s230[ist].iloc[0], unit='Bq', SIprefix=True, err=s230[ist + " error"].iloc[0]),
+                act200 = formatnum(s200[ist].iloc[0], unit='Bq', SIprefix=True, err=s230[ist + " error"].iloc[0])
+            ))
+            f.write("\n")
