@@ -2,6 +2,7 @@ import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from scipy.integrate import simps
 
 hour = 3600
 
@@ -16,14 +17,21 @@ beam_time = 60  # 1 min beam time
 rows = []
 mean=[]
 
+def rectangular(data, dx=1.0):
+    return np.sum(np.asarray(data)*dx)
+
+def gaussian(mean, std=1):
+    return lambda x: 1./(np.sqrt(2.*np.pi)*std)*np.exp(-np.power((x - mean)/std, 2.)/2)
+
+
 # Loop over every energy & thickness
 for i, e in enumerate(energies):
+    binwidth = 2*e*1000/140  # Gev
     for t in thickness:
         directory = "/{rThickness}-{bEnergy:03}/".format(rThickness=round(t), bEnergy=round(1000*e))
-
         # Read uprange data
         with open(os.getcwd() + directory + "in001_fort.27", 'r') as f:
-            binwidth = 2*e*1000/140  # Gev
+
             lines = f.readlines()
             mergedata = []
             data = []
@@ -32,13 +40,10 @@ for i, e in enumerate(energies):
                 data[i] = data[i].split()
             for i in range(len(data)):
                 mergedata = mergedata + data[i]
-            for i in range(len(mergedata)):
-                mergedata[i]=float(mergedata[i])*2*(np.pi)*100*binwidth/1000
-                """
-                print(mergedata2[i])
-                print(sum(mergedata2)/sum(mergedata))
-                print(len(mergedata))
-                """
+
+            mergedata = np.array(mergedata, dtype=float)
+            mergedata = mergedata / rectangular(mergedata, dx=binwidth)
+
 
         # Open downrange data
         with open(os.getcwd() + directory + "in001_fort.28", 'r') as g:
@@ -50,14 +55,9 @@ for i, e in enumerate(energies):
                 data2[i] = data2[i].split()
             for i in range(len(data2)):
                 mergedata2 = mergedata2 + data2[i]
-            for i in range(len(mergedata2)):
-                mergedata2[i]=float(mergedata2[i])*2*(np.pi)*100*binwidth/1000
 
-                """
-                print(mergedata2[i])
-                print(sum(mergedata2)/sum(mergedata))
-                print(len(mergedata))
-                """
+            mergedata2 = np.array(mergedata2, dtype=float)
+            mergedata2 = mergedata2 / rectangular(mergedata2, dx=binwidth)
 
         length = np.linspace(0,(139*binwidth),num=140) + binwidth/2
 
@@ -69,9 +69,10 @@ for i, e in enumerate(energies):
         plt.xlabel("Energy (GeV)")
         plt.ylabel("Ratio of number of protons leaving to number of protons entering")
         plt.title("E= {:.3f} MeV, x= {:.3f} cm".format(e, t))
-        # plt.show()
 
         print("E= {:.3f} MeV, x= {:.3f} cm".format(e, t))
+
+        print("Area = {}".format(rectangular(mergedata, dx=binwidth)))
 
         # Calculate
         totalp = []
@@ -84,6 +85,10 @@ for i, e in enumerate(energies):
         shepcor = varE - np.square(binwidth)/12
         print(np.sqrt(shepcor))
 
+        # Plot the reconstructed gaussian for the uprange proton energy distribution
+        y = gaussian(meanE, std=np.sqrt(shepcor))(length)
+        plt.plot(length, y)
+        plt.show()
         """
         for i in range(len(mergedata)):
             totalp.append((mergedata[i])*(length[i]))
