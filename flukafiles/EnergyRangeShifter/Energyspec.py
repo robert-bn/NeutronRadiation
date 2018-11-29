@@ -14,6 +14,7 @@ actual_protons = 1e11
 beam_time = 60  # 1 min beam time
 
 rows = []
+mean=[]
 
 for i, e in enumerate(energies):
     for t in thickness:
@@ -66,16 +67,28 @@ for i, e in enumerate(energies):
                     plt.title("E= %.3f MeV, x= %.3f cm" % (e, t))
                     #plt.show()
 
-                    #totalp = []
+                    totalp = []
 
-                    mean = np.sum([mergedata[i]*length[i] for i in range(len(mergedata))])/np.sum(mergedata)
-                    print(mean)
+                    meanE = np.sum([mergedata[i]*length[i] for i in range(len(mergedata))])/np.sum(mergedata)
+                    mean.append(meanE)
+
+                    print(meanE)
+
+                    varE = np.sum([mergedata[i]*np.square(length[i]-meanE) for i in range(len(mergedata))])/(np.sum(mergedata))
+                    shepcor = varE - np.square(binwidth)/12
+                    print(np.sqrt(shepcor))
 
                     """
                     for i in range(len(mergedata)):
                         totalp.append((mergedata[i])*(length[i]))
                     print(sum(totalp)/(sum(mergedata)) - binwidth/2)
+                    
+                     for i in range(len(mergedata)):
+                        totalp.append(mergedata[i]*np.square(length[i]-meanE))
+                    print(sum(totalp)/(sum(mergedata)-1))
+
                     """
+
 
 """
 df = pd.DataFrame(mergedata)
