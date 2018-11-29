@@ -20,7 +20,6 @@ for i, e in enumerate(energies):
         directory = "/{rThickness}-{bEnergy:03}/".format(rThickness=round(t), bEnergy=round(1000*e))
         with open(os.getcwd() + directory + "in001_fort.27", 'r') as f:
             with open(os.getcwd() + directory + "in001_fort.28", 'r') as g:
-
                 binwidth = 2*e*1000/140 #Gev
                 lines = f.readlines()
                 mergedata = []
@@ -62,8 +61,8 @@ for i, e in enumerate(energies):
                 plt.bar(x=length2,height=mergedata2, width=binwidth, color=(1,0.1,0.1,0.6))
                 plt.xlabel("Energy (GeV)")
                 plt.ylabel("Ratio of number of protons leaving to number of protons entering")
-                plt.title("E= %.3f MeV, x= %.3f cm" % (e, t))
-                #plt.show()
+                plt.title("E= {:.3f} MeV, x= {:.3f} cm".format(e, t))
+                plt.show()
 
                 #totalp = []
 
