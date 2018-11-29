@@ -14,6 +14,7 @@ actual_protons = 1e11
 beam_time = 60  # 1 min beam time
 
 rows = []
+mean=[]
 
 # Loop over every energy & thickness
 for i, e in enumerate(energies):
@@ -67,32 +68,31 @@ for i, e in enumerate(energies):
         plt.xlabel("Energy (GeV)")
         plt.ylabel("Ratio of number of protons leaving to number of protons entering")
         plt.title("E= {:.3f} MeV, x= {:.3f} cm".format(e, t))
-        plt.show()
+        # plt.show()
 
-        print("E= %.3f MeV, x= %.3f cm" % (e, t))
+        print("E= {:.3f} MeV, x= {:.3f} cm".format(e, t))
 
 
         #totalp = []
 
         # Calculate
-        mean = np.sum([mergedata[i]*length[i] for i in range(len(mergedata))])/np.sum(mergedata)
-        print(mean)
+        totalp = []
+
+        meanE = np.sum([mergedata[i]*length[i] for i in range(len(mergedata))])/np.sum(mergedata)
+
+        print(meanE)
+
+        varE = np.sum([mergedata[i]*np.square(length[i]-meanE) for i in range(len(mergedata))])/(np.sum(mergedata))
+        shepcor = varE - np.square(binwidth)/12
+        print(np.sqrt(shepcor))
 
         """
         for i in range(len(mergedata)):
             totalp.append((mergedata[i])*(length[i]))
         print(sum(totalp)/(sum(mergedata)) - binwidth/2)
+
+         for i in range(len(mergedata)):
+            totalp.append(mergedata[i]*np.square(length[i]-meanE))
+        print(sum(totalp)/(sum(mergedata)-1))
+
         """
-
-"""
-df = pd.DataFrame(mergedata)
-
-length2 = np.linspace(2*e*1000/140,2*e*1000,num=140)
-plt.bar(x=length2,height=mergedata)
-plt.xlabel("Energy (GeV)")
-plt.ylabel("Differential Fluence per Energy (cm^-2 sr^-1 GeV^-1)")
-plt.title("E=70MeV, x=1cm")
-plt.show()
-
-df.to_csv("Test.csv)
-"""
