@@ -65,9 +65,9 @@ for i, e in enumerate(energies):
         plt.bar(x=length,height=mergedata2, width=binwidth, color=(1,0.1,0.1,0.6))  # Downrange
 
         # Annotations
-        plt.xlabel("Energy (GeV)")
+        plt.xlabel("Energy (MeV)")
         plt.ylabel("Ratio of number of protons leaving to number of protons entering")
-        plt.title("E= {:.3f} MeV, x= {:.3f} cm".format(e, t))
+        plt.title("E= {:.3f} GeV, x= {:.3f} cm".format(e, t))
 
         # Calculate mean & varience of data
         meanE = np.sum([mergedata2[i]*length[i] for i in range(len(mergedata2))])/np.sum(mergedata2)
