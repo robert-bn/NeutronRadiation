@@ -70,9 +70,9 @@ for i, e in enumerate(energies):
         plt.title("E= {:.3f} MeV, x= {:.3f} cm".format(e, t))
 
         # Calculate mean & varience of data
-        meanE = np.sum([mergedata[i]*length[i] for i in range(len(mergedata))])/np.sum(mergedata)
+        meanE = np.sum([mergedata2[i]*length[i] for i in range(len(mergedata2))])/np.sum(mergedata2)
 
-        varE = np.sum([mergedata[i]*np.square(length[i]-meanE) for i in range(len(mergedata))])/(np.sum(mergedata))
+        varE = np.sum([mergedata2[i]*np.square(length[i]-meanE) for i in range(len(mergedata2))])/(np.sum(mergedata2))
         shepcor = varE - np.square(binwidth)/12#
 
         # Print some useful information
