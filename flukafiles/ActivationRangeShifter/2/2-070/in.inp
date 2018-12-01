@@ -57,14 +57,14 @@ DEFAULTS                                                              HADROTHE
 SCORE         ENERGY  BEAMPART
 * Boundary crossing differential fluence either side of the lexan
 USRBDX          101.    PROTON       27.    regVA2    regLE4      100.ifluence
-USRBDX          0.12      0.00      140.                 0.0        1. &
+USRBDX          0.12      0.00      650.                 0.0        1. &
 USRBDX          101.    PROTON       28.    regLE4    regVA4      100.ofluence
-USRBDX          0.12      0.00      140.                 0.0        1. &
+USRBDX          0.12      0.00      650.                 0.0        1. &
 * Boundary crossing differential current either side of the lexan
 USRBDX          001.    PROTON       29.    regVA2    regLE4      100.icurrent
-USRBDX          0.12      0.00      140.                 0.0        1. &
+USRBDX          0.12      0.00      650.                 0.0        1. &
 USRBDX          001.    PROTON       30.    regLE4    regVA4      100.ocurrent
-USRBDX          0.12      0.00      140.                 0.0        1. &
+USRBDX          0.12      0.00      650.                 0.0        1. &
 * Total Boundary Crossing fluence either side of the lexan
 USRBDX          101.    PROTON       27.    regVA2    regLE4      100.ifluence
 USRBDX          300.        0.        1.                 0.0        1. &
