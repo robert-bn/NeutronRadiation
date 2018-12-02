@@ -4,25 +4,23 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy.ma as ma
 
-hour = 3600
-
-energies = [0.250,0.230,0.200,0.150,0.100,0.07]  # MeV
-spread   = [0.1020,0.0979,0.0913,0.0790,0.0645,0.0540]
+energies = [0.250,0.230,0.200,0.150,0.100,0.07]  # GeV
 thickness = [1.,2.,3.,5.]   # cm
 
-input_protons  = 1e7
-actual_protons = 1e11
-beam_time = 60  # 1 min beam time
-
-rows = []
-mean=[]
+# Arrays for the output dataframe
+pandEnergy = []
+pandThickness = []
+pandMeanup = []
+pandMean = []
+pandStdup = []
+pandStd = []
+pandRatio = []
 
 def rectangular(data, dx=1.0):
     return np.sum(np.asarray(data)*dx)
 
 def gaussian(mean, std=1):
     return lambda x: 1./(np.sqrt(2.*np.pi)*std)*np.exp(-np.power((x - mean)/std, 2.)/2)
-
 
 # Loop over every energy & thickness
 for i, e in enumerate(energies):
@@ -77,43 +75,55 @@ for i, e in enumerate(energies):
         plt.ylabel("Probability Density of Proton Kinetic Energy")
         plt.title("E= {:.3f} GeV, x= {:.3f} cm".format(e, t))
 
-        '''
-        # Calculate mean & varience of data
-        meanE = np.sum([mergedata[i]*length[i] for i in range(len(mergedata))])/np.sum(mergedata)
+        # Calculate mean & varience of upstream data
+        meanupE = np.sum([mergedata[i]*length[i] for i in range(len(mergedata))])/np.sum(mergedata)
 
-        varE = np.sum([mergedata[i]*np.square(length[i]-meanE) for i in range(len(mergedata))])/(np.sum(mergedata))
-        shepcor = varE - np.square(binwidth)/12#
-        '''
+        varupE = np.sum([mergedata[i]*np.square(length[i]-meanupE) for i in range(len(mergedata))])/(np.sum(mergedata))
+        shepcorup = varupE - np.square(binwidth)/12
 
-        # Calculate mean & varience of data
+        # Find the index that contains the mean
         meanarg = np.argmax(mergedata2)
 
-
+        # Calculate mean & varience of downstream data (about the mean)
         meanE = np.sum([mergedata2[i]*length[i] for i in range((meanarg - 30), (meanarg + 30))])/np.sum(mergedata2[meanarg - 30 + i] for i in range(0,60))
-        #print(mergedata2[350])
         varE = np.sum([mergedata2[i]*np.square(length[i]-meanE) for i in range((meanarg - 30), len(mergedata2))])/(np.sum(mergedata2[meanarg - 30 + i] for i in range(0,60)))
         shepcor = varE - np.square(binwidth)/12
-        
 
+        # Calculate ratio of no. of downsteam to upstream protons
+        ratio = float(lines2[92])*100*2*np.pi*300
+        
         # Print some useful information
-        print("E= {:.3f} GeV, x= {:.3f} cm".format(e, t))
-        print("Area = {}".format(rectangular(mergedata2, dx=binwidth)))
-        print("Mean energy = {}".format(meanE))
-        print(np.sqrt(varE))
-        print(np.sqrt(shepcor))
+        print("E= {:.3f} GeV, x= {:.3f} cm".format(e, t)) # Enegy and thickness
+        print("Area = {}".format(rectangular(mergedata2, dx=binwidth))) # Normalised area
+        print("Mean energy = {}".format(meanE)) # Mean Energy
+        print(np.sqrt(varE)) # Standard Deviation
+        print(np.sqrt(shepcor)) # Corrected Standard Deviation
+        print(ratio) # Number of downstream protons relative to upstream protons
 
         # Plot the reconstructed gaussian for the uprange proton energy distribution
         y = gaussian(meanE, std=np.sqrt(shepcor))(length)
         plt.plot(length, y)
-        plt.show()
-        """
-        totalp = []
-        for i in range(len(mergedata)):
-            totalp.append((mergedata[i])*(length[i]))
-        print(sum(totalp)/(sum(mergedata)) - binwidth/2)
+        #plt.show()
 
-         for i in range(len(mergedata)):
-            totalp.append(mergedata[i]*np.square(length[i]-meanE))
-        print(sum(totalp)/(sum(mergedata)-1))
+        pandEnergy.append(e)
+        pandThickness.append(t)
+        pandMeanup.append(meanupE)
+        pandStdup.append(np.sqrt(shepcorup))
+        pandMean.append(meanE)
+        pandStd.append(np.sqrt(shepcor))
+        pandRatio.append(ratio)
 
-        """
+
+
+energyspecdata ={
+    "Kinetic Energy (GeV)" : pandEnergy,
+    "Thickness (cm)" : pandThickness,
+    "Upstream Energy Mean (GeV)" : pandMeanup,
+    "Downstream Energy Mean (GeV)" : pandMean,
+    "Upstream Energy Std" : pandStdup,
+    "Downstream Energt Std" : pandStd,
+    "Ratio" : pandRatio
+}
+df = pd.DataFrame(energyspecdata)
+print(df)
+df.to_csv("DownrangeEnergySpectra(FLUKA).csv")

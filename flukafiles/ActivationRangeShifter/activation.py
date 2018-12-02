@@ -54,6 +54,7 @@ for i, e in enumerate(energies):
 
 
 df = pd.DataFrame(rows)
+df = df.sort_values(by=["thickness","energy"], ascending=[True,False])
 
 
 # normalise data to beam
