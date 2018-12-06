@@ -50,7 +50,7 @@ for i, e in enumerate(energies):
 
                 for iso in isotopes:
                     dict[iso] = float(data[ij(isotope_ZA[iso], k)])
-                    dict[iso + " error"] = np.sqrt(float(data[ij(isotope_ZA[iso], k)]) / input_protons) * actual_protons
+                    #dict[iso + " error"] = np.sqrt(float(data[ij(isotope_ZA[iso], k)]) / input_protons) * actual_protons
 
                 rows.append(dict)
 
@@ -69,7 +69,7 @@ for ist in isotopes:
     print(ist, end=' ')
     print(λ(ist))
     saturation[ist] = saturation[ist] * (1 - np.exp(-λ(ist)*beam_time)) / beam_time
-    saturation[ist + " error"] = saturation[ist + " error"] * (1 - np.exp(-λ(ist)*beam_time)) / beam_time
+    #saturation[ist + " error"] = saturation[ist + " error"] * (1 - np.exp(-λ(ist)*beam_time)) / beam_time
 
 print(saturation)
 saturation.to_csv("saturation (FLUKA).csv")
@@ -78,7 +78,7 @@ saturation.to_csv("saturation (FLUKA).csv")
 two_minutes_value = saturation.copy()
 for ist in isotopes:
     two_minutes_value[ist] = two_minutes_value[ist] * np.exp(-λ(ist)*1*threeminutes)
-    two_minutes_value[ist + " error"] = two_minutes_value[ist + " error"] * np.exp(-λ(ist)*1*threeminutes)
+    #two_minutes_value[ist + " error"] = two_minutes_value[ist + " error"] * np.exp(-λ(ist)*1*threeminutes)
 
 
 print(two_minutes_value)
@@ -88,7 +88,7 @@ two_minutes_value.to_csv("two minutes value (FLUKA).csv")
 one_minute_value = saturation.copy()
 for ist in isotopes:
     one_minute_value[ist] = one_minute_value[ist] * np.exp(-λ(ist)*1*oneminute)
-    one_minute_value[ist + " error"] = one_minute_value[ist + " error"] * np.exp(-λ(ist)*1*oneminute)
+    #one_minute_value[ist + " error"] = one_minute_value[ist + " error"] * np.exp(-λ(ist)*1*oneminute)
 
 
 print(one_minute_value)
@@ -98,7 +98,7 @@ one_minute_value.to_csv("one minute value (FLUKA).csv")
 five_minutes_value = saturation.copy()
 for ist in isotopes:
     five_minutes_value[ist] = five_minutes_value[ist] * np.exp(-λ(ist)*1*fiveminutes)
-    five_minutes_value[ist + " error"] = five_minutes_value[ist + " error"] * np.exp(-λ(ist)*1*fiveminutes)
+    #five_minutes_value[ist + " error"] = five_minutes_value[ist + " error"] * np.exp(-λ(ist)*1*fiveminutes)
 
 
 print(five_minutes_value)

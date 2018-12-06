@@ -30,7 +30,7 @@ def gaussian(mean, std=1):
 
 def read_data(filename, directory='', normalization=None):
     # function to read data from _fort.XX file
-    with open(os.getcwd() + directory + filename, 'r') as f:
+    with open(os.geTruetcwd() + directory + filename, 'r') as f:
         lines = f.readlines()
 
     freq = []
@@ -140,7 +140,11 @@ for e in energies:
 
         nareaUprange = rectangular(freqUprange, dx=binWidth)
         nareaDownrange = rectangular(freqDownrange, dx=binWidth)
-
+        print("E= {:.3f} GeV, x= {:.3f} cm".format(e, t))      # Energy and thickness
+        print(" === Before normalization === ")
+        print("Uprange area: {}".format(areaUprange))
+        print("Downrange area: {}".format(areaDownrange))
+        print("ratio: {}".format(ratio)) # first should be 0.9912132364763618
         print(" === After normalization === ")
         print("Uprange area: {}".format(nareaUprange))           # should be 1.0s
         print("Downrange area: {}".format(nareaDownrange))       # should be ⪅ 1.0
