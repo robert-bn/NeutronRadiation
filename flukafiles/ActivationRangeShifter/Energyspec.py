@@ -87,6 +87,8 @@ for i, e in enumerate(energies):
         # Calculate mean & varience of downstream data (about the mean)
         meanE = np.sum([mergedata2[i]*length[i] for i in range((meanarg - 30), (meanarg + 30))])/np.sum(mergedata2[meanarg - 30 + i] for i in range(0,60))
         varE = np.sum([mergedata2[i]*np.square(length[i]-meanE) for i in range((meanarg - 30), len(mergedata2))])/(np.sum(mergedata2[meanarg - 30 + i] for i in range(0,60)))
+        #meanE = np.sum([mergedata2[i]*length[i] for i in range(0, len(mergedata2))])/np.sum(mergedata2[i] for i in range(0,len(mergedata2)))
+        #varE = np.sum([mergedata2[i]*np.square(length[i]-meanE) for i in range(0, len(mergedata2))])/np.sum(mergedata2[i] for i in range(0,len(mergedata2)))
         shepcor = varE - np.square(binwidth)/12
 
         # Calculate ratio of no. of downsteam to upstream protons
@@ -103,7 +105,7 @@ for i, e in enumerate(energies):
         # Plot the reconstructed gaussian for the uprange proton energy distribution
         y = gaussian(meanE, std=np.sqrt(shepcor))(length)
         plt.plot(length, y)
-        #plt.show()
+        plt.show()
 
         pandEnergy.append(e)
         pandThickness.append(t)
@@ -126,4 +128,4 @@ energyspecdata ={
 }
 df = pd.DataFrame(energyspecdata)
 print(df)
-df.to_csv("DownrangeEnergySpectra(FLUKA).csv")
+#df.to_csv("DownrangeEnergySpectra(FLUKA).csv")
