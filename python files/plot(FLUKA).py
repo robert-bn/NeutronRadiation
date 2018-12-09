@@ -2,11 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import json
 
+directory = "data/"
 # Load data
-with open("isotopes(FLUKA).json") as f:
+with open(directory + "isotopes.json") as f:
     data = json.load(f)
 
-with open("saturation(FLUKA).json") as f:
+with open(directory + "saturation(FLUKA).json") as f:
     act_data = json.load(f)
 
 
@@ -160,7 +161,7 @@ def activityTOM(activity):
     #print(efficiency)
 
 def nice_table(filename, activity):
-    TOM = [60,120,300]        
+    TOM = [60,120,300]
     with open(filename, 'w') as f:
         f.write("{c1},{c2},{c3},{c4},{c5}\n".format(
                         c1="Photopeak",
@@ -168,10 +169,10 @@ def nice_table(filename, activity):
                         c3="Activity after 60s",
                         c4="Activity after 120s",
                         c5="Activity after 300s",
-                    ))        
+                    ))
         for ist in data.keys():
             for gamma in data[ist]["gamma"]:
-                activities_60 = gamma["branchingRatio"] * gamma["multiplicity"] * activity[ist] * np.exp(-np.log(2)/data[ist]['halfLife']*TOM[0]) 
+                activities_60 = gamma["branchingRatio"] * gamma["multiplicity"] * activity[ist] * np.exp(-np.log(2)/data[ist]['halfLife']*TOM[0])
                 activities_120 = gamma["branchingRatio"] * gamma["multiplicity"] * activity[ist] * np.exp(-np.log(2)/data[ist]['halfLife']*TOM[1])
                 activities_300 = gamma["branchingRatio"] * gamma["multiplicity"] * activity[ist] * np.exp(-np.log(2)/data[ist]['halfLife']*TOM[2])
                 f.write("{c1},{c2},{c3},{c4},{c5}\n".format(
@@ -181,7 +182,7 @@ def nice_table(filename, activity):
                     c4=activities_120,
                     c5=activities_300
                 ))
-                
+
 
 # Main
 
@@ -189,7 +190,7 @@ nice_table("test.csv",act_data[0]["activation"])
 
 '''
 # pad title
-plt.rcParams['axes.titlepad'] = 20 
+plt.rcParams['axes.titlepad'] = 20
 
 # Plot each graph for 200 MeV, 230 MeV for 2cm thickness
 fig, axes = plt.subplots(nrows=2, ncols=3, sharex=True, figsize=(18,10))

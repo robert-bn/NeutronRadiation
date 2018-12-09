@@ -30,7 +30,7 @@ def gaussian(mean, std=1):
 
 def read_data(filename, directory='', normalization=None):
     # function to read data from _fort.XX file
-    with open(os.geTruetcwd() + directory + filename, 'r') as f:
+    with open(os.getcwd() + directory + filename, 'r') as f:
         lines = f.readlines()
 
     freq = []
