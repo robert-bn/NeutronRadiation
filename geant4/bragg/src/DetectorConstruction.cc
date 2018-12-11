@@ -37,17 +37,18 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
      input >> a >> b;
 
      if(a == "number-of-layers"){ fNumberOfLayers = stoi(b); }  // fNumberOfLayers
-     if(a == "thickness") { fLayerThickness = stod(b); }             // fLayerThickness
-     if(a == "min-x") { fMinX = stod(b); }                       // fMinX
+     if(a == "max-x") { fMaxX = stod(b) * cm; }        // fLayerThickness
+     if(a == "min-x") { fMinX = stod(b) * cm; }                      // fMinX
    }
 
+   fLayerThickness = (fMaxX - fMinX) / fNumberOfLayers;
 
   if(fLayerThickness){
     G4cout << "============================ Geometry Config =============================\n";
     G4cout << " * Number of layers = " << fNumberOfLayers << "\n";
     G4cout << " * Layer thickness = " << fLayerThickness / cm << " cm\n";
-    G4cout << " * Min layer x = " << fMinX / cm << "cm \n";
-    G4cout << " * Max layer x = " << GetMaxX() / cm << " cm\n";
+    G4cout << " * Min layer x = " << fMinX / cm << " cm \n";
+    G4cout << " * Max layer x = " << fMaxX / cm << " cm\n";
     G4cout << "==========================================================================\n";
   } else {
     G4cerr << "Error reading config file! Make sure geometry.conf is in root directory.\n";
@@ -93,7 +94,6 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4VPhysicalVolume* worldPhys = new G4PVPlacement(nullptr, {}, worldLog, "world", nullptr, false, 0);
 
   // target dimensions
-  fLayerThickness    = 0.2*cm;
   G4double width     = 10*cm;
   G4double height    = 10*cm;
 
@@ -114,9 +114,6 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   targetLog->SetVisAttributes(blue);
 
   // Placement
-  fNumberOfLayers = 200;
-  fMinX = 6 * cm;
-
   vector<G4ThreeVector> layerPositions;
   for (int i = 0; i < fNumberOfLayers; i++)
   {
@@ -143,7 +140,6 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   // G4cout << *(G4Material::GetMaterialTable()) << G4endl;
 
   // The Construct() method has to return the final (physical) world volume:
-  G4cout << "o===================@ DONE CONSTRUCTION!!! @======================o\n";
   return worldPhys;
 }
 
