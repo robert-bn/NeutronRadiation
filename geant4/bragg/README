@@ -1,0 +1,12 @@
+==== Install ====
+tar -xzf bragg.tar.gz
+mkdir bragg-build
+cd bragg-build
+cmake ../bragg
+make
+
+==== Run ====
+# To run for 10000 250 MeV protons and open plot of bragg peak in Root
+./task macros/basiclong.mac
+root -l calorimeter_histogram.C
+
