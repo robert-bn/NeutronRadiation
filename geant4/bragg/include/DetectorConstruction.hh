@@ -22,12 +22,13 @@ public:
     // Functions to get protected information about world construction
     G4double GetLayerThickness() const { return fLayerThickness / cm; }
     G4double GetMinX() const { return fMinX / cm; }
-    G4double GetMaxX() const { return (fMinX + fNumberOfLayers * fLayerThickness) / cm; }
+    G4double GetMaxX() const { return fMaxX / cm; }
     G4double GetNumberOfLayers() const { return fNumberOfLayers; }
 
 protected:
     G4LogicalVolume*  fScoringVolume;
     G4double fLayerThickness;
+    G4double fMaxX;
     G4double fMinX;
     G4int fNumberOfLayers;
 };

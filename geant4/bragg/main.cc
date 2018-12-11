@@ -78,6 +78,7 @@ int main(int argc, char** argv)
     runManager->SetUserInitialization(new QGSP_BIC_HP());
 
     // Instantiate DetectorConstruction & ActionInitialization
+
     runManager->SetUserInitialization(new DetectorConstruction());
     runManager->SetUserInitialization(new ActionInitialization());
 

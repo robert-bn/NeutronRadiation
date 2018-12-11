@@ -16,91 +16,131 @@
 #include "Analysis.hh"
 
 #include <sstream>
+#include <string>
+#include <fstream>
 
 using namespace std;
 
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {
-    G4cout << "o=======================@ CONSTRUCTION @==========================o\n";
-    // world dimensions
-    G4NistManager* nist = G4NistManager::Instance();
-    G4double worldSizeX = 2 * m;
-    G4double worldSizeY = 1 * m;
-    G4double worldSizeZ = 1 * m;
+  /*
+   * ===========================================================================
+   * =========================== Read in config file ===========================
+   * ===========================================================================
+   */
 
-    // World Solid
-    G4VSolid* worldBox = new G4Box("world", worldSizeX / 2, worldSizeY / 2, worldSizeZ / 2);
+   ifstream input("geometry.conf");
 
-    // World logical volume
-    G4LogicalVolume* worldLog =
-      new G4LogicalVolume(worldBox,                                  // solid
-                          nist->FindOrBuildMaterial("G4_Galactic"),  // material
-                          "world");                                  // name
+   string a, b;
+   while (input.good())
+   {
+     input >> a >> b;
 
-    G4VisAttributes* visAttr = new G4VisAttributes();
+     if(a == "number-of-layers"){ fNumberOfLayers = stoi(b); }  // fNumberOfLayers
+     if(a == "max-x") { fMaxX = stod(b) * cm; }        // fLayerThickness
+     if(a == "min-x") { fMinX = stod(b) * cm; }                      // fMinX
+   }
 
-    // make World invisible
-    visAttr->SetVisibility(true);
-    worldLog->SetVisAttributes(visAttr);
+   fLayerThickness = (fMaxX - fMinX) / fNumberOfLayers;
 
-    // World physical volume
-    G4VPhysicalVolume* worldPhys = new G4PVPlacement(nullptr, {}, worldLog, "world", nullptr, false, 0);
+  if(fLayerThickness){
+    G4cout << "============================ Geometry Config =============================\n";
+    G4cout << " * Number of layers = " << fNumberOfLayers << "\n";
+    G4cout << " * Layer thickness = " << fLayerThickness / cm << " cm\n";
+    G4cout << " * Min layer x = " << fMinX / cm << " cm \n";
+    G4cout << " * Max layer x = " << fMaxX / cm << " cm\n";
+    G4cout << "==========================================================================\n";
+  } else {
+    G4cerr << "Error reading config file! Make sure geometry.conf is in root directory.\n";
+  }
 
-    fMinX = 6 * cm;
+  if( fLayerThickness < 0)
+  {
+    G4cerr << "Error: Layer thickness must be a positive number.\n";
+  }
 
-    // target dimensions
-    fLayerThickness    = 0.2*cm;
-    G4double width     = 10*cm;
-    G4double height    = 10*cm;
+  if( fNumberOfLayers < 0)
+  {
+    G4cerr << "Error: Number of layers must be a positive number.\n";
+  }
 
-    // layer solid
-    G4VSolid* targetBox = new G4Box("target", fLayerThickness / 2, width / 2, height / 2);
+  /*
+   * ===========================================================================
+   * =========================== World Construction ============================
+   * ===========================================================================
+ */
+  // world dimensions
+  G4NistManager* nist = G4NistManager::Instance();
+  G4double worldSizeX = 2 * m;
+  G4double worldSizeY = 1 * m;
+  G4double worldSizeZ = 1 * m;
 
-    // Create a logical volume for the target
-    G4LogicalVolume* targetLog =
-      new G4LogicalVolume(targetBox,                             // its shape
-                          nist->FindOrBuildMaterial("G4_WATER"), // its material
-                          "target");                             // its name
+  // World Solid
+  G4VSolid* worldBox = new G4Box("world", worldSizeX / 2, worldSizeY / 2, worldSizeZ / 2);
 
-    // visual properties of target
-    G4VisAttributes* blue = new G4VisAttributes();
-    blue->SetColour(0., 0., 1., 0.4);
-    blue->SetVisibility(true);
-    blue->SetForceSolid(true);
-    targetLog->SetVisAttributes(blue);
+  // World logical volume
+  G4LogicalVolume* worldLog =
+    new G4LogicalVolume(worldBox,                                  // solid
+                        nist->FindOrBuildMaterial("G4_Galactic"),  // material
+                        "world");                                  // name
 
-    // Placement
-    fNumberOfLayers = 200;
-    fMinX = 6 * cm;
+  G4VisAttributes* visAttr = new G4VisAttributes();
 
-    vector<G4ThreeVector> layerPositions;
-    for (int i = 0; i < fNumberOfLayers; i++)
-    {
-        layerPositions.push_back({fMinX + i * fLayerThickness, 0, 0});
-    }
+  // make World invisible
+  visAttr->SetVisibility(true);
+  worldLog->SetVisAttributes(visAttr);
 
-    for (int i = 0; i < fNumberOfLayers; i++)
-    {
-        ostringstream aName;
-        aName << "targetLayer" << i;
-        new G4PVPlacement(
-          nullptr,
-          layerPositions[i],
-			    targetLog,
-          aName.str(),
-          worldLog,
-          0,
-          i);
-    }
+  // World physical volume
+  G4VPhysicalVolume* worldPhys = new G4PVPlacement(nullptr, {}, worldLog, "world", nullptr, false, 0);
 
-    fScoringVolume = targetLog;
+  // target dimensions
+  G4double width     = 10*cm;
+  G4double height    = 10*cm;
 
-    // uncomment to print the material table
-    // G4cout << *(G4Material::GetMaterialTable()) << G4endl;
+  // layer solid
+  G4VSolid* targetBox = new G4Box("target", fLayerThickness / 2, width / 2, height / 2);
 
-    // The Construct() method has to return the final (physical) world volume:
-    G4cout << "o===================@ DONE CONSTRUCTION!!! @======================o\n";
-    return worldPhys;
+  // Create a logical volume for the target
+  G4LogicalVolume* targetLog =
+    new G4LogicalVolume(targetBox,                             // its shape
+                        nist->FindOrBuildMaterial("G4_WATER"), // its material
+                        "target");                             // its name
+
+  // visual properties of target
+  G4VisAttributes* blue = new G4VisAttributes();
+  blue->SetColour(0., 0., 1., 0.4);
+  blue->SetVisibility(true);
+  blue->SetForceSolid(true);
+  targetLog->SetVisAttributes(blue);
+
+  // Placement
+  vector<G4ThreeVector> layerPositions;
+  for (int i = 0; i < fNumberOfLayers; i++)
+  {
+    layerPositions.push_back({fMinX + i * fLayerThickness, 0, 0});
+  }
+
+  for (int i = 0; i < fNumberOfLayers; i++)
+  {
+    ostringstream aName;
+    aName << "targetLayer" << i;
+    new G4PVPlacement(
+      nullptr,
+      layerPositions[i],
+	    targetLog,
+      aName.str(),
+      worldLog,
+      0,
+      i);
+  }
+
+  fScoringVolume = targetLog;
+
+  // uncomment to print the material table
+  // G4cout << *(G4Material::GetMaterialTable()) << G4endl;
+
+  // The Construct() method has to return the final (physical) world volume:
+  return worldPhys;
 }
 
 
