@@ -16,6 +16,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 file(GLOB_RECURSE sources ${PROJECT_SOURCE_DIR}/src/*.cc)
 file(GLOB_RECURSE headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 file(GLOB_RECURSE macros RELATIVE ${PROJECT_SOURCE_DIR} macros/*.mac)
+file(GLOB_RECURSE input RELATIVE ${PROJECT_SOURCE_DIR} *.conf)
 
 # Enable macros for out-of-source build
 foreach(_file ${macros})
@@ -24,6 +25,17 @@ foreach(_file ${macros})
     ${PROJECT_BINARY_DIR}/${_file}
     COPYONLY
     )
+    
+endforeach()
+
+# Enable input files for out-of-source build
+foreach(_file ${input})
+  configure_file(
+    ${_file}
+    ${PROJECT_BINARY_DIR}/${_file}
+    COPYONLY
+    )
+
 endforeach()
 
 add_executable(task main.cc ${sources} ${headers})
