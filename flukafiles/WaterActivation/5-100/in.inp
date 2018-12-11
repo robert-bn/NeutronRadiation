@@ -13,10 +13,10 @@ GEOBEGIN                                                              COMBNAME
 *RPP Parallelepipeds
 RPP body1      -500. 500. -500. 500. -500. 500.
 RPP body2      -100. 100. -100. 100. -100. 100.
-RPP body3      -15. 15. -5. 5. 0.0 5.0
+RPP body3      -15. 15. -15. 15. 0.0 30.
 *Cutplanes surround lexan
 XYP cutplan1    0.
-XYP cutplan2    5.0
+XYP cutplan2    30.
 END
 * ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
 * Define regions bounded by the geometry
@@ -36,10 +36,12 @@ MATERIAL          1.             0.00008                           0.0HYDROGEN
 MATERIAL          6.                  2.                           0.0CARBON
 MATERIAL          8.             0.00134                           0.0OXYGEN
 MATERIAL                             1.2                              LEXAN
+METERIAL                             1.0                              WATER
 COMPOUND     -5.5491  HYDROGEN  -75.5751    CARBON  -18.8758    OXYGENLEXAN
+COMPOUND    -11.1894  HYDORGEN  -88.8106    OXYGEN                    WATER
 * ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
 * Assign Lexan to the region
-ASSIGNMA       LEXAN    regLE4
+ASSIGNMA       WATER    regLE4
 * External Black Hole
 ASSIGNMA    BLCKHOLE    regBH1
 * Vacuum

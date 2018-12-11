@@ -4,10 +4,10 @@ import json
 
 directory = "flukafiles/LEXANCubeBenchmark/"
 # Load data
-with open(directory + "isotopes(FLUKA).json") as f:
+with open("isotopes(FLUKA).json") as f:
     data = json.load(f)
 
-with open(directory + "saturation(FLUKA).json") as f:
+with open("saturation(FLUKA).json") as f:
     act_data = json.load(f)
 
 
