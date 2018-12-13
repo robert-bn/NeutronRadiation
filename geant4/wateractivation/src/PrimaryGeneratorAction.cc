@@ -22,6 +22,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
     // set default particle to Proton
     G4ParticleDefinition* proton = G4ParticleTable::GetParticleTable()->FindParticle("proton");
     fGPS->SetParticleDefinition(proton);
+    fGPS->GetCurrentSource()->GetPosDist()->SetCentreCoords(G4ThreeVector(0., 0., -24*cm));
     // beam direction
     fGPS->GetCurrentSource()->GetAngDist()->SetParticleMomentumDirection(G4ThreeVector(0., 0., 1.));
 }

@@ -27,8 +27,8 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   // World dimensions
   G4NistManager* nist = G4NistManager::Instance();
-  G4double worldSizeX = 40 * cm;
-  G4double worldSizeY = 50 * cm;
+  G4double worldSizeX = 20 * cm;
+  G4double worldSizeY = 20 * cm;
   G4double worldSizeZ = 50 * cm;
 
   // World Solid
@@ -71,7 +71,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4double targetThickness = 40*cm;
 
   // target position
-  G4ThreeVector targetPos = G4ThreeVector(0., 0., 3*cm);
+  G4ThreeVector targetPos = G4ThreeVector(0., 0., 0);
 
   // target shape
   G4VSolid* targetBox = new G4Box(

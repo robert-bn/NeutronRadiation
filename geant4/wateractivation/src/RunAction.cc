@@ -159,7 +159,6 @@ void RunAction::EndOfRunAction(const G4Run* run)
           halfLife = pair.first->GetPDGLifeTime() * 0.69314718056;
 
           // Apply half-life cut (1s < t < 10 years)
-
           if( 1*s < halfLife && halfLife < 10*yr ){
             if(first){ first = false; } else { outFile << ","; }
             outFile << "\n    \"" << (pair.first)->GetParticleName() << "\":{\n";
