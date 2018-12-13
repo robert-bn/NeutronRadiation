@@ -13,6 +13,12 @@
 #include <G4AccumulableManager.hh>
 #include <G4SystemOfUnits.hh>
 #include <G4UnitsTable.hh>
+#include <G4GeneralParticleSource.hh>
+
+#include <fstream>
+#include <sstream>
+
+using namespace std;
 
 RunAction::RunAction() :
 G4UserRunAction()
@@ -39,12 +45,15 @@ G4UserRunAction()
     new G4UnitDefinition("cm-2", "cm-2", "Fluence", 1/cm2);
 
     // Uncomment the following lines to write ROOT file
+    /*
     G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
     analysisManager->SetVerboseLevel(1);
     analysisManager->SetFirstNtupleId(1);
     analysisManager->SetFirstHistoId(1);
     analysisManager->CreateH1("eDep", "Energy Deposited",  20, 50, 60);
     analysisManager->OpenFile("task4");
+    */
+
 }
 
 
@@ -74,23 +83,30 @@ void RunAction::EndOfRunAction(const G4Run* run)
      = static_cast<const DetectorConstruction*>
        (G4RunManager::GetRunManager()->GetUserDetectorConstruction());
 
-    // Get mass and volume of target
+    // Get mass, volume and thickness of target
     G4double mass = detectorConstruction->GetScoringVolume()->GetMass();
     G4double volume = detectorConstruction->GetScoringVolume()->GetSolid()->GetCubicVolume();
+    G4double thickness = detectorConstruction->GetRangeshifterThickness();
 
     // Calculate dose & fluence
     G4double dose = fTotalEnergyDeposited.GetValue() / mass;
     G4double fluence = fTotalTrackLength.GetValue() / volume;
 
     // Get sensitive detector
-    G4SDManager* sdm = G4SDManager::GetSDMpointer();
-    G4VSensitiveDetector* det = sdm->FindSensitiveDetector("detector");
+    // G4SDManager* sdm = G4SDManager::GetSDMpointer();
+    // G4VSensitiveDetector* det = sdm->FindSensitiveDetector("detector");
+
+    // Get current beam energy
+    G4GeneralParticleSource* GPS;
+    GPS = new G4GeneralParticleSource();
+    G4String particle = GPS->GetCurrentSource()->GetParticleDefinition()->GetParticleName();
+    G4double energy = GPS->GetCurrentSource()->GetEneDist()->GetMonoEnergy();
 
 
     if (IsMaster())
     {
         G4cout << "\n--------------------End of Global Run-----------------------";
-        G4cout << " \n The run was " << nofEvents << " events " << G4endl;
+        G4cout << " \n The run was " << nofEvents << " "<< G4BestUnit(energy, "Energy") << " " << particle << 's' << G4endl;
         if (fTotalEnergyDeposited.GetValue()){
             G4cout << " * Total energy deposited was: ";
             G4cout << G4BestUnit(fTotalEnergyDeposited.GetValue(), "Energy");
@@ -122,13 +138,37 @@ void RunAction::EndOfRunAction(const G4Run* run)
 
         G4cout << "There were " << fDownstreamHits.GetValue() << " collections in the downstream detector.\n";
     }
+
+    // Write output file
+    ostringstream fileName;
+    fileName << "run" << run->GetRunID();
+
+    ofstream outFile;
+    outFile.open (fileName.str());
+    outFile << "run " << run->GetRunID() << "\n";
+    outFile << "n-events " << nofEvents << "\n";
+    outFile << "energy " << G4BestUnit(energy, "Energy") << "\n";
+    outFile << "rangeshifter-thickness " << G4BestUnit(thickness, "Length") << "\n";
+
+    // energy and thickness
+    // secondaries tally
+    for(auto pair : fSecondaryNumbers.GetValue())
+    {
+        outFile << (pair.first)->GetParticleName() << " " << pair.second << "\n";
+    }
+
+    outFile.close();
+
 }
+
 
 RunAction::~RunAction()
 {
     // Uncomment to write ROOT file
+    /*
     G4AnalysisManager* man = G4AnalysisManager::Instance();
     man->Write();
+    */
 }
 
 void RunAction::AddSecondary(const G4ParticleDefinition* particle,

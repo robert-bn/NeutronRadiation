@@ -1,7 +1,9 @@
 # This macro is used to properly set up the interactive session (GUI)
 
-/vis/open OGLSQt
+/vis/open OGLIQt
 /vis/ogl/set/eventsDrawInterval 999999       # To be updated with Geant4 10.3 (probably)
+/vis/modeling/trajectories/create/drawByCharge drawTrajectories
+/vis/modeling/trajectories/select drawTrajectories
 
 /gui/addMenu vis Visualization
 /gui/addButton vis "Draw Axes" "/vis/scene/add/axes 0 0 0 10 cm"
