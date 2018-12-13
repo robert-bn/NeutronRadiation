@@ -21,6 +21,9 @@
 
 using namespace std;
 
+// Definition for year
+const G4double yr  = 3.154e7 * s;
+
 RunAction::RunAction() :
 G4UserRunAction()
 {
@@ -150,27 +153,36 @@ void RunAction::EndOfRunAction(const G4Run* run)
 
     ofstream outFile;
     outFile.open (fileName.str());
-    outFile << "run " << run->GetRunID() << "\n";
-    outFile << "n-events " << nofEvents << "\n";
-    outFile << "energy " << G4BestUnit(energy, "Energy") << "\n";
-    outFile << "rangeshifter-thickness " << G4BestUnit(thickness, "Length") << "\n";
-    // energy and thickness
-    // secondaries tally
-    outFile << "# isotope, half-life, number produced";
-    for(auto pair : fSecondaryNumbers.GetValue())
+    if(outFile.good())
     {
-      // Only print radioactive isotopes
-      if(decayMan->IsApplicable(*(pair.first))){
-        outFile << (pair.first)->GetParticleName() << "\t";
-        // Multiply mean lifetime by ln(2) to obtain half-life
-        outFile << G4BestUnit(pair.first->GetPDGLifeTime() * 0.69314718056, "Time") << "\t";
-        outFile << pair.second << "\n";
+      outFile << "run " << run->GetRunID() << "\n";
+      outFile << "n-events " << nofEvents << "\n";
+      outFile << "energy " << G4BestUnit(energy, "Energy") << "\n";
+      outFile << "rangeshifter-thickness " << G4BestUnit(thickness, "Length") << "\n";
+      // energy and thickness
+      // secondaries tally
+      outFile << "# isotope, half-life, number produced\n";
+      G4double halfLife;
+      for(auto pair : fSecondaryNumbers.GetValue())
+      {
+        // Only print radioactive isotopes
+        if(decayMan->IsApplicable(*(pair.first))){
+
+          // Multiply mean lifetime by ln(2) to obtain half-life
+          halfLife = pair.first->GetPDGLifeTime() * 0.69314718056;
+
+          // Apply half-life cut (1s < t < 10 years)
+          if( 1*s < halfLife && halfLife < 10*yr ){
+            outFile << (pair.first)->GetParticleName() << "\t";
+            outFile << G4BestUnit(halfLife, "Time") << "\t";
+            outFile << pair.second << "\n";
+          }
+        }
       }
+      outFile.close();
     }
   }
-
-  outFile.close();
-
+  return;
 }
 
 
