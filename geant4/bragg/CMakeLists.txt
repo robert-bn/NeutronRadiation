@@ -25,7 +25,7 @@ foreach(_file ${macros})
     ${PROJECT_BINARY_DIR}/${_file}
     COPYONLY
     )
-    
+
 endforeach()
 
 # Enable input files for out-of-source build
@@ -37,6 +37,12 @@ foreach(_file ${input})
     )
 
 endforeach()
+
+file(COPY ${PROJECT_SOURCE_DIR}/calorimeter_histogram.C
+     DESTINATION ${PROJECT_BINARY_DIR})
+
+file(COPY ${PROJECT_SOURCE_DIR}/calorimeter_histogram.py
+     DESTINATION ${PROJECT_BINARY_DIR})
 
 add_executable(task main.cc ${sources} ${headers})
 target_link_libraries(task ${Geant4_LIBRARIES})

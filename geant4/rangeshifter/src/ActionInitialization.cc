@@ -13,8 +13,8 @@ void ActionInitialization::Build() const
     SetUserAction(theRunAction);
     SetUserAction(new StackingAction(theRunAction));
     SetUserAction(new SteppingAction(theRunAction));
-    SetUserAction(new EventAction());
-    // Task 4c.2: Add a properly initialized instance of EventAction
+    // SetUserAction(new EventAction());
+    // Uncomment for anlaysis
 }
 
 void ActionInitialization::BuildForMaster() const

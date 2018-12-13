@@ -13,20 +13,16 @@ class G4LogicalVolume;
 class DetectorConstruction : public G4VUserDetectorConstruction
 {
 public:
-    // Main method that has to be overridden in all detectors
-    // You will edit this method in Tasks 1a & 1b
     G4VPhysicalVolume* Construct() override;
-
-    // Task 1c.1: Uncomment the declaration of this method (also necessary for 4.c and 4.d)
     void ConstructSDandField() override;
-    G4LogicalVolume* GetScoringVolume() const { return fScoringVolume; }
 
-private:
-    // An example geometry created for you to finish task 0
-    void ConstructDemo(G4LogicalVolume* worldLog);
+    G4LogicalVolume* GetScoringVolume() const { return fScoringVolume; }
+    G4double GetRangeshifterThickness() const { return fRangeshifterThickness; }
+
 protected:
     G4LogicalVolume*  fScoringVolume;
     G4LogicalVolume*  fDownstreamScoringVolume;
+    G4double fRangeshifterThickness;
 };
 
 #endif
