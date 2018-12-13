@@ -67,79 +67,81 @@ void RunAction::BeginOfRunAction(const G4Run*)
 
 void RunAction::EndOfRunAction(const G4Run* run)
 {
-    // Retrieve the number of events in the run
-    G4int nofEvents = run->GetNumberOfEvent();
+  // Retrieve the number of events in the run
+  G4int nofEvents = run->GetNumberOfEvent();
 
-    // Do nothing if no events were processed
-    if (nofEvents == 0) return;
+  // Do nothing if no events were processed
+  if (nofEvents == 0) return;
 
-    // Merge accumulables
-    // Not 100% sure what this actually does.
-    // Possibly only used in Multithreaded mode?
-    G4AccumulableManager* accumulableManager = G4AccumulableManager::Instance();
-    accumulableManager->Merge();
+  // Merge accumulables
+  // Not 100% sure what this actually does.
+  // Possibly only used in Multithreaded mode?
+  G4AccumulableManager* accumulableManager = G4AccumulableManager::Instance();
+  accumulableManager->Merge();
 
-    // Get target
-    const DetectorConstruction* detectorConstruction
-     = static_cast<const DetectorConstruction*>
-       (G4RunManager::GetRunManager()->GetUserDetectorConstruction());
+  // Get target
+  const DetectorConstruction* detectorConstruction
+   = static_cast<const DetectorConstruction*>
+     (G4RunManager::GetRunManager()->GetUserDetectorConstruction());
 
-    // Get mass, volume and thickness of target
-    G4double mass = detectorConstruction->GetScoringVolume()->GetMass();
-    G4double volume = detectorConstruction->GetScoringVolume()->GetSolid()->GetCubicVolume();
-    G4double thickness = detectorConstruction->GetRangeshifterThickness();
+  // Get mass, volume and thickness of target
+  G4double mass = detectorConstruction->GetScoringVolume()->GetMass();
+  G4double volume = detectorConstruction->GetScoringVolume()->GetSolid()->GetCubicVolume();
+  G4double thickness = detectorConstruction->GetRangeshifterThickness();
 
-    // Calculate dose & fluence
-    G4double dose = fTotalEnergyDeposited.GetValue() / mass;
-    G4double fluence = fTotalTrackLength.GetValue() / volume;
+  // Calculate dose & fluence
+  G4double dose = fTotalEnergyDeposited.GetValue() / mass;
+  G4double fluence = fTotalTrackLength.GetValue() / volume;
 
-    // Get sensitive detector
-    // G4SDManager* sdm = G4SDManager::GetSDMpointer();
-    // G4VSensitiveDetector* det = sdm->FindSensitiveDetector("detector");
+  // Get sensitive detector
+  // G4SDManager* sdm = G4SDManager::GetSDMpointer();
+  // G4VSensitiveDetector* det = sdm->FindSensitiveDetector("detector");
 
-    // Get current beam energy
-    G4GeneralParticleSource* GPS;
-    GPS = new G4GeneralParticleSource();
-    G4String particle = GPS->GetCurrentSource()->GetParticleDefinition()->GetParticleName();
-    G4double energy = GPS->GetCurrentSource()->GetEneDist()->GetMonoEnergy();
+  // Get current beam energy
+  G4GeneralParticleSource* GPS;
+  GPS = new G4GeneralParticleSource();
+  G4String particle = GPS->GetCurrentSource()->GetParticleDefinition()->GetParticleName();
+  G4double energy = GPS->GetCurrentSource()->GetEneDist()->GetMonoEnergy();
 
+  // Print output to console
+  if (IsMaster())
+  {
+      G4cout << "\n--------------------End of Global Run-----------------------";
+      G4cout << " \n The run was " << nofEvents << " "<< G4BestUnit(energy, "Energy") << " " << particle << 's' << G4endl;
+      if (fTotalEnergyDeposited.GetValue()){
+          G4cout << " * Total energy deposited was: ";
+          G4cout << G4BestUnit(fTotalEnergyDeposited.GetValue(), "Energy");
+          G4cout << "\n * Total Dose was: " << G4BestUnit(dose,"Dose");
+          G4cout << "\n * Dose per event was: " << G4BestUnit(dose / nofEvents,"Dose");
+          G4cout << "(" << 1e4 * dose * gram / nofEvents << "E-4 MeV / gram) \n";
+      }
+      else
+      {
+          G4cout << "No energy deposited!";
+          G4cout << "This strongly suggests a problem with the simulation.\n";
+      }
+      if (fTotalTrackLength.GetValue())
+      {
+          G4cout << " * Total track length in target: ";
+          G4cout << G4BestUnit(fTotalTrackLength.GetValue(), "Length") << "\n";
+          G4cout << " * Mean fluence in target: " << G4BestUnit(fluence, "Fluence");
+      }
 
-    if (IsMaster())
-    {
-        G4cout << "\n--------------------End of Global Run-----------------------";
-        G4cout << " \n The run was " << nofEvents << " "<< G4BestUnit(energy, "Energy") << " " << particle << 's' << G4endl;
-        if (fTotalEnergyDeposited.GetValue()){
-            G4cout << " * Total energy deposited was: ";
-            G4cout << G4BestUnit(fTotalEnergyDeposited.GetValue(), "Energy");
-            G4cout << "\n * Total Dose was: " << G4BestUnit(dose,"Dose");
-            G4cout << "\n * Dose per event was: " << G4BestUnit(dose / nofEvents,"Dose");
-            G4cout << "(" << 1e4 * dose * gram / nofEvents << "E-4 MeV / gram) \n";
-        }
-        else
-        {
-            G4cout << "No energy deposited!";
-            G4cout << "This strongly suggests a problem with the simulation.\n";
-        }
-        if (fTotalTrackLength.GetValue())
-        {
-            G4cout << " * Total track length in target: ";
-            G4cout << G4BestUnit(fTotalTrackLength.GetValue(), "Length") << "\n";
-            G4cout << " * Mean fluence in target: " << G4BestUnit(fluence, "Fluence");
-        }
+      G4cout << "\n--------------------Secondaries Tally-----------------------";
 
-        G4cout << "\n--------------------Secondaries Tally-----------------------";
+      // loop over every ParticleDefinition Number pair & print names & numbers
+      for(auto pair : fSecondaryNumbers.GetValue())
+      {
+          G4cout << "\n * " << (pair.first)->GetParticleName() << ": " << pair.second;
+      }
+      G4cout << "\n------------------------------------------------------------";
+      G4cout << G4endl;
 
-        // loop over every ParticleDefinition Number pair & print names & numbers
-        for(auto pair : fSecondaryNumbers.GetValue())
-        {
-            G4cout << "\n * " << (pair.first)->GetParticleName() << ": " << pair.second;
-        }
-        G4cout << "\n------------------------------------------------------------";
-        G4cout << G4endl;
+      G4cout << "There were " << fDownstreamHits.GetValue() << " collections in the downstream detector.\n";
+  }
 
-        G4cout << "There were " << fDownstreamHits.GetValue() << " collections in the downstream detector.\n";
-    }
-
+  // Write output file
+  if(IsMaster()){
     G4RadioactiveDecay* decayMan = new  G4RadioactiveDecay();
 
     // Write output file
@@ -152,9 +154,9 @@ void RunAction::EndOfRunAction(const G4Run* run)
     outFile << "n-events " << nofEvents << "\n";
     outFile << "energy " << G4BestUnit(energy, "Energy") << "\n";
     outFile << "rangeshifter-thickness " << G4BestUnit(thickness, "Length") << "\n";
-    outFile << "# isotope, half-life, number produced";
     // energy and thickness
     // secondaries tally
+    outFile << "# isotope, half-life, number produced";
     for(auto pair : fSecondaryNumbers.GetValue())
     {
       // Only print radioactive isotopes
@@ -165,8 +167,9 @@ void RunAction::EndOfRunAction(const G4Run* run)
         outFile << pair.second << "\n";
       }
     }
+  }
 
-    outFile.close();
+  outFile.close();
 
 }
 
