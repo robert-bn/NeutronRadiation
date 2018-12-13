@@ -14,6 +14,7 @@
 #include <G4SystemOfUnits.hh>
 #include <G4UnitsTable.hh>
 #include <G4GeneralParticleSource.hh>
+#include <G4RadioactiveDecay.hh>
 
 #include <fstream>
 #include <sstream>
@@ -139,6 +140,8 @@ void RunAction::EndOfRunAction(const G4Run* run)
         G4cout << "There were " << fDownstreamHits.GetValue() << " collections in the downstream detector.\n";
     }
 
+    G4RadioactiveDecay* decayMan = new  G4RadioactiveDecay();
+
     // Write output file
     ostringstream fileName;
     fileName << "run" << run->GetRunID();
@@ -149,12 +152,18 @@ void RunAction::EndOfRunAction(const G4Run* run)
     outFile << "n-events " << nofEvents << "\n";
     outFile << "energy " << G4BestUnit(energy, "Energy") << "\n";
     outFile << "rangeshifter-thickness " << G4BestUnit(thickness, "Length") << "\n";
-
+    outFile << "# isotope, half-life, number produced";
     // energy and thickness
     // secondaries tally
     for(auto pair : fSecondaryNumbers.GetValue())
     {
-        outFile << (pair.first)->GetParticleName() << " " << pair.second << "\n";
+      // Only print radioactive isotopes
+      if(decayMan->IsApplicable(*(pair.first))){
+        outFile << (pair.first)->GetParticleName() << "\t";
+        // Multiply mean lifetime by ln(2) to obtain half-life
+        outFile << G4BestUnit(pair.first->GetPDGLifeTime() * 0.69314718056, "Time") << "\t";
+        outFile << pair.second << "\n";
+      }
     }
 
     outFile.close();
