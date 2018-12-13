@@ -1,0 +1,100 @@
+/run/initialize
+/gps/pos/type Beam
+
+/gps/ene/type Gauss
+
+/gps/ene/mono 245.623 MeV
+/gps/ene/sigma	1.038 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono 241.072 MeV
+/gps/ene/sigma	1.093 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono 236.469 MeV
+/gps/ene/sigma	1.147 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono 227.092 MeV
+/gps/ene/sigma	1.255 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono 225.385 MeV
+/gps/ene/sigma	0.966 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono 220.584 MeV
+/gps/ene/sigma	1.025 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono 215.716 MeV
+/gps/ene/sigma	1.084 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono 205.766 MeV
+/gps/ene/sigma	1.201 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono 194.939 MeV
+/gps/ene/sigma	0.858 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono 189.662 MeV
+/gps/ene/sigma	0.926 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono 184.288 MeV
+/gps/ene/sigma	0.993 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono 173.213 MeV
+/gps/ene/sigma	1.127 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono 143.814 MeV
+/gps/ene/sigma	0.685 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono 137.289 MeV
+/gps/ene/sigma	0.772 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono 130.534 MeV
+/gps/ene/sigma	0.855 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono 116.205 MeV
+/gps/ene/sigma	1.033 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono  91.531 MeV
+/gps/ene/sigma	0.532 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono  82.242 MeV
+/gps/ene/sigma	0.660 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono  72.067 MeV
+/gps/ene/sigma	0.797 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono  47.107 MeV
+/gps/ene/sigma	1.254 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono  58.382 MeV
+/gps/ene/sigma	0.467 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono  44.382 MeV
+/gps/ene/sigma	0.681 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono  25.174 MeV
+/gps/ene/sigma	1.200 MeV
+/run/beamOn 1000000
+
+/gps/ene/mono  11.452 MeV
+/gps/ene/sigma	7.676 MeV
+/run/beamOn 1000000
