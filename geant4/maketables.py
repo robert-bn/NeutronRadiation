@@ -5,7 +5,7 @@ import json
 ist_name = {'Be7':'Be', 'C10':'C', 'C11':'C', 'O14':'O', 'O15':'O', 'F17':'F'}
 ist_num = {'Be7':7, 'C10':10, 'C11':11, 'O14':14, 'O15':15, 'F17':15}
 
-prefix = {0:'', 3:'k', 6:'M', 9:'G'}
+prefix = {-6:'μ', -3:'m', 0:'', 3:'k', 6:'M', 9:'G'}
 
 def format_hl(t):
     if t < 60:
@@ -33,7 +33,7 @@ def superscript(x):
 
 
 def format_isotope(X):
-    if X == "\\text{triton}":
+    if X == "triton":
         return X
     else:
         sym = ''
@@ -52,9 +52,9 @@ def formatnum(x, unit='', SIprefix=False, err=None):
     exponent = int(np.floor(np.log10(x)))
     if SIprefix:
         prefix_exponent = int(3*np.floor(exponent / 3))
-        y = x / np.power(10, prefix_exponent)
+        y = x / np.power(10., prefix_exponent)
         if err is not None:
-            erry = err / np.power(10, prefix_exponent)
+            erry = err / np.power(10., prefix_exponent)
             return "({:.2f} $\\pm$ {}) ".format(y, round(erry,2)) + prefix[prefix_exponent] + unit
         else:
             return "{:.2f} ".format(y) + prefix[prefix_exponent] + unit
@@ -66,19 +66,30 @@ def formatnum(x, unit='', SIprefix=False, err=None):
         else:
             return "{:.2f} $\\times$ 10{} ".format(y, superscript(exponent)) + unit
 
+
+def saturation(n, error, λ, beam_time=60):
+    sat_n = n * (1 - np.exp(-λ*beam_time)) / beam_time
+    sat_err = error * (1 - np.exp(-λ*beam_time)) / beam_time
+    return sat_n, sat_err
+
+
+def latex_fmt(v, indent='', end=''):
+    # formats list of things into latex format
+    return indent + (("{} & "*len(v))[:-3] ).format(*v) + end
+
 # Load data
 with open("run0.json") as f:
     data = json.load(f)
 
-indent = "    "
+indt = 4 * " "
 nProtons = 1e11
 
 # Opening command
-print("\\begin{tabular}{|c|c|c|}")
+print("\\begin{tabular}{c|c|c|c}")
 
 # Header
-print("Isotope & Half Life & Total number produced & Saturated activity")
-
+print(indt + "Isotope & Half Life & Total number produced & Saturated activity \\\\")
+print(indt + "\\hline")
 # Print content
 for isotope in data['isotopes'].keys():
     number = nProtons * data['isotopes'][isotope]['number']/data['nEvents']
@@ -87,7 +98,13 @@ for isotope in data['isotopes'].keys():
     name = format_isotope(isotope)
     num_pm_error = formatnum(number, err=error)
     half_life_str = format_hl(half_life)
-    print(indent + name + " & " + half_life_str + " & " + num_pm_error + " \\\\")
+    sat_act = saturation(number, error, λ=np.log(2)/half_life)
+    sat_act_str = formatnum(sat_act[0], unit='Bq', SIprefix=True, err=sat_act[1])
+
+    row = [name, half_life_str, num_pm_error, sat_act_str]
+
+    print(latex_fmt(row, indent=indt, end=" \\\\"))
+    # print(indent + name + " & " + half_life_str + " & " + num_pm_error + " \\\\")
 
 # Closing command
-print(indent + "\\hline\n\\end{tabular}")
+print("\\end{tabular}")
