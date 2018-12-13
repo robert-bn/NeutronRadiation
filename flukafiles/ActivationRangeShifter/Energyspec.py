@@ -7,8 +7,8 @@ energies = [0.250,0.230,0.200,0.150,0.100,0.07]  # GeV
 thickness = [1.,2.,3.,5.]   # cm
 
 # boolean settings
-plotting = True
-writecsv = False
+plotting = False
+writecsv = True
 
 # Arrays for the output dataframe
 pandEnergy        = []
