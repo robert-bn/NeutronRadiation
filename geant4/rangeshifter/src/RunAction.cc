@@ -143,25 +143,26 @@ void RunAction::EndOfRunAction(const G4Run* run)
       G4cout << "There were " << fDownstreamHits.GetValue() << " collections in the downstream detector.\n";
   }
 
-  // Write output file
+  // Write output json file
   if(IsMaster()){
     G4RadioactiveDecay* decayMan = new  G4RadioactiveDecay();
 
     // Write output file
     ostringstream fileName;
-    fileName << "run" << run->GetRunID();
+    fileName << "run" << run->GetRunID() << ".json";
 
     ofstream outFile;
     outFile.open (fileName.str());
     if(outFile.good())
     {
-      outFile << "run " << run->GetRunID() << "\n";
-      outFile << "n-events " << nofEvents << "\n";
-      outFile << "energy " << G4BestUnit(energy, "Energy") << "\n";
-      outFile << "rangeshifter-thickness " << G4BestUnit(thickness, "Length") << "\n";
+      outFile << "{\n";
+      outFile << "  \"run\":" << run->GetRunID() << ",\n";
+      outFile << "  \"nEvents\":" << nofEvents << ",\n";
+      outFile << "  \"energy\":" << energy / GeV << ",\n";
+      outFile << "  \"rangeshifterThickness\":" << thickness / cm;
       // energy and thickness
       // secondaries tally
-      outFile << "# isotope, half-life, number produced\n";
+      // # isotope, half-life (s), number produced\n";
       G4double halfLife;
       for(auto pair : fSecondaryNumbers.GetValue())
       {
@@ -173,12 +174,14 @@ void RunAction::EndOfRunAction(const G4Run* run)
 
           // Apply half-life cut (1s < t < 10 years)
           if( 1*s < halfLife && halfLife < 10*yr ){
-            outFile << (pair.first)->GetParticleName() << "\t";
-            outFile << G4BestUnit(halfLife, "Time") << "\t";
-            outFile << pair.second << "\n";
+            outFile << ",\n  \"" << (pair.first)->GetParticleName() << "\":{\n";
+            outFile << "    \"halfLife\":" << halfLife / s << ",\n";
+            outFile << "    \"lifeTime\":" << pair.first->GetPDGLifeTime() / s << ",\n";
+            outFile << "    \"number\":" << pair.second << "\n  }";
           }
         }
       }
+      outFile << "\n}";
       outFile.close();
     }
   }
