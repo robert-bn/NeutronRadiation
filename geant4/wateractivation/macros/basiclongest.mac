@@ -1,0 +1,36 @@
+# This macro is a series of runs at different energies:
+# {250,230,200,150,100,70} MeV
+# energy spread is 0.4%
+#
+# Incident beam properties: protons, Sigma = 5mm in both planes
+# Run it using "./task macros/basic.mac"
+
+/run/initialize
+/gps/pos/type Beam
+/gps/pos/sigma_r 5 mm
+
+/gps/ene/type Gauss
+
+/gps/ene/mono 250 MeV
+/gps/ene/sigma 1 MeV
+/run/beamOn 10000000
+
+/gps/ene/mono 230 MeV
+/gps/ene/sigma 0.92 MeV
+/run/beamOn 10000000
+
+/gps/ene/mono 200 MeV
+/gps/ene/sigma 0.8 MeV
+/run/beamOn 10000000
+
+/gps/ene/mono 150 MeV
+/gps/ene/sigma 0.6 MeV
+/run/beamOn 10000000
+
+/gps/ene/mono 100 MeV
+/gps/ene/sigma 0.4 MeV
+/run/beamOn 10000000
+
+/gps/ene/mono 70 MeV
+/gps/ene/sigma 0.28 MeV
+/run/beamOn 10000000
