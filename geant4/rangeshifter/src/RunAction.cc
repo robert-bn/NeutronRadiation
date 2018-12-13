@@ -186,7 +186,7 @@ void RunAction::EndOfRunAction(const G4Run* run)
         }
 
       }
-      outFile << "\n  }\n}";
+      outFile << "\n  }\n}\n";
       outFile.close();
     }
   }
