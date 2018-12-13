@@ -82,8 +82,8 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   // target material
   //
-  // Lexan/Polycarbonate as defined in PNNL -15870 Re. 1
-  // Used "Atomic weights of the elements 2013 (IUPAC Technical Report)"
+  // Water, as defined by NIST
+  // Geant4 database not used so as to maintain exact agreement with FLUKA
 
   G4Element* elH = new G4Element("Hydrogen", "H", 1., 1.007 * g/mole);
   G4Element* elO = new G4Element("Oxygen", "O", 8., 15.999 * g/mole);
