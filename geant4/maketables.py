@@ -1,12 +1,19 @@
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
 import numpy as np
 import json
 
-
+# Globals
 ist_name = {'Be7':'Be', 'C10':'C', 'C11':'C', 'O14':'O', 'O15':'O', 'F17':'F'}
 ist_num = {'Be7':7, 'C10':10, 'C11':11, 'O14':14, 'O15':15, 'F17':15}
 
 prefix = {-6:'μ', -3:'m', 0:'', 3:'k', 6:'M', 9:'G'}
 
+indt = 4 * " "
+nProtons = 1e11
+
+
+# Function definitions
 def format_hl(t):
     if t < 60:
         # seconds
@@ -67,9 +74,9 @@ def formatnum(x, unit='', SIprefix=False, err=None):
             return "{:.2f} $\\times$ 10{} ".format(y, superscript(exponent)) + unit
 
 
-def saturation(n, error, λ, beam_time=60):
-    sat_n = n * (1 - np.exp(-λ*beam_time)) / beam_time
-    sat_err = error * (1 - np.exp(-λ*beam_time)) / beam_time
+def saturation(n, error, L, beam_time=60):
+    sat_n = n * (1 - np.exp(-L*beam_time)) / beam_time
+    sat_err = error * (1 - np.exp(-L*beam_time)) / beam_time
     return sat_n, sat_err
 
 
@@ -77,34 +84,33 @@ def latex_fmt(v, indent='', end=''):
     # formats list of things into latex format
     return indent + (("{} & "*len(v))[:-3] ).format(*v) + end
 
-# Load data
-with open("run0.json") as f:
-    data = json.load(f)
 
-indt = 4 * " "
-nProtons = 1e11
+def make_table(fileName):
+    # Load data
+    with open(fileName) as f:
+        data = json.load(f)
 
-# Opening command
-print("\\begin{tabular}{c|c|c|c}")
+    # Main
+    table = "\\begin{tabular}{c|c|c|c}"
 
-# Header
-print(indt + "Isotope & Half Life & Total number produced & Saturated activity \\\\")
-print(indt + "\\hline")
-# Print content
-for isotope in data['isotopes'].keys():
-    number = nProtons * data['isotopes'][isotope]['number']/data['nEvents']
-    error =  nProtons * np.sqrt(data["isotopes"][isotope]['number'])/data['nEvents']
-    half_life = data['isotopes'][isotope]['halfLife']
-    name = format_isotope(isotope)
-    num_pm_error = formatnum(number, err=error)
-    half_life_str = format_hl(half_life)
-    sat_act = saturation(number, error, λ=np.log(2)/half_life)
-    sat_act_str = formatnum(sat_act[0], unit='Bq', SIprefix=True, err=sat_act[1])
+    # Header
+    table += indt + "Isotope & Half Life & Total number produced & Saturated activity \\\\\n"
+    table += indt + "\\hline\n"
+    # Print content
+    for isotope in data['isotopes'].keys():
+        number = nProtons * data['isotopes'][isotope]['number']/data['nEvents']
+        error =  nProtons * np.sqrt(data["isotopes"][isotope]['number'])/data['nEvents']
+        half_life = data['isotopes'][isotope]['halfLife']
+        name = format_isotope(isotope)
+        num_pm_error = formatnum(number, err=error)
+        half_life_str = format_hl(half_life)
+        sat_act = saturation(number, error, L=np.log(2)/half_life)
+        sat_act_str = formatnum(sat_act[0], unit='Bq', SIprefix=True, err=sat_act[1])
 
-    row = [name, half_life_str, num_pm_error, sat_act_str]
+        row = [name, half_life_str, num_pm_error, sat_act_str]
 
-    print(latex_fmt(row, indent=indt, end=" \\\\"))
-    # print(indent + name + " & " + half_life_str + " & " + num_pm_error + " \\\\")
+        table += latex_fmt(row, indent=indt, end=" \\\\\n")
 
-# Closing command
-print("\\end{tabular}")
+    # Closing command
+    table +="\\end{tabular}\n"
+    return table
