@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import json
 import collections
+import itertools
 
 
 def superscript(x):
@@ -36,7 +37,7 @@ def saturation(n, error, lifeTime, beam_time=60):
 actual_protons = 1e11
 isotopes_we_care_about = ["Be7", "C10", "C11", "O15", "O14", "N13", "N16", "F17", "F18", "Be11", "N17", "C15"]
 
-def make_plot(fileName, title, outName):
+def make_plot(fileName, title, outName, ymin=1, ymax=1e7, exclude=None, include=None):
     # Load data
     with open(fileName) as f:
         data = json.load(f)
@@ -53,9 +54,22 @@ def make_plot(fileName, title, outName):
     act = collections.defaultdict(list)
     act_error = collections.defaultdict(list)
 
+    isotopes = isotopes_we_care_about.copy()
+
+    if(exclude is not None):
+        assert type(exclude) is list, "exclude keyword argument must be a list."
+        for ist in exclude:
+            isotopes.remove(ist)
+
+    if(include is not None):
+        assert type(include) is list, "include keyword argument must be a list."
+        for ist in include:
+            if(ist not in isotopes):
+                isotopes += [ist]
+
     for run in data:
         energy.append(1e3 * run["energy"])
-        for ist in isotopes_we_care_about:
+        for ist in isotopes:
             try:
                 # Get number produced in run
                 n = run["isotopes"][ist]["number"]
@@ -84,7 +98,7 @@ def make_plot(fileName, title, outName):
     fig, ax = plt.subplots(figsize=(10.5, 14.85))  # Make figure half a4 size
 
     # Make y axis logarithmic
-    ax.set_yscale("log", nonposy='clip', )
+    ax.set_yscale("log", nonposy='clip')
 
     # Set horizontal ticks to 10 MeV
     ax.set_xticks(np.arange(70,260,10))
@@ -96,11 +110,15 @@ def make_plot(fileName, title, outName):
 
     # Set limits
     ax.set_xlim((70,250))
-    ax.set_ylim(ymin=1, ymax=2e6)
+    ax.set_ylim(ymin=ymin, ymax=ymax)
 
-    for ist in isotopes_we_care_about:
-        plt.plot(energy, act[ist], label=format_isotope(ist))
-        plt.errorbar(energy, act[ist], yerr=act_error[ist], fmt=' o ', c='k', capsize=2, markersize=1)
+    for ist in isotopes:
+        # Sort according to Energy
+        x, y, e = zip(*sorted(zip(energy, act[ist], act_error[ist])))
+
+        # Plot it
+        plt.plot(x, y, label=format_isotope(ist))
+        plt.errorbar(x, y, yerr=e, fmt=' o ', c='k', capsize=2, markersize=1)
 
     # Place legend in best place in bottom right quadrant
     ax.grid(which='both', linewidth=0.7)
@@ -114,11 +132,36 @@ def make_plot(fileName, title, outName):
 make_plot(
     fileName="5cm-rangeshifter.json",
     title="Activation of 5cm thick range shifter immediately after beam turned off",
-    outName="5cm-rangeshifter.svg"
+    outName="5cm-rangeshifter.svg",
+    ymax=2e6
 )
+
 
 make_plot(
     fileName="water.json",
     title="Activation of water phantom immediately after beam turned off",
-    outName="water.svg"
+    outName="water.svg",
+    exclude=["Be11"],
+    ymin=10,
+    ymax=4e7
+)
+
+
+make_plot(
+    fileName="water-old.json",
+    title="Activation of water phantom immediately after beam turned off",
+    outName="water-old.svg",
+    exclude=["Be11"],
+    ymin=10,
+    ymax=2e7
+)
+
+
+make_plot(
+    fileName="combined.json",
+    title="Activation of water phantom immediately after beam turned off",
+    outName="water-combined.svg",
+    exclude=["Be11"],
+    ymin=10,
+    ymax=2e7
 )
