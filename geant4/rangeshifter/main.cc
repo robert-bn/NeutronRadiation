@@ -27,7 +27,7 @@
 #include "DetectorConstruction.hh"
 #include "Analysis.hh"
 #include "Config.hh"
-
+#include <fstream>
 
 using namespace std;
 
@@ -96,6 +96,16 @@ int main(int argc, char** argv)
     runManager->SetUserInitialization(new DetectorConstruction());
     runManager->SetUserInitialization(new ActionInitialization());
 
+
+    // Write start of output file
+    ofstream outFile;
+    outFile.open(userConfig->GetConfig()->GetOutFileName());
+    if(outFile.good())
+    {
+      outFile << "[";
+    }
+    outFile.close();
+
     #ifdef G4UI_USE
         G4UIExecutive* ui = nullptr;
         if (interactive)
@@ -132,11 +142,13 @@ int main(int argc, char** argv)
 
     delete runManager;
 
-    // Uncomment to write ROOT file
-    /*
-    G4AnalysisManager* man = G4AnalysisManager::Instance();
-    man->CloseFile();
-    */
+    // Write end of output files
+    outFile.open(userConfig->GetConfig()->GetOutFileName(), ios::app);
+    if(outFile.good())
+    {
+      outFile << "\n]\n";
+    }
+    outFile.close();
 
     std::cout << "Application successfully ended.\nBye :^)" << std::endl;
 

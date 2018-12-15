@@ -13,8 +13,6 @@
 #include <G4PSEnergyDeposit.hh>
 #include <G4SDParticleFilter.hh>
 
-#include <fstream>
-#include <string>
 
 using namespace std;
 

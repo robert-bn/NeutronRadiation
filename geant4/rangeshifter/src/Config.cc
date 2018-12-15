@@ -29,29 +29,31 @@ fFileName(fileName)
       input >> a >> b;
       if(a == "rangeshifter-thickness"){ fRangeshifterThickness = std::stoi(b) * cm; }  // fNumberOfLayers
       if(a == "physics-list"){ fPhysicsList = b; }                                      // fPhysicsList
+      if(a == "out-filename"){ fOutFileName = b; }                                      // fOutFileName
     }
 
     //         ==========================================================================
     G4cout << "============================== User Config ===============================\n";
-    if (!fPhysicsList || !fRangeshifterThickness)
+    if (!fPhysicsList || !fRangeshifterThickness || !fOutFileName)
     {
       G4cerr << "Error reading config file! Make sure geometry.conf is in root directory.\n";
     }
     else
     {
-      if(fRangeshifterThickness)
+      G4cout << " * Out file name = " << fOutFileName << "\n";
+      G4cout << " * Rangeshifter thickness = " << fRangeshifterThickness / cm << " cm\n";
+      if( fRangeshifterThickness < 0)
       {
-        G4cout << " * Rangeshifter thickness = " << fRangeshifterThickness / cm << " cm\n";
-        if( fRangeshifterThickness < 0)
-        {
-          G4cerr << "Error: Rangeshifter thickness must be a positive number!\n";
-        }
+        G4cerr << "Error: Rangeshifter thickness must be a positive number!\n";
       }
+
       if(fPhysicsList == "QGSP_BIC_HP" || fPhysicsList == "QGSP_BERT_HP" )
       {
         G4cout << " * Physics list = " << fPhysicsList << "\n";
       }
     }
+
+
     G4cout << "==========================================================================\n";
 
   }

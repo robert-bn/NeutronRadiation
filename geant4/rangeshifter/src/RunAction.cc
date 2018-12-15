@@ -16,6 +16,8 @@
 #include <G4GeneralParticleSource.hh>
 #include <G4RadioactiveDecay.hh>
 
+#include "Config.hh"
+
 #include <fstream>
 #include <sstream>
 
@@ -143,24 +145,34 @@ void RunAction::EndOfRunAction(const G4Run* run)
       G4cout << "There were " << fDownstreamHits.GetValue() << " collections in the downstream detector.\n";
   }
 
+  // Get user config
+  Config* userConfig = new Config();
+  G4String physicsList = userConfig->GetConfig()->GetPhysicsList();
+  G4String outFileName = userConfig->GetConfig()->GetOutFileName();
+
   // Write output file
   if(IsMaster()){
     G4RadioactiveDecay* decayMan = new  G4RadioactiveDecay();
 
-    // Write output file
-    ostringstream fileName;
-    fileName << "run" << run->GetRunID() << ".json";
-
     ofstream outFile;
-    outFile.open (fileName.str());
+    outFile.open(outFileName, ios::app);
     if(outFile.good())
     {
-      outFile << "{\n";
-      outFile << "  \"run\":" << run->GetRunID() << ",\n";
-      outFile << "  \"nEvents\":" << nofEvents << ",\n";
-      outFile << "  \"energy\":" << energy / GeV << ",\n";
-      outFile << "  \"rangeshifterThickness\":" << thickness / cm << ",\n";
-      outFile << "  \"isotopes\":{";
+      switch(run->GetRunID())
+      {
+        case 0:
+          outFile << "\n  {\n";
+          break;
+        default:
+          outFile << ",\n  {\n";
+          break;
+      }
+      outFile << "    \"run\":" << run->GetRunID() << ",\n";
+      outFile << "    \"nEvents\":" << nofEvents << ",\n";
+      outFile << "    \"energy\":" << energy / GeV << ",\n";
+      outFile << "    \"physicsList\":\"" << physicsList << "\",\n";
+      outFile << "    \"rangeshifterThickness\":" << thickness / cm << ",\n";
+      outFile << "    \"isotopes\":{";
       // energy and thickness
       // secondaries tally
       // # isotope, half-life (s), number produced\n";
@@ -178,15 +190,15 @@ void RunAction::EndOfRunAction(const G4Run* run)
 
           if( 1*s < halfLife && halfLife < 10*yr ){
             if(first){ first = false; } else { outFile << ","; }
-            outFile << "\n    \"" << (pair.first)->GetParticleName() << "\":{\n";
-            outFile << "      \"halfLife\":" << halfLife / s << ",\n";
-            outFile << "      \"lifeTime\":" << pair.first->GetPDGLifeTime() / s << ",\n";
-            outFile << "      \"number\":" << pair.second << "\n    }";
+            outFile << "\n      \"" << (pair.first)->GetParticleName() << "\":{\n";
+            outFile << "        \"halfLife\":" << halfLife / s << ",\n";
+            outFile << "        \"lifeTime\":" << pair.first->GetPDGLifeTime() / s << ",\n";
+            outFile << "        \"number\":" << pair.second << "\n      }";
           }
         }
 
       }
-      outFile << "\n  }\n}\n";
+      outFile << "\n    }\n  }";
       outFile.close();
     }
   }
