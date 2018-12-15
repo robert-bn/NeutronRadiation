@@ -14,6 +14,7 @@
 #include <G4RunManager.hh>
 
 #include "Analysis.hh"
+#include "Input.hh"
 
 #include <sstream>
 #include <string>
@@ -28,6 +29,8 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
    * =========================== Read in config file ===========================
    * ===========================================================================
    */
+
+   /*
 
    ifstream input("geometry.conf");
 
@@ -63,6 +66,13 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   {
     G4cerr << "Error: Number of layers must be a positive number.\n";
   }
+
+  */
+  Input* inp = new Input();
+  fNumberOfLayers = inp->GetNumberOfLayers();
+  fLayerThickness = inp->GetLayerThickness();
+  fMinX = inp->GetMinX();
+  fMaxX = inp->GetMaxX();
 
   /*
    * ===========================================================================
