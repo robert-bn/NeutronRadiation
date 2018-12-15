@@ -215,8 +215,7 @@ RunAction::~RunAction()
     */
 }
 
-void RunAction::AddSecondary(const G4ParticleDefinition* particle,
-    G4double energy)
+void RunAction::AddSecondary(const G4ParticleDefinition* particle)
 {
     // adds particle to map if not already in (and starts at 1)
     // otherwise just increments secondary number
@@ -232,14 +231,6 @@ void RunAction::AddSecondary(const G4ParticleDefinition* particle,
 
     fSecondaryNumbers += tempPT;
 
-    if (particle == G4Gamma::Definition())
-    {
-        fAverageGammaEnergy += energy;
-    }
-    else if (particle == G4Electron::Definition())
-    {
-        fAverageElectronEnergy += energy;
-    }
     return;
 }
 

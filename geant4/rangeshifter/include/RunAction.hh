@@ -21,7 +21,7 @@ public:
   void EndOfRunAction(const G4Run*);
 
   //! Called during run
-  void AddSecondary(const G4ParticleDefinition*, G4double energy);
+  void AddSecondary(const G4ParticleDefinition*);
   void AddTrackLength(G4double length);
   void AddEnergyDeposited(G4double energyDeposited);
 
