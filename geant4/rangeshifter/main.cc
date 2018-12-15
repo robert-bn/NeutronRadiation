@@ -16,8 +16,6 @@
     #include <G4UIExecutive.hh>
 #endif
 
-#include <QGSP_BIC_HP.hh>
-#include <QGSP_BERT_HP.hh>
 
 #include <G4VUserPhysicsList.hh>
 #include <G4String.hh>
@@ -28,6 +26,9 @@
 #include "Analysis.hh"
 #include "Config.hh"
 #include <fstream>
+
+#include <QGSP_BIC_HP.hh>
+#include <QGSP_BERT_HP.hh>
 
 using namespace std;
 
@@ -77,6 +78,8 @@ int main(int argc, char** argv)
     // Get user configuration
     Config* userConfig = new Config("config.txt");
 
+
+
     // Set physics list according to configuration file
     G4VUserPhysicsList* PhysicsList = nullptr;
     if( userConfig->GetPhysicsList() == "QGSP_BIC_HP" )
@@ -88,9 +91,13 @@ int main(int argc, char** argv)
       G4cerr << "Physics list must be set to either \"QGSP_BIC_HP\" or \"QGSP_BERT_HP\". Check config.txt\n";
       return EXIT_FAILURE;
     }
+
+
     PhysicsList->SetVerboseLevel(0);
 
     runManager->SetUserInitialization(PhysicsList);
+    
+    // runManager->SetUserInitialization(new PhysicsList());
 
     // Instantiate DetectorConstruction & ActionInitialization
     runManager->SetUserInitialization(new DetectorConstruction());
