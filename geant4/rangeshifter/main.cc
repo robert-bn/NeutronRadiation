@@ -17,7 +17,6 @@
 #endif
 
 
-#include <G4VUserPhysicsList.hh>
 #include <G4String.hh>
 #include <G4UImanager.hh>
 
@@ -96,7 +95,7 @@ int main(int argc, char** argv)
     PhysicsList->SetVerboseLevel(0);
 
     runManager->SetUserInitialization(PhysicsList);
-    
+
     // runManager->SetUserInitialization(new PhysicsList());
 
     // Instantiate DetectorConstruction & ActionInitialization
