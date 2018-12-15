@@ -1,7 +1,5 @@
 #include <vector>
 
-// Task 4e.1: Look how different managers are aliased as RunManager.
-//            (single- or multi-threaded depending on the condition)
 #ifdef G4MULTITHREADED
     #include <G4MTRunManager.hh>
     using RunManager = G4MTRunManager;
@@ -18,21 +16,15 @@
     #include <G4UIExecutive.hh>
 #endif
 
+#include <QGSP_BIC_HP.hh>
+#include <QGSP_BERT_HP.hh>
+
+#include <G4VUserPhysicsList.hh>
 #include <G4String.hh>
 #include <G4UImanager.hh>
 
 #include "ActionInitialization.hh"
-
-// Task 1: See that we need to include the proper header
 #include "DetectorConstruction.hh"
-// #include "PhysicsList.hh"
-
-// Task 3b.4: Include (temporarily if you want) header for QGSP
-#include <QGSP_BIC_HP.hh>
-
-// Task 4b.1: Include the proper header to enable scoring manager
-
-// Task 4c.3: Include the proper header to enable analysis tools
 #include "Analysis.hh"
 #include "Config.hh"
 
@@ -73,21 +65,32 @@ int main(int argc, char** argv)
         }
     }
 
-    // Get configuration
-    Config userConfig = Config("geometry.conf");
-
     // Create the run manager (MT or non-MT) and make it a bit verbose.
     auto runManager = new RunManager();
-    runManager->SetVerboseLevel(0);
+    runManager->SetVerboseLevel(1);
 
     #ifdef G4VIS_USE
         G4VisManager* visManager = new G4VisExecutive();
         visManager->Initialize();
     #endif
 
-    // Use QGSP_BIC_HP : QGSP Binary Cascade High Precision
-    // Best for nuclear interations with protons & neutrons
-    runManager->SetUserInitialization(new QGSP_BIC_HP());
+    // Get user configuration
+    Config* userConfig = new Config("config.txt");
+
+    // Set physics list according to configuration file
+    G4VUserPhysicsList* PhysicsList = nullptr;
+    if( userConfig->GetPhysicsList() == "QGSP_BIC_HP" )
+      { PhysicsList = new QGSP_BIC_HP(); }
+    else if( userConfig->GetPhysicsList() == "QGSP_BERT_HP" )
+      { PhysicsList = new QGSP_BERT_HP(); }
+    else
+    {
+      G4cerr << "Physics list must be set to either \"QGSP_BIC_HP\" or \"QGSP_BERT_HP\". Check config.txt\n";
+      return EXIT_FAILURE;
+    }
+    PhysicsList->SetVerboseLevel(0);
+
+    runManager->SetUserInitialization(PhysicsList);
 
     // Instantiate DetectorConstruction & ActionInitialization
     runManager->SetUserInitialization(new DetectorConstruction());

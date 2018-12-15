@@ -1,7 +1,5 @@
 #include <vector>
 
-// Task 4e.1: Look how different managers are aliased as RunManager.
-//            (single- or multi-threaded depending on the condition)
 #ifdef G4MULTITHREADED
     #include <G4MTRunManager.hh>
     using RunManager = G4MTRunManager;
@@ -20,20 +18,11 @@
 
 #include <G4String.hh>
 #include <G4UImanager.hh>
-
-#include "ActionInitialization.hh"
-
-// Task 1: See that we need to include the proper header
-#include "DetectorConstruction.hh"
-// #include "PhysicsList.hh"
-
-// Task 3b.4: Include (temporarily if you want) header for QGSP
 #include <QGSP_BIC_HP.hh>
 
-// Task 4b.1: Include the proper header to enable scoring manager
+#include "ActionInitialization.hh"
+#include "DetectorConstruction.hh"
 
-// Task 4c.3: Include the proper header to enable analysis tools
-#include "Analysis.hh"
 
 
 using namespace std;
@@ -81,8 +70,7 @@ int main(int argc, char** argv)
         visManager->Initialize();
     #endif
 
-    // Use QGSP_BIC_HP : QGSP Binary Cascade High Precision
-    // Best for nuclear interations with protons & neutrons
+
     runManager->SetUserInitialization(new QGSP_BIC_HP());
 
     // Instantiate DetectorConstruction & ActionInitialization

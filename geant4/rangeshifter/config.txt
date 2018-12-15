@@ -1,1 +1,2 @@
 rangeshifter-thickness 5
+physics-list QGSP_BIC_HP

@@ -2,10 +2,6 @@
 #define CONFIG_HH
 
 #include <globals.hh>
-#include <fstream>
-
-#include <G4SystemOfUnits.hh>
-
 
 class Config
 {
@@ -20,11 +16,13 @@ public:
 
   Config(G4String fileName);
 
-  G4double GetRangeshifterThickness(){ return fRangeshifterThickness; }
+  G4double GetRangeshifterThickness() const { return fRangeshifterThickness; }
+  G4String GetPhysicsList() const { return fPhysicsList; }
 
 private:
   G4double fRangeshifterThickness;
   G4String fFileName;
+  G4String fPhysicsList;
   static Config* fConfig;
 };
 
