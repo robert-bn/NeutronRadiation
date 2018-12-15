@@ -18,14 +18,6 @@ G4ClassificationOfNewTrack StackingAction::ClassifyNewTrack (const G4Track*
     if (aTrack->GetParentID() > 0)
     {
         fRunAction->AddSecondary(aTrack->GetParticleDefinition());
-
-        if(aTrack->GetParticleDefinition() == G4Electron::Definition() ||
-         aTrack->GetParticleDefinition() == G4Gamma::Definition())
-         {
-           // Kill gammas and electrons
-           return fKill;
-         }
-
     }
     // Do not affect track classification. Just return what would have
     // been returned by the base class
