@@ -19,12 +19,14 @@ public:
   G4double GetRangeshifterThickness() const { return fRangeshifterThickness; }
   G4String GetPhysicsList() const { return fPhysicsList; }
   G4String GetOutFileName() const { return fOutFileName; }
+  G4bool Good() const { return fSuccess; }
 
 private:
   G4double fRangeshifterThickness;
   G4String fFileName;
   G4String fPhysicsList;
   G4String fOutFileName;
+  G4bool fSuccess{ false };
   static Config* fConfig;
 };
 

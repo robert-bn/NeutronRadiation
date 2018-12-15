@@ -18,6 +18,7 @@ Config::Config()
 Config::Config(G4String fileName) :
 fFileName(fileName)
 {
+  fSuccess = true;
   if(!fConfig){
     // DEBUG: G4cout << "constructed [" << this << "]\n";
     fConfig = this;
@@ -37,19 +38,27 @@ fFileName(fileName)
     if (!fPhysicsList || !fRangeshifterThickness || !fOutFileName)
     {
       G4cerr << "Error reading config file! Make sure geometry.conf is in root directory.\n";
+      fSuccess = false;
     }
     else
     {
-      G4cout << " * Out file name = " << fOutFileName << "\n";
+      fSuccess = true;
+      G4cout << " * Config filename = " << fFileName << "\n";
+      G4cout << " * Out filename = " << fOutFileName << "\n";
       G4cout << " * Rangeshifter thickness = " << fRangeshifterThickness / cm << " cm\n";
       if( fRangeshifterThickness < 0)
       {
         G4cerr << "Error: Rangeshifter thickness must be a positive number!\n";
+        fSuccess = false;
       }
 
       if(fPhysicsList == "QGSP_BIC_HP" || fPhysicsList == "QGSP_BERT_HP" )
       {
         G4cout << " * Physics list = " << fPhysicsList << "\n";
+      }
+      else
+      {
+        fSuccess = false;
       }
     }
 
@@ -74,7 +83,7 @@ Config* Config::GetConfig()
    if(!fConfig){
      fConfig = &theConfig;
    }
-  return fConfig;
+   return fConfig;
 }
 
 

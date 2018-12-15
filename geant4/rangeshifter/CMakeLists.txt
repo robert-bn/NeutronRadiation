@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
 
-project(task)
+project(rangeshifter)
 
 option(WITH_GEANT4_UIVIS "Build with Geant4 UI and Vis drivers" ON)
 if(WITH_GEANT4_UIVIS)
@@ -44,7 +44,7 @@ file(COPY ${PROJECT_SOURCE_DIR}/calorimeter_histogram.C
 file(COPY ${PROJECT_SOURCE_DIR}/calorimeter_histogram.py
      DESTINATION ${PROJECT_BINARY_DIR})
 
-add_executable(task main.cc ${sources} ${headers})
-target_link_libraries(task ${Geant4_LIBRARIES})
+add_executable(rangeshifter main.cc ${sources} ${headers})
+target_link_libraries(rangeshifter ${Geant4_LIBRARIES})
 
-install(TARGETS task DESTINATION bin)
+install(TARGETS rangeshifter DESTINATION bin)

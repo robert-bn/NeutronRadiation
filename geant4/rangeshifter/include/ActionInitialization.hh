@@ -2,7 +2,6 @@
 #define ACTION_INITIALIZATION_HH
 
 #include <G4VUserActionInitialization.hh>
-#include "EventAction.hh"
 
 class ActionInitialization : public G4VUserActionInitialization
 {

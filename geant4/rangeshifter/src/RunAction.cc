@@ -1,5 +1,4 @@
 #include "RunAction.hh"
-#include "Analysis.hh"
 #include "DetectorConstruction.hh"
 
 #include <G4SDManager.hh>
