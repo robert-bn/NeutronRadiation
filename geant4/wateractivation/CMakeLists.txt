@@ -16,7 +16,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 file(GLOB_RECURSE sources ${PROJECT_SOURCE_DIR}/src/*.cc)
 file(GLOB_RECURSE headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 file(GLOB_RECURSE macros RELATIVE ${PROJECT_SOURCE_DIR} macros/*.mac)
-file(GLOB_RECURSE input RELATIVE ${PROJECT_SOURCE_DIR} *.conf)
+file(GLOB_RECURSE input RELATIVE ${PROJECT_SOURCE_DIR} *.txt)
 
 # Enable macros for out-of-source build
 foreach(_file ${macros})
