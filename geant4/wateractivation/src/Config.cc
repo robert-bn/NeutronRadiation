@@ -18,7 +18,10 @@ Config::Config()
 Config::Config(G4String fileName) :
 fFileName(fileName)
 {
-  if(!fConfig){
+  fSuccess = true;
+
+  if(!fConfig)
+  {
     // DEBUG: G4cout << "constructed [" << this << "]\n";
     fConfig = this;
     std::ifstream input(fileName);
@@ -27,8 +30,8 @@ fFileName(fileName)
     while (input.good())
     {
       input >> a >> b;
-      if(a == "physics-list"){ fPhysicsList = b; }                                      // fPhysicsList
-      if(a == "out-filename"){ fOutFileName = b; }                                      // fOutFileName
+      if(a == "physics-list"){ fPhysicsList = b; }   // fPhysicsList
+      if(a == "out-filename"){ fOutFileName = b; }   // fOutFileName
     }
 
     //         ==========================================================================
@@ -36,14 +39,21 @@ fFileName(fileName)
     if (!fPhysicsList || !fOutFileName)
     {
       G4cerr << "Error reading config file! Make sure geometry.conf is in root directory.\n";
+      fSuccess = false;
     }
     else
     {
-      G4cout << " * Out file name = " << fOutFileName << "\n";
+      fSuccess = true;
+      G4cout << " * Config filename = " << fFileName << "\n";
+      G4cout << " * Out filename = " << fOutFileName << "\n";
 
       if(fPhysicsList == "QGSP_BIC_HP" || fPhysicsList == "QGSP_BERT_HP" )
       {
         G4cout << " * Physics list = " << fPhysicsList << "\n";
+      }
+      else
+      {
+        fSuccess = false;
       }
     }
 
@@ -58,16 +68,17 @@ fFileName(fileName)
 
 
 /* Returns pointer to already instantiated config, unless
-   config is not already instantiated, in which case returns itself
-   and sets fConfig to itself
-*/
+ * config is not already instantiated, in which case returns itself
+ * and sets fConfig to itself
+ */
+
 Config* Config::GetConfig()
 {
    static Config theConfig;
    if(!fConfig){
      fConfig = &theConfig;
    }
-  return fConfig;
+   return fConfig;
 }
 
 

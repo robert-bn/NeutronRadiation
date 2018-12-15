@@ -71,9 +71,9 @@ int main(int argc, char** argv)
       {
         G4cout << "Usage: ./rangeshifter [options] [macros]\n";
         G4cout << "Options:\n";
-        G4cout << "--interactive\t-i\tRun in interactive mode.\n";
-        G4cout << "--config <arg>\t-c <arg>\tSpecify a configuration file.\n";
-        G4cout << "--help\t-h\tList command line options.\n";
+        G4cout << " --interactive\t-i\t\tRun in interactive mode.\n";
+        G4cout << " --config <arg>\t-c <arg>\tSpecify a configuration file.\n";
+        G4cout << " --help\t-h\t\t\tList command line options.\n";
         return EXIT_SUCCESS;
       }
       else

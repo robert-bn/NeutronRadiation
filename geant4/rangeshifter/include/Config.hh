@@ -10,6 +10,7 @@ public:
   static Config* GetConfig();
   // This static method returns the singleton pointer of this class object.
   // At the first invokation of this method, the singleton object is instantiated.
+  // It is not destroyed until ~Config() is called on the originally instantiated object
 
   Config();
   ~Config();

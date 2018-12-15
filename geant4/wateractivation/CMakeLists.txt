@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
 
-project(task)
+project(water)
 
 option(WITH_GEANT4_UIVIS "Build with Geant4 UI and Vis drivers" ON)
 if(WITH_GEANT4_UIVIS)
@@ -38,7 +38,7 @@ foreach(_file ${input})
 
 endforeach()
 
-add_executable(task main.cc ${sources} ${headers})
-target_link_libraries(task ${Geant4_LIBRARIES})
+add_executable(water main.cc ${sources} ${headers})
+target_link_libraries(water ${Geant4_LIBRARIES})
 
-install(TARGETS task DESTINATION bin)
+install(TARGETS water DESTINATION bin)
