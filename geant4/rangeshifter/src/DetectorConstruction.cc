@@ -1,4 +1,5 @@
 #include "DetectorConstruction.hh"
+#include "Config.hh"
 
 #include <G4LogicalVolume.hh>
 #include <G4PVPlacement.hh>
@@ -19,35 +20,8 @@ using namespace std;
 
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {
-  /*
-   * ===========================================================================
-   * =========================== Read in config file ===========================
-   * ===========================================================================
-   */
-
-   ifstream input("geometry.conf");
-
-   string a, b;
-   while (input.good())
-   {
-     input >> a >> b;
-     if(a == "rangeshifter-thickness"){ fRangeshifterThickness = stoi(b) * cm; }  // fNumberOfLayers
-   }
-
-  if(fRangeshifterThickness){
-    G4cout << "============================ Geometry Config =============================\n";
-    G4cout << " * Rangeshifter thickness = " << fRangeshifterThickness / cm << " cm\n";
-    G4cout << "==========================================================================\n";
-  } else {
-    G4cerr << "Error reading config file! Make sure geometry.conf is in root directory.\n";
-    return nullptr;  // return nullptr, forcing program to close
-  }
-
-  if( fRangeshifterThickness < 0)
-  {
-    G4cerr << "Error: Rangeshifter thickness must be a positive number.\n";
-    return nullptr;
-  }
+  Config* userConfig = new Config();
+  fRangeshifterThickness = userConfig->GetConfig()->GetRangeshifterThickness();
 
   /*
    * =========================================================================

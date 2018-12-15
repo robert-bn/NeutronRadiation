@@ -34,6 +34,7 @@
 
 // Task 4c.3: Include the proper header to enable analysis tools
 #include "Analysis.hh"
+#include "Config.hh"
 
 
 using namespace std;
@@ -72,9 +73,12 @@ int main(int argc, char** argv)
         }
     }
 
+    // Get configuration
+    Config userConfig = Config("geometry.conf");
+
     // Create the run manager (MT or non-MT) and make it a bit verbose.
     auto runManager = new RunManager();
-    // runManager->SetVerboseLevel(1);
+    runManager->SetVerboseLevel(0);
 
     #ifdef G4VIS_USE
         G4VisManager* visManager = new G4VisExecutive();
