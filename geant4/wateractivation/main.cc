@@ -16,14 +16,17 @@
     #include <G4UIExecutive.hh>
 #endif
 
+#include <QGSP_BIC_HP.hh>
+#include <QGSP_BERT_HP.hh>
+
+#include <G4VUserPhysicsList.hh>
 #include <G4String.hh>
 #include <G4UImanager.hh>
-#include <QGSP_BIC_HP.hh>
 
 #include "ActionInitialization.hh"
 #include "DetectorConstruction.hh"
-
-
+#include "Config.hh"
+#include <fstream>
 
 using namespace std;
 
@@ -63,19 +66,44 @@ int main(int argc, char** argv)
 
     // Create the run manager (MT or non-MT) and make it a bit verbose.
     auto runManager = new RunManager();
-    // runManager->SetVerboseLevel(1);
+    runManager->SetVerboseLevel(1);
 
     #ifdef G4VIS_USE
         G4VisManager* visManager = new G4VisExecutive();
         visManager->Initialize();
     #endif
 
+    // Get user configuration
+    Config* userConfig = new Config("config.txt");
 
-    runManager->SetUserInitialization(new QGSP_BIC_HP());
+    // Set physics list according to configuration file
+    G4VUserPhysicsList* PhysicsList = nullptr;
+    if( userConfig->GetPhysicsList() == "QGSP_BIC_HP" )
+      { PhysicsList = new QGSP_BIC_HP(); }
+    else if( userConfig->GetPhysicsList() == "QGSP_BERT_HP" )
+      { PhysicsList = new QGSP_BERT_HP(); }
+    else
+    {
+      G4cerr << "Physics list must be set to either \"QGSP_BIC_HP\" or \"QGSP_BERT_HP\". Check config.txt\n";
+      return EXIT_FAILURE;
+    }
+    PhysicsList->SetVerboseLevel(0);
+
+    runManager->SetUserInitialization(PhysicsList);
 
     // Instantiate DetectorConstruction & ActionInitialization
     runManager->SetUserInitialization(new DetectorConstruction());
     runManager->SetUserInitialization(new ActionInitialization());
+
+
+    // Write start of output file
+    ofstream outFile;
+    outFile.open(userConfig->GetConfig()->GetOutFileName());
+    if(outFile.good())
+    {
+      outFile << "[";
+    }
+    outFile.close();
 
     #ifdef G4UI_USE
         G4UIExecutive* ui = nullptr;
@@ -113,11 +141,13 @@ int main(int argc, char** argv)
 
     delete runManager;
 
-    // Uncomment to write ROOT file
-    /*
-    G4AnalysisManager* man = G4AnalysisManager::Instance();
-    man->CloseFile();
-    */
+    // Write end of output files
+    outFile.open(userConfig->GetConfig()->GetOutFileName(), ios::app);
+    if(outFile.good())
+    {
+      outFile << "\n]\n";
+    }
+    outFile.close();
 
     std::cout << "Application successfully ended.\nBye :^)" << std::endl;
 
