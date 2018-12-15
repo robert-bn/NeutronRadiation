@@ -1,4 +1,4 @@
-from numpy import arange
+from numpy import arange, rint
 
 def format_each(ene, sigma, n):
     print("/gps/ene/mono {} MeV".format(ene))
@@ -9,10 +9,13 @@ def format_each(ene, sigma, n):
 
 print("/run/initialize")
 print("/gps/pos/type Beam")
-print("/gps/pos/sigma_r 5 mm")
 print("")
 print("/gps/ene/type Gauss")
 
+def num(e):
+    # Calibrated to water activation C11
+    # DONT USE TO MAKE MACRO FOR RANGESHIFTER. USE CONSTANT NUMBER FOR RANGESHIFTER
+    return -0.05*(e/10) + 1.4
 
 for each in arange(70,260,10):
-    format_each(each, 0.004*each, 10000000)
+    format_each(each, 0.004*each, rint(20000000*num(each)))

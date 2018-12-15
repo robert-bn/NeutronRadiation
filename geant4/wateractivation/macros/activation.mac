@@ -1,53 +1,55 @@
-# File used to generate activation plots from 70-250 MeV
+# Typical activation calculation macro for water cube
+# Note that there are fewer runs each time owing to the
+# smaller statistical uncertainty due to the higher activation
+# at higher energies.
 
 /run/initialize
 /gps/pos/type Beam
-/gps/pos/sigma_r 5 mm
 
 /gps/ene/type Gauss
 /gps/ene/mono 70 MeV
 /gps/ene/sigma 0.28 MeV
-/run/beamOn 10000000
+/run/beamOn 21000000
 
 /gps/ene/mono 80 MeV
 /gps/ene/sigma 0.32 MeV
-/run/beamOn 10000000
+/run/beamOn 20000000
 
 /gps/ene/mono 90 MeV
 /gps/ene/sigma 0.36 MeV
-/run/beamOn 10000000
+/run/beamOn 19000000
 
 /gps/ene/mono 100 MeV
 /gps/ene/sigma 0.40 MeV
-/run/beamOn 10000000
+/run/beamOn 18000000
 
 /gps/ene/mono 110 MeV
 /gps/ene/sigma 0.44 MeV
-/run/beamOn 10000000
+/run/beamOn 17000000
 
 /gps/ene/mono 120 MeV
 /gps/ene/sigma 0.48 MeV
-/run/beamOn 10000000
+/run/beamOn 16000000
 
 /gps/ene/mono 130 MeV
 /gps/ene/sigma 0.52 MeV
-/run/beamOn 10000000
+/run/beamOn 15000000
 
 /gps/ene/mono 140 MeV
 /gps/ene/sigma 0.56 MeV
-/run/beamOn 10000000
+/run/beamOn 14000000
 
 /gps/ene/mono 150 MeV
 /gps/ene/sigma 0.60 MeV
-/run/beamOn 10000000
+/run/beamOn 13000000
 
 /gps/ene/mono 160 MeV
 /gps/ene/sigma 0.64 MeV
-/run/beamOn 10000000
+/run/beamOn 12000000
 
 /gps/ene/mono 170 MeV
 /gps/ene/sigma 0.68 MeV
-/run/beamOn 10000000
+/run/beamOn 11000000
 
 /gps/ene/mono 180 MeV
 /gps/ene/sigma 0.72 MeV
@@ -55,28 +57,28 @@
 
 /gps/ene/mono 190 MeV
 /gps/ene/sigma 0.76 MeV
-/run/beamOn 10000000
+/run/beamOn 9000000
 
 /gps/ene/mono 200 MeV
 /gps/ene/sigma 0.80 MeV
-/run/beamOn 10000000
+/run/beamOn 8000000
 
 /gps/ene/mono 210 MeV
 /gps/ene/sigma 0.84 MeV
-/run/beamOn 10000000
+/run/beamOn 7000000
 
 /gps/ene/mono 220 MeV
 /gps/ene/sigma 0.88 MeV
-/run/beamOn 10000000
+/run/beamOn 6000000
 
 /gps/ene/mono 230 MeV
 /gps/ene/sigma 0.92 MeV
-/run/beamOn 10000000
+/run/beamOn 5000000
 
 /gps/ene/mono 240 MeV
 /gps/ene/sigma 0.96 MeV
-/run/beamOn 10000000
+/run/beamOn 4000000
 
 /gps/ene/mono 250 MeV
 /gps/ene/sigma 1.00 MeV
-/run/beamOn 10000000
+/run/beamOn 3000000
