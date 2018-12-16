@@ -118,47 +118,10 @@ def plot_beta(activity, tmin=0, tmax=3600, n=1000, ax=None, title=None, xlabel=T
     if grid:
         ax.grid(True, zorder=0)
 
-    ax.stackplot(t, y, labels=label, zorder=3)
-    ax.set_xlim(tmin,tmax)
-    ax.set_ylim(bottom=0)
-
-    ax.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
-
-    if legend:
-        ax.legend()
-
-    if xlabel:
-        ax.set_xlabel("Time (seconds)")
-    if ylabel:
-        ax.set_ylabel("Activity (Bq)")
-
-    if title is None:
-        ax.set_title("$\\beta⁺$ emission rate against time since beam turned off")
-    elif type(title) is str:
-        ax.set_title(title)
-
-    if ax is None:
-        plt.show()
-
-
 def act(activity, t, ist, gamma):
     # Plot gamma rate vs time
     return gamma["branchingRatio"] * gamma["multiplicity"] * activity[ist] * np.exp(-np.log(2)/data[ist]['halfLife']*t)
 
-def activityTOM(activity):
-    TOM = [60,120,300]
-    activities = []
-    efficiency = []
-    print(activities)
-    for ist in data.keys():
-        for i in range(len(TOM)):
-            for gamma in data[ist]["gamma"]:
-
-                activities.append(gamma["branchingRatio"] * gamma["multiplicity"] * activity[ist] * np.exp(-np.log(2)/data[ist]['halfLife']*TOM[i]))
-                efficiency.append(1/(((gamma["energy"]*0.001) + 1)**3))
-                print(activities[i])
-    print(activities)
-    #print(efficiency)
 
 def nice_table(filename, activity):
     TOM = [60,120,300]
@@ -194,7 +157,7 @@ plt.rcParams['axes.titlepad'] = 20
 
 # Plot each graph for 200 MeV, 230 MeV for 2cm thickness
 fig, axes = plt.subplots(nrows=2, ncols=3, sharex=True, figsize=(18,10))
-
+direc
 plot_activity(act_data[0]["activation"], ax=axes[0,0], xlabel=False)
 plot_gamma(   act_data[0]["activation"], ax=axes[0,1], xlabel=False)
 plot_beta(    act_data[0]["activation"], ax=axes[0,2], xlabel=False)
