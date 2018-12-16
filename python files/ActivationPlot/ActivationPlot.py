@@ -1,4 +1,4 @@
-11#!/usr/bin/python
+#!/usr/bin/python
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -37,7 +37,16 @@ def saturation(n, error, lifeTime, beam_time=60):
 actual_protons = 1e11
 isotopes_we_care_about = ["Be7", "C10", "C11", "O15", "O14", "N13", "N16", "F17", "F18", "Be11", "N17", "C15"]
 
-def make_plot(fileName, title, outName, ymin=1, ymax=1e7, exclude=None, include=None):
+def make_plot(
+    fileName,
+    title,
+    outName,
+    ymin=1,
+    ymax=1e7,
+    exclude=None,
+    include=None,
+    loglog=False,
+    bbox=(0.5, 0., 0.5, 0.5)):
     # Load data
     with open(fileName) as f:
         data = json.load(f)
@@ -100,8 +109,11 @@ def make_plot(fileName, title, outName, ymin=1, ymax=1e7, exclude=None, include=
     # Make y axis logarithmic
     ax.set_yscale("log", nonposy='clip')
 
-    # Set horizontal ticks to 10 MeV
-    ax.set_xticks(np.arange(70,260,10))
+    if loglog:
+        ax.set_xscale("log", nonposx='clip')
+    else:
+        # Set horizontal ticks to 10 MeV
+        ax.set_xticks(np.arange(70,260,10))
 
     # Set title and axis labels
     ax.set_title(title)
@@ -113,18 +125,19 @@ def make_plot(fileName, title, outName, ymin=1, ymax=1e7, exclude=None, include=
     ax.set_ylim(ymin=ymin, ymax=ymax)
 
     for ist in isotopes:
-        # Sort according to Energy
-        x, y, e = zip(*sorted(zip(energy, act[ist], act_error[ist])))
+        # Sort according to Energy and remove NaN elements
+        x, y, e = zip(*sorted([(ix, iy, ie) for ix, iy, ie in zip(energy, act[ist], act_error[ist]) if not np.isnan(iy)]))
 
         # Plot it
         plt.plot(x, y, label=format_isotope(ist))
-        plt.errorbar(x, y, yerr=e, fmt=' o ', c='k', capsize=2, markersize=1)
+        plt.errorbar(x, y, yerr=e, fmt=' o ', c='k', capsize=4, markersize=2)
 
     # Place legend in best place in bottom right quadrant
     ax.grid(which='both', linewidth=0.7)
     ax.grid(which='major', axis='y', linewidth=0.7, c='k')
 
-    plt.legend(bbox_to_anchor=(0.5, 0., 0.5, 0.5))
+    plt.legend(bbox_to_anchor=bbox, loc='best')
+
     plt.savefig(outName)
 
 
@@ -135,6 +148,22 @@ make_plot(
     outName="1cm-rangeshifter.svg",
     ymax=2e6
 )
+
+make_plot(
+    fileName="output_t2.json",
+    title="Activation of 2cm thick range shifter immediately after beam turned off",
+    outName="2cm-rangeshifter.svg",
+    ymax=2e6
+)
+
+"""
+make_plot(
+    fileName="output_t3.json",
+    title="Activation of 3cm thick range shifter immediately after beam turned off",
+    outName="3cm-rangeshifter.svg",
+    ymax=2e6
+)
+"""
 
 make_plot(
     fileName="output_t5.json",
@@ -150,5 +179,7 @@ make_plot(
     outName="water.svg",
     # exclude=["Be11"],
     ymin=10,
-    ymax=4e7
+    ymax=4e7,
+    bbox=(0.75, 0., 0.25, 0.4),
+    # loglog=True
 )
