@@ -1,4 +1,4 @@
-#!/usr/bin/python
+11#!/usr/bin/python
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -130,7 +130,14 @@ def make_plot(fileName, title, outName, ymin=1, ymax=1e7, exclude=None, include=
 
 # Main
 make_plot(
-    fileName="5cm-rangeshifter.json",
+    fileName="output_t1.json",
+    title="Activation of 1cm thick range shifter immediately after beam turned off",
+    outName="1cm-rangeshifter.svg",
+    ymax=2e6
+)
+
+make_plot(
+    fileName="output_t5.json",
     title="Activation of 5cm thick range shifter immediately after beam turned off",
     outName="5cm-rangeshifter.svg",
     ymax=2e6
@@ -141,27 +148,7 @@ make_plot(
     fileName="water.json",
     title="Activation of water phantom immediately after beam turned off",
     outName="water.svg",
-    exclude=["Be11"],
+    # exclude=["Be11"],
     ymin=10,
     ymax=4e7
-)
-
-
-make_plot(
-    fileName="water-old.json",
-    title="Activation of water phantom immediately after beam turned off",
-    outName="water-old.svg",
-    exclude=["Be11"],
-    ymin=10,
-    ymax=2e7
-)
-
-
-make_plot(
-    fileName="combined.json",
-    title="Activation of water phantom immediately after beam turned off",
-    outName="water-combined.svg",
-    exclude=["Be11"],
-    ymin=10,
-    ymax=2e7
 )
