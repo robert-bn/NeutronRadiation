@@ -126,11 +126,12 @@ def make_plot(
 
     for ist in isotopes:
         # Sort according to Energy and remove NaN elements
-        x, y, e = zip(*sorted([(ix, iy, ie) for ix, iy, ie in zip(energy, act[ist], act_error[ist]) if not np.isnan(iy)]))
+        if not np.all(np.isnan(act[ist])):
+            x, y, e = zip(*sorted([(ix, iy, ie) for ix, iy, ie in zip(energy, act[ist], act_error[ist]) if not np.isnan(iy)]))
 
-        # Plot it
-        plt.plot(x, y, label=format_isotope(ist))
-        plt.errorbar(x, y, yerr=e, fmt=' o ', c='k', capsize=4, markersize=2)
+            # Plot it
+            plt.plot(x, y, label=format_isotope(ist))
+            plt.errorbar(x, y, yerr=e, fmt=' o ', c='k', capsize=4, markersize=2)
 
     # Place legend in best place in bottom right quadrant
     ax.grid(which='both', linewidth=0.7)
@@ -142,6 +143,7 @@ def make_plot(
 
 
 # Main
+
 make_plot(
     fileName="output_t1.json",
     title="Activation of 1cm thick range shifter immediately after beam turned off",
@@ -156,14 +158,12 @@ make_plot(
     ymax=2e6
 )
 
-"""
 make_plot(
     fileName="output_t3.json",
     title="Activation of 3cm thick range shifter immediately after beam turned off",
     outName="3cm-rangeshifter.svg",
     ymax=2e6
 )
-"""
 
 make_plot(
     fileName="output_t5.json",
@@ -182,4 +182,13 @@ make_plot(
     ymax=4e7,
     bbox=(0.75, 0., 0.25, 0.4),
     # loglog=True
+)
+
+
+make_plot(
+    fileName="water_BERT.json",
+    title="Activation of water phantom immediately after beam turned off",
+    outName="water-BERT.svg",
+    ymin=10,
+    ymax=4e7
 )
