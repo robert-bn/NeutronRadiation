@@ -5,12 +5,13 @@
 #include <G4DecayPhysics.hh>
 #include <G4ProductionCutsTable.hh>
 #include <G4SystemOfUnits.hh>
+#include <G4EmExtraPhysics.hh>
 
 // EM Standard Physics option 3 (used for medicical physics)
 #include <G4EmStandardPhysics_option3.hh>
 
 // Default EM Physics
-// #include <G4EmStandardPhysics.hh>
+#include <G4EmStandardPhysics.hh>
 
 // Headers for hadronic physics
 #include <G4HadronPhysicsQGSP_BIC_HP.hh>
@@ -20,13 +21,13 @@
 PhysicsList::PhysicsList()
 {
   // Standard EM physics
-  RegisterPhysics(new G4EmStandardPhysics_option3());
-
+  // RegisterPhysics(new G4EmStandardPhysics_option3());
+  RegisterPhysics(new G4EmStandardPhysics());
   // Default Decay Physics
   RegisterPhysics(new G4DecayPhysics());
 
   // G4EmExtraPhysics
-  // RegisterPhysics(new G4EmStandardPhysics());
+  RegisterPhysics(new G4EmExtraPhysics());
 
   // Set Hadron physics according to configuration file
   Config* userConfig = new Config();

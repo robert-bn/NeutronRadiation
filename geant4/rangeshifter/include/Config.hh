@@ -15,6 +15,8 @@ public:
   Config();
   ~Config();
 
+  Config(G4String outFileName, G4double rangeshifterThickness, G4String physicsList);
+
   Config(G4String fileName);
 
   G4double GetRangeshifterThickness() const { return fRangeshifterThickness; }
@@ -23,10 +25,11 @@ public:
   G4bool Good() const { return fSuccess; }
 
 private:
-  G4double fRangeshifterThickness;
   G4String fFileName;
-  G4String fPhysicsList;
   G4String fOutFileName;
+  G4double fRangeshifterThickness;
+  G4String fPhysicsList;
+
   G4bool fSuccess{ false };
   static Config* fConfig;
 };

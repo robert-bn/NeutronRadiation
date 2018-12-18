@@ -1,3 +1,3 @@
-rangeshifter-thickness 5
+rangeshifter-thickness 1
 physics-list QGSP_BIC_HP
 out-filename output.json

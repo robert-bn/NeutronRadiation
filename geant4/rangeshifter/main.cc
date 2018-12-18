@@ -20,14 +20,15 @@ using RunManager = G4RunManager;
 #include <G4String.hh>
 #include <G4UImanager.hh>
 
+#include "PhysicsList.hh"
 #include "ActionInitialization.hh"
 #include "DetectorConstruction.hh"
 #include "Config.hh"
 
 #include <fstream>
 
-#include <QGSP_BIC_HP.hh>
-#include <QGSP_BERT_HP.hh>
+// #include <QGSP_BIC_HP.hh>
+// #include <QGSP_BERT_HP.hh>
 
 using namespace std;
 
@@ -38,8 +39,15 @@ using namespace std;
 int main(int argc, char** argv)
 {
   vector<G4String> macros;
-  bool interactive = false;
-  G4String configFilename = "DefaultConfig.txt";
+  G4bool interactive = false;
+  G4bool configFile = false;
+
+  G4String configFilename;
+
+  // Default settings
+  G4String outFilename = "output.json";
+  G4double rangeshifterThickness = 1;
+  G4String usrPhysicsList = "QGSP_BIC_HP";
 
   // Parse command line arguments
   if  (argc == 1)
@@ -64,16 +72,42 @@ int main(int argc, char** argv)
       else if (arg == "-c" || arg == "--config")
       {
         configFilename = argv[i+1];
+        configFile = true;
         i++; // Skip next argument
       }
+
+      // out-filename argument
+      else if (arg == "-o" || arg == "--out-filename")
+      {
+        outFilename = argv[i+1];
+        i++; // Skip next argument
+      }
+
+      // rangeshifter-thickness argument
+      else if (arg == "-t" || arg == "--rangeshifter-thickness")
+      {
+        rangeshifterThickness = stod(argv[i+1]);
+        i++; // Skip next argument
+      }
+
+      // rangeshifter-thickness argument
+      else if (arg == "-pl" || arg == "--physics-list")
+      {
+        usrPhysicsList = argv[i+1];
+        i++; // Skip next argument
+      }
+
       // Help argument
       else if (arg == "-h" || arg == "--help")
       {
         G4cout << "Usage: ./rangeshifter [options] [macros]\n";
         G4cout << "Options:\n";
-        G4cout << " --interactive\t-i\t\tRun in interactive mode.\n";
-        G4cout << " --config <arg>\t-c <arg>\tSpecify a configuration file.\n";
-        G4cout << " --help\t-h\t\t\tList command line options.\n";
+        G4cout << "  -pl | --physics-list <arg>\t\tSpecify physics list. Not to be used with a config file.\n";
+        G4cout << "  -o  | --out-filename <arg>\t\tSpecify output filename. Not to be used with a config file.\n";
+        G4cout << "  -t  | --rangeshifter-thickness <arg>\tSpecify rangeshifter thickness. Not to be used with a config file.\n";
+        G4cout << "  -i  | --interactive\t\t\tRun in interactive mode.\n";
+        G4cout << "  -c  | --config <arg>\t\t\tSpecify a configuration file.\n";
+        G4cout << "  -h  | --help\t-h\t\t\tList command line options.\n";
         return EXIT_SUCCESS;
       }
       else
@@ -95,15 +129,32 @@ int main(int argc, char** argv)
   #endif
 
   // Get user configuration
-  Config* userConfig = new Config(configFilename);
+  Config* userConfig;
+
+  if(configFile)
+  {
+    // Instantiate with config file
+    userConfig = new Config(configFilename);
+  }
+  else
+  {
+    // Instantiate with kwargs
+    userConfig = new Config(outFilename, rangeshifterThickness, usrPhysicsList);
+  }
 
   // Check configuration is read in without problem
-  if( ! userConfig->Good() )
+  if( ! userConfig->Good() && configFile)
   {
     G4cerr << "Error while reading configuration file \"" << configFilename << "\".\n";
+    G4cerr << "Application unsuccessfully ended.\nBye :^(" << G4endl;
+    return EXIT_FAILURE;
+  } else if(! userConfig->Good() ) {
+    G4cerr << "Error while parsing configuration.\n";
+    G4cerr << "Application unsuccessfully ended.\nBye :^(" << G4endl;
     return EXIT_FAILURE;
   }
 
+  /*
   // Set physics list according to configuration file
   G4VUserPhysicsList* PhysicsList = nullptr;
   if( userConfig->GetPhysicsList() == "QGSP_BIC_HP" )
@@ -116,12 +167,12 @@ int main(int argc, char** argv)
     return EXIT_FAILURE;
   }
 
-
   PhysicsList->SetVerboseLevel(0);
-
   runManager->SetUserInitialization(PhysicsList);
+  */
 
-  // runManager->SetUserInitialization(new PhysicsList());
+
+  runManager->SetUserInitialization(new PhysicsList());
 
   // Instantiate DetectorConstruction & ActionInitialization
   runManager->SetUserInitialization(new DetectorConstruction());
@@ -173,7 +224,7 @@ int main(int argc, char** argv)
 
   delete runManager;
 
-  // Write end of output files
+  // Write end of output file
   outFile.open(userConfig->GetConfig()->GetOutFileName(), ios::app);
   if(outFile.good())
   {
@@ -181,7 +232,7 @@ int main(int argc, char** argv)
   }
   outFile.close();
 
-  std::cout << "Application successfully ended.\nBye :^)" << std::endl;
+  G4cout << "Application successfully ended.\nBye :^)" << G4endl;
 
   return EXIT_SUCCESS;
 }

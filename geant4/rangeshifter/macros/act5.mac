@@ -2,7 +2,6 @@
 
 /run/initialize
 /gps/pos/type Beam
-/gps/pos/sigma_r 5 mm
 
 /gps/ene/type Gauss
 /gps/ene/mono 70 MeV

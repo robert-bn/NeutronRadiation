@@ -21,7 +21,6 @@ fFileName(fileName)
   fSuccess = true;
   if(!fConfig){
     // DEBUG: G4cout << "constructed [" << this << "]\n";
-    fConfig = this;
     std::ifstream input(fileName);
 
     G4String a, b;
@@ -42,9 +41,8 @@ fFileName(fileName)
     }
     else
     {
-      fSuccess = true;
       G4cout << " * Config filename = " << fFileName << "\n";
-      G4cout << " * Out filename = " << fOutFileName << "\n";
+      G4cout << " * Output filename = " << fOutFileName << "\n";
       G4cout << " * Rangeshifter thickness = " << fRangeshifterThickness / cm << " cm\n";
       if( fRangeshifterThickness < 0)
       {
@@ -61,7 +59,9 @@ fFileName(fileName)
         fSuccess = false;
       }
     }
-
+    if(fSuccess){
+      fConfig = this;
+    }
 
     G4cout << "==========================================================================\n";
 
@@ -72,6 +72,35 @@ fFileName(fileName)
   }
 }
 
+// Constructor for use with kwargs to executable
+Config::Config(G4String outFileName, G4double rangeshifterThickness, G4String physicsList) :
+  fOutFileName(outFileName), fRangeshifterThickness(rangeshifterThickness * cm), fPhysicsList(physicsList)
+{
+  fSuccess = true;
+  G4cout << "============================== User Config ===============================\n";
+  G4cout << " * Output filename = " << fOutFileName << "\n";
+
+  G4cout << " * Rangeshifter thickness = " << fRangeshifterThickness / cm << " cm\n";
+  if( fRangeshifterThickness < 0)
+  {
+    G4cerr << "Error: Rangeshifter thickness must be a positive number!\n";
+    fSuccess = false;
+  }
+  if(fPhysicsList == "QGSP_BIC_HP" || fPhysicsList == "QGSP_BERT_HP" )
+  {
+    G4cout << " * Physics list = " << fPhysicsList << "\n";
+  }
+  else
+  {
+    G4cerr << "Error: Physics list must either be QGSP_BIC_HP or QGSP_BERT_HP.\n";
+    fSuccess = false;
+  }
+
+  G4cout << "==========================================================================\n";
+  if (fSuccess){
+    fConfig = this;
+  }
+}
 
 /* Returns pointer to already instantiated config, unless
    config is not already instantiated, in which case returns itself
