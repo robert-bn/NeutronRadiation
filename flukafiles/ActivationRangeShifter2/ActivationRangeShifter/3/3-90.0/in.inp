@@ -1,0 +1,81 @@
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+* Title Card for the simulation
+TITLE
+Protons in Lexan (0.09GeV, 2cm)
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+* Define things about the beam and position
+BEAM      -0.090000 -0.002054            -1.1775   -1.1755            PROTON
+BEAMPOS          0.0       0.0      -50.
+*
+*Begin Describing the geometry
+GEOBEGIN                                                              COMBNAME
+    0    0                  A range shifter of Lexan in a vacuum
+*RPP Parallelepipeds
+RPP body1      -500. 500. -500. 500. -500. 500.
+RPP body2      -100. 100. -100. 100. -100. 100.
+RPP body3      -15. 15. -5. 5. 0.0 3.0
+*Cutplanes surround lexan
+XYP cutplan1    0.
+XYP cutplan2    3.0
+END
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+* Define regions bounded by the geometry
+* Black hole
+regBH1       5 +body1 -body2
+* Vacuum around
+regVA2       5 +body2 +cutplan1
+regVA3       5 +body2 -body3 +cutplan2 -cutplan1
+regVA4       5 +body2 -cutplan2
+* Lexan Target
+regLE4       5 +body3
+END
+GEOEND
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+* Define materials used in the Lexan and the Lexan Compound
+MATERIAL          1.             0.00008                           0.0HYDROGEN
+MATERIAL          6.                  2.                           0.0CARBON
+MATERIAL          8.             0.00134                           0.0OXYGEN
+MATERIAL                             1.2                              LEXAN
+COMPOUND     -5.5491  HYDROGEN  -75.5751    CARBON  -18.8758    OXYGENLEXAN
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+* Assign Lexan to the region
+ASSIGNMA       LEXAN    regLE4
+* External Black Hole
+ASSIGNMA    BLCKHOLE    regBH1
+* Vacuum
+ASSIGNMA      VACUUM    regVA2    regVA3
+ASSIGNMA      VACUUM    regVA3    regVA4
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+* e+e- and gamma production threshold set at 10 MeV
+EMFCUT        -0.010     0.010        1.                              
+*
+PHYSICS          3.0                                                  EVAPORAT
+PHYSICS          1.0                                                  COALESCE
+DEFAULTS                                                              HADROTHE
+*
+* Score in each region energy deposition and stars produced by primaries
+SCORE         ENERGY  BEAMPART
+* Boundary crossing differential fluence either side of the lexan
+USRBDX          101.    PROTON       27.    regVA2    regLE4      100.ifluence
+USRBDX          0.14      0.01      650.                 0.0        1. &
+USRBDX          101.    PROTON       28.    regLE4    regVA4      100.ofluence
+USRBDX          0.14      0.01      650.                 0.0        1. &
+* Boundary crossing differential current either side of the lexan
+USRBDX          001.    PROTON       29.    regVA2    regLE4      100.icurrent
+USRBDX          0.14      0.01      650.                 0.0        1. &
+USRBDX          001.    PROTON       30.    regLE4    regVA4      100.ocurrent
+USRBDX          0.14      0.01      650.                 0.0        1. &
+* Total Boundary Crossing fluence either side of the lexan
+USRBDX          101.    PROTON       27.    regVA2    regLE4      100.ifluence
+USRBDX          300.        0.        1.                 0.0        1. &
+USRBDX          101.    PROTON       28.    regLE4    regVA4      100.ofluence
+USRBDX          300.        0.        1.                 0.0        1. &
+* Determine Residual Nuclei
+RESNUCLEi        3.0       26.       10.       16.    regLE4          Ian
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+* Random Number generator
+RANDOMIZ          1.
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+* Start and Stop with given number of events
+START       16666666
+STOP
