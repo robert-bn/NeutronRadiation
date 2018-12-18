@@ -1,7 +1,7 @@
 [
   {
     "run":0,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.07,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -9,63 +9,73 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":3070
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":3
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1058
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":169
-      },
-      "F18":{
-        "halfLife":6586.2,
-        "lifeTime":9501.88,
-        "number":2
+        "number":15050
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":8491
+        "number":42200
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":19535
+        "number":97801
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":5251
+        "number":26578
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":27
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":571
+        "number":2703
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":5116
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":778
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":10
+        "number":36
+      },
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":3
+      },
+      "C15":{
+        "halfLife":2.449,
+        "lifeTime":3.53316,
+        "number":2
       },
       "N17":{
         "halfLife":4.173,
         "lifeTime":6.02037,
-        "number":1
+        "number":6
+      },
+      "Be11":{
+        "halfLife":13.76,
+        "lifeTime":19.8515,
+        "number":2
       }
     }
   },
   {
     "run":1,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.08,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -73,63 +83,73 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":3232
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":4
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1223
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":144
+        "number":16595
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":7583
+        "number":37682
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":17644
+        "number":88466
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4905
+        "number":24651
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":27
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":689
+        "number":3544
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6065
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":742
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":5
+        "number":62
       },
-      "N17":{
-        "halfLife":4.173,
-        "lifeTime":6.02037,
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
         "number":2
       },
       "C15":{
         "halfLife":2.449,
         "lifeTime":3.53316,
-        "number":1
+        "number":5
+      },
+      "N17":{
+        "halfLife":4.173,
+        "lifeTime":6.02037,
+        "number":7
+      },
+      "Be11":{
+        "halfLife":13.76,
+        "lifeTime":19.8515,
+        "number":2
       }
     }
   },
   {
     "run":2,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.09,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -137,68 +157,73 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":3493
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":4
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1286
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":159
-      },
-      "F18":{
-        "halfLife":6586.2,
-        "lifeTime":9501.88,
-        "number":1
+        "number":17299
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":6978
+        "number":34706
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":16269
+        "number":81406
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4690
+        "number":23803
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":17
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":880
+        "number":4138
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6314
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":760
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":8
+        "number":49
+      },
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":2
       },
       "C15":{
         "halfLife":2.449,
         "lifeTime":3.53316,
-        "number":1
+        "number":3
+      },
+      "N17":{
+        "halfLife":4.173,
+        "lifeTime":6.02037,
+        "number":5
       },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
-        "number":2
+        "number":4
       }
     }
   },
   {
     "run":3,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.1,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -206,58 +231,73 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":3444
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1256
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":125
+        "number":18005
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":6396
+        "number":31831
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":14939
+        "number":75085
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4425
+        "number":22645
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":16
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":856
+        "number":4402
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6293
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":743
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":9
+        "number":56
+      },
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":5
+      },
+      "C15":{
+        "halfLife":2.449,
+        "lifeTime":3.53316,
+        "number":4
       },
       "N17":{
         "halfLife":4.173,
         "lifeTime":6.02037,
-        "number":2
+        "number":6
       },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
-        "number":3
+        "number":7
       }
     }
   },
   {
     "run":4,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.11,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -265,68 +305,73 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":3819
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":2
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1262
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":121
-      },
-      "F18":{
-        "halfLife":6586.2,
-        "lifeTime":9501.88,
-        "number":1
+        "number":18961
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":6071
+        "number":30214
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":14208
+        "number":71480
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4582
+        "number":22404
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":9
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":859
+        "number":4450
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6596
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":787
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":7
+        "number":55
+      },
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":5
+      },
+      "C15":{
+        "halfLife":2.449,
+        "lifeTime":3.53316,
+        "number":6
       },
       "N17":{
         "halfLife":4.173,
         "lifeTime":6.02037,
-        "number":1
+        "number":10
       },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
-        "number":3
+        "number":5
       }
     }
   },
   {
     "run":5,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.12,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -334,73 +379,73 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":3946
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":1
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1274
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":187
-      },
-      "F18":{
-        "halfLife":6586.2,
-        "lifeTime":9501.88,
-        "number":1
+        "number":20121
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":5859
+        "number":28845
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":13723
+        "number":68605
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4427
+        "number":22091
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":19
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":872
+        "number":4499
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6722
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":818
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":7
+        "number":48
       },
-      "N17":{
-        "halfLife":4.173,
-        "lifeTime":6.02037,
-        "number":1
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":2
       },
       "C15":{
         "halfLife":2.449,
         "lifeTime":3.53316,
         "number":2
       },
+      "N17":{
+        "halfLife":4.173,
+        "lifeTime":6.02037,
+        "number":7
+      },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
-        "number":1
+        "number":8
       }
     }
   },
   {
     "run":6,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.13,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -408,73 +453,73 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":4309
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":2
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1345
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":146
-      },
-      "F18":{
-        "halfLife":6586.2,
-        "lifeTime":9501.88,
-        "number":1
+        "number":20994
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":5599
+        "number":28058
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":12855
+        "number":66700
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4269
+        "number":21855
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":13
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":962
+        "number":4613
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6745
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":783
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":5
+        "number":56
       },
-      "N17":{
-        "halfLife":4.173,
-        "lifeTime":6.02037,
-        "number":2
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":5
       },
       "C15":{
         "halfLife":2.449,
         "lifeTime":3.53316,
-        "number":2
+        "number":1
+      },
+      "N17":{
+        "halfLife":4.173,
+        "lifeTime":6.02037,
+        "number":10
       },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
-        "number":2
+        "number":8
       }
     }
   },
   {
     "run":7,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.14,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -482,68 +527,78 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":4354
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":4
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1377
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":169
-      },
-      "F18":{
-        "halfLife":6586.2,
-        "lifeTime":9501.88,
-        "number":1
+        "number":22000
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":5366
+        "number":26912
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":12526
+        "number":63225
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4289
+        "number":21663
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":14
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":886
+        "number":4525
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6830
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":787
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":11
+        "number":44
+      },
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":5
       },
       "C15":{
         "halfLife":2.449,
         "lifeTime":3.53316,
-        "number":1
+        "number":4
+      },
+      "N17":{
+        "halfLife":4.173,
+        "lifeTime":6.02037,
+        "number":8
       },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
-        "number":3
+        "number":9
+      },
+      "Ne18":{
+        "halfLife":1.672,
+        "lifeTime":2.41219,
+        "number":1
       }
     }
   },
   {
     "run":8,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.15,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -551,63 +606,73 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":4640
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":9
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1326
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":175
-      },
-      "F18":{
-        "halfLife":6586.2,
-        "lifeTime":9501.88,
-        "number":1
+        "number":23258
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":5354
+        "number":26445
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":12465
+        "number":61824
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4273
+        "number":21402
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":22
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":939
+        "number":4483
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6730
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":709
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":11
+        "number":69
+      },
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":4
+      },
+      "C15":{
+        "halfLife":2.449,
+        "lifeTime":3.53316,
+        "number":5
+      },
+      "N17":{
+        "halfLife":4.173,
+        "lifeTime":6.02037,
+        "number":13
       },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
-        "number":1
+        "number":7
       }
     }
   },
   {
     "run":9,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.16,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -615,68 +680,83 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":4681
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":2
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1351
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":167
-      },
-      "F18":{
-        "halfLife":6586.2,
-        "lifeTime":9501.88,
-        "number":2
+        "number":23596
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":4952
+        "number":25202
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":11829
+        "number":59359
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4241
+        "number":20948
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":11
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":895
+        "number":4394
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6880
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":805
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":12
+        "number":55
+      },
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":5
+      },
+      "C15":{
+        "halfLife":2.449,
+        "lifeTime":3.53316,
+        "number":3
+      },
+      "Na22":{
+        "halfLife":8.2135e+07,
+        "lifeTime":1.18496e+08,
+        "number":1
       },
       "N17":{
         "halfLife":4.173,
         "lifeTime":6.02037,
-        "number":1
+        "number":10
       },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
-        "number":3
+        "number":7
+      },
+      "Na24":{
+        "halfLife":53989.2,
+        "lifeTime":77889.9,
+        "number":1
       }
     }
   },
   {
     "run":10,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.17,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -684,68 +764,73 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":4962
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":5
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1365
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":175
+        "number":24688
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":4925
+        "number":24516
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":11646
+        "number":58400
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4263
+        "number":21288
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":13
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":936
+        "number":4457
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6792
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":748
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":18
+        "number":76
       },
-      "N17":{
-        "halfLife":4.173,
-        "lifeTime":6.02037,
-        "number":7
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":2
       },
       "C15":{
         "halfLife":2.449,
         "lifeTime":3.53316,
-        "number":1
+        "number":3
+      },
+      "N17":{
+        "halfLife":4.173,
+        "lifeTime":6.02037,
+        "number":12
       },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
-        "number":1
+        "number":10
       }
     }
   },
   {
     "run":11,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.18,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -753,63 +838,73 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":5173
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":4
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1381
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":172
+        "number":25876
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":4878
+        "number":24251
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":11541
+        "number":57384
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4253
+        "number":20977
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":17
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":839
+        "number":4377
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6864
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":811
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":9
+        "number":62
+      },
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":5
+      },
+      "C15":{
+        "halfLife":2.449,
+        "lifeTime":3.53316,
+        "number":4
       },
       "N17":{
         "halfLife":4.173,
         "lifeTime":6.02037,
-        "number":1
+        "number":13
       },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
-        "number":1
+        "number":9
       }
     }
   },
   {
     "run":12,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.19,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -817,68 +912,73 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":5349
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":8
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1430
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":184
-      },
-      "F18":{
-        "halfLife":6586.2,
-        "lifeTime":9501.88,
-        "number":3
+        "number":26607
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":4779
+        "number":24284
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":11220
+        "number":56770
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4036
+        "number":20902
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":21
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":840
+        "number":4454
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6872
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":838
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":13
+        "number":47
+      },
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":2
+      },
+      "C15":{
+        "halfLife":2.449,
+        "lifeTime":3.53316,
+        "number":2
       },
       "N17":{
         "halfLife":4.173,
         "lifeTime":6.02037,
-        "number":1
+        "number":8
       },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
-        "number":1
+        "number":7
       }
     }
   },
   {
     "run":13,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.2,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -886,73 +986,73 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":5418
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":4
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1430
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":160
-      },
-      "F18":{
-        "halfLife":6586.2,
-        "lifeTime":9501.88,
-        "number":2
+        "number":27539
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":4610
+        "number":23752
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":11090
+        "number":55777
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4127
+        "number":20618
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":14
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":847
+        "number":4429
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6871
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":802
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":14
+        "number":74
       },
-      "N17":{
-        "halfLife":4.173,
-        "lifeTime":6.02037,
-        "number":5
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":8
       },
       "C15":{
         "halfLife":2.449,
         "lifeTime":3.53316,
         "number":2
       },
+      "N17":{
+        "halfLife":4.173,
+        "lifeTime":6.02037,
+        "number":20
+      },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
-        "number":4
+        "number":12
       }
     }
   },
   {
     "run":14,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.21,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -960,73 +1060,78 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":5537
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":2
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1357
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":152
-      },
-      "F18":{
-        "halfLife":6586.2,
-        "lifeTime":9501.88,
-        "number":3
+        "number":27969
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":4805
+        "number":23591
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":11020
+        "number":55294
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4124
+        "number":20489
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":25
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":852
+        "number":4472
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6891
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":810
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":14
+        "number":55
       },
-      "N17":{
-        "halfLife":4.173,
-        "lifeTime":6.02037,
-        "number":2
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":7
       },
       "C15":{
         "halfLife":2.449,
         "lifeTime":3.53316,
         "number":1
       },
+      "N17":{
+        "halfLife":4.173,
+        "lifeTime":6.02037,
+        "number":15
+      },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
+        "number":13
+      },
+      "Ne18":{
+        "halfLife":1.672,
+        "lifeTime":2.41219,
         "number":1
       }
     }
   },
   {
     "run":15,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.22,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -1034,63 +1139,83 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":5845
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":4
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1394
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":147
+        "number":28509
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":4700
+        "number":23358
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":10882
+        "number":53996
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4102
+        "number":20470
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":16
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":873
+        "number":4313
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6853
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":757
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":10
+        "number":72
+      },
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":9
+      },
+      "C15":{
+        "halfLife":2.449,
+        "lifeTime":3.53316,
+        "number":4
       },
       "N17":{
         "halfLife":4.173,
         "lifeTime":6.02037,
-        "number":4
+        "number":14
       },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
-        "number":5
+        "number":13
+      },
+      "Ne19":{
+        "halfLife":17.22,
+        "lifeTime":24.8432,
+        "number":1
+      },
+      "F21":{
+        "halfLife":4.158,
+        "lifeTime":5.99873,
+        "number":1
       }
     }
   },
   {
     "run":16,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.23,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -1098,73 +1223,73 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":5792
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":7
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1411
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":164
-      },
-      "F18":{
-        "halfLife":6586.2,
-        "lifeTime":9501.88,
-        "number":1
+        "number":29202
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":4592
+        "number":22798
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":10773
+        "number":53442
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4084
+        "number":20051
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":22
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":823
+        "number":4192
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6743
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":805
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":9
+        "number":74
       },
-      "N17":{
-        "halfLife":4.173,
-        "lifeTime":6.02037,
-        "number":4
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":3
       },
       "C15":{
         "halfLife":2.449,
         "lifeTime":3.53316,
-        "number":2
+        "number":5
+      },
+      "N17":{
+        "halfLife":4.173,
+        "lifeTime":6.02037,
+        "number":13
       },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
-        "number":2
+        "number":8
       }
     }
   },
   {
     "run":17,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.24,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -1172,68 +1297,73 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":5730
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":5
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1328
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":151
+        "number":29699
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":4456
+        "number":22766
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":10478
+        "number":52686
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4063
+        "number":19942
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":32
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":820
+        "number":4338
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6535
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":801
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":15
+        "number":64
       },
-      "N17":{
-        "halfLife":4.173,
-        "lifeTime":6.02037,
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
         "number":3
       },
       "C15":{
         "halfLife":2.449,
         "lifeTime":3.53316,
-        "number":1
+        "number":6
+      },
+      "N17":{
+        "halfLife":4.173,
+        "lifeTime":6.02037,
+        "number":10
       },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
-        "number":2
+        "number":7
       }
     }
   },
   {
     "run":18,
-    "nEvents":10000000,
+    "nEvents":50000000,
     "energy":0.25,
     "physicsList":"QGSP_BIC_HP",
     "rangeshifterThickness":1,
@@ -1241,67 +1371,67 @@
       "triton":{
         "halfLife":2.69304e+08,
         "lifeTime":3.88524e+08,
-        "number":5974
-      },
-      "F17":{
-        "halfLife":64.49,
-        "lifeTime":93.0394,
-        "number":4
-      },
-      "C10":{
-        "halfLife":19.29,
-        "lifeTime":27.8296,
-        "number":1317
-      },
-      "N13":{
-        "halfLife":597.9,
-        "lifeTime":862.587,
-        "number":145
-      },
-      "F18":{
-        "halfLife":6586.2,
-        "lifeTime":9501.88,
-        "number":1
+        "number":29820
       },
       "Be7":{
         "halfLife":4.59821e+06,
         "lifeTime":6.63381e+06,
-        "number":4474
+        "number":22147
       },
       "C11":{
         "halfLife":1221.84,
         "lifeTime":1762.74,
-        "number":10512
+        "number":52016
       },
       "O15":{
         "halfLife":122.24,
         "lifeTime":176.355,
-        "number":4034
+        "number":19283
+      },
+      "F17":{
+        "halfLife":64.49,
+        "lifeTime":93.0394,
+        "number":18
       },
       "O14":{
         "halfLife":70.606,
         "lifeTime":101.863,
-        "number":857
+        "number":4221
+      },
+      "C10":{
+        "halfLife":19.29,
+        "lifeTime":27.8296,
+        "number":6484
+      },
+      "N13":{
+        "halfLife":597.9,
+        "lifeTime":862.587,
+        "number":734
       },
       "N16":{
         "halfLife":7.13,
         "lifeTime":10.2864,
-        "number":9
+        "number":59
       },
-      "N17":{
-        "halfLife":4.173,
-        "lifeTime":6.02037,
-        "number":4
+      "F18":{
+        "halfLife":6586.2,
+        "lifeTime":9501.88,
+        "number":5
       },
       "C15":{
         "halfLife":2.449,
         "lifeTime":3.53316,
-        "number":1
+        "number":2
+      },
+      "N17":{
+        "halfLife":4.173,
+        "lifeTime":6.02037,
+        "number":14
       },
       "Be11":{
         "halfLife":13.76,
         "lifeTime":19.8515,
-        "number":3
+        "number":10
       }
     }
   }
