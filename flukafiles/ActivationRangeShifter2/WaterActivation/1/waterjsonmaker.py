@@ -57,6 +57,7 @@ isotope_ZA = {
 isotopes = list(isotope_ZA.keys())
 
 
+print("[")
 for n, e in enumerate(energies):
     for t in thickness:
         directory = "/{rThickness}-{bEnergy:.1f}/".format(rThickness=round(t), bEnergy=round(1000*e,1))
@@ -116,6 +117,7 @@ for n, e in enumerate(energies):
                 'isotopes':isotopes_json
                 }
             
-            print(json.dumps(dict, indent=4))
+            print("  " + json.dumps(dict, indent=4) + ",")
+print("]")
 
 
