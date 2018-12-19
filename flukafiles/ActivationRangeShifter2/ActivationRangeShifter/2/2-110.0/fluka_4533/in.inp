@@ -1,10 +1,10 @@
 * ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
 * Title Card for the simulation
 TITLE
-Protons in Lexan (0.17GeV, 1cm)
+Protons in Lexan (0.11GeV, 1cm)
 * ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
 * Define things about the beam and position
-BEAM      -0.170000 -0.002983            -1.1775   -1.1755            PROTON
+BEAM      -0.110000 -0.002304            -1.1775   -1.1755            PROTON
 BEAMPOS          0.0       0.0      -50.
 *
 *Begin Describing the geometry
@@ -57,14 +57,14 @@ DEFAULTS                                                              HADROTHE
 SCORE         ENERGY  BEAMPART
 * Boundary crossing differential fluence either side of the lexan
 USRBDX          101.    PROTON       27.    regVA2    regLE4      100.ifluence
-USRBDX          0.22      0.09      650.                 0.0        1. &
+USRBDX          0.16      0.03      650.                 0.0        1. &
 USRBDX          101.    PROTON       28.    regLE4    regVA4      100.ofluence
-USRBDX          0.22      0.09      650.                 0.0        1. &
+USRBDX          0.16      0.03      650.                 0.0        1. &
 * Boundary crossing differential current either side of the lexan
 USRBDX          001.    PROTON       29.    regVA2    regLE4      100.icurrent
-USRBDX          0.22      0.09      650.                 0.0        1. &
+USRBDX          0.16      0.03      650.                 0.0        1. &
 USRBDX          001.    PROTON       30.    regLE4    regVA4      100.ocurrent
-USRBDX          0.22      0.09      650.                 0.0        1. &
+USRBDX          0.16      0.03      650.                 0.0        1. &
 * Total Boundary Crossing fluence either side of the lexan
 USRBDX          101.    PROTON       27.    regVA2    regLE4      100.ifluence
 USRBDX          300.        0.        1.                 0.0        1. &
