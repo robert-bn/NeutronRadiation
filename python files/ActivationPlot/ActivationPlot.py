@@ -48,6 +48,7 @@ def make_plot(
     loglog=False,
     bbox=(0.5, 0., 0.5, 0.5)):
     # Load data
+    print("processing " + fileName)
     with open(fileName) as f:
         data = json.load(f)
 
@@ -206,6 +207,6 @@ make_plot(
     fileName="water_HADROTHE.json",
     title="Activation of water phantom immediately after beam turned off",
     outName="water_HADROTHE.svg",
-    ymin=10,
-    ymax=4e7
+    ymin=.1,
+    ymax=2e7
 )
