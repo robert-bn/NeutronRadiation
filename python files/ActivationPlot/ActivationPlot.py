@@ -196,7 +196,16 @@ make_plot(
 make_plot(
     fileName="water_BERT.json",
     title="Activation of water phantom immediately after beam turned off",
-    outName="water-BERT.svg",
+    outName="water_BERT.svg",
+    ymin=10,
+    ymax=4e7
+)
+
+
+make_plot(
+    fileName="water_HADROTHE.json",
+    title="Activation of water phantom immediately after beam turned off",
+    outName="water_HADROTHE.svg",
     ymin=10,
     ymax=4e7
 )
