@@ -145,38 +145,46 @@ def make_plot(
 # Main
 
 make_plot(
-    fileName="output_t1.json",
+    fileName="output_t1_BIC.json",
     title="Activation of 1cm thick range shifter immediately after beam turned off",
-    outName="1cm-rangeshifter.svg",
+    outName="rangeshifter_t1_BIC.svg",
     ymax=2e6
 )
 
 make_plot(
-    fileName="output_t2.json",
+    fileName="output_t2_BIC.json",
     title="Activation of 2cm thick range shifter immediately after beam turned off",
-    outName="2cm-rangeshifter.svg",
+    outName="rangeshifter_t2_BIC.svg",
     ymax=2e6
 )
 
 make_plot(
-    fileName="output_t3.json",
+    fileName="output_t3_BIC.json",
     title="Activation of 3cm thick range shifter immediately after beam turned off",
-    outName="3cm-rangeshifter.svg",
+    outName="rangeshifter_t3_BIC.svg",
     ymax=2e6
 )
 
 make_plot(
-    fileName="output_t5.json",
+    fileName="output_t5_BIC.json",
     title="Activation of 5cm thick range shifter immediately after beam turned off",
-    outName="5cm-rangeshifter.svg",
+    outName="rangeshifter_t5_BIC.svg",
     ymax=2e6
 )
 
 
 make_plot(
-    fileName="water.json",
+    fileName="output_t1_BERT.json",
+    title="Activation of 1cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t1_BERT.svg",
+    ymax=2e6
+)
+
+
+make_plot(
+    fileName="water_BIC.json",
     title="Activation of water phantom immediately after beam turned off",
-    outName="water.svg",
+    outName="water_BIC.svg",
     # exclude=["Be11"],
     ymin=10,
     ymax=4e7,
