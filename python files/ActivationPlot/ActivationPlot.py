@@ -45,6 +45,7 @@ def make_plot(
     ymax=1e7,
     exclude=None,
     include=None,
+    include_only=None,
     loglog=False,
     bbox=(0.5, 0., 0.5, 0.5)):
     # Load data
@@ -76,6 +77,11 @@ def make_plot(
         for ist in include:
             if(ist not in isotopes):
                 isotopes += [ist]
+
+    if(include_only is not None):
+        assert type(include_only) is list, "include_only keyword argument must be a list."
+        isotopes=include_only
+
 
     for run in data:
         energy.append(1e3 * run["energy"])

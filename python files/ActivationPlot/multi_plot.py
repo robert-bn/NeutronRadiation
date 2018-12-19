@@ -166,9 +166,9 @@ def make_plot(
                         p = plt.plot(x, y, label=format_isotope(ist), zorder=1)
                     ist_colors[ist] = p[0].get_color()
                 if error[i]:
-                    plt.errorbar(x, y, yerr=e, fmt=' o ', c='k', capsize=4, markersize=2, zorder=2)
+                    plt.errorbar(x, y, yerr=e, fmt=marker[i], c='k', capsize=4, markersize=2, zorder=2)
                 else:
-                    plt.scatter(x, y, marker='x', c='k', s=4, zorder=2)
+                    plt.scatter(x, y, marker=marker[i], c='k', s=4, zorder=2)
 
     # Place legend in best place in bottom right quadrant
     ax.grid(which='both', linewidth=0.7)
