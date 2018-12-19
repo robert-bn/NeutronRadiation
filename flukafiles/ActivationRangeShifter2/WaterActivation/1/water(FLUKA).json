@@ -1,6 +1,6 @@
 {
     "run": 0,
-    "nevents": "3000000",
+    "nEvents": "3000000",
     "energy": 0.25,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -73,7 +73,7 @@
 }
 {
     "run": 1,
-    "nevents": "4000000",
+    "nEvents": "4000000",
     "energy": 0.24,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -146,7 +146,7 @@
 }
 {
     "run": 2,
-    "nevents": "5000000",
+    "nEvents": "5000000",
     "energy": 0.23,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -219,7 +219,7 @@
 }
 {
     "run": 3,
-    "nevents": "6000000",
+    "nEvents": "6000000",
     "energy": 0.22,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -292,7 +292,7 @@
 }
 {
     "run": 4,
-    "nevents": "7000000",
+    "nEvents": "7000000",
     "energy": 0.21,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -365,7 +365,7 @@
 }
 {
     "run": 5,
-    "nevents": "8000000",
+    "nEvents": "8000000",
     "energy": 0.2,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -438,7 +438,7 @@
 }
 {
     "run": 6,
-    "nevents": "9000000",
+    "nEvents": "9000000",
     "energy": 0.19,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -511,7 +511,7 @@
 }
 {
     "run": 7,
-    "nevents": "10000000",
+    "nEvents": "10000000",
     "energy": 0.18,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -584,7 +584,7 @@
 }
 {
     "run": 8,
-    "nevents": "11000000",
+    "nEvents": "11000000",
     "energy": 0.16999999999999998,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -657,7 +657,7 @@
 }
 {
     "run": 9,
-    "nevents": "12000000",
+    "nEvents": "12000000",
     "energy": 0.16,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -730,7 +730,7 @@
 }
 {
     "run": 10,
-    "nevents": "13000000",
+    "nEvents": "13000000",
     "energy": 0.15,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -803,7 +803,7 @@
 }
 {
     "run": 11,
-    "nevents": "14000000",
+    "nEvents": "14000000",
     "energy": 0.14,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -876,7 +876,7 @@
 }
 {
     "run": 12,
-    "nevents": "15000000",
+    "nEvents": "15000000",
     "energy": 0.13,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -949,7 +949,7 @@
 }
 {
     "run": 13,
-    "nevents": "16000000",
+    "nEvents": "16000000",
     "energy": 0.12,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -1022,7 +1022,7 @@
 }
 {
     "run": 14,
-    "nevents": "17000000",
+    "nEvents": "17000000",
     "energy": 0.10999999999999999,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -1095,7 +1095,7 @@
 }
 {
     "run": 15,
-    "nevents": "18000000",
+    "nEvents": "18000000",
     "energy": 0.1,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -1168,7 +1168,7 @@
 }
 {
     "run": 16,
-    "nevents": "19000000",
+    "nEvents": "19000000",
     "energy": 0.09,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -1241,7 +1241,7 @@
 }
 {
     "run": 17,
-    "nevents": "20000000",
+    "nEvents": "20000000",
     "energy": 0.07999999999999999,
     "physicsList": "HADROTHErapy",
     "isotopes": {
@@ -1314,7 +1314,7 @@
 }
 {
     "run": 18,
-    "nevents": "21000000",
+    "nEvents": "21000000",
     "energy": 0.07,
     "physicsList": "HADROTHErapy",
     "isotopes": {

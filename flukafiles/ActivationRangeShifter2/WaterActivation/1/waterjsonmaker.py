@@ -110,7 +110,7 @@ for n, e in enumerate(energies):
             
             dict = {
                 'run':n, 
-                'nevents':events,
+                'nEvents':events,
                 'energy':e,
                 'physicsList':"HADROTHErapy",
                 'isotopes':isotopes_json
