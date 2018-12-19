@@ -4,12 +4,12 @@ import pandas as pd
 import json
 
 half_life = {
-    'Be7':4590000, 
-    'C10':19.29, 
-    'C11':1220.00, 
-    'O14':70.60, 
-    'O15':122.24, 
-    'N13':597.9, 
+    'Be7':4590000,
+    'C10':19.29,
+    'C11':1220.00,
+    'O14':70.60,
+    'O15':122.24,
+    'N13':597.9,
     'N16':7.13,
     'triton':2.69304e8,
     'F17':64.49,
@@ -50,35 +50,35 @@ isotope_ZA = {
     "O15":(8,15),
     "Be11":(4,11),
     "C11":(6,11),
-    "Be7":(4,7),  
-    "O14":(8,14), 
-    "C10":(6,10), 
+    "Be7":(4,7),
+    "O14":(8,14),
+    "C10":(6,10),
     }
 isotopes = list(isotope_ZA.keys())
 
 
-print("[")
+json_list = []
 for n, e in enumerate(energies):
     for t in thickness:
         directory = "/{rThickness}-{bEnergy:.1f}/".format(rThickness=round(t), bEnergy=round(1000*e,1))
         with open(os.getcwd() + directory + "in001_fort.26", 'r') as f:
             lines = f.readlines()
-            
+
             k = int(lines[12].split()[7])   # set k
-            events = lines[5].split()[5][:-1]
+            events = int(lines[5].split()[5][:-1])
             numbers = []
             data = lines[14:-1]
-            
+
             for i in range(len(data)):
                 data[i] = data[i].split()
             data = np.transpose(np.array(data))
-            
+
             for iso in isotopes:
                 #numbers = float(data[ij(isotope_ZA[iso], k)])*actual_protons
-                numbers.append(float(data[ij(isotope_ZA[iso], k)])*actual_protons)
+                numbers.append(float(data[ij(isotope_ZA[iso], k)])*input_protons)
             #print(numbers)
-            
-            
+
+
             triton = {"halflife" : 2.69304e8, "lifeTime" : 1/λ('triton'),"number" : numbers[0]}
             N13 = {"halflife" : 597.9, "lifeTime" : 1/λ('N13'),"number" : numbers[1]}
             F17 = {"halflife" : 64.49, "lifeTime" : 1/λ('F17'),"number" : numbers[2]}
@@ -92,7 +92,7 @@ for n, e in enumerate(energies):
             Be7 = {"halflife" : 4590000, "lifeTime" : 1/λ('Be7'),"number" : numbers[10]}
             O14 = {"halflife" : 70.60, "lifeTime" : 1/λ('O14'),"number" : numbers[11]}
             C10 = {"halflife" : 19.29, "lifeTime" : 1/λ('C10'),"number" : numbers[12]}
-            
+
             isotopes_json = {
                 "triton":triton,
                 "N13":N13,
@@ -103,21 +103,20 @@ for n, e in enumerate(energies):
                 "N17":N17,
                 "O15":O15,
                 "Be11":Be11,
-                "C11":C11, 
-                "Be7":Be7, 
+                "C11":C11,
+                "Be7":Be7,
                 "O14":O14,
                 "C10":C10
                 }
-            
+
             dict = {
-                'run':n, 
+                'run':n,
                 'nEvents':events,
                 'energy':e,
                 'physicsList':"HADROTHErapy",
                 'isotopes':isotopes_json
                 }
-            
-            print("  " + json.dumps(dict, indent=4) + ",")
-print("]")
 
+            json_list.append(dict)
 
+print(json.dumps(json_list, indent=4))
