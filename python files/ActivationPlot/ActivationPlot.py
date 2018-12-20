@@ -150,7 +150,7 @@ def make_plot(
 
 
 # Main
-
+"""
 make_plot(
     fileName="output_t1_BIC.json",
     title="Activation of 1cm thick range shifter immediately after beam turned off",
@@ -213,6 +213,7 @@ make_plot(
     fileName="water_HADROTHE.json",
     title="Activation of water phantom immediately after beam turned off",
     outName="water_HADROTHE.svg",
-    ymin=1,
-    ymax=4e7
+    ymin=10,
+    ymax=4e7,
+    bbox=(0.75, 0., 0.25, 0.4),
 )
