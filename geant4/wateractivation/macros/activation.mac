@@ -3,6 +3,7 @@
 # smaller statistical uncertainty due to the higher activation
 # at higher energies.
 
+/run/useMaximumLogicalCores 4
 /run/initialize
 /gps/pos/type Beam
 

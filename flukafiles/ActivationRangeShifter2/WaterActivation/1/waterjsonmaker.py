@@ -75,7 +75,7 @@ for n, e in enumerate(energies):
 
             for iso in isotopes:
                 #numbers = float(data[ij(isotope_ZA[iso], k)])*actual_protons
-                numbers.append(float(data[ij(isotope_ZA[iso], k)])*input_protons)
+                numbers.append(float(data[ij(isotope_ZA[iso], k)])*events)
             #print(numbers)
 
 
