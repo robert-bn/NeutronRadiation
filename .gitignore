@@ -1,4 +1,5 @@
-.directory
+.*
+!/.gitigore
 geant4/*-build/
 data/
 __pycache__/
