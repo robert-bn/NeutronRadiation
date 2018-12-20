@@ -276,7 +276,7 @@
 
 1    ****************************************************************************************************
 
-   FLUKA2011 Version 2x.3 Jun-18 by A. Ferrari DATE: 12/19/18    TIME:  5:47:22
+   FLUKA2011 Version 2x.3 Jun-18 by A. Ferrari DATE: 12/19/18    TIME: 11:42:35
 
      ****************************************************************************************************
 
@@ -448,7 +448,7 @@ regLE4       5 +        body3
 GEOEND                                                                          
 
 
- Total time used for geometry initialization:  4.394E-03 s
+ Total time used for geometry initialization:  4.376E-03 s
 
 
 
