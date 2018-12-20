@@ -1,4 +1,4 @@
-#!/usr/bin/python
+rangeshifterrangeshifter#!/usr/bin/python
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -152,28 +152,28 @@ def make_plot(
 # Main
 
 make_plot(
-    fileName="output_t1_BIC.json",
+    fileName="rangeshifter_t1_BIC.json",
     title="Activation of 1cm thick range shifter immediately after beam turned off",
     outName="rangeshifter_t1_BIC.svg",
     ymax=2e6
 )
 
 make_plot(
-    fileName="output_t2_BIC.json",
+    fileName="rangeshifter_t2_BIC.json",
     title="Activation of 2cm thick range shifter immediately after beam turned off",
     outName="rangeshifter_t2_BIC.svg",
     ymax=2e6
 )
 
 make_plot(
-    fileName="output_t3_BIC.json",
+    fileName="rangeshifter_t3_BIC.json",
     title="Activation of 3cm thick range shifter immediately after beam turned off",
     outName="rangeshifter_t3_BIC.svg",
     ymax=2e6
 )
 
 make_plot(
-    fileName="output_t5_BIC.json",
+    fileName="rangeshifter_t5_BIC.json",
     title="Activation of 5cm thick range shifter immediately after beam turned off",
     outName="rangeshifter_t5_BIC.svg",
     ymax=2e6
@@ -181,7 +181,7 @@ make_plot(
 
 
 make_plot(
-    fileName="output_t1_BERT.json",
+    fileName="rangeshifter_t1_BERT.json",
     title="Activation of 1cm thick range shifter immediately after beam turned off",
     outName="rangeshifter_t1_BERT.svg",
     ymax=2e6
