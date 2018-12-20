@@ -222,6 +222,7 @@ make_plot(
     title="Activation of 1cm thick range shifter immediately after beam turned off",
     outName="rangeshifter_t1_HADROTHE.svg",
     exclude = ["F17", "C15"],
+    ymin=0.1,
     ymax=2e6
 )
 
@@ -230,6 +231,7 @@ make_plot(
     title="Activation of 2cm thick range shifter immediately after beam turned off",
     outName="rangeshifter_t2_HADROTHE.svg",
     exclude = ["F17", "C15"],
+    ymin=0.1,
     ymax=2e6
 )
 
@@ -238,6 +240,7 @@ make_plot(
     title="Activation of 3cm thick range shifter immediately after beam turned off",
     outName="rangeshifter_t3_HADRO.svg",
     exclude = ["F17", "C15"],
+    ymin=0.1,
     ymax=2e6
 )
 
@@ -246,5 +249,6 @@ make_plot(
     title="Activation of 5cm thick range shifter immediately after beam turned off",
     outName="rangeshifter_t5_HADROTHE.svg",
     exclude = ["F17", "C15"],
+    ymin=0.1,
     ymax=2e6
 )
