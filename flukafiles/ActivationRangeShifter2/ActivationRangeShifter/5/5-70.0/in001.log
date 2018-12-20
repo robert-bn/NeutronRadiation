@@ -1,9 +1,5 @@
-
-
-
-                     FLUKA User license
-   
-           COPYRIGHT NOTICE AND LICENSE CONDITIONS
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+S
    
   Copyright Italian  National  Institute  for  Nuclear  Physics
   (INFN) and European Organization for Nuclear Research (CERN),

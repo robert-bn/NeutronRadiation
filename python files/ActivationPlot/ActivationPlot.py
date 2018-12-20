@@ -150,7 +150,7 @@ def make_plot(
 
 
 # Main
-
+'''
 make_plot(
     fileName="output_t1_BIC.json",
     title="Activation of 1cm thick range shifter immediately after beam turned off",
@@ -208,11 +208,42 @@ make_plot(
     ymax=4e7
 )
 
-"""
 make_plot(
     fileName="water_HADROTHE.json",
     title="Activation of water phantom immediately after beam turned off",
     outName="water_HADROTHE.svg",
     ymin=1,
     ymax=4e7
+)
+'''
+make_plot(
+    fileName="rangeshifter_t1_HADROTHE.json",
+    title="Activation of 1cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t1_HADROTHE.svg",
+    exclude = ["F17", "C15"],
+    ymax=2e6
+)
+
+make_plot(
+    fileName="rangeshifter_t2_HADROTHE.json",
+    title="Activation of 2cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t2_HADROTHE.svg",
+    exclude = ["F17", "C15"],
+    ymax=2e6
+)
+
+make_plot(
+    fileName="rangeshifter_t3_HADROTHE.json",
+    title="Activation of 3cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t3_HADRO.svg",
+    exclude = ["F17", "C15"],
+    ymax=2e6
+)
+
+make_plot(
+    fileName="rangeshifter_t5_HADROTHE.json",
+    title="Activation of 5cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t5_HADROTHE.svg",
+    exclude = ["F17", "C15"],
+    ymax=2e6
 )
