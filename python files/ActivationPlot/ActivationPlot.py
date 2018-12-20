@@ -208,11 +208,11 @@ make_plot(
     ymax=4e7
 )
 
-
+"""
 make_plot(
     fileName="water_HADROTHE.json",
     title="Activation of water phantom immediately after beam turned off",
     outName="water_HADROTHE.svg",
-    ymin=.1,
-    ymax=2e7
+    ymin=1,
+    ymax=4e7
 )
