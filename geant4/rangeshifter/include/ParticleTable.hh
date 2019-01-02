@@ -1,3 +1,5 @@
+#ifndef PARTICLE_TABLE_HH
+#define PARTICLE_TABLE_HH
 #include <G4ParticleDefinition.hh>
 #include <map>
 
@@ -23,3 +25,5 @@ public:
 
    void operator+=(const ParticleTable &b);
 };
+
+#endif

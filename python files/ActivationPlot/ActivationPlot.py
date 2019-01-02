@@ -1,4 +1,4 @@
-rangeshifterrangeshifter#!/usr/bin/python
+#!/usr/bin/python
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -39,8 +39,8 @@ isotopes_we_care_about = ["Be7", "C10", "C11", "O15", "O14", "N13", "N16", "F17"
 
 def make_plot(
     fileName,
-    title,
     outName,
+    title="",
     ymin=1,
     ymax=1e7,
     exclude=None,
@@ -153,45 +153,69 @@ def make_plot(
 
 make_plot(
     fileName="rangeshifter_t1_BIC.json",
-    title="Activation of 1cm thick range shifter immediately after beam turned off",
-    outName="rangeshifter_t1_BIC.svg",
+#    title="Activation of 1cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t1_BIC.pdf",
     ymax=2e6
 )
 
 make_plot(
     fileName="rangeshifter_t2_BIC.json",
-    title="Activation of 2cm thick range shifter immediately after beam turned off",
-    outName="rangeshifter_t2_BIC.svg",
+#    title="Activation of 2cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t2_BIC.pdf",
     ymax=2e6
 )
 
 make_plot(
     fileName="rangeshifter_t3_BIC.json",
-    title="Activation of 3cm thick range shifter immediately after beam turned off",
-    outName="rangeshifter_t3_BIC.svg",
+#    title="Activation of 3cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t3_BIC.pdf",
     ymax=2e6
 )
 
 make_plot(
     fileName="rangeshifter_t5_BIC.json",
-    title="Activation of 5cm thick range shifter immediately after beam turned off",
-    outName="rangeshifter_t5_BIC.svg",
+#    title="Activation of 5cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t5_BIC.pdf",
     ymax=2e6
 )
 
 
 make_plot(
     fileName="rangeshifter_t1_BERT.json",
-    title="Activation of 1cm thick range shifter immediately after beam turned off",
-    outName="rangeshifter_t1_BERT.svg",
+#    title="Activation of 1cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t1_BERT.pdf",
     ymax=2e6
 )
 
 
 make_plot(
+    fileName="rangeshifter_t2_BERT.json",
+#    title="Activation of 2cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t2_BERT.pdf",
+    ymax=2e6
+)
+
+make_plot(
+    fileName="rangeshifter_t3_BERT.json",
+#    title="Activation of 3cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t3_BERT.pdf",
+    ymax=2e6
+)
+
+make_plot(
+    fileName="rangeshifter_t5_BERT.json",
+#    title="Activation of 5cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t5_BERT.pdf",
+    ymax=2e6
+)
+
+
+
+
+make_plot(
     fileName="water_BIC.json",
-    title="Activation of water phantom immediately after beam turned off",
-    outName="water_BIC.svg",
+#    title="Activation of water phantom immediately after beam turned off",
+    outName="water_BIC.pdf",
     # exclude=["Be11"],
     ymin=10,
     ymax=4e7,
@@ -202,16 +226,16 @@ make_plot(
 
 make_plot(
     fileName="water_BERT.json",
-    title="Activation of water phantom immediately after beam turned off",
-    outName="water_BERT.svg",
+#    title="Activation of water phantom immediately after beam turned off",
+    outName="water_BERT.pdf",
     ymin=10,
     ymax=4e7
 )
 
 make_plot(
     fileName="water_HADROTHE.json",
-    title="Activation of water phantom immediately after beam turned off",
-    outName="water_HADROTHE.svg",
+#    title="Activation of water phantom immediately after beam turned off",
+    outName="water_HADROTHE.pdf",
     ymin=10,
     ymax=4e7,
     bbox=(0.75, 0., 0.25, 0.4),
@@ -219,8 +243,8 @@ make_plot(
 
 make_plot(
     fileName="rangeshifter_t1_HADROTHE.json",
-    title="Activation of 1cm thick range shifter immediately after beam turned off",
-    outName="rangeshifter_t1_HADROTHE.svg",
+#    title="Activation of 1cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t1_HADROTHE.pdf",
     exclude = ["F17", "C15"],
     ymin=0.1,
     ymax=2e6
@@ -228,8 +252,8 @@ make_plot(
 
 make_plot(
     fileName="rangeshifter_t2_HADROTHE.json",
-    title="Activation of 2cm thick range shifter immediately after beam turned off",
-    outName="rangeshifter_t2_HADROTHE.svg",
+#    title="Activation of 2cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t2_HADROTHE.pdf",
     exclude = ["F17", "C15"],
     ymin=0.1,
     ymax=2e6
@@ -237,8 +261,8 @@ make_plot(
 
 make_plot(
     fileName="rangeshifter_t3_HADROTHE.json",
-    title="Activation of 3cm thick range shifter immediately after beam turned off",
-    outName="rangeshifter_t3_HADRO.svg",
+#    title="Activation of 3cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t3_HADROTHE.pdf",
     exclude = ["F17", "C15"],
     ymin=0.1,
     ymax=2e6
@@ -246,8 +270,8 @@ make_plot(
 
 make_plot(
     fileName="rangeshifter_t5_HADROTHE.json",
-    title="Activation of 5cm thick range shifter immediately after beam turned off",
-    outName="rangeshifter_t5_HADROTHE.svg",
+#    title="Activation of 5cm thick range shifter immediately after beam turned off",
+    outName="rangeshifter_t5_HADROTHE.pdf",
     exclude = ["F17", "C15"],
     ymin=0.1,
     ymax=2e6

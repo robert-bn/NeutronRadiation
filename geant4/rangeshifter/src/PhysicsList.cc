@@ -16,7 +16,7 @@
 #include <G4HadronPhysicsQGSP_BIC_HP.hh>
 #include <G4HadronPhysicsQGSP_BERT_HP.hh>
 #include <G4HadronElasticPhysics.hh>
-
+$FLUPRO/flutil/rfluka -N0 -M1 in.inp  # run fluka
 PhysicsList::PhysicsList()
 {
   // Standard EM physics

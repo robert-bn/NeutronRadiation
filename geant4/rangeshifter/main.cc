@@ -41,6 +41,7 @@ int main(int argc, char** argv)
   vector<G4String> macros;
   G4bool interactive = false;
   G4bool configFile = false;
+  G4bool noOverWrite = false;
 
   G4String configFilename;
 
@@ -97,17 +98,24 @@ int main(int argc, char** argv)
         i++; // Skip next argument
       }
 
+      // resume argument
+      else if (arg == "--no-overwrite")
+      {
+        noOverWrite = true;
+      }
+
       // Help argument
       else if (arg == "-h" || arg == "--help")
       {
         G4cout << "Usage: ./rangeshifter [options] [macros]\n";
         G4cout << "Options:\n";
-        G4cout << "  -pl | --physics-list <arg>\t\tSpecify physics list. Not to be used with a config file.\n";
-        G4cout << "  -o  | --out-filename <arg>\t\tSpecify output filename. Not to be used with a config file.\n";
-        G4cout << "  -t  | --rangeshifter-thickness <arg>\tSpecify rangeshifter thickness. Not to be used with a config file.\n";
-        G4cout << "  -i  | --interactive\t\t\tRun in interactive mode.\n";
-        G4cout << "  -c  | --config <arg>\t\t\tSpecify a configuration file.\n";
-        G4cout << "  -h  | --help\t-h\t\t\tList command line options.\n";
+        G4cout << "  -pl|--physics-list <arg>\t\tSpecify physics list. Not to be used with a config file.\n";
+        G4cout << "  -o |--out-filename <arg>\t\tSpecify output filename. Not to be used with a config file.\n";
+        G4cout << "  -t |--rangeshifter-thickness <arg>\tSpecify rangeshifter thickness. Not to be used with a config file.\n";
+        G4cout << "  -i |--interactive\t\t\tRun in interactive mode.\n";
+        G4cout << "  -c |--config <arg>\t\t\tSpecify a configuration file.\n";
+        G4cout << "  -h |--help\t-h\t\t\tList command line options.\n";
+        G4cout << "      --no-overwrite\t\tDo not overwrite output file. Writes to end of file. May be used to resume a run."
         return EXIT_SUCCESS;
       }
       else
@@ -182,7 +190,7 @@ int main(int argc, char** argv)
   // Write start of output file
   ofstream outFile;
   outFile.open(userConfig->GetConfig()->GetOutFileName());
-  if(outFile.good())
+  if(outFile.good() && !noOverWrite)
   {
     outFile << "[";
   }

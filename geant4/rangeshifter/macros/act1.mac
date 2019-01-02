@@ -1,5 +1,7 @@
 # File used to generate activation plots from 70-250 MeV
 
+/run/useMaximumLogicalCores 4
+/run/numberOfThreads 4
 /run/initialize
 /gps/pos/type Beam
 
