@@ -40,6 +40,7 @@ isotopes_we_care_about = ["Be7", "C10", "C11", "O15", "O14", "N13", "N16", "F17"
 def multi_plot(
     fileNames,
     outName,
+    outDir="pdfs/",
     title="",
     ymin=1,
     ymax=1e7,
@@ -166,7 +167,7 @@ def multi_plot(
 
     plt.legend(bbox_to_anchor=bbox, loc='best')
 
-    plt.savefig(outName)
+    plt.savefig(outDir + outName)
 
 
 # Main
