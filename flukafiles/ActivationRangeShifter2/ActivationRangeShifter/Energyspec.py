@@ -114,7 +114,7 @@ def filter(energy, freq, cutoff=0.006):
 for e in energies:
     for t in thickness:
         # set the directory
-        dir = "/{rThickness}-{bEnergy:03}/".format(rThickness=round(t), bEnergy=round(1000*e))
+        dir = "/{rThickness}/{rThickness}-{bEnergy:03}/".format(rThickness=round(t), bEnergy=round(1000*e))
 
         # Read uprange data
         freqUprange, energy, binWidth, areaUprange = read_data("in001_fort.27", directory=dir, normalization='auto')
@@ -153,6 +153,8 @@ for e in energies:
         print("Uprange mean: {}\nUprange varience: {}".format(meanUprange, varUprange))
         print("Downrange mean: {}\nDownrange varience: {}".format(meanDownrange, varDownrange))
         print("\n\n\n")
+
+
 
         if plotting:
             # Plot the data
