@@ -40,6 +40,7 @@ isotopes_we_care_about = ["Be7", "C10", "C11", "O15", "O14", "N13", "N16", "F17"
 def make_plot(
     fileName,
     outName,
+    outDir="pdfs/",
     title="",
     ymin=1,
     ymax=1e7,
@@ -89,6 +90,8 @@ def make_plot(
             try:
                 # Get number produced in run
                 n = run["isotopes"][ist]["number"]
+                if n == 0:
+                    raise KeyError
 
                 # Normalise to 10^11 protons
                 normalised_n = n * actual_protons / run["nEvents"]
@@ -102,6 +105,8 @@ def make_plot(
                     error=normalised_error,
                     lifeTime=run["isotopes"][ist]["lifeTime"]
                 )
+                
+                
             except KeyError:
                 # None of this isotope created during this run, don't plot
                 r_act = float("nan");
@@ -146,7 +151,7 @@ def make_plot(
 
     plt.legend(bbox_to_anchor=bbox, loc='best')
 
-    plt.savefig(outName)
+    plt.savefig(outDir + outName)
 
 
 # Main
