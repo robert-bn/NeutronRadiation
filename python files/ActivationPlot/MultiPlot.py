@@ -187,8 +187,8 @@ multi_plot(
 )
 
 multi_plot(
-    fileNames=["rangeshifter_t2_BIC.json", "rangeshifter_t2_BERT.json", "rangeshifter_t2_HADROTHE.json"],
-    fLabels=["Geant4 Binary cascade", "Geant4 Bertini cascade", "Fluka hadrotherapy"],
+    fileNames=["rangeshifter_t2_BIC.json", "rangeshifter_t2_BERT.json", "rangeshifter_t2_HADROTHE.json", "rangeshifter_t2_PRECISO.json"],
+    fLabels=["Geant4 Binary cascade", "Geant4 Bertini cascade", "Fluka hadrotherapy", "Fluka Precision"],
     include_only=["C11"],
     outName="rangeshifter_t2_multi_C11.pdf",
     title="",
@@ -200,8 +200,8 @@ multi_plot(
 )
 
 multi_plot(
-    fileNames=["rangeshifter_t2_BIC.json", "rangeshifter_t2_BERT.json", "rangeshifter_t2_HADROTHE.json"],
-    fLabels=["Geant4 Binary cascade", "Geant4 Bertini cascade", "Fluka hadrotherapy"],
+    fileNames=["rangeshifter_t2_BIC.json", "rangeshifter_t2_BERT.json", "rangeshifter_t2_HADROTHE.json", "rangeshifter_t2_PRECISO.json"],
+    fLabels=["Geant4 Binary cascade", "Geant4 Bertini cascade", "Fluka hadrotherapy", "Fluka Precision"],
     include_only=["Be7"],
     outName="rangeshifter_t2_multi_Be7.pdf",
     title="",
@@ -213,8 +213,8 @@ multi_plot(
 )
 
 multi_plot(
-    fileNames=["rangeshifter_t2_BIC.json", "rangeshifter_t2_BERT.json", "rangeshifter_t2_HADROTHE.json"],
-    fLabels=["Geant4 Binary cascade", "Geant4 Bertini cascade", "Fluka hadrotherapy"],
+    fileNames=["rangeshifter_t2_BIC.json", "rangeshifter_t2_BERT.json", "rangeshifter_t2_HADROTHE.json", "rangeshifter_t2_PRECISO.json"],
+    fLabels=["Geant4 Binary cascade", "Geant4 Bertini cascade", "Fluka hadrotherapy", "Fluka Precision"],
     include_only=["O14"],
     outName="rangeshifter_t2_multi_O14.pdf",
     title="",
@@ -226,8 +226,8 @@ multi_plot(
 )
 
 multi_plot(
-    fileNames=["rangeshifter_t2_BIC.json", "rangeshifter_t2_BERT.json", "rangeshifter_t2_HADROTHE.json"],
-    fLabels=["Geant4 Binary cascade", "Geant4 Bertini cascade", "Fluka hadrotherapy"],
+    fileNames=["rangeshifter_t2_BIC.json", "rangeshifter_t2_BERT.json", "rangeshifter_t2_HADROTHE.json", "rangeshifter_t2_PRECISO.json"],
+    fLabels=["Geant4 Binary cascade", "Geant4 Bertini cascade", "Fluka hadrotherapy", "Fluka Precision"],
     include_only=["C10"],
     outName="rangeshifter_t2_multi_C10.pdf",
     title="",
@@ -237,3 +237,4 @@ multi_plot(
     ymin=1e5,
     ymax=5e5
 )
+
