@@ -21,8 +21,8 @@ for t in thicknesses:
         df_t["Downstream Energy Mean"] + df_t["Downstream Energy Std"],
         alpha=0.5
     )
-ax.set_xticks(np.arange(70,250,5), minor=True)
-ax.set_yticks(np.arange(0,250,5), minor=True)
+ax.set_xticks(np.arange(70,250,10), minor=True)
+ax.set_yticks(np.arange(0,250,10), minor=True)
 ax.grid(True, which="major")
 ax.grid(True, which="minor", alpha=0.4)
 ax.set_xlim([70,250])
