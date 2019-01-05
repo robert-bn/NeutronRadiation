@@ -42,6 +42,8 @@ def make_plot(
     outName,
     outDir="pdfs/",
     title="",
+    xmin= 70,
+    xmax=250,
     ymin=1,
     ymax=1e7,
     exclude=None,
@@ -125,7 +127,7 @@ def make_plot(
         ax.set_xscale("log", nonposx='clip')
     else:
         # Set horizontal ticks to 10 MeV
-        ax.set_xticks(np.arange(70,260,10))
+        ax.set_xticks(np.arange(xmin,260,10))
 
     # Set title and axis labels
     ax.set_title(title)
@@ -133,7 +135,7 @@ def make_plot(
     ax.set_xlabel("Energy (MeV)")
 
     # Set limits
-    ax.set_xlim((70,250))
+    ax.set_xlim(xmin=xmin, xmax=xmax)
     ax.set_ylim(ymin=ymin, ymax=ymax)
 
     for ist in isotopes:
@@ -241,7 +243,7 @@ make_plot(
     fileName="water_HADROTHE.json",
 #    title="Activation of water phantom immediately after beam turned off",
     outName="water_HADROTHE.pdf",
-    ymin=10,
+    xmin=10,
     ymax=4e7,
     bbox=(0.75, 0., 0.25, 0.4),
 )
@@ -251,6 +253,7 @@ make_plot(
 #    title="Activation of 1cm thick range shifter immediately after beam turned off",
     outName="rangeshifter_t1_HADROTHE.pdf",
     exclude = ["F17", "C15"],
+    xmin=10,
     ymin=0.1,
     ymax=2e6
 )
