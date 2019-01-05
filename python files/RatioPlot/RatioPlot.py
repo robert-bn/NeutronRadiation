@@ -165,7 +165,8 @@ def ratio_plot(
             ax.set_xscale("log", nonposx='clip')
         else:
             # Set horizontal ticks to 10 MeV
-            ax.set_xticks(np.arange(10,260,10))
+            ax.set_xticks(np.arange(0,250,50))
+            ax.set_xticks(np.arange(10,260,10), minor=True)
 
         # Set title and axis labels
         ax.set_title(title)
@@ -197,7 +198,7 @@ def ratio_plot(
 
         else:
             x = [0,250]
-            plt.plot(x, [1,1], label=fLabels[0], c='k', linewidth=1)
+            plt.plot(x, [1,1], c='k', linewidth=1)
 
     # Place legend in best place in bottom right quadrant
     # ax.grid(which='both', linewidth=0.7)
@@ -225,28 +226,29 @@ ratio_plot(
 
 ratio_plot(
     fileNames=["water_HADROTHE.json", "water_BIC.json", "water_BERT.json", ],
-    fLabels=["Fluka hadrotherapy", "Geant4 Binary cascade", "Geant4 Bertini cascade"],
-    style={"Geant4 Binary cascade":":", "Geant4 Bertini cascade":"-"},
+    fLabels=["FLUKA", "Binary cascade", "Bertini cascade"],
+    style={"Binary cascade":":", "Bertini cascade":"-"},
     colour={"C11":"r", "O14":"b", "O15":"g"},
     include_only=["C11", "O15"],
     outName="water_C11_O15_ratio.pdf",
     title="",
     ymax=2.5,
-    figSize=(8,4),
+    figSize=(4,4),
     xlim=(40,250),
     log=False
 )
 
 ratio_plot(
     fileNames=["water_HADROTHE.json", "water_BIC.json", "water_BERT.json", ],
-    fLabels=["Fluka hadrotherapy", "Geant4 Binary cascade", "Geant4 Bertini cascade"],
-    style={"Geant4 Binary cascade":":", "Geant4 Bertini cascade":"-"},
+    fLabels=["Fluka hadrotherapy", "Binary cascade", "Bertini cascade"],
+    style={"Binary cascade":":", "Bertini cascade":"-"},
     colour={"C11":"r", "O14":"b", "O15":"g"},
     include_only=["O14"],
     outName="water_O14_ratio.pdf",
     title="",
-    ymax=8,
-    figSize=(8,4),
+    ymin=1,
+    ymax=8.5,
+    figSize=(4,4),
     xlim=(40,250),
     log=False
 )
