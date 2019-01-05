@@ -42,6 +42,7 @@ def make_plot(
     outName,
     outDir="pdfs/",
     title="",
+    xlim=(70,250),
     ymin=1,
     ymax=1e7,
     exclude=None,
@@ -105,8 +106,8 @@ def make_plot(
                     error=normalised_error,
                     lifeTime=run["isotopes"][ist]["lifeTime"]
                 )
-                
-                
+
+
             except KeyError:
                 # None of this isotope created during this run, don't plot
                 r_act = float("nan");
@@ -125,7 +126,7 @@ def make_plot(
         ax.set_xscale("log", nonposx='clip')
     else:
         # Set horizontal ticks to 10 MeV
-        ax.set_xticks(np.arange(70,260,10))
+        ax.set_xticks(np.arange(0,260,10))
 
     # Set title and axis labels
     ax.set_title(title)
@@ -133,7 +134,7 @@ def make_plot(
     ax.set_xlabel("Energy (MeV)")
 
     # Set limits
-    ax.set_xlim((70,250))
+    ax.set_xlim(xlim)
     ax.set_ylim(ymin=ymin, ymax=ymax)
 
     for ist in isotopes:
@@ -142,16 +143,19 @@ def make_plot(
             x, y, e = zip(*sorted([(ix, iy, ie) for ix, iy, ie in zip(energy, act[ist], act_error[ist]) if not np.isnan(iy)]))
 
             # Plot it
-            plt.plot(x, y, label=format_isotope(ist))
-            plt.errorbar(x, y, yerr=e, fmt=' o ', c='k', capsize=4, markersize=2)
+            plt.plot(x, y, label=format_isotope(ist), zorder=1)
+            plt.errorbar(x, y, yerr=e, fmt=' ', c='k', capsize=4, elinewidth=1, zorder=10)
 
     # Place legend in best place in bottom right quadrant
     ax.grid(which='both', linewidth=0.7)
     ax.grid(which='major', axis='y', linewidth=0.7, c='k')
 
+
+
     plt.legend(bbox_to_anchor=bbox, loc='best')
 
-    plt.savefig(outDir + outName)
+    # Remove margins
+    plt.savefig(outDir + outName, bbox_inches = 'tight', pad_inches = 0)
 
 
 # Main
@@ -225,6 +229,7 @@ make_plot(
     ymin=10,
     ymax=4e7,
     bbox=(0.75, 0., 0.25, 0.4),
+    xlim=(20,250),
     # loglog=True
 )
 
@@ -234,7 +239,8 @@ make_plot(
 #    title="Activation of water phantom immediately after beam turned off",
     outName="water_BERT.pdf",
     ymin=10,
-    ymax=4e7
+    ymax=4e7,
+    xlim=(20,250)
 )
 
 make_plot(
@@ -244,6 +250,7 @@ make_plot(
     ymin=10,
     ymax=4e7,
     bbox=(0.75, 0., 0.25, 0.4),
+    xlim=(20,250)
 )
 
 make_plot(

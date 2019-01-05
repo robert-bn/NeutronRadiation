@@ -111,6 +111,19 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4VSolid* targetBox = new G4Box("target", fLayerThickness / 2, width / 2, height / 2);
 
   // Create a logical volume for the target
+  G4Element* elH = new G4Element("Hydroen", "H", 1., 1.007 * g/mole);
+  G4Element* elC = new G4Element("Carbon", "C", 6., 12.01109 * g/mole);
+  G4Element* elO = new G4Element("Oxygen", "O", 8., 15.999 * g/mole);
+
+  G4Material* lexan =
+    new G4Material("Lexan",                          // its name
+                   1.20 * g/cm3,                     // its density
+                   3);                               // its number of consituents
+
+  lexan->AddElement(elH, 0.055491);
+  lexan->AddElement(elC, 0.755751);
+  lexan->AddElement(elO, 0.188758);
+
   G4LogicalVolume* targetLog =
     new G4LogicalVolume(targetBox,                             // its shape
                         nist->FindOrBuildMaterial("G4_WATER"), // its material
