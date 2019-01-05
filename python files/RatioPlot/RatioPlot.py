@@ -34,6 +34,8 @@ isotopes_we_care_about = ["Be7", "C10", "C11", "O15", "O14", "N13", "N16", "F17"
 def ratio_plot(
     fileNames,
     outName,
+    colour=None,
+    style=None,
     outDir="pdfs/",
     title="",
     ymin=0,
@@ -186,7 +188,11 @@ def ratio_plot(
                         flabel += " " + format_isotope(ist)
 
                     # Plot it
-                    plt.plot(x, y, label=flabel)
+                    if colour is not None and style is not None:
+                        plt.plot(x, y, label=flabel, c=colour[ist], ls=style[fLabels[j]])
+                    else:
+                        plt.plot(x, y, label=flabel)
+
                     plt.errorbar(x, y, yerr=e, fmt=' ', c='k', capsize=4, linewidth=1)
 
         else:
@@ -199,7 +205,8 @@ def ratio_plot(
 
     plt.legend(bbox_to_anchor=bbox, loc='best')
 
-    plt.savefig(outDir + outName)
+    plt.savefig(outDir + outName, bbox_inches = 'tight', pad_inches = 0)
+
 
 
 # Main
@@ -219,22 +226,27 @@ ratio_plot(
 ratio_plot(
     fileNames=["water_HADROTHE.json", "water_BIC.json", "water_BERT.json", ],
     fLabels=["Fluka hadrotherapy", "Geant4 Binary cascade", "Geant4 Bertini cascade"],
-    include_only=["C11", "Be7", "C10"],
-    outName="water_ratio.pdf",
+    style={"Geant4 Binary cascade":":", "Geant4 Bertini cascade":"-"},
+    colour={"C11":"r", "O14":"b", "O15":"g"},
+    include_only=["C11", "O15"],
+    outName="water_C11_O15_ratio.pdf",
     title="",
-    ymin=0,
     ymax=2.5,
-    figSize=(12,6),
+    figSize=(8,4),
     xlim=(40,250),
     log=False
 )
 
-
 ratio_plot(
-    fileNames=["rangeshifter_t2_HADROTHE.json", "rangeshifter_t2_BIC.json", "rangeshifter_t2_BERT.json", "rangeshifter_t2_PRECISO.json"],
-    fLabels=["Fluka hadrotherapy", "Geant4 Binary cascade", "Geant4 Bertini cascade", "Fluka Precision"],
-    outName="rangeshifter_ratio.pdf",
+    fileNames=["water_HADROTHE.json", "water_BIC.json", "water_BERT.json", ],
+    fLabels=["Fluka hadrotherapy", "Geant4 Binary cascade", "Geant4 Bertini cascade"],
+    style={"Geant4 Binary cascade":":", "Geant4 Bertini cascade":"-"},
+    colour={"C11":"r", "O14":"b", "O15":"g"},
+    include_only=["O14"],
+    outName="water_O14_ratio.pdf",
     title="",
+    ymax=8,
     figSize=(8,4),
+    xlim=(40,250),
     log=False
 )
