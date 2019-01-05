@@ -32,7 +32,7 @@ def ij(ZA, k):
     return (Z-1,N-Z-k-1)
 
 
-energies = np.linspace(0.2500, 0.0700, 19)
+energies = np.linspace(0.2500, 0.0100, 25)
 spread   = [0.1020,0.0979,0.0913,0.0790,0.0645,0.0540]
 thickness = [1.]   # cm
 input_protons  = 1e6
