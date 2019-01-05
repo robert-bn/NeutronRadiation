@@ -194,11 +194,11 @@ def ratio_plot(
                     else:
                         plt.plot(x, y, label=flabel)
 
-                    plt.errorbar(x, y, yerr=e, fmt=' ', c='k', capsize=4, linewidth=1)
+                    plt.errorbar(x, y, yerr=e, fmt=' ', c='k', capsize=4, linewidth=0.5)
 
         else:
             x = [0,250]
-            plt.plot(x, [1,1], c='k', linewidth=1)
+            plt.plot(x, [1,1], c='k', linewidth=0.5)
 
     # Place legend in best place in bottom right quadrant
     # ax.grid(which='both', linewidth=0.7)
@@ -211,29 +211,19 @@ def ratio_plot(
 
 
 # Main
-"""
-ratio_plot(
-    fileNames=["water_HADROTHE.json"],
-    fLabels=["Fluka hadrotherapy"],
-    exclude=["F18", "F17", "Be11"],
-    outName="water_ratio.pdf",
-    title="",
-    figSize=(8,4),
-    noIstLabels=True,
-    log=False
-)
-"""
+technicolor = {"C11":"r", "O14":"b", "O15":"g", "N16":"orange", "N13":"magenta"}
+finestyle = {"Binary cascade":"--", "Bertini cascade":"-"}
 
 ratio_plot(
     fileNames=["water_HADROTHE.json", "water_BIC.json", "water_BERT.json", ],
-    fLabels=["FLUKA", "Binary cascade", "Bertini cascade"],
-    style={"Binary cascade":":", "Bertini cascade":"-"},
-    colour={"C11":"r", "O14":"b", "O15":"g"},
-    include_only=["C11", "O15"],
+    fLabels=["Fluka hadrotherapy", "Binary cascade", "Bertini cascade"],
+    style=finestyle,
+    colour=technicolor,
+    include_only=["C11", "O15", "N13"],
     outName="water_C11_O15_ratio.pdf",
     title="",
-    ymax=2.5,
-    figSize=(4,4),
+    ymax=3,
+    figSize=(4,6),
     xlim=(40,250),
     log=False
 )
@@ -241,14 +231,14 @@ ratio_plot(
 ratio_plot(
     fileNames=["water_HADROTHE.json", "water_BIC.json", "water_BERT.json", ],
     fLabels=["Fluka hadrotherapy", "Binary cascade", "Bertini cascade"],
-    style={"Binary cascade":":", "Bertini cascade":"-"},
-    colour={"C11":"r", "O14":"b", "O15":"g"},
-    include_only=["O14"],
+    style=finestyle,
+    colour=technicolor,
+    include_only=["O14", "N16"],
     outName="water_O14_ratio.pdf",
     title="",
-    ymin=1,
-    ymax=8.5,
-    figSize=(4,4),
+    ymin=0,
+    ymax=10,
+    figSize=(4,6),
     xlim=(40,250),
     log=False
 )
