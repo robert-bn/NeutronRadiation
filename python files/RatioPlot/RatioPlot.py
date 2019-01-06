@@ -218,10 +218,11 @@ def legend_mpatches(colors):
     return mpatch_list
 
 # Main
-technicolor = {"C11":"r", "O14":"b", "O15":"g", "N16":"orange", "N13":"magenta"}
+technicolor = {"C11":"r", "O14":"b", "O15":"g", "N16":"orange", "N13":"magenta", "C10":"brown"}
 finestyle = {"Binary cascade":"--", "Bertini cascade":"-"}
+flukastyle = {"PRECISIO":"-"}
 
-
+"""
 ratio_plot(
     fileNames=["water_HADROTHE.json", "water_BIC.json", "water_BERT.json", ],
     fLabels=["Fluka hadrotherapy", "Binary cascade", "Bertini cascade"],
@@ -242,13 +243,30 @@ ratio_plot(
     fLabels=["Fluka hadrotherapy", "Binary cascade", "Bertini cascade"],
     style=finestyle,
     colour=technicolor,
-    include_only=["O14", "N16"],
+    include_only=["O14", "N16", "C10"],
     outName="water_O14_N16_ratio.pdf",
-    legend=legend_mpatches({"O14":"b", "N16":"orange"}),
+    legend=legend_mpatches({"O14":"b", "N16":"orange", "C10":"brown"}),
     title="",
     ymin=0,
     ymax=8,
     figSize=(4,6),
     xlim=(40,250),
+    log=False
+)
+"""
+
+ratio_plot(
+    fileNames=["rangeshifter_t1_HADROTHE.json", "rangeshifter_t1_PRECISO.json"],
+    fLabels=["HADROTHE", "PRECISIO"],
+    style=flukastyle,
+    colour=technicolor,
+    include_only=["O14", "N16", "C10", "C11", "O15", "N13"],
+    outName="water_HADROTHE_PRECISIO.pdf",
+    legend=legend_mpatches({"O14":"b", "N16":"orange", "C10":"brown"}),
+    title="",
+    ymin=0,
+    ymax=2,
+    figSize=(4,3),
+    xlim=(70,240),
     log=False
 )
