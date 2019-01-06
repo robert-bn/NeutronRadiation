@@ -287,7 +287,7 @@ make_plot(
 
 make_plot(
     fileName="rangeshifter_t1_PRECISO.json",
-    outName="rangeshifter_t1_PRECISO.pdf",
+    outName="rangeshifter_t1_PRECISIO.pdf",
     exclude = ["F17", "C15"],
     ymin=0.1,
     ymax=2e6
