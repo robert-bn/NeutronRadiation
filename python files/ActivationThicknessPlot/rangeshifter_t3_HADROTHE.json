@@ -1,0 +1,1408 @@
+[
+    {
+        "run": 0,
+        "nEvents": 16666666,
+        "energy": 0.25,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 39678.3317462
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1485.99994056
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.9999999599999999
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 53.7949978482
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 4.999999799999999
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 0.9999999599999999
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 23.99999904
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 25348.3323194
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 13.99999944
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 103119.99587520001
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 33751.6653166
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 1262.99994948
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 5566.999777319999
+            }
+        }
+    },
+    {
+        "run": 1,
+        "nEvents": 16666666,
+        "energy": 0.24,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 39619.998415199996
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1460.99994156
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.0
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 41.0733316904
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 3.9999998399999996
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 0.9999999599999999
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 30.99999876
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 25108.332329
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 25.999998960000003
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 103491.662527
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 33733.331984000004
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 1191.9999523200001
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 5421.99978312
+            }
+        }
+    },
+    {
+        "run": 2,
+        "nEvents": 16666666,
+        "energy": 0.23,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 39019.9984392
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1427.9999428800002
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.0
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 53.0949978762
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 4.999999799999999
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 0.9999999599999999
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 21.999999120000002
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 25071.665663800002
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 25.999998960000003
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 103318.3292006
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 34176.665299600005
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 1206.9999517200001
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 5459.9997816
+            }
+        }
+    },
+    {
+        "run": 3,
+        "nEvents": 16666666,
+        "energy": 0.22,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 39186.6650992
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1444.9999422
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 1.9999999199999998
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 56.433331075999995
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 0.9999999599999999
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 0.0
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 29.9999988
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 25034.9989986
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 26.99999892
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 103588.3291898
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 34003.331973199995
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 1196.99995212
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 5425.999782960001
+            }
+        }
+    },
+    {
+        "run": 4,
+        "nEvents": 16666666,
+        "energy": 0.21,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 39408.331757
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1421.9999431200001
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.9999999599999999
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 43.649998253999996
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 2.99999988
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 1.9999999199999998
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 22.99999908
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 25323.3323204
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 22.99999908
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 104171.6624998
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 34621.6652818
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 1132.99995468
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 5439.9997824
+            }
+        }
+    },
+    {
+        "run": 5,
+        "nEvents": 16666666,
+        "energy": 0.2,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 39006.665106399996
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1414.9999434000001
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.0
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 43.9016649106
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 5.99999976
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 0.9999999599999999
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 19.999999199999998
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 25421.6656498
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 31.999998719999997
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 104461.6624882
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 34931.6652694
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 1112.99995548
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 5282.99978868
+            }
+        }
+    },
+    {
+        "run": 6,
+        "nEvents": 16666666,
+        "energy": 0.19,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 38959.9984416
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1445.99994216
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.9999999599999999
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 43.0599982776
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 2.99999988
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 2.99999988
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 24.999999
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 24946.6656688
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 22.99999908
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 104554.9958178
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 35258.331923000005
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 1117.99995528
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 5170.999793159999
+            }
+        }
+    },
+    {
+        "run": 7,
+        "nEvents": 16666666,
+        "energy": 0.18,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 38854.9984458
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1473.99994104
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 2.99999988
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 51.7149979314
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 2.99999988
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 1.9999999199999998
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 14.9999994
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 25119.9989952
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 23.99999904
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 104571.6624838
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 35656.6652404
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 1123.99995504
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 5045.99979816
+            }
+        }
+    },
+    {
+        "run": 8,
+        "nEvents": 16666666,
+        "energy": 0.16999999999999998,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 38849.998446000005
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1465.99994136
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.9999999599999999
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 51.1066646224
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 1.9999999199999998
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 1.9999999199999998
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 16.99999932
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 25294.9989882
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 15.999999359999999
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 105314.9957874
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 35749.99857
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 1040.99995836
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 5018.999799239999
+            }
+        }
+    },
+    {
+        "run": 9,
+        "nEvents": 16666666,
+        "energy": 0.16,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 38749.99845
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1447.99994208
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.0
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 43.259998269600004
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 2.99999988
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 0.9999999599999999
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 16.99999932
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 25269.9989892
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 18.99999924
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 105758.329103
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 36656.6652004
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 918.9999632399999
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 4859.9998055999995
+            }
+        }
+    },
+    {
+        "run": 10,
+        "nEvents": 16666666,
+        "energy": 0.15,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 39516.665086
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1498.99994004
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.9999999599999999
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 43.6866649192
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 0.9999999599999999
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 4.999999799999999
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 18.99999924
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 25359.9989856
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 17.99999928
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 106836.6623932
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 37921.6651498
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 906.99996372
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 4597.99981608
+            }
+        }
+    },
+    {
+        "run": 11,
+        "nEvents": 16666666,
+        "energy": 0.14,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 39334.9984266
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1425.99994296
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.0
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 43.334998266599996
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 1.9999999199999998
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 4.999999799999999
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 16.99999932
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 25259.9989896
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 29.9999988
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 107396.66237080001
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 38496.6651268
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 821.9999671200001
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 4552.99981788
+            }
+        }
+    },
+    {
+        "run": 12,
+        "nEvents": 16666666,
+        "energy": 0.13,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 39301.6650946
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1370.99994516
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.0
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 38.6899984524
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 0.9999999599999999
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 0.9999999599999999
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 15.999999359999999
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 25471.6656478
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 12.999999480000001
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 108029.9956788
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 40223.3317244
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 784.9999686
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 4304.9998278
+            }
+        }
+    },
+    {
+        "run": 13,
+        "nEvents": 16666666,
+        "energy": 0.12,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 38521.6651258
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1402.99994388
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.0
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 52.0066645864
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 1.9999999199999998
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 1.9999999199999998
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 20.99999916
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 25394.9989842
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 16.99999932
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 110309.99558759999
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 41363.3316788
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 721.9999711199999
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 4333.99982664
+            }
+        }
+    },
+    {
+        "run": 14,
+        "nEvents": 16666666,
+        "energy": 0.10999999999999999,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 37348.3318394
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1381.99994472
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.9999999599999999
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 42.5449982982
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 1.9999999199999998
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 4.999999799999999
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 16.99999932
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 25544.998978199998
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 12.999999480000001
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 112873.3288184
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 43186.6649392
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 653.9999738399999
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 4020.99983916
+            }
+        }
+    },
+    {
+        "run": 15,
+        "nEvents": 16666666,
+        "energy": 0.1,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 36514.998539399996
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1265.99994936
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.0
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 50.144997994200004
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 0.9999999599999999
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 3.9999998399999996
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 9.999999599999999
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 25904.9989638
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 9.999999599999999
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 115633.328708
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 45011.6648662
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 517.99997928
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 3707.99985168
+            }
+        }
+    },
+    {
+        "run": 16,
+        "nEvents": 16666666,
+        "energy": 0.09,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 34289.9986284
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 1087.99995648
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.0
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 43.4033315972
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 3.9999998399999996
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 1.9999999199999998
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 10.999999560000001
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 26504.9989398
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 9.999999599999999
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 118938.3285758
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 46043.3314916
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 461.99998152
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 3319.9998671999997
+            }
+        }
+    },
+    {
+        "run": 17,
+        "nEvents": 16666666,
+        "energy": 0.07999999999999999,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 29351.6654926
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 998.99996004
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.0
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 42.7783316222
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 0.0
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 0.9999999599999999
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 21.999999120000002
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 27483.332234
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 6.99999972
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 125604.9949758
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 46478.3314742
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 330.99998676
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 2840.99988636
+            }
+        }
+    },
+    {
+        "run": 18,
+        "nEvents": 16666666,
+        "energy": 0.07,
+        "physicsList": "HADROTHErapy",
+        "rangeshifterThickness": 3.0,
+        "isotopes": {
+            "triton": {
+                "halflife": 269304000.0,
+                "lifeTime": 388523545.2915614,
+                "number": 20193.3325256
+            },
+            "N13": {
+                "halflife": 597.9,
+                "lifeTime": 862.5873649475111,
+                "number": 759.9999696
+            },
+            "F17": {
+                "halflife": 64.49,
+                "lifeTime": 93.03940318692925,
+                "number": 0.0
+            },
+            "N16": {
+                "halflife": 7.13,
+                "lifeTime": 10.28641564153831,
+                "number": 41.7133316648
+            },
+            "C15": {
+                "halflife": 2.449,
+                "lifeTime": 3.5331601551370713,
+                "number": 0.0
+            },
+            "F18": {
+                "halflife": 6586.2,
+                "lifeTime": 9501.87807830289,
+                "number": 4.999999799999999
+            },
+            "N17": {
+                "halflife": 4.173,
+                "lifeTime": 6.020366405629645,
+                "number": 5.99999976
+            },
+            "O15": {
+                "halflife": 122.24,
+                "lifeTime": 176.35504179826688,
+                "number": 26836.6655932
+            },
+            "Be11": {
+                "halflife": 13.76,
+                "lifeTime": 19.851483762632135,
+                "number": 0.0
+            },
+            "C11": {
+                "halflife": 1220.0,
+                "lifeTime": 1760.0879498845354,
+                "number": 120868.3284986
+            },
+            "Be7": {
+                "halflife": 4590000,
+                "lifeTime": 6621970.237680342,
+                "number": 40111.6650622
+            },
+            "O14": {
+                "halflife": 70.6,
+                "lifeTime": 101.8542698867608,
+                "number": 239.9999904
+            },
+            "C10": {
+                "halflife": 19.29,
+                "lifeTime": 27.8295873387481,
+                "number": 2244.9999101999997
+            }
+        }
+    }
+]
