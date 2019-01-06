@@ -131,7 +131,7 @@ def make_plot(
     # Set title and axis labels
     ax.set_title(title)
     ax.set_ylabel("Induced activity per 100 Giga protons (Bq)")
-    ax.set_xlabel("Energy (MeV)")
+    ax.set_xlabel("Mean energy of proton beam (MeV)")
 
     # Set limits
     ax.set_xlim(xlim)
@@ -149,8 +149,6 @@ def make_plot(
     # Place legend in best place in bottom right quadrant
     ax.grid(which='both', linewidth=0.7)
     ax.grid(which='major', axis='y', linewidth=0.7, c='k')
-
-
 
     plt.legend(bbox_to_anchor=bbox, loc='best')
 
@@ -217,8 +215,6 @@ make_plot(
     outName="rangeshifter_t5_BERT.pdf",
     ymax=2e6
 )
-
-
 
 
 make_plot(
