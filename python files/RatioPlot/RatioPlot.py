@@ -4,6 +4,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import json
+import matplotlib.patches as mpatches
 import collections
 import itertools
 
@@ -42,6 +43,7 @@ def ratio_plot(
     ymax=5,
     xlim=(70,250),
     fLabels=None,
+    legend=None,
     exclude=None,
     include=None,
     include_only=None,
@@ -190,9 +192,9 @@ def ratio_plot(
 
                     # Plot it
                     if colour is not None and style is not None:
-                        plt.plot(x, y, label=flabel, c=colour[ist], ls=style[fLabels[j]])
+                        plt.plot(x, y, c=colour[ist], ls=style[fLabels[j]])
                     else:
-                        plt.plot(x, y, label=flabel)
+                        plt.plot(x, y)
 
                     plt.errorbar(x, y, yerr=e, fmt=' ', c='k', capsize=4, linewidth=0.5)
 
@@ -204,15 +206,21 @@ def ratio_plot(
     # ax.grid(which='both', linewidth=0.7)
     # ax.grid(which='major', axis='y', linewidth=0.7, c='k')
 
-    plt.legend(bbox_to_anchor=bbox, loc='best')
+    plt.legend(bbox_to_anchor=bbox, loc='best', handles=legend)
 
     plt.savefig(outDir + outName, bbox_inches = 'tight', pad_inches = 0)
 
 
+def legend_mpatches(colors):
+    mpatch_list = []
+    for ist in colors.keys():
+        mpatch_list.append(mpatches.Patch(color=colors[ist], label=format_isotope(ist)))
+    return mpatch_list
 
 # Main
 technicolor = {"C11":"r", "O14":"b", "O15":"g", "N16":"orange", "N13":"magenta"}
 finestyle = {"Binary cascade":"--", "Bertini cascade":"-"}
+
 
 ratio_plot(
     fileNames=["water_HADROTHE.json", "water_BIC.json", "water_BERT.json", ],
@@ -222,7 +230,8 @@ ratio_plot(
     include_only=["C11", "O15", "N13"],
     outName="water_C11_O15_ratio.pdf",
     title="",
-    ymax=3,
+    legend=legend_mpatches({"C11":"r", "O15":"g",  "N13":"magenta"}),
+    ymax=2,
     figSize=(4,6),
     xlim=(40,250),
     log=False
@@ -234,10 +243,11 @@ ratio_plot(
     style=finestyle,
     colour=technicolor,
     include_only=["O14", "N16"],
-    outName="water_O14_ratio.pdf",
+    outName="water_O14_N16_ratio.pdf",
+    legend=legend_mpatches({"O14":"b", "N16":"orange"}),
     title="",
     ymin=0,
-    ymax=10,
+    ymax=8,
     figSize=(4,6),
     xlim=(40,250),
     log=False
