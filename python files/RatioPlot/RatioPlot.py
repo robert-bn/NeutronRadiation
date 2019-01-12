@@ -272,17 +272,33 @@ ratio_plot(
 """
 
 ratio_plot(
-    fileNames=["rangeshifter_t1_HADROTHE.json", "rangeshifter_t1_PRECISO.json"],
-    fLabels=["HADROTHE", "PRECISIO"],
+    fileNames=["rangeshifter_t2_HADROTHE.json", "rangeshifter_t2_BIC.json","rangeshifter_t2_BERT.json"],
+    fLabels=["HADROTHE", "Binary cascade", "Bertini cascade"],
     style=finestyle,
     colour=technicolor,
-    include_only=["O14", "N16", "C10", "C11", "O15", "N13"],
-    outName="water_HADROTHE_PRECISIO.pdf",
-    legend=legend_mpatches({"O14":"b", "N16":"orange", "C10":"brown"}),
+    include_only=["O15", "N13", "C10", "C11"],
+    outName="rangeshifter_t2_O15_N13_C10.pdf",
+    legend=legend_mpatches({"O15":"G", "N13":"magenta", "C10":"brown", "C11":"r"}),
     title="",
     ymin=0,
     ymax=2,
     figSize=(4,3),
-    xlim=(70,240),
+    xlim=(100,240),
+    log=False
+)
+
+ratio_plot(
+    fileNames=["rangeshifter_t2_HADROTHE.json", "rangeshifter_t2_BIC.json","rangeshifter_t2_BERT.json"],
+    fLabels=["HADROTHE", "Binary cascade", "Bertini cascade"],
+    style=finestyle,
+    colour=technicolor,
+    include_only=["O14", "N16"],
+    outName="rangeshifter_t2_O14_N16_C11.pdf",
+    legend=legend_mpatches({"O14":"b", "N16":"orange"}),
+    title="",
+    ymin=0,
+    ymax=7,
+    figSize=(4,3),
+    xlim=(100,240),
     log=False
 )
