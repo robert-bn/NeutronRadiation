@@ -4,7 +4,7 @@ import ActivationPlot as ap
 ap.make_plot(
     fileName="water_HADROTHE.json",
 #    title="Activation of water phantom immediately after beam turned off",
-    outName="water_HADROTHE_high_act.pdf",
+    outName="water_HADROTHE_high_act.svg",
     outDir="presentationpdfs/",
     exclude=["Be7", "F18", "F17"],
     ymin=1e4,
@@ -18,7 +18,7 @@ ap.make_plot(
 ap.make_plot(
     fileName="water_HADROTHE.json",
 #    title="Activation of water phantom immediately after beam turned off",
-    outName="water_HADROTHE_low_act.pdf",
+    outName="water_HADROTHE_low_act.svg",
     outDir="presentationpdfs/",
     include_only=["Be7", "F18"],
     ymin=1,
@@ -32,7 +32,7 @@ ap.make_plot(
 ap.make_plot(
     fileName="rangeshifter_t1_HADROTHE.json",
 #    title="Activation of water phantom immediately after beam turned off",
-    outName="rangeshifter_t1_HADROTHE_high_act.pdf",
+    outName="rangeshifter_t1_HADROTHE_high_act.svg",
     outDir="presentationpdfs/",
     exclude=["Be7", "F18", "F17", "C15"],
     ymin=9e1,
@@ -44,7 +44,7 @@ ap.make_plot(
 ap.make_plot(
     fileName="rangeshifter_t1_HADROTHE.json",
 #    title="Activation of water phantom immediately after beam turned off",
-    outName="rangeshifter_t1_HADROTHE_low_act.pdf",
+    outName="rangeshifter_t1_HADROTHE_low_act.svg",
     outDir="presentationpdfs/",
     include_only=["Be7"],
     ymin=1e1,
