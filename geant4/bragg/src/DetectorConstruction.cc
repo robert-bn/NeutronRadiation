@@ -14,6 +14,7 @@
 #include <G4RunManager.hh>
 
 #include "Analysis.hh"
+#include "Config.hh"
 
 #include <sstream>
 #include <string>
@@ -67,7 +68,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   }
 
   */
-  Input* inp = new Input();
+  Config* inp = new Config();
   fNumberOfLayers = inp->GetNumberOfLayers();
   fLayerThickness = inp->GetLayerThickness();
   fMinX = inp->GetMinX();

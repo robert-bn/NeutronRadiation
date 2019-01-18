@@ -27,6 +27,7 @@
 
 #include <QGSP_BIC_HP.hh>
 #include "Analysis.hh"
+#include "Config.hh"
 
 using namespace std;
 
@@ -41,27 +42,48 @@ int main(int argc, char** argv)
     vector<G4String> macros;
     bool interactive = false;
 
+    G4String configFilename = "DefaultConfig.txt";
+
     // Parse command line arguments
     if  (argc == 1)
     {
-        // No arguments supplied. Launch interactive (GUI) interface
-        interactive = true;
+      // No arguments supplied. Launch interactive (GUI) interface
+      interactive = true;
     }
     else
     {
-        for (int i = 1; i < argc; i++)
+      for (int i = 1; i < argc; i++)
+      {
+        G4String arg = argv[i];
+
+        // Interactive argument
+        if (arg == "-i" || arg == "--interactive")
         {
-            G4String arg = argv[i];
-            if (arg == "-i" || arg == "--interactive")
-            {
-                interactive = true;
-                continue;
-            }
-            else
-            {
-                macros.push_back(arg);
-            }
+          interactive = true;
+          continue;
         }
+
+        // Config argument
+        else if (arg == "-c" || arg == "--config")
+        {
+          configFilename = argv[i+1];
+          i++; // Skip next argument
+        }
+        // Help argument
+        else if (arg == "-h" || arg == "--help")
+        {
+          G4cout << "Usage: ./water [options] [macros]\n";
+          G4cout << "Options:\n";
+          G4cout << " --interactive\t-i\t\tRun in interactive mode.\n";
+          G4cout << " --config <arg>\t-c <arg>\tSpecify a configuration file.\n";
+          G4cout << " --help\t-h\t\t\tList command line options.\n";
+          return EXIT_SUCCESS;
+        }
+        else
+        {
+          macros.push_back(arg);
+        }
+      }
     }
 
     // Create the run manager (MT or non-MT) and make it a bit verbose.
