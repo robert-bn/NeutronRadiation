@@ -15,7 +15,7 @@ public:
   Config();
   ~Config();
 
-  Config(G4String outFileName, G4double rangeshifterThickness, G4String physicsList);
+  Config::Config(G4String outFileName, G4double minX, G4double maxX, G4int numberOfLayers, G4String physicsList);
 
   Config(G4String fileName);
 
