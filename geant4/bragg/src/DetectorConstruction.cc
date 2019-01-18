@@ -14,7 +14,6 @@
 #include <G4RunManager.hh>
 
 #include "Analysis.hh"
-#include "Input.hh"
 
 #include <sstream>
 #include <string>
