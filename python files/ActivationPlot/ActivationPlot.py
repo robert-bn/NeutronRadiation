@@ -50,6 +50,7 @@ def make_plot(
     include_only=None,
     fig_size=(10.5, 14.85),
     loglog=False,
+    yticks=None,
     bbox=(0.5, 0., 0.5, 0.5)):
     # Load data
     print("processing " + fileName)
@@ -129,6 +130,9 @@ def make_plot(
         # Set horizontal ticks to 10 MeV
         ax.set_xticks(np.arange(0,260,10))
 
+    if yticks is not None:
+        ax.set_yticks(yticks)
+
     # Set title and axis labels
     ax.set_title(title)
     ax.set_ylabel("Induced activity per 100 Giga protons (Bq)")
@@ -154,7 +158,7 @@ def make_plot(
     plt.legend(bbox_to_anchor=bbox, loc='best')
 
     # Remove margins
-    plt.savefig(outDir + outName, bbox_inches = 'tight', pad_inches = 0)
+    plt.savefig(outDir + outName, bbox_inches = 'tight', pad_inches = 0.1)
 
 
 # Main
