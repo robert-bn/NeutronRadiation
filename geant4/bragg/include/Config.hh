@@ -22,7 +22,7 @@ public:
   G4double GetLayerThickness() const { return fLayerThickness; }
   G4double GetMinX() const { return fMinX; }
   G4double GetMaxX() const { return fMaxX; }
-  G4int GetNumberOfLayers() const { return fNumberOfLayers}
+  G4int GetNumberOfLayers() const { return fNumberOfLayers; }
 
   G4String GetPhysicsList() const { return fPhysicsList; }
   G4String GetOutFileName() const { return fOutFileName; }

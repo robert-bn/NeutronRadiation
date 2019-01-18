@@ -35,7 +35,7 @@ fFileName(fileName)
     }
 
     //         ==========================================================================
-    fLayerThickness = (fMaxX - fMinX / fNumberOfLayers)   // fNumberOfLayers
+    fLayerThickness = (fMaxX - fMinX / fNumberOfLayers);   // fNumberOfLayers
     G4cout << "============================== User Config ===============================\n";
     if (!fPhysicsList || !fLayerThickness || !fOutFileName)
     {
