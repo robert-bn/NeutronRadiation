@@ -1,4 +1,4 @@
-from numpy import linspace
+from numpy import arange
 import ActivationPlot as ap
 
 ap.make_plot(
@@ -49,7 +49,7 @@ ap.make_plot(
     include_only=["Be7"],
     ymin=1e1,
     ymax=2e1,
-    yticks=linspace(1e1,2e1,9),
+    yticks=arange(1e1,2e1,1),
     xlim=(70,250),
     fig_size=(12,6.75)
 )
