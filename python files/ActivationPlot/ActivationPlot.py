@@ -48,6 +48,7 @@ def make_plot(
     exclude=None,
     include=None,
     include_only=None,
+    fig_size=(10.5, 14.85),
     loglog=False,
     bbox=(0.5, 0., 0.5, 0.5)):
     # Load data
@@ -117,7 +118,7 @@ def make_plot(
             act[ist].append(r_act)
             act_error[ist].append(r_act_error)
 
-    fig, ax = plt.subplots(figsize=(10.5, 14.85))  # Make figure half a4 size
+    fig, ax = plt.subplots(figsize=fig_size)  # Make figure half a4 size
 
     # Make y axis logarithmic
     ax.set_yscale("log", nonposy='clip')
@@ -135,7 +136,7 @@ def make_plot(
 
     # Set limits
     ax.set_xlim(xlim)
-    ax.set_ylim(ymin=ymin, ymax=ymax)
+    ax.set_ylim(bottom=ymin, top=ymax)
 
     for ist in isotopes:
         # Sort according to Energy and remove NaN elements
@@ -157,7 +158,7 @@ def make_plot(
 
 
 # Main
-
+"""
 make_plot(
     fileName="rangeshifter_t1_BIC.json",
 #    title="Activation of 1cm thick range shifter immediately after beam turned off",
@@ -292,3 +293,4 @@ make_plot(
     ymin=0.1,
     ymax=2e6
 )
+"""
